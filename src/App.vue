@@ -83,3 +83,4 @@ nav a:first-of-type {
   }
 }
 </style>
+./modules/components/HelloWorld.vue
