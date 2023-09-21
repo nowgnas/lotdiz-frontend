@@ -1,5 +1,5 @@
 ---
-name: 수정이 필요한 사항
+name: bbug fixme
 about: fix bug
 title: ''
 labels: ''
