@@ -1,68 +1,82 @@
-# lotdiz
+## folder structure
 
-This template should help get you started developing with Vue 3 in Vite.
+### common
 
-## Recommended IDE Setup
+- 공통 파일
+- 여러곳에서 동시에 사용하는 것
+- 공통으로 사용되는 폴더와 파일들
+  - /components
+  - commonFunc.ts
+  - config.ts
+  - Button.vue
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### middlewares
 
-## Type Support for `.vue` Imports in TS
+- vue router와 밀접한 동작
+- 네비게이션 가드를 저장
+  - 인증, 인가에 사용 예상됨
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```ts
+// middlewares/checkAuth.js
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+export default function checkAuth(next, isAuthenticated) {
+  if (isAuthenticated) {
+    next('/')
+  } else {
+    next('/login')
+  }
+}
 ```
 
-### Compile and Hot-Reload for Development
+```ts
+// vue-router
 
-```sh
-npm run dev
+import Router from 'vue-router'
+import checkAuth from '../middlewares/checkAuth.js'
+const isAuthenticated = true
+
+const router = new Router({
+  routes: [],
+  mode: 'history'
+})
+
+router.beforeEach((to, from, next) => {
+  checkAuth(next, isAuthenticated)
+})
 ```
 
-### Type-Check, Compile and Minify for Production
+### modules
 
-```sh
-npm run build
-```
+- 어플리케이션의 코어
+- 논리적으로 분리된 부분 저장
+- vue 컴포넌트를 저장할 수 있는 내부 컴포넌트 폴더
+- 테스트 폴더 (모든 테스트 모듈에 보관하는 것을 선호)
+- store.ts, store 모듈을 보관하는 store 디렉토리
+- 모듈과 관련된 다른 파일, 모듈에만 관련된 helper function
+  > ex: 앱에 있는 order에 관련된 컴포넌트를 저장하는 ordes모듈에 관한예시(list of orders, order details, etc.).
+  > Orders vuex store 모듈. 추가관련 파일.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### services
 
-```sh
-npm run test:unit
-```
+- 서비스를 저장하는데 필요
+- api 연결 서비스, localstorage 매니저 서비스 등을 만들고 저장
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+### router
 
-```sh
-npm run test:e2e:dev
-```
+- 라우터 관련 모든 파일
+- router 경로가 한 곳에 있는 index.ts가 존재할 수 있음
+- index.ts를 사용하는 경우 src 루트에 저장하는 것을 권장
+  [자동 라우터 생성하기](https://itnext.io/vue-tricks-smart-router-for-vuejs-93c287f46b50)
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+### store
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+- 상태 관리를 위한 폴더
+- state, actions, mutations, getters를 저장
 
-```sh
-npm run build
-npm run test:e2e
-```
+### views
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- 어플리케이션 경로에 대한 모든 진입점을 저장
+- `/home`, `/about`, `/orders` 라우터가 있으면 views에 Home.vue, About.vue, Order.vue가 존재해야 함
+- 파일 구조가 조금 더 깔끔해진다.
+- 어플리케이션의 라우트를 빨리 이해할 수 있다.
+- 페이지에서 어떤파일이 루트인지, 어디에서 작업을 시작하는지 쉽게 이해할 수 있다.
