@@ -8,7 +8,7 @@
     </div>
     <div class="sec-btn">
         <div class="btn-next">
-            <router-link to="/basic-info"><button @click="increaseActiveNo">다음</button></router-link>
+            <router-link to="/basic-info"><button @click="increaseActiveNo"><span style="color:black;padding-right:5px;">Lotdiz</span> 회원가입하기</button></router-link>
         </div>
     </div>
 </template>

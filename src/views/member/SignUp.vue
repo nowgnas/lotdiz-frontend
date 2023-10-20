@@ -2,17 +2,29 @@
   <div>
     <div id="header-signup"><p>롯디즈</p></div>
     <div id="progress-bar-signup">
-      <div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['far', 'square-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 1 }" />
+        <div>
+          <span :class="{'isActive': getActiveNo() === 1}">약관동의</span>
+        </div>
       </div>
-      <div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'user-pen']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 2 }" />
+        <div>
+          <span :class="{'isActive': getActiveNo() === 2}">기본정보입력</span>
+        </div>
       </div>
-      <div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'envelope-circle-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 3 }" />
+        <div>
+          <span :class="{'isActive': getActiveNo() === 3}">이메일인증</span>
+        </div>
       </div>
-      <div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'file-circle-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 4 }" />
+        <div>
+          <span :class="{'isActive': getActiveNo() === 4}">가입완료</span>
+        </div>
       </div>
     </div>
     <div id="contents-signup">
@@ -95,6 +107,14 @@ if (window.location.href === "http://localhost:5173/sign-up-success") {
     padding: 0 200px;
   }
 
+  .icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--icon-color);
+  }
+
   #contents-signup {
     display: flex;
     flex-direction: column;
@@ -104,7 +124,7 @@ if (window.location.href === "http://localhost:5173/sign-up-success") {
 
   .increase-icon-size {
     font-size: 50px;
-    color: #C4C4C4;
+    color: var(--icon-color);
   }
 
   .isActive {

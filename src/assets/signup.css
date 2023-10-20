@@ -9,6 +9,11 @@ button {
 
 button:hover {
     cursor: pointer;
+    background-color: var(--deep-color);
+}
+
+select {
+    padding: 5px 15px;
 }
 
 .sec-content {

@@ -12,7 +12,16 @@
             <label for="input-member-username-start">이메일 <span class="astar-color">*</span> </label>
           </div>
           <div id="input-username-wrapper">
-            <input type="text" id="input-member-username-start" /> <p>@</p> <input type="text" id="input-member-username-end" />
+            <div id="input-username-sub-wrapper">
+              <input type="text" id="input-member-username-start" /> <p>@</p> <input type="text" id="input-member-username-end" />
+            </div>
+            <select id="input-select">
+                <option value="option1" selected>직접입력</option>
+                <option value="naver">naver.com</option>
+                <option value="google">gmail.com</option>
+                <option value="daum">daum.net</option>
+            </select>
+            <div id="btn-double-check"><p>중복확인</p></div>
           </div>
         </div>
         <div class="input-wrapper">
@@ -74,6 +83,12 @@ const decreaseActiveNo = () => {
 
    #input-username-wrapper {
       display: flex;
+      gap: 10px;
+      align-items: center;
+   }
+
+   #input-username-sub-wrapper {
+      display: flex;
       gap: 20px;
       align-items: center;
    }
@@ -89,6 +104,7 @@ const decreaseActiveNo = () => {
       height: 25px;
       border: 2.5px solid var(--main-color)
    }
+      
 
    .label-width {
       width: 150px;
@@ -98,6 +114,22 @@ const decreaseActiveNo = () => {
    .astar-color {
       color: #FF0000;
       font-weight: bold;
+   }
+
+   #input-select {
+      border: 2.5px solid var(--main-color)
+   }
+
+   #btn-double-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 31px;
+      padding: 0 10px;
+      background-color: var(--deep-color);
+      color: white;
+      box-sizing: border-box;
+      cursor: pointer;
    }
 
    .sec-btn {
