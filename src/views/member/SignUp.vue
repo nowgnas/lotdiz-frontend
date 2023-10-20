@@ -9,16 +9,25 @@
         </div>
       </div>
       <div class="icon-wrapper">
+        <font-awesome-icon :icon="['fas', 'chevron-right']" />
+      </div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'user-pen']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 2 }" />
         <div>
           <span :class="{'isActive': getActiveNo() === 2}">기본정보입력</span>
         </div>
       </div>
       <div class="icon-wrapper">
+        <font-awesome-icon :icon="['fas', 'chevron-right']" />
+      </div>
+      <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'envelope-circle-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 3 }" />
         <div>
           <span :class="{'isActive': getActiveNo() === 3}">이메일인증</span>
         </div>
+      </div>
+      <div class="icon-wrapper">
+        <font-awesome-icon :icon="['fas', 'chevron-right']" />
       </div>
       <div class="icon-wrapper">
         <font-awesome-icon :icon="['fas', 'file-circle-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 4 }" />
@@ -104,7 +113,7 @@ if (window.location.href === "http://localhost:5173/sign-up-success") {
     gap: 50px;
     justify-content: space-around;
     align-items: center;
-    padding: 0 200px;
+    padding: 0 400px;
   }
 
   .icon-wrapper {
