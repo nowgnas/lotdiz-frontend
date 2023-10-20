@@ -35,6 +35,18 @@ const getActiveNo = () => {
   return memberStore.getActiveNo();
 }
 
+if (window.location.href === "http://localhost:5173/basic-info") {
+  window.location.href = "http://localhost:5173/sign-up";
+}
+
+if (window.location.href === "http://localhost:5173/email-auth") {
+  window.location.href = "http://localhost:5173/sign-up";
+}
+
+if (window.location.href === "http://localhost:5173/sign-up-success") {
+  window.location.href = "http://localhost:5173/sign-up";
+}
+
 </script>
 
 <style>
