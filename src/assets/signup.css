@@ -1,5 +1,25 @@
+button {
+    border: none;
+    background-color: var(--main-color);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 25px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.sec-content {
+    width: 60%;
+    height: 500px;
+}
+
 .sec-btn {
     display: flex;
     gap: 20px;
     justify-content: center;
+    padding-top: 20px;
 }
+

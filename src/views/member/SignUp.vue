@@ -26,7 +26,6 @@
 <script setup lang="ts">
 import Vue from 'vue';
 import SignUpAgreement from '../../modules/member/components/SignUpAgreement.vue';
-import '@/assets/signup.css';
 import { useMemberStore } from '../../modules/stores/member';
 import { watch } from 'vue';
 
