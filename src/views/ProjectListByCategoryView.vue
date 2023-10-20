@@ -7,6 +7,8 @@
 -->
 
 <template>
+
+  <!-- categoty menu section start -->
   <div id="cateogory-menu-bar">
   <div id="category-menu">
     <div class="category-logo" v-if="category==='가전'">
@@ -53,9 +55,24 @@
     <div class="category-name">
       {{  category }}
     </div>
+  </div>
+  </div>
+  <!-- category menu section end -->
 
+  <!-- sort section start -->
+  <div id="sort-bar">
+    <div class="sort-select-bar">
+      <div class="sort-condition" @click="sort='createdAt,desc'">
+          최신순
+      </div>
+      <div class="sort-condition" @click="sort='projectDueDate,asc'">
+        마감임박순
+      </div>
+    </div>
   </div>
-  </div>
+  <!-- sort section end -->
+
+  
   <div id="project-list">
     <ProjectCardComponent v-for="project in projectByCategoryResponseList"  :key="project.projectId" :project = "project" />
   </div>
@@ -63,7 +80,7 @@
 </template>
 
 <script setup lang = "ts">
-import { ref, reactive, onMounted, computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
 import type { ProjectByCategoryResponse } from '@/services/types/ProjectResponse';
@@ -72,15 +89,15 @@ import CategoryMenuComponent from '@Components/CategoryMenuComponent.vue';
 
 const route = useRoute();
 const category = computed(() => route.query.category);
+const sort = ref('createdAt,desc');
 
 const projectByCategoryResponseList = ref<ProjectByCategoryResponse[]>([]);
 
-watch(category, async (newCategory) => {
+watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort])=> {
   try {
-    const response: ProjectByCategoryResponse[] =  await getProjectsByCategory(category, 0, 20, 'createdAt,desc');
+    const response: ProjectByCategoryResponse[] =  await getProjectsByCategory(category.value, 0, 20, sort.value);
     projectByCategoryResponseList.value = response;
     console.log(projectByCategoryResponseList)
-
   } catch (error) {
     console.log('카테고리 조회 실패', error); 
   } 
@@ -89,11 +106,11 @@ watch(category, async (newCategory) => {
 </script>
 
 <style>
-/* 카테고리 메뉴바 */
+/* category menu */
 #cateogory-menu-bar {
   display: flex;
   /* width: 1440px; */
-  padding: 10px;
+  padding-top: 25px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -137,6 +154,7 @@ watch(category, async (newCategory) => {
 
 }
 
+/* project card list */
 #project-list {
   display: flex;
   width: 1274px;
@@ -144,6 +162,46 @@ watch(category, async (newCategory) => {
   align-content: center;
   gap: 45px 40px;
   flex-wrap: wrap;
+}
+
+/* sort bar */
+#sort-bar {
+    display: flex;
+    /* width: 1440px; */
+    /* padding: 0px 250px; */
+    justify-content: end;
+    align-items: center;
+    margin-left: 220px;
+    margin-right: 220px;
+}
+
+.sort-select-bar {
+  display: flex;
+  width: 190px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sort-condition {
+  display: flex;
+  width: 110px;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  color: #000;
+
+  text-align: center;
+  font-family: Open Sans;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 30.8px */
+
 }
 
 </style>

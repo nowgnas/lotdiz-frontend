@@ -50,8 +50,7 @@ const categories = [
 ];
 
 const selectCategory = (category) => {
-  console.log(`Selected category: ${category.name}`);
-  hideDropdown(); // 선택 후에 드롭다운을 숨깁니다.
+  hideDropdown(); 
 };
 
 const hideDropdown = () => {
