@@ -222,12 +222,6 @@
     gap: 10px;
     border-radius: 10px;
     border: 1px solid #000;
-}
-
-.due-date-box > .text {
-    justify-content: flex-start;
-    color: #7C7C7C;
-    text-align: center;
     font-family: Open Sans;
     font-size: 25px;
     font-style: normal;
