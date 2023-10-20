@@ -6,4 +6,3 @@
     <TheWelcome />
   </main>
 </template>
-../modules/components/TheWelcome.vue
