@@ -1,0 +1,5 @@
+.sec-btn {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
