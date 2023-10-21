@@ -2,13 +2,13 @@
     <div class="sec-content">
         <div id="sec-agreement-box"></div>
         <div id="sec-agreement-check">
-            <input type="checkbox" name="" id="input-aggrement-check">
-            <label for="input-aggrement-check"> 개인정보 수집 및 이용에 동의합니다</label>
+            <input type="checkbox" name="agreement-check" id="input-agreement-check">
+            <label for="input-agreement-check"> 개인정보 수집 및 이용에 동의합니다</label>
         </div>
     </div>
     <div class="sec-btn">
         <div class="btn-next">
-            <router-link to="/basic-info"><button @click="increaseActiveNo"><span style="color:black;padding-right:5px;">Lotdiz</span> 회원가입하기</button></router-link>
+            <router-link to="/basic-info"><button @click="validCheck"><span style="color:black;padding-right:5px;">Lotdiz</span> 회원가입하기</button></router-link>
         </div>
     </div>
 </template>
@@ -17,11 +17,20 @@
 import Vue from 'vue'
 
 import { useMemberStore } from '../../stores/member';
+import { nextTick } from 'vue';
+import { log } from 'console';
 
 const memberStore = useMemberStore();
 
-const increaseActiveNo = () => {
-  memberStore.increaseActiveNo();
+const validCheck = async (event) => {
+    await nextTick(); // DOM이 준비될 때까지 대기
+    let checkbox = document.getElementById("input-agreement-check") as HTMLInputElement | null;
+    if(!checkbox.checked) {
+        alert('약관에 동의해야 합니다.');
+        event.preventDefault();
+    } else {
+        memberStore.increaseActiveNo();
+    }
 }
 </script>
 
