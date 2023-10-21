@@ -21,7 +21,7 @@ import {RouterView, RouterLink} from 'vue-router'
 const sidebar: any = [
   {
     name: "메이커 정보",
-    url: "/maker"
+    url: "/projects/maker"
   },
   {
     name: "프로젝트 정보",

@@ -3,6 +3,7 @@ import {ref, computed} from "vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
+
 const projectNameCnt = ref(40);
 const dto = ref({
   projectName: "",
@@ -23,8 +24,8 @@ const format = (date: Date) => {
 }
 const inputFile = ref();
 
-const base64 = async (file)=>{
-
+const base64 = async (file: File) => {
+  const blob = new Blob([file], {type: 'image/png'});
 }
 
 const saveImage = () => {
@@ -33,6 +34,7 @@ const saveImage = () => {
 }
 const imageInput = (event: any) => {
   const file = event.target.files[0];
+  base64(file);
   console.log(file.name);
 }
 const addImage = () => {
@@ -56,7 +58,7 @@ const getProjectTag = (e: any) => {
 </script>
 
 <template>
-  <div class="basic-information-title">
+  <div class="project-register-content-title">
     <div class="title-text">기본 정보 등록</div>
     <div class="title-description">
       <div class="text">프로젝트를 대표하는 중요한 정보들을 입력해 주세요.</div>

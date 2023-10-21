@@ -1,4 +1,4 @@
-.basic-information-title {
+.project-register-content-title {
     display: flex;
     /*flex-direction: column;*/
     width: 1553px;
@@ -9,7 +9,7 @@
     border-bottom: 1px solid #BEBEBE;
 }
 
-.basic-information-title > .title-text {
+.project-register-content-title > .title-text {
     color: #000;
     text-align: center;
     font-family: Open Sans;
@@ -19,7 +19,7 @@
     line-height: 140%; /* 49px */
 }
 
-.basic-information-title > .title-description {
+.project-register-content-title > .title-description {
     display: flex;
     padding: 10px;
     justify-content: center;
