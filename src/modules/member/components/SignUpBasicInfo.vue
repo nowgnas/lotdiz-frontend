@@ -24,21 +24,29 @@
               </select>
               <div id="btn-double-check"><p>중복확인</p></div>
             </div>
-            <span id="error-msg-username" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span>
-            <span id="right-msg-username" v-if="validateUsername">올바른 이메일 형식입니다.</span>
+            <span id="error-msg" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span>
+            <span id="right-msg" v-if="validateUsername">올바른 이메일 형식입니다.</span>
           </div>
         </div>
         <div class="input-wrapper">
-          <div class="label-width">
+          <div class="label-width label-loc-start">
             <label for="input-member-password">비밀번호 <span class="astar-color">*</span> </label>
           </div>
-          <input type="password" id="input-member-password" />
+          <div>
+            <input type="password" id="input-member-password" v-model="password" />
+            <div style="padding-top:8px;"><span id="error-msg" v-if="!validatePassword">영문자, 숫자, 특수문자 모두 포함하여 8 ~ 16자 이내로 작성해주세요.</span></div>
+            <div style="padding-top:8px;"><span id="right-msg" v-if="validatePassword">안전한 비밀번호입니다.</span></div>
+          </div>
         </div>
         <div class="input-wrapper">
-          <div class="label-width">
+          <div class="label-width label-loc-start">
             <label for="input-member-password-check">비밀번호 확인 <span class="astar-color">*</span> </label>
           </div>
-          <input type="password" id="input-member-password-check" />
+          <div>
+            <input type="password" id="input-member-password-check" v-model="passwordCheck" />
+            <div style="padding-top:8px;"><span id="error-msg" v-if="!validatePasswordCheck">비밀번호가 일치하지 않습니다.</span></div>
+            <div style="padding-top:8px;"><span id="right-msg" v-if="validatePasswordCheck">비밀번호가 일치합니다.</span></div>
+          </div>
         </div>
       </form>
     </div>
@@ -61,6 +69,8 @@ const memberStore = useMemberStore();
 const username1 = ref('');
 const username2 = ref('');
 const selectedOption = ref('직접입력');
+const password = ref('');
+const passwordCheck = ref('');
 
 watch(selectedOption, (newOption) => {
   if (newOption === "direct") {
@@ -80,7 +90,23 @@ const isUsernameValid = (username1: string, username2: string): boolean => {
 
 const validateUsername = computed((): boolean => {
   console.log("computed");
-  return isUsernameValid(username1.value, username2.value)
+  return isUsernameValid(username1.value, username2.value);
+});
+
+const isPasswordValid = (password: string): boolean => {
+  const expression: RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&+=!*_])[A-Za-z\d@#$%^&+=!*_]{8,16}$/;
+  return expression.test(password);
+}
+
+const validatePassword = computed((): boolean => {
+  return isPasswordValid(password.value);
+});
+
+const validatePasswordCheck = computed((): boolean => {
+  if(passwordCheck.value === '') {
+    return false;
+  }
+  return password.value === passwordCheck.value ? true : false;  
 });
 
 
@@ -150,12 +176,12 @@ const decreaseActiveNo = () => {
       border: 2.5px solid var(--main-color)
    }
 
-   #error-msg-username {
+   #error-msg {
       font-size: small;
       color: var(--error-color);
    }
 
-   #right-msg-username {
+   #right-msg {
      font-size: small;
      color: var(--success-color);
    }
