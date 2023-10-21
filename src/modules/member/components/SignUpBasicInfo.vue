@@ -1,6 +1,6 @@
 <template>
     <div class="sec-content">
-      <form action="" id="form-basic-info">
+      <form action="" v-on:submit.prevent="submitForm" id="form-basic-info">
         <div class="input-wrapper">
           <div class="label-width">
             <label for="input-member-name">이름 <span class="astar-color">*</span> </label>
@@ -8,20 +8,24 @@
           <input type="text" id="input-member-name" />
         </div>
         <div class="input-wrapper">
-          <div class="label-width">
-            <label for="input-member-username-start">이메일 <span class="astar-color">*</span> </label>
+          <div class="label-width label-loc-start">
+            <label for="input-username-1">이메일 <span class="astar-color">*</span> </label>
           </div>
-          <div id="input-username-wrapper">
-            <div id="input-username-sub-wrapper">
-              <input type="text" id="input-member-username-start" /> <p>@</p> <input type="text" id="input-member-username-end" />
+          <div>
+            <div id="input-username-wrapper">
+              <div id="input-username-sub-wrapper">
+                <input type="text" id="input-username-1" v-model="username1" /> <p>@</p> <input type="text" id="input-username-2" v-model="username2" />
+              </div>
+              <select id="input-select">
+                  <option value="option1" selected>직접입력</option>
+                  <option value="naver">naver.com</option>
+                  <option value="google">gmail.com</option>
+                  <option value="daum">daum.net</option>
+              </select>
+              <div id="btn-double-check"><p>중복확인</p></div>
             </div>
-            <select id="input-select">
-                <option value="option1" selected>직접입력</option>
-                <option value="naver">naver.com</option>
-                <option value="google">gmail.com</option>
-                <option value="daum">daum.net</option>
-            </select>
-            <div id="btn-double-check"><p>중복확인</p></div>
+            <span id="error-msg-username" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span>
+            <span id="right-msg-username" v-if="validateUsername">올바른 이메일 형식입니다.</span>
           </div>
         </div>
         <div class="input-wrapper">
@@ -43,16 +47,39 @@
             <router-link to="/sign-up"><button @click="decreaseActiveNo">이전</button></router-link>
         </div>
         <div class="btn-next">
-            <router-link to="/email-auth"><button @click="increaseActiveNo">다음</button></router-link>
+            <router-link to="/email-auth"><button @click="validCheck">다음</button></router-link>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue'
 import { useMemberStore } from '../../stores/member';
+import { computed, ref, watch } from 'vue';
 
 const memberStore = useMemberStore();
+
+// const submitForm = () => {
+//   checkUsernameValid(email1.value, email2.value);
+// }
+
+// const validCheck = () => {
+//   submitForm();
+// }
+const username1 = ref('');
+const username2 = ref('');
+
+// email 형식 check 함수
+const isUsernameValid = (username1: string, username2: string): boolean => {
+  const totalEmail = username1 + '@' + username2;
+  console.log("totalEmail: " + totalEmail);
+  const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  return expression.test(totalEmail);
+}
+
+const validateUsername = computed((): boolean => {
+  console.log("computed");
+  return isUsernameValid(username1.value, username2.value)
+});
 
 const increaseActiveNo = () => {
   memberStore.increaseActiveNo();
@@ -66,9 +93,6 @@ const decreaseActiveNo = () => {
 
 <style>
    @import '@/assets/signup.css';
-   label {
-      font-weight: bold;
-   }
 
    #form-basic-info {
       padding-left: 10%;
@@ -93,7 +117,7 @@ const decreaseActiveNo = () => {
       align-items: center;
    }
 
-   #input-member-name, #input-member-username-start, #input-member-username-end {
+   #input-member-name, #input-username-1, #input-username-2 {
       width: 200px;
       height: 25px;
       border: 2.5px solid var(--main-color)
@@ -105,19 +129,31 @@ const decreaseActiveNo = () => {
       border: 2.5px solid var(--main-color)
    }
       
-
    .label-width {
       width: 150px;
       text-align: right;
    }
 
+   .label-loc-start {
+      padding-bottom: 23px;
+   }
+
    .astar-color {
-      color: #FF0000;
-      font-weight: bold;
+      color: var(--error-color);
    }
 
    #input-select {
       border: 2.5px solid var(--main-color)
+   }
+
+   #error-msg-username {
+      font-size: small;
+      color: var(--error-color);
+   }
+
+   #right-msg-username {
+     font-size: small;
+     color: var(--success-color);
    }
 
    #btn-double-check {
