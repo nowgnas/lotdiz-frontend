@@ -96,6 +96,7 @@ const decreaseActiveNo = () => {
 
    #form-basic-info {
       padding-left: 10%;
+      min-width: 1600px;
    }
 
    .input-wrapper {
@@ -113,18 +114,18 @@ const decreaseActiveNo = () => {
 
    #input-username-sub-wrapper {
       display: flex;
-      gap: 20px;
+      gap: 5px;
       align-items: center;
    }
 
-   #input-member-name, #input-username-1, #input-username-2 {
-      width: 200px;
+   #input-username-1, #input-username-2 {
+      width: 150px;
       height: 25px;
       border: 2.5px solid var(--main-color)
    }
 
-   #input-member-password, #input-member-password-check {
-      width: 250px;
+   #input-member-name, #input-member-password, #input-member-password-check {
+      width: 350px;
       height: 25px;
       border: 2.5px solid var(--main-color)
    }
