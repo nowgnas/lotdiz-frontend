@@ -2,13 +2,17 @@
     <div class="sec-content">
       <form action="" v-on:submit.prevent="submitForm" id="form-basic-info">
         <div class="input-wrapper">
-          <div class="label-width">
+          <div class="label-width label-loc-start">
             <label for="input-member-name">이름 <span class="astar-color">*</span> </label>
           </div>
-          <input type="text" id="input-member-name" />
+          <div>
+            <input type="text" id="input-member-name" v-model="name" />
+            <div style="padding-top:8px;"><span id="normal-msg" v-if="validateName">1 ~ 10자 이내로 입력해주세요.</span></div>
+            <div style="padding-top:8px;"><span id="error-msg" v-if="!validateName">최대 10자까지 입력가능합니다.</span></div>
+          </div>
         </div>
         <div class="input-wrapper">
-          <div class="label-width label-loc-start">
+          <div class="label-width label-email-loc-start">
             <label for="input-username-1">이메일 <span class="astar-color">*</span> </label>
           </div>
           <div>
@@ -24,8 +28,8 @@
               </select>
               <div id="btn-double-check"><p>중복확인</p></div>
             </div>
-            <span id="error-msg" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span>
-            <span id="right-msg" v-if="validateUsername">올바른 이메일 형식입니다.</span>
+            <div><span id="error-msg" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span></div>
+            <div><span id="right-msg" v-if="validateUsername">올바른 이메일 형식입니다.</span></div>
           </div>
         </div>
         <div class="input-wrapper">
@@ -35,7 +39,7 @@
           <div>
             <input type="password" id="input-member-password" v-model="password" />
             <div style="padding-top:8px;"><span id="error-msg" v-if="!validatePassword">영문자, 숫자, 특수문자 모두 포함하여 8 ~ 16자 이내로 작성해주세요.</span></div>
-            <div style="padding-top:8px;"><span id="right-msg" v-if="validatePassword">안전한 비밀번호입니다.</span></div>
+            <div style="padding-top:8px;"><span id="right-msg" v-if="validatePassword"><font-awesome-icon :icon="['fas', 'key']" /> 안전한 비밀번호입니다.</span></div>
           </div>
         </div>
         <div class="input-wrapper">
@@ -66,6 +70,7 @@ import { computed, ref, watch } from 'vue';
 
 const memberStore = useMemberStore();
 
+const name = ref('');
 const username1 = ref('');
 const username2 = ref('');
 const selectedOption = ref('직접입력');
@@ -78,6 +83,10 @@ watch(selectedOption, (newOption) => {
   } else {
     username2.value = newOption;
   }
+});
+
+const validateName = computed((): boolean => {
+  return name.value.length <= 10 ? true : false;
 });
 
 // email 형식 check 함수
@@ -148,7 +157,7 @@ const decreaseActiveNo = () => {
    }
 
    #input-username-1, #input-username-2 {
-      width: 150px;
+      width: 158px;
       height: 25px;
       border: 2.5px solid var(--main-color)
    }
@@ -165,6 +174,10 @@ const decreaseActiveNo = () => {
    }
 
    .label-loc-start {
+      padding-bottom: 34px;
+   }
+
+   .label-email-loc-start {
       padding-bottom: 23px;
    }
 
@@ -174,6 +187,11 @@ const decreaseActiveNo = () => {
 
    #input-select {
       border: 2.5px solid var(--main-color)
+   }
+
+   #normal-msg {
+      font-size: small;
+      color: var(--icon-color);
    }
 
    #error-msg {
