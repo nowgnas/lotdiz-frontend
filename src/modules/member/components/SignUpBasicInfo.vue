@@ -133,7 +133,7 @@ const decreaseActiveNo = () => {
    @import '@/assets/signup.css';
 
    #form-basic-info {
-      padding-left: 10%;
+      padding-left: 12%;
       min-width: 1600px;
    }
 

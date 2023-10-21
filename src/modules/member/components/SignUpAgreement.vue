@@ -37,7 +37,7 @@ const validCheck = async (event) => {
 <style>
     @import '@/assets/signup.css';
     #sec-agreement-box {
-        height: 400px;
+        height: 350px;
         border: 1px solid #d3d3d3;
         /* width: 1098px; */
     }
