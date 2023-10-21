@@ -16,11 +16,11 @@
               <div id="input-username-sub-wrapper">
                 <input type="text" id="input-username-1" v-model="username1" /> <p>@</p> <input type="text" id="input-username-2" v-model="username2" />
               </div>
-              <select id="input-select">
-                  <option value="option1" selected>직접입력</option>
-                  <option value="naver">naver.com</option>
-                  <option value="google">gmail.com</option>
-                  <option value="daum">daum.net</option>
+              <select id="input-select" v-model="selectedOption">
+                  <option value="direct">직접입력</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="google.com">gmail.com</option>
+                  <option value="daum.com">daum.net</option>
               </select>
               <div id="btn-double-check"><p>중복확인</p></div>
             </div>
@@ -58,15 +58,17 @@ import { computed, ref, watch } from 'vue';
 
 const memberStore = useMemberStore();
 
-// const submitForm = () => {
-//   checkUsernameValid(email1.value, email2.value);
-// }
-
-// const validCheck = () => {
-//   submitForm();
-// }
 const username1 = ref('');
 const username2 = ref('');
+const selectedOption = ref('직접입력');
+
+watch(selectedOption, (newOption) => {
+  if (newOption === "direct") {
+    username2.value = '';
+  } else {
+    username2.value = newOption;
+  }
+});
 
 // email 형식 check 함수
 const isUsernameValid = (username1: string, username2: string): boolean => {
@@ -80,6 +82,7 @@ const validateUsername = computed((): boolean => {
   console.log("computed");
   return isUsernameValid(username1.value, username2.value)
 });
+
 
 const increaseActiveNo = () => {
   memberStore.increaseActiveNo();
