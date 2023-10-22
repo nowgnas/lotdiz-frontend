@@ -40,8 +40,7 @@
 
 <script setup lang="ts">
 
-import { ref, onMounted, onBeforeMount, computed, defineProps } from 'vue';
-import type { ProjectByCategoryResponse } from '@/services/types/ProjectResponse';
+import { ref, onBeforeMount, computed, defineProps } from 'vue';
 
 const props = defineProps({
   project: {
@@ -49,9 +48,7 @@ const props = defineProps({
   },
 });
 
-const currentPath = ref('');
 const lotdealDueTime = ref<string>(props.project.lotdealDueTime);
-
 const timer = ref<number>(0);
 
 const hour = computed(() => Math.floor(timer.value / (60 * 60)));
@@ -60,10 +57,8 @@ const second = computed(() => Math.floor(timer.value % 60));
 
 const stringifiedTimer = computed(() => `${String(hour.value).padStart(2, '0')}:${String(minute.value).padStart(2, '0')}:${String(second.value).padStart(2, '0')}`);
 
-console.log(lotdealDueTime.value);
-
 const startTimer = () => {
-  const targetTime = new Date(lotdealDueTime.value).getTime() / 1000; // 특정 시각을 설정합니다.
+  const targetTime = new Date(lotdealDueTime.value).getTime() / 1000; 
 
   setInterval(() => {
     const now = new Date().getTime() / 1000;
@@ -71,15 +66,9 @@ const startTimer = () => {
   }, 1000);
 };
 
-onMounted(() => {
+onBeforeMount(() => {
   startTimer();
 });
-
-
-
-const likes = () => {
-  //props.project;
-}
 
 </script>
 
