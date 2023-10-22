@@ -3,7 +3,6 @@ export interface ProjectsResponse<T> {
   projects: Array<T>
 }
 
-
 export interface ProjectsByCategoryResponse {
   projectId: number;
   projectName: string;
@@ -40,6 +39,19 @@ export interface BannerResponse {
   bannerId: number
   bannerImageUrl: string
   bannerUrl: string
+}
+
+export interface LotdealProjectResponse {
+  projectId: number;
+  projectName: string;
+  remainingDays: number;
+  projectThumbnailImage: string;
+  makerName: string;
+  fundingAchievementRate: string;
+  accumulatedFundingAmount: number;
+  lotdealDueTime: string;
+  projectStatus: string;
+  isLike: boolean;
 }
 
 interface projectIamge {
