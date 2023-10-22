@@ -1,0 +1,29 @@
+#app {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+#project-list {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  gap: 90px;
+  flex-wrap: wrap;
+}

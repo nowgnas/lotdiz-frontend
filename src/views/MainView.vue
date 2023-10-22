@@ -1,7 +1,25 @@
 <template>
-  <div>
-    <div>hello lotdiz</div>
-  </div>
+  
+<div class="banner-image">
+  <img alt="banner-img" class="banner-img" src="@/assets/banner-camping.png">
+</div>
+
+
+
 </template>
-<!-- css 모듈  -->
-<!-- https://ko.vuejs.org/api/sfc-css-features.html#css-modules -->
+
+
+<script setup lang="ts">
+import { } from 'vue';
+
+
+
+
+</script>
+
+<style>
+.banner-img {
+  width: 1905px;
+  height: 340px;
+}
+</style>
