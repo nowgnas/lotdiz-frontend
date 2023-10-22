@@ -1,6 +1,6 @@
 <template>
 
-<div id = "project-product-card"> 
+<div id = "project-product-card" v-if="( $route.path == '/lotdeal' && stringifiedTimer != '00:00:00') || $route.path != '/lotdeal'"> 
   <div id = "project-image-info">
 
     <div class="project-image">
@@ -13,11 +13,11 @@
       </svg>
     </div>
 
-    <div class="lotdeal-info" v-if="project.lotdealDueTime != null">
+    <div class="lotdeal-info" v-if="stringifiedTimer != '00:00:00'">
       <div class="lotdeal-image">
         <img alt="lotdeal logo" class="lotdeal-img" src="@/assets/hot-deal-logo.png">
       </div>
-      <div class="lotdeal-time">{{ project.lotdealDueTime }}</div>
+      <div class="lotdeal-time">{{ stringifiedTimer }}</div>
     </div>
   </div>
 
@@ -39,7 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, reactive } from 'vue';
+
+import { ref, onMounted, onBeforeMount, computed, defineProps } from 'vue';
 import type { ProjectByCategoryResponse } from '@/services/types/ProjectResponse';
 
 const props = defineProps({
@@ -48,13 +49,37 @@ const props = defineProps({
   },
 });
 
+const currentPath = ref('');
+const lotdealDueTime = ref<string>(props.project.lotdealDueTime);
+
+const timer = ref<number>(0);
+
+const hour = computed(() => Math.floor(timer.value / (60 * 60)));
+const minute = computed(() => Math.floor((timer.value - hour.value * (60 * 60)) / 60));
+const second = computed(() => Math.floor(timer.value % 60));
+
+const stringifiedTimer = computed(() => `${String(hour.value).padStart(2, '0')}:${String(minute.value).padStart(2, '0')}:${String(second.value).padStart(2, '0')}`);
+
+console.log(lotdealDueTime.value);
+
+const startTimer = () => {
+  const targetTime = new Date(lotdealDueTime.value).getTime() / 1000; // 특정 시각을 설정합니다.
+
+  setInterval(() => {
+    const now = new Date().getTime() / 1000;
+    timer.value = Math.max(0, Math.floor(targetTime - now));
+  }, 1000);
+};
+
+onMounted(() => {
+  startTimer();
+});
+
+
 
 const likes = () => {
   //props.project;
 }
-
-const likesStyles = reactive({
-})
 
 </script>
 
