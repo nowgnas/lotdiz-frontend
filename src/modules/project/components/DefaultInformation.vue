@@ -32,10 +32,6 @@ const base64 = async (file: File) => {
   const blob = new Blob([file], {type: 'image/png'});
 }
 
-const saveImage = () => {
-  // 받은 파일 업로드
-
-}
 const imageInput = (event: any) => {
   const file = event.target.files[0];
   base64(file);

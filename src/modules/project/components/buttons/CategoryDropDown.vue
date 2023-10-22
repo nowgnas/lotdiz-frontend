@@ -6,9 +6,15 @@ const selectedOption = ref(null);
 const emit = defineEmits(['category-id']);
 
 const items = ref([
-  {id: 1, name: 'Option 1'},
-  {id: 2, name: 'Option 2'},
-  {id: 3, name: 'Option 3'},
+  {id: 1, name: '테크 가전'},
+  {id: 2, name: '패션, 잡화'},
+  {id: 3, name: '뷰티'},
+  {id: 4, name: '홈, 리빙'},
+  {id: 5, name: '푸드'},
+  {id: 6, name: '레저, 아웃도어'},
+  {id: 7, name: '출판'},
+  {id: 8, name: '스포츠, 모딜리티'},
+  {id: 9, name: '클래스, 컨설팅'},
 ]);
 
 const toggleDropdown = () => {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-import ContentTextInputField from "@/modules/project/components/ContentTextInputField.vue";
 import {ref} from "vue";
 import CategoryDropDown from "@/modules/project/components/buttons/CategoryDropDown.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
