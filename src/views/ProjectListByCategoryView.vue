@@ -102,11 +102,7 @@ onBeforeMount(async () => {
 })
 
 watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort]) => {
-  try {
-    await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
-  } catch (error) {
-    console.error('카테고리 조회 실패', error);
-  }
+  await getProjectsByCategoryRequest(newCategory, 0, 20, newSort);
 });
 </script>
 
