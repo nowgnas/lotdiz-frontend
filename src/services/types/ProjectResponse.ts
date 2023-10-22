@@ -36,6 +36,12 @@ export interface ProjectDetailResponse {
 
 }
 
+export interface BannerResponse {
+  bannerId: number
+  bannerImageUrl: string
+  bannerUrl: string
+}
+
 interface projectIamge {
   projectImageId: number;
   projectImageUrl: string;

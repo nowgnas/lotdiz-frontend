@@ -79,7 +79,6 @@ import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
 import type { ProjectsByCategoryResponse, ProjectsResponse } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@Components/ProjectCardComponent.vue';
-import CategoryMenuComponent from '@Components/CategoryMenuComponent.vue';
 
 const route = useRoute();
 const category = computed(() => route.query.category);

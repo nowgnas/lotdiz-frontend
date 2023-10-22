@@ -20,10 +20,11 @@ a {
   display: flex;
   align-items: center;
   align-content: center;
-  justify-content: center;
-  margin-left: 100px;
-  margin-right: 100px;
+  /* justify-content: center; */
+  margin-left: 268px;
+  margin-right: 300px;
   margin-top: 30px;
   gap: 90px;
   flex-wrap: wrap;
+  width: 1374px;
 }
