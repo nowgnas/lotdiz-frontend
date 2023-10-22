@@ -1,11 +1,3 @@
-<!-- 카테고리 별 목록 조회
-  - 헤더 컴포넌트
-  - 카테고리 바 컴포넌트
-  - 필터링 바 컴포넌트
-  - 상품 카드 뉴스 컴포넌트
-    - 롯딜 or 롯드+
--->
-
 <template>
 
   <!-- categoty menu section start -->
@@ -72,18 +64,20 @@
   </div>
   <!-- sort section end -->
 
-  
+  <!-- project-list section start -->
   <div id="project-list">
     <ProjectCardComponent v-for="project in projectByCategoryResponseList"  :key="project.projectId" :project = "project" />
   </div>
+  <!-- project list section end -->
+
   
 </template>
 
 <script setup lang = "ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
-import type { ProjectByCategoryResponse } from '@/services/types/ProjectResponse';
+import type { ProjectsByCategoryResponse, ProjectsResponse } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@Components/ProjectCardComponent.vue';
 import CategoryMenuComponent from '@Components/CategoryMenuComponent.vue';
 
@@ -91,18 +85,30 @@ const route = useRoute();
 const category = computed(() => route.query.category);
 const sort = ref('createdAt,desc');
 
-const projectByCategoryResponseList = ref<ProjectByCategoryResponse[]>([]);
+const projectByCategoryResponseList = ref<Array<ProjectsByCategoryResponse>>([]);
+const totalPages = ref(0);
 
-watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort])=> {
+const getProjectsByCategoryRequest = async (categoryName: string, page: number, size: number, sort: string) => {
   try {
-    const response: ProjectByCategoryResponse[] =  await getProjectsByCategory(category.value, 0, 20, sort.value);
-    projectByCategoryResponseList.value = response;
-    console.log(projectByCategoryResponseList)
+    const response: ProjectsResponse<ProjectsByCategoryResponse> = await getProjectsByCategory(categoryName, page, size, sort);
+    projectByCategoryResponseList.value = response['projects'];
+    totalPages.value = response['totalPages'];
   } catch (error) {
-    console.log('카테고리 조회 실패', error); 
-  } 
-});
+    throw error; 
+  }
+};
 
+onBeforeMount(async () => {
+  await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
+})
+
+watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort]) => {
+  try {
+    await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
+  } catch (error) {
+    console.error('카테고리 조회 실패', error);
+  }
+});
 </script>
 
 <style>
@@ -154,25 +160,14 @@ watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort])=>
 
 }
 
-/* project card list */
-#project-list {
-  display: flex;
-  width: 1274px;
-  align-items: center;
-  align-content: center;
-  gap: 45px 40px;
-  flex-wrap: wrap;
-}
-
 /* sort bar */
 #sort-bar {
-    display: flex;
-    /* width: 1440px; */
-    /* padding: 0px 250px; */
-    justify-content: end;
-    align-items: center;
-    margin-left: 220px;
-    margin-right: 220px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-left: 197px;
+  margin-right: 289px;
+  margin-top: 50px;
 }
 
 .sort-select-bar {

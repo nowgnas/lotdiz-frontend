@@ -10,7 +10,6 @@ import HeaderBarComponent from '@Components/HeaderBarComponent.vue';
   <header>
     <HeaderBarComponent/>
   </header>
-
   <main role="main">
     <RouterView />
   </main>
@@ -22,7 +21,6 @@ import HeaderBarComponent from '@Components/HeaderBarComponent.vue';
 </template>
 
 <style scoped>
-
 
 </style>
 

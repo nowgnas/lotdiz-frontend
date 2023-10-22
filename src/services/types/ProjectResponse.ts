@@ -1,4 +1,10 @@
-export interface ProjectByCategoryResponse {
+export interface ProjectsResponse<T> {
+  totalPages: number,
+  projects: Array<T>
+}
+
+
+export interface ProjectsByCategoryResponse {
   projectId: number;
   projectName: string;
   remainingDays: number;
@@ -23,10 +29,10 @@ export interface ProjectDetailResponse {
   numberOfSupporter: number;
   fundingAchievementRate: number;
   accumlatedFundingAmount: number;
-  projectStoryImageUrl: projectIamge[]
+  projectStoryImageUrl: Array<projectIamge>
   lotdealDueTime: string;
   projectStatus: string;
-  products: products[]
+  products: Array<products>
 
 }
 

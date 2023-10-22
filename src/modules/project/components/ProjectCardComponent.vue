@@ -1,5 +1,3 @@
-<!-- 프로젝트 카드 -->
-
 <template>
 
 <div id = "project-product-card"> 
@@ -21,7 +19,6 @@
       </div>
       <div class="lotdeal-time">{{ project.lotdealDueTime }}</div>
     </div>
-
   </div>
 
   <div id = "project-info">
@@ -51,18 +48,12 @@ const props = defineProps({
   },
 });
 
-// 클릭 시, 색 변경
-// 클릭하면, 찜 등록 api
+
 const likes = () => {
-  console.log("찜 클릭");
-
-
+  //props.project;
 }
 
-// 찜 시, 스타일 src
 const likesStyles = reactive({
-
-
 })
 
 </script>

@@ -15,11 +15,10 @@ const projectDetailResponse = ref<ProjectDetailResponse>();
 
 onMounted(async () => {
   try {
-    const response: ProjectDetailResponse = getProjectDetails(1);
+    const response: ProjectDetailResponse = await getProjectDetails(1);
     projectDetailResponse.value = response;
-    console.log(projectDetailResponse)
   } catch (error) {
-    console.log('프로젝트 상세 조회 실패', error);
+    alert("프로젝트 조회 실패");
   }
 });
 
