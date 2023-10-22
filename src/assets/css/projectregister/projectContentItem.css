@@ -41,7 +41,7 @@
     line-height: 140%; /* 35px */
 }
 
-.is-required{
+.is-required {
     display: flex;
     padding: 10px;
     flex-direction: column;
@@ -52,11 +52,32 @@
     right: -11px;
     top: -14px;
 }
-.is-required > .text{
+
+.is-required > .text {
     color: #F41010;
     font-family: Open Sans;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 140%; /* 28px */
+}
+
+.project-content-box > .description {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 200px;
+    top: 10px;
+
+    .text {
+        color: #7C7C7C;
+        font-family: Open Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 28px */
+    }
 }

@@ -2,18 +2,18 @@
 
 import ContentTextInputField from "@/modules/project/components/ContentTextInputField.vue";
 import {ref} from "vue";
+import CategoryDropDown from "@/modules/project/components/buttons/CategoryDropDown.vue";
+import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
 
 const project = ref({
   categoryId: 0,
   projectTargetAmount: 0
 });
 
-const projectInformationComponent = ref({})
-const category = [
-  {id: 0, categoryName: "뷰티"},
-  {id: 1, categoryName: "아웃도어"}
+const getCategoryId = (value: number) => {
+  project.value.categoryId = value;
+}
 
-]
 </script>
 
 <template>
@@ -26,12 +26,26 @@ const category = [
   <div class="project-content-box">
     <div class="title">
       <div class="text">카테고리</div>
+      <div class="is-required">
+        <div class="text">*</div>
+      </div>
     </div>
-    <select v-model="selected" multiple>
-      <option v-for="item in category" key="idx">{{ item.categoryName }}</option>
-    </select>
+    <CategoryDropDown @category-id="getCategoryId"/>
   </div>
-
+  <div class="project-content-box" style="position: relative">
+    <div class="title">
+      <div class="text">목표 금액 설정</div>
+      <div class="is-required">
+        <div class="text">*</div>
+      </div>
+    </div>
+    <div class="description">
+      <div class="text">최소 50만 원 ~ 최대 1억 원 사이에서 설정해 주세요.</div>
+    </div>
+    <input @input="project.projectTargetAmount" class="project-title-input" placeholder="목표 금액을 입력해 주세요."
+           maxlength="40"/>
+  </div>
+  <SaveButton/>
 </template>
 
 <style scoped>
