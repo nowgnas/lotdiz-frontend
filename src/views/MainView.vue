@@ -2,8 +2,10 @@
   
   <Carousel :autoplay="3000" :wrap-around="true">
     <Slide v-for="banner in bannerList" :key="banner.bannerId">
+      <RouterLink :to="banner.bannerUrl"> 
       <div class="carousel__item"><img :alt="banner.bannerImageUrl" class="banner-img" :src="banner.bannerImageUrl">
       </div>
+      </RouterLink>
     </Slide>
 
     <template #addons>
@@ -36,7 +38,7 @@ onBeforeMount(async () => {
 
 <style>
 .banner-img {
-  width: 1905px;
+  width: 1887px;
   height: 340px;
 }
 

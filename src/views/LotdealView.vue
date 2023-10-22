@@ -1,5 +1,7 @@
 <template>
 
+  <img alt="lotdeal" class="banner-img" src="../../public/banner-lotdeal.png">
+
   <!-- sort section start -->
   <div id="sort-bar">
     <div class="sort-select-bar">

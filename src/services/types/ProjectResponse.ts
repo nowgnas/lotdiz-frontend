@@ -54,6 +54,19 @@ export interface LotdealProjectResponse {
   isLike: boolean;
 }
 
+export interface SpecialExhibitionResponse {
+  projectId: number;
+  projectName: string;
+  remainingDays: number;
+  projectThumbnailImage: string;
+  makerName: string;
+  fundingAchievementRate: string;
+  accumulatedFundingAmount: number;
+  lotdealDueTime: string;
+  projectStatus: string;
+  isLike: boolean;
+}
+
 interface projectIamge {
   projectImageId: number;
   projectImageUrl: string;
