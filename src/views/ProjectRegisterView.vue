@@ -25,7 +25,7 @@ const sidebar: any = [
   },
   {
     name: "프로젝트 정보",
-    url: "/project-info"
+    url: "/projects/project-info"
   },
   {
     name: "기본 정보",

@@ -55,20 +55,6 @@
     line-height: 140%; /* 35px */
 }
 
-.project-title-input {
-    display: flex;
-    width: 1012px;
-    height: 91px;
-    align-items: center;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid #000;
-    color: #7C7C7C;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 140%; /* 35px */
-}
-
 .remain-text {
     display: flex;
     padding: 10px;
