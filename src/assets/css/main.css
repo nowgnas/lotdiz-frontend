@@ -28,3 +28,9 @@ a {
   flex-wrap: wrap;
   width: 1374px;
 }
+
+.poster-img {
+  margin-top: 10px;
+  width: 1887px;
+  height: 340px;
+}

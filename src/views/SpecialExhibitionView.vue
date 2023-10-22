@@ -1,6 +1,6 @@
 <template>
 
-  <img alt="camping" class="camping-img" src="../../public/banner-camping.png">
+  <img alt="camping" class="poster-img" src="../../public/banner-camping.png">
 
   <!-- sort section start -->
   <div id="sort-bar">

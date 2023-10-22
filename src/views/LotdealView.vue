@@ -1,6 +1,6 @@
 <template>
 
-  <img alt="lotdeal" class="banner-img" src="../../public/banner-lotdeal.png">
+  <img alt="lotdeal" class="poster-img" src="../../public/banner-lotdeal.png">
 
   <!-- sort section start -->
   <div id="sort-bar">
