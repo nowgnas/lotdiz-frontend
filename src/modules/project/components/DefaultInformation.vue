@@ -4,6 +4,7 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ContentTextInputField from "@/modules/project/components/ContentTextInputField.vue";
+import GuideBox from "@/modules/project/components/GuideBox.vue";
 
 const tagPlaceholder = ref("태그를 입력해주세요");
 const projectNamePlaceholder = ref("제목을 입력해 주세요");
@@ -14,7 +15,7 @@ const dto = ref({
   projectTag: "",
   projectThumbnailImageUrl: "",
   projectDueDate: ""
-})
+});
 
 const format = (date: Date) => {
   const day = date.getDate();
@@ -24,9 +25,15 @@ const format = (date: Date) => {
   const minute = date.getMinutes();
   const second = date.getSeconds();
   dto.value.projectDueDate = `${year}-${month}-${day}T${hour}:${minute}:${second}`;
-  return `Selected date is ${day}/${month}/${year}`;
 }
 const inputFile = ref();
+const thumbnailGuideBox = {
+  title: "썸네일 등록 가이드",
+  description: [
+    '롯디즈에서 노출될 대표 이미지 입니다.',
+    '10MB 이하의 JPG, JPEG, PNG 파일'
+  ]
+};
 
 const base64 = async (file: File) => {
   const blob = new Blob([file], {type: 'image/png'});
@@ -77,22 +84,7 @@ const getProjectTag = (e: any) => {
     <div class="thumbnail-image-title-box">
       <div class="text">프로젝트 썸네일 이미지</div>
     </div>
-    <div class="guide-box">
-      <div class="guide-title-box">
-        <svg class="exclamation-mark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-             fill="none">
-          <path d="M12 19V19.01M12 15V5" stroke="#4FAFB1" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
-        <div class="guide-title">썸네일 등록 가이드</div>
-      </div>
-      <div class="guide-content">
-        <ul class="text">
-          <li>롯디즈에서 노출될 대표 이미지 입니다.</li>
-          <li>10MB 이하의 JPG, JPEG, PNG 파일</li>
-        </ul>
-      </div>
-    </div>
+    <GuideBox :guide-content="thumbnailGuideBox"/>
     <div class="camera-image-box" @click="addImage">
       <input ref="inputFile" @change="imageInput" type="file" style="display: none"/>
       <svg xmlns="http://www.w3.org/2000/svg" width="46" height="42" viewBox="0 0 46 42" fill="none">
