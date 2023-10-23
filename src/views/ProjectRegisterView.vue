@@ -37,7 +37,7 @@ const sidebar: any = [
   },
   {
     name: "상품 등록",
-    url: "/product"
+    url: "/projects/products"
   },
   {
     name: "롯딜 선택",
