@@ -1,6 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import MainView from '@/views/MainView.vue'
-import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
+import MainView from '@/views/MainView.vue';
+import ProjectListByCategoryView from '@/views/ProjectListByCategoryView.vue';
+import ProjectDetailsView from '@/views/ProjectDetailsView.vue';
+import LotdealView from '@/views/LotdealView.vue';
+import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue';
+import ProjectRegisterView from "@/views/ProjectRegisterView.vue";
 import DefaultInformation from "@/modules/project/components/DefaultInformation.vue";
 import MakerRegister from "@/modules/project/components/MakerRegister.vue";
 import ProjectInformation from "@/modules/project/components/ProjectInformation.vue";
@@ -15,12 +19,24 @@ const router = createRouter({
             component: MainView
         },
         {
-            path: '/about',
-            name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import('../views/AboutView.vue')
+            path: '/projects/category',
+            name: 'projectListByCategory',
+            component: ProjectListByCategoryView
+        },
+        {
+            path: '/projects/details',
+            name: 'projectDetails',
+            component: ProjectDetailsView
+        },
+        {
+            path: '/lotdeal',
+            name: 'lotdeal',
+            component: LotdealView
+        },
+        {
+            path: '/special-exhibition/camping',
+            name: 'specialExhibition',
+            component: SpecialExhibitionView
         },
         {
             path: '/projects',
@@ -45,6 +61,7 @@ const router = createRouter({
                 }
             ]
         }
+
     ]
 })
 

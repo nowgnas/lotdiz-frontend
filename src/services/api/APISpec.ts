@@ -40,17 +40,10 @@ export const putData = async <T>(url: string, data?: any): Promise<SuccessRespon
 
 export const deleteData = async <T>(url: string): Promise<SuccessResponse<T>> => {
   try {
-    const response = await client.put<SuccessResponse<T>>(url);
+    const response = await client.delete<SuccessResponse<T>>(url);
     return response.data;
   } catch (error: unknown) {
     console.error((<ErrorResponse>error).detail)
     throw new Error((<ErrorResponse>error).message)
   }
 };
-
-
-
-
-
-
-
