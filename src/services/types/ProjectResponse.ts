@@ -7,7 +7,7 @@ export interface ProjectsByCategoryResponse {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
@@ -45,7 +45,7 @@ export interface LotdealProjectResponse {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
@@ -58,7 +58,7 @@ export interface SpecialExhibitionResponse {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
