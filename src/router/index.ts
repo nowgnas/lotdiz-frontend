@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'main',
-      component: MainView
+      component: () => import('../modules/member/components/MyPageSupporter.vue')
     },
     {
       path: '/about',
@@ -36,7 +36,40 @@ const router = createRouter({
       path: '/sign-up-success',
       name: 'sign-up-success',
       component: () => import('../modules/member/components/SignUpSuccess.vue')
-    }
+    },
+    // {
+    //   path: '/member/my-page',
+    //   name: 'my-page',
+    //   component: () => import('../views/member/MyPage.vue')
+    // },
+    {
+      path: '/member/my-page/maker',
+      name: 'my-page-maker',
+      component: () => import('../modules/member/components/MyPageMaker.vue')
+    },
+    {
+      path: '/member/my-page/supporter',
+      name: 'my-page-supporter',
+      component: () => import('../modules/member/components/MyPageSupporter.vue')
+    },
+    // {
+    //   path: '/member/my-page:tab',
+    //   name: 'my-page-tab',
+    //   component: () => import('../modules/member/components/MyPageSupporter.vue'),
+      // children: [
+      //   {
+      //     path: '/member/my-page/maker',
+      //     name: 'my-page-maker',
+      //     component: () => import('../modules/member/components/MyPageMaker.vue')
+      //   },
+      //   {
+      //     path: '/member/my-page/supporter',
+      //     name: 'my-page-supporter',
+      //     component: () => import('../modules/member/components/MyPageSupporter.vue')
+      //   },
+      // ]
+    // },
+    
   ]
 })
 

@@ -1,25 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import SignUp from './views/member/SignUp.vue';
+import MyPage from './views/member/MyPage.vue';
 // import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <sign-up></sign-up>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView /> -->
+  <!-- <my-page></my-page> -->
+  <!-- <div>fjdskfl</div> -->
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>

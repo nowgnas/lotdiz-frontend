@@ -167,7 +167,7 @@ const submitForm = async(event) => {
           memberPhoneNumber: '01000000000',
           memberPrivacyAgreement: true,
     }
-    // postMemberInfoForSignUp(signupRequest);
+    postMemberInfoForSignUp(signupRequest);
     memberStore.increaseActiveNo();
     router.push('/email-auth');
   } else {
