@@ -1,5 +1,5 @@
 import { getData } from '@/services/api/APISpec';
-import type { ProjectsResponse, ProjectsByCategoryResponse, ProjectDetailResponse, BannerResponse } from '@/services/types/ProjectResponse';
+import type { ProjectsResponse, ProjectsByCategoryResponse, ProjectDetailResponse, BannerResponse, LotdealProjectResponse } from '@/services/types/ProjectResponse';
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse';
 
 export const getProjectsByCategory = async (categoryName: string, page: number, size: number, sort: string): Promise<Array<ProjectByCategoryResponse>> => {
@@ -28,6 +28,16 @@ export const getBanners = async () => {
     const response = await getData<SuccessResponse<Map<String, BannerResponse>>>('/api/projects/banner');
     const bannerResponse: BannerResponse = response.data;
     return bannerResponse;
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail);
+  }
+}
+
+export const getLotdealProjects = async (page: number, size: number, sort: string) => {
+  try {
+    const response = await getData<SuccessResponse<ProjectsResponse<LotdealProjectResponse>>>(`/api/projects/lotdeal?page=${page}&sort=${sort}&size=${size}`);
+    const lotdealResponse: LotdealProjectResponse = response.data;
+    return lotdealResponse;
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail);
   }
