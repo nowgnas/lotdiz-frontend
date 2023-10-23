@@ -3,6 +3,7 @@
 import {ref} from "vue";
 import CategoryDropDown from "@/modules/project/components/buttons/CategoryDropDown.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
+import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 
 const project = ref({
   categoryId: 0,
@@ -13,15 +14,15 @@ const getCategoryId = (value: number) => {
   project.value.categoryId = value;
 }
 
+const content = {
+  title: "프로젝트 정보 등록",
+  description: "프로젝트 정보를 등록해주세요",
+};
+
 </script>
 
 <template>
-  <div class="project-register-content-title">
-    <div class="title-text">프로젝트 정보 등록</div>
-    <div class="title-description">
-      <div class="text">프로젝트 정보를 등록해주세요.</div>
-    </div>
-  </div>
+  <ProjectContentTitle :title="content"/>
   <div class="project-content-box">
     <div class="title">
       <div class="text">카테고리</div>

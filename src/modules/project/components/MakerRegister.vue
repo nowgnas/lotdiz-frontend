@@ -2,6 +2,7 @@
 import ContentTextInputField from "@/modules/project/components/ContentTextInputField.vue";
 import {ref} from "vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
+import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 
 const makerInputComponent = ref({
   makerEmail: {
@@ -43,6 +44,12 @@ const maker = ref({
   makerHomeUrl: "",
   makerSnsUrl: ""
 });
+
+const contentTitle = {
+  title: "메이커 등록",
+  description: "메이커를 등록해주세요."
+};
+
 const uploadProfile = ref();
 
 const addProfile = () => {
@@ -51,12 +58,7 @@ const addProfile = () => {
 </script>
 
 <template>
-  <div class="project-register-content-title">
-    <div class="title-text">메이커 등록</div>
-    <div class="title-description">
-      <div class="text">메이커를 등록해주세요.</div>
-    </div>
-  </div>
+  <ProjectContentTitle :title="contentTitle"/>
   <ContentTextInputField
       @input="maker.makerEmail"
       :placeholder="makerInputComponent.makerEmail.placeholder"

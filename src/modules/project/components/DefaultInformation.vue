@@ -5,6 +5,7 @@ import '@vuepic/vue-datepicker/dist/main.css';
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ContentTextInputField from "@/modules/project/components/ContentTextInputField.vue";
 import GuideBox from "@/modules/project/components/GuideBox.vue";
+import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 
 const tagPlaceholder = ref("태그를 입력해주세요");
 const projectNamePlaceholder = ref("제목을 입력해 주세요");
@@ -62,15 +63,15 @@ const getProjectTag = (e: any) => {
   dto.value.projectTag = e.target.value;
 }
 
+const projectContentTitle = {
+  title: "기본 정보 등록",
+  description: "프로젝트를 대표하는 중요한 정보들을 입력해 주세요."
+};
+
 </script>
 
 <template>
-  <div class="project-register-content-title">
-    <div class="title-text">기본 정보 등록</div>
-    <div class="title-description">
-      <div class="text">프로젝트를 대표하는 중요한 정보들을 입력해 주세요.</div>
-    </div>
-  </div>
+  <ProjectContentTitle :title="projectContentTitle"/>
   <div class="project-content-box">
     <div class="title">
       <div class="text">프로젝트 제목</div>
