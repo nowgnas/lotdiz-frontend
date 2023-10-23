@@ -20,7 +20,7 @@
           </transition>
         </div>
 
-        <RouterLink to="/lotdplus"><div class="lotd-plus-btn">롯드+</div></RouterLink> 
+        <RouterLink to="/"><div class="lotd-plus-btn">롯드+</div></RouterLink> 
         <RouterLink to="/lotdeal"><div class="lotd-plus-btn">롯딜</div></RouterLink>
       </div>
     </div>

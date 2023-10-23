@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MainView from '@/views/MainView.vue';
 import ProjectListByCategoryView from '@/views/ProjectListByCategoryView.vue';
 import ProjectDetailsView from '@/views/ProjectDetailsView.vue';
-import LotdPlusView from '@/views/LotdPlusView.vue';
 import LotdealView from '@/views/LotdealView.vue';
+import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,15 +24,15 @@ const router = createRouter({
       component: ProjectDetailsView
     },
     {
-      path: '/lotdplus',
-      name: '/lotdplus',
-      component: LotdPlusView
-    },
-    {
       path: '/lotdeal',
       name: 'lotdeal',
       component: LotdealView
     },
+    {
+      path: '/special-exhibition/camping',
+      name: 'specialExhibition',
+      component: SpecialExhibitionView
+    }
 
   ]
 })
