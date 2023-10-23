@@ -68,6 +68,8 @@
 import { useMemberStore } from '../../stores/member';
 import { computed, ref, watch, nextTick } from 'vue';
 import router from '../../../router/index';
+import { postMemberInfoForSignUp } from '../../../services/api/MemberService';
+import type { MemberInfoForSignUpRequest } from '../../../services/types/MemberRequest';
 
 const memberStore = useMemberStore();
 
@@ -158,6 +160,14 @@ const submitForm = async(event) => {
   }
 
   if( validateName.value && validateUsername.value && validatePassword.value && validatePasswordCheck.value ) {
+    const signupRequest: MemberInfoForSignUpRequest = {
+          username: username1.value + '@' + username2.value,
+          memberPassword: password.value,
+          memberName: name.value,
+          memberPhoneNumber: '01000000000',
+          memberPrivacyAgreement: true,
+    }
+    // postMemberInfoForSignUp(signupRequest);
     memberStore.increaseActiveNo();
     router.push('/email-auth');
   } else {
