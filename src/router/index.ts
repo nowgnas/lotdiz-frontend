@@ -4,6 +4,7 @@ import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
 import DefaultInformation from "@/modules/project/components/DefaultInformation.vue";
 import MakerRegister from "@/modules/project/components/MakerRegister.vue";
 import ProjectInformation from "@/modules/project/components/ProjectInformation.vue";
+import WriteStory from "@/modules/project/components/WriteStory.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,10 @@ const router = createRouter({
                 {
                     path: 'project-info',
                     component: ProjectInformation
+                },
+                {
+                    path: 'story',
+                    component: WriteStory
                 }
             ]
         }

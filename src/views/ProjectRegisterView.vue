@@ -33,7 +33,7 @@ const sidebar: any = [
   },
   {
     name: "스토리 작성",
-    url: "/story"
+    url: "/projects/story"
   },
   {
     name: "상품 등록",
