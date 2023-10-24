@@ -18,6 +18,20 @@ export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
   }
 };
 
+export const getDataWithAuth = async <T>(url: string, accessToken: string): Promise<SuccessResponse<T>> => {
+  try {
+    const response = await client.get<SuccessResponse<T>>(url, {
+      "headers": {
+        "Authorization": accessToken
+      }
+    });
+    return response.data;
+  } catch (error: unknown) {
+    console.error((<ErrorResponse>error).detail)
+    throw new Error((<ErrorResponse>error).message)
+  }
+};
+
 export const postData = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {
   try {
     const response = await client.post<SuccessResponse<T>>(url, data);
@@ -28,9 +42,13 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
   }
 };
 
-export const putData = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {
+export const putDataWithAuth = async <T>(url: string, data?: any, accessToken: string): Promise<SuccessResponse<T>> => {
   try {
-    const response = await client.put<SuccessResponse<T>>(url, data);
+    const response = await client.put<SuccessResponse<T>>(url, data, {
+      "headers": {
+        "Authorization": accessToken
+      }
+    });
     return response.data;
   } catch (error: unknown) {
     console.error((<ErrorResponse>error).detail)
