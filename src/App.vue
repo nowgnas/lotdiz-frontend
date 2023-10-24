@@ -6,8 +6,8 @@ import MyPage from './views/member/MyPage.vue';
 </script>
 
 <template>
-  <sign-up></sign-up>
-  <!-- <my-page></my-page> -->
+  <!-- <sign-up></sign-up> -->
+  <my-page></my-page>
   <!-- <div>fjdskfl</div> -->
   <!-- <RouterView /> -->
 </template>

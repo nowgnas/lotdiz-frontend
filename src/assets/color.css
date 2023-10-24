@@ -3,7 +3,8 @@
     --deep-color: #0E8C8D;
     --success-color: #5CB74C;
     --error-color: #FF0000;
-    --bg-color: white;
+    --card-bg-color: #F8F8F8;
+    --card-border-color: #D9D9D9;
     --sidebar-bg-color: white;
     --icon-color: #C4C4C4;
 }
