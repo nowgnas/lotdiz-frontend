@@ -3,7 +3,7 @@
     <div id="icon-complete"><font-awesome-icon :icon="['fas', 'check']" /></div>
     <div id="text-complete">회원가입이 <span style="font-weight:bold;">완료</span>되었습니다.</div>
     <div id="text-detail-complete">
-      <span id="member-name-wrapper">'이우엽'</span>님의 회원가입을 축하합니다.<br><!--hard coding-->
+      <span id="member-name-wrapper">'{{ memberName }}'</span>님의 회원가입을 축하합니다.<br><!--hard coding-->
       알차고 실속있는 서비스로 찾아뵙겠습니다.
     </div>
   </div>
@@ -12,13 +12,17 @@
         <p><a href="/" id="btn-home">홈으로</a></p>
       </div>
       <div>
-        <router-link to="#"><button>로그인</button></router-link>
+        <router-link to="/member/sign-in"><button>로그인</button></router-link>
       </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
+import { useMemberStore } from '../../stores/member';
+
+const memberStore = useMemberStore();
+const memberName = memberStore.memberName;
 
 </script>
 

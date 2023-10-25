@@ -53,22 +53,22 @@
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 
-import { useMemberStore } from '../../stores/member'
-import { nextTick } from 'vue'
-import { log } from 'console'
+import { useMemberStore } from '../../stores/member';
+import { nextTick } from 'vue';
 
 const memberStore = useMemberStore()
 
 const validCheck = async (event) => {
-  await nextTick() // DOM이 준비될 때까지 대기
-  let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null
+  await nextTick(); // DOM이 준비될 때까지 대기
+  let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null;
   if (!checkbox.checked) {
-    alert('약관에 동의해야 합니다.')
-    event.preventDefault()
+    alert('약관에 동의해야 합니다.');
+    event.preventDefault();
   } else {
-    memberStore.increaseActiveNo()
+    memberStore.assignMemberPrivacyAgreement(true);
+    memberStore.increaseActiveNo();
   }
 }
 </script>
