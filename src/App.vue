@@ -9,9 +9,10 @@ import MembershipPayments from './views/member/MembershipPayments.vue';
 <template>
   <!-- <sign-up></sign-up> -->
   <!-- <my-page></my-page> -->
-  <membership-payments></membership-payments>
+  <!-- <membership-payments></membership-payments> -->
+  <!-- <div>롯디즈</div> -->
   <!-- <div>fjdskfl</div> -->
-  <!-- <RouterView /> -->
+  <RouterView />
 </template>
 
 <style scoped>

@@ -17,7 +17,7 @@
   </div>
   <div class="sec-btn">
       <div class="btn-prev">
-          <router-link to="/basic-info"><button @click="decreaseActiveNo">이전</button></router-link>
+          <router-link to="/member/sign-up/basic-info"><button @click="decreaseActiveNo">이전</button></router-link>
       </div>
       <div class="btn-next">
           <button @click="finalCheck">다음</button>
@@ -75,7 +75,7 @@ const finalCheck = () => {
   } else {
     if(confirm("회원가입을 완료하시겠습니까?")) {
       memberStore.increaseActiveNo();
-      router.push('/sign-up-success');
+      router.push('/member/sign-up/success');
     } else {
       return;
     }

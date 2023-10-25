@@ -18,39 +18,51 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/sign-up',
-      name: 'sign-up',
-      component: () => import('../modules/member/components/SignUpAgreement.vue')
+      path: '/member/sign-up',
+      component: () => import('../views/member/SignUp.vue'),
+      children: [
+        {
+          path: '',
+          name: 'member-sign-up-agreement',
+          component: () => import('../modules/member/components/SignUpAgreement.vue')
+        },
+        {
+          path: 'basic-info',
+          name: 'member-sign-up-basic-info',
+          component: () => import('../modules/member/components/SignUpBasicInfo.vue')
+        },
+        {
+          path: 'email-auth',
+          name: 'member-sign-up-email-auth',
+          component: () => import('../modules/member/components/SignUpEmailAuth.vue')
+        },
+        {
+          path: 'success',
+          name: 'member-sign-up-success',
+          component: () => import('../modules/member/components/SignUpSuccess.vue')
+        },
+      ]
     },
     {
-      path: '/basic-info',
-      name: 'basic-info',
-      component: () => import('../modules/member/components/SignUpBasicInfo.vue')
+      path: '/member/my-page',
+      component: () => import('../views/member/MyPage.vue'),
+      children: [
+        {
+          path: '',
+          name: 'my-page-supporter',
+          component: () => import('../modules/member/components/MyPageSupporter.vue')
+        },
+        {
+          path: '/member/my-page/maker',
+          name: 'my-page-maker',
+          component: () => import('../modules/member/components/MyPageMaker.vue')
+        },
+      ]
     },
     {
-      path: '/email-auth',
-      name: 'email-auth',
-      component: () => import('../modules/member/components/SignUpEmailAuth.vue')
-    },
-    {
-      path: '/sign-up-success',
-      name: 'sign-up-success',
-      component: () => import('../modules/member/components/SignUpSuccess.vue')
-    },
-    // {
-    //   path: '/member/my-page',
-    //   name: 'my-page',
-    //   component: () => import('../views/member/MyPage.vue')
-    // },
-    {
-      path: '/member/my-page/maker',
-      name: 'my-page-maker',
-      component: () => import('../modules/member/components/MyPageMaker.vue')
-    },
-    {
-      path: '/member/my-page/supporter',
-      name: 'my-page-supporter',
-      component: () => import('../modules/member/components/MyPageSupporter.vue')
+      path: '/member/membership-honors',
+      name: 'membership-honors',
+      component: () => import('../views/member/MembershipPayments.vue')
     },
   ]
 })

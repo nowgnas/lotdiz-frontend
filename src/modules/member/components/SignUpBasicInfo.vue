@@ -55,7 +55,7 @@
       </div>
       <div class="sec-btn">
           <div class="btn-prev">
-              <router-link to="/sign-up"><button @click="decreaseActiveNo">이전</button></router-link>
+              <router-link to="/member/sign-up"><button @click="decreaseActiveNo">이전</button></router-link>
           </div>
           <div class="btn-next">
               <button type="submit">다음</button>
@@ -169,7 +169,7 @@ const submitForm = async(event) => {
     }
     postMemberInfoForSignUp(signupRequest);
     memberStore.increaseActiveNo();
-    router.push('/email-auth');
+    router.push('/member/sign-up/email-auth');
   } else {
     alert('형식에 맞게 입력해주세요.');
     return;
