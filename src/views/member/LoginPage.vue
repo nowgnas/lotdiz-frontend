@@ -15,7 +15,7 @@
           </div>
           <input type="text" id="input-sign-in-password" placeholder="password" />
         </div>
-        <div id="signup-text-wrapper"><a href="" id="a-signup">회원가입</a></div>
+        <div id="signup-text-wrapper"><a href="/member/sign-up" id="a-signup">회원가입</a></div>
         <input type="submit" value="로그인" id="btn-sign-in">
       </div>
     </div>
@@ -115,10 +115,10 @@ a {
     font-size: 20px;
     cursor: pointer;
     color: white;
+    border-radius: 5px;
 }
 
 #btn-sign-in:hover {
     background-color: var(--deep-color);
 }
-
 </style>
