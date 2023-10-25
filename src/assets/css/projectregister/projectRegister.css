@@ -1,0 +1,64 @@
+.project-register {
+    display: flex;
+    align-items: flex-start;
+}
+
+.project-register-sidebar {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.sidebar-top {
+    display: flex;
+    width: 332px;
+    height: 179px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: #97D9D9;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-right: 1px solid #BEBEBE;
+}
+
+.sidebar-nav-item {
+    display: flex;
+    width: 332px;
+    height: 83px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-nav-item-text {
+    color: #000;
+    text-align: center;
+    font-family: "MesloLGS NF";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 28px */
+    text-decoration: none;
+}
+
+a:focus, a:active, a:checked {
+    color: #4FAFB1;
+}
+
+.project-register-content {
+    display: flex;
+    width: 1563px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
