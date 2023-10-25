@@ -13,3 +13,10 @@ export interface MemberInfoForSignUpRequest {
 //     "memberPhoneNumber": "01011111111",
 //     "memberPrivacyAgreement": true
 // }
+
+export interface MembershipInfoForJoinRequest {
+    membershipPolicyId: number;
+    itemName: string;
+    totalAmount: string;
+    taxFreeAmount: string;
+}

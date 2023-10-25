@@ -13,3 +13,8 @@ export interface MemberInfoForQueryResponse {
     memberProfileImageUrl: string;
     membershipPolicyId: number;
 }
+
+export interface KakaoPayReadyResponse {
+    next_redirect_pc_url: string;
+    membershipSubscriptionId: number;
+}

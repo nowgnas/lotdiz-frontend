@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 93px; background-color: #f8f8f8">Header</div>  
+  <div>Header</div>  
   <div class="main-content-container">
     <div id="membership-promotion-content">
       <div id="honors-title">롯드 오너스</div>
@@ -40,7 +40,7 @@
         <div id="price-box">
             <div id="price-box-text">1년동안<br>펀딩 프렌즈 6,900원,<br>펀딩 파트너 9,900원</div>
             <div id="price-ticket-wrapper">
-                <div class="price-ticket"><font-awesome-icon :icon="['fas', 'won-sign']" /> 6,900</div>
+                <div class="price-ticket" @click="readyForPaymentsOfFundingFriends"><font-awesome-icon :icon="['fas', 'won-sign']" /> 6,900</div>
                 <div class="price-ticket"><font-awesome-icon :icon="['fas', 'won-sign']" /> 9,900</div>
             </div>
         </div>
@@ -70,11 +70,49 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { MembershipInfoForJoinRequest } from '../../services/types/MemberRequest';
+import { postMembershipInfoForJoin } from '../../services/api/MemberService';
+
+const readyForPaymentsOfFundingFriends = () => {
+    if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
+        const fundingFriendsJoinRequest: MembershipInfoForJoinRequest = {
+            membershipPolicyId: 1,
+            itemName: '펀딩 프렌즈',
+            totalAmount: '6900',
+            taxFreeAmount: '0',
+        }
+        const response: Promise<string> = postMembershipInfoForJoin(fundingFriendsJoinRequest);
+        console.log("response:", response);
+    
+        response.then(data => {
+            const redirectUrl = data;
+            console.log("redirectUrl:", redirectUrl);
+            window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+        }).catch(error => {
+            console.error('오류발생: ', error);;
+        });
+    } else {
+        return;
+    }
+}
+
+</script>
 
 <style>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
+
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 .main-content-container {
     display: flex;
@@ -243,5 +281,24 @@
     padding-top: 10px;
     font-size: 15px;
     text-align: center;
+}
+
+.bg-black {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    /* padding: 20px; */
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.my-modal {
+    width: 40%;
+    height: 60%;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
 }
 </style>
