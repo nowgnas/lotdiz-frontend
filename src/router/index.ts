@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import MainView from '@/views/MainView.vue';
 import ProjectListByCategoryView from '@/views/ProjectListByCategoryView.vue';
 import ProjectDetailsView from '@/views/ProjectDetailsView.vue';
@@ -40,7 +40,7 @@ const router = createRouter({
       component: SpecialExhibitionView
     },
     {
-      path: '/project-details',
+      path: '/project-details/:id',
       name: 'projectDetails',
       component: ProjectDetailsView
     },

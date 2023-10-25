@@ -1,5 +1,6 @@
 <template>
 
+  <RouterLink :to="{name : 'projectDetails', params: { id : projectId}}">
 <div id = "project-product-card" v-if="project && ( $route.path == '/lotdeal' && stringifiedTimer != '00:00:00') || $route.path != '/lotdeal'">
   <div id = "project-image-info">
 
@@ -36,12 +37,12 @@
   </div>
 
 </div>
-
+  </RouterLink>
 </template>
 
 <script setup lang="ts">
 
-import { ref, onBeforeMount, computed, defineProps } from 'vue';
+import { ref, onBeforeMount, computed } from 'vue';
 import { createLikes, deleteLikes } from '@/services/api/MemberService';
 
 const props = defineProps({
@@ -71,11 +72,8 @@ const accumulatedFundingAmount = ref<number>(props.project?.accumulatedFundingAm
 const fundingAchievementRate = ref<number>(props.project?.fundingAchievementRate);
 const lotdealDueTime = ref<string>(props.project?.lotdealDueTime);
 
-const projectId: number = props.project.projectId;
-const isLikes = ref<boolean>(props.project.isLike);
-
-const projectThumbnailImage: string = '/../../public/project-img' + props.project.projectThumbnailImageUrl;
-
+const projectId = ref<number>(props.project?.projectId);
+const isLikes = ref<boolean>(props.project?.isLike);
 
 const imageUrlPrefix = '/../../public/project-img';
 const projectThumbnailImageUrl = ref<string>(props.project?.projectThumbnailImageUrl);
@@ -102,10 +100,10 @@ onBeforeMount(() => {
 
 const likes = async () => {
   if (isLikes.value) { 
-    await deleteLikes(projectId);
+    await deleteLikes(projectId.value);
     isLikes.value = false;
   } else { 
-    await createLikes(projectId);
+    await createLikes(projectId.value);
     isLikes.value = true;
   }
 }
