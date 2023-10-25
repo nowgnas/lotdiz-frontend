@@ -9,7 +9,7 @@
     </Slide>
 
     <template #addons>
-      <Pagination />
+      <Pagination/>
     </template>
   </Carousel>
 

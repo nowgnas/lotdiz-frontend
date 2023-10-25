@@ -40,4 +40,3 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
 <style scoped>
 
 </style>
-
