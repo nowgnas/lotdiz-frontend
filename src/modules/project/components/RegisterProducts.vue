@@ -2,39 +2,30 @@
 
 import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
+import GuideComponent from "@/modules/project/components/GuideComponent.vue";
 
 const projectContentTitle = {
   title: "상품 등록",
   description: "서포터님들에게 제공할 상품을 입력해 주세요.",
+};
+
+const guideContent = {
+  title: "상품 등록 가이드",
+  key: [
+    '상품 등록 수량',
+    '상품 설명'
+  ],
+  value: [
+    '각 상품별 제공할 수 있는 수량을 입력해 주세요. 제한된 수량이 모두 소진되면 이 상품을 선택할 수 없어요.',
+    '각 상품에 대한 상세 설명을 작성할 수 있어요.'
+  ]
 };
 </script>
 
 <template>
   <ProjectContentTitle :title="projectContentTitle"/>
   <div class="product-register-box">
-    <div class="product-register-guide-box">
-      <div class="guide-title">
-        <div class="text">상품 등록 가이드</div>
-      </div>
-      <div class="guid-description">
-        <div class="description-subject">
-          <div class="item">
-            <div class="text">상품 등록 수량</div>
-          </div>
-          <div class="item">
-            <div class="text">상품 설명</div>
-          </div>
-        </div>
-        <div class="description-detail">
-          <div class="item">
-            <div class="text">각 상품별 제공할 수 있는 수량을 입력해 주세요. 제한된 수량이 모두 소진되면 이 상품을 선택할 수 없어요.</div>
-          </div>
-          <div class="item">
-            <div class="text">각 상품에 대한 상세 설명을 작성할 수 있어요.</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <GuideComponent :guide-content="guideContent"/>
     <div class="product-register-btn">
       <div class="add-product-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="63" viewBox="0 0 64 63" fill="none">

@@ -10,6 +10,7 @@ import MakerRegister from "@/modules/project/components/MakerRegister.vue";
 import ProjectInformation from "@/modules/project/components/ProjectInformation.vue";
 import WriteStory from "@/modules/project/components/WriteStory.vue";
 import RegisterProducts from "@/modules/project/components/RegisterProducts.vue";
+import SelectLotdeal from "@/modules/project/components/SelectLotdeal.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +64,10 @@ const router = createRouter({
                 {
                     path: 'products',
                     component: RegisterProducts
+                },
+                {
+                    path: 'lotdeal',
+                    component: SelectLotdeal
                 }
             ]
         }

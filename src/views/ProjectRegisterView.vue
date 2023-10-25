@@ -41,7 +41,7 @@ const sidebar: any = [
   },
   {
     name: "롯딜 선택",
-    url: "/lotdeal"
+    url: "/projects/lotdeal"
   }
 ]
 </script>
