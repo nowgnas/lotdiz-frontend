@@ -2,11 +2,26 @@
 
 import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
+import {ref} from "vue";
+import ProductItem from "@/modules/project/components/modal/ProductItem.vue";
+import type {ProductItemType} from "@/services/types/ProductItemType";
+
+
+const showModal = ref(false);
+const openModal = () => {
+  showModal.value = !showModal.value;
+};
+
 
 const projectContentTitle = {
   title: "상품 등록",
   description: "서포터님들에게 제공할 상품을 입력해 주세요.",
 };
+
+const products = ref([]);
+const productItemFromModal = (productItem: ProductItemType) => {
+  products.value.push(productItem);
+}
 </script>
 
 <template>
@@ -35,7 +50,7 @@ const projectContentTitle = {
         </div>
       </div>
     </div>
-    <div class="product-register-btn">
+    <div class="product-register-btn" @click="openModal">
       <div class="add-product-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="63" viewBox="0 0 64 63" fill="none">
           <g clip-path="url(#clip0_227_40)">
@@ -52,8 +67,8 @@ const projectContentTitle = {
         <div>상품을 추가해 주세요.</div>
       </div>
     </div>
-    <input type="file" ref="addProduct" style="display: none">
   </div>
+  <ProductItem @close="openModal" v-if="showModal" @product-item="productItemFromModal"/>
   <SaveButton/>
 </template>
 
