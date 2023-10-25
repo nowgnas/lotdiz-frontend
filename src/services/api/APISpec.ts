@@ -24,7 +24,7 @@ export const postData = async <T>(url: string, data?: any) => {
     try {
         const response = await client.post<ResultDataResponse<T>>(url, data);
         // console.log("response: " + response.data);
-        return response.data;
+        return response;
     } catch(error: unknown) {
         console.error((<ErrorResponse>error).detail);
         throw new Error((<ErrorResponse>error).message);

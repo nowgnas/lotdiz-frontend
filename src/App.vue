@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import SignUp from './views/member/SignUp.vue';
-import MyPage from './views/member/MyPage.vue';
-import MembershipPayments from './views/member/MembershipPayments.vue';
 // import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <!-- <sign-up></sign-up> -->
-  <!-- <my-page></my-page> -->
-  <!-- <membership-payments></membership-payments> -->
-  <!-- <div>롯디즈</div> -->
-  <!-- <div>fjdskfl</div> -->
   <RouterView />
 </template>
 

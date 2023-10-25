@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'main',
-      component: () => import('../modules/member/components/MyPageSupporter.vue')
+      component: MainView
     },
     {
       path: '/about',
@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/member/sign-in',
       name: 'member-sign-in',
-      component: () => import('../views/member/LoginPage.vue')
+      component: () => import('../views/member/SignIn.vue')
     },
     {
       path: '/member/sign-up',

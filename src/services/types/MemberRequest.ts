@@ -6,17 +6,14 @@ export interface MemberInfoForSignUpRequest {
     memberPrivacyAgreement: boolean;
 }
 
-// {
-//     "memberEmail": "zjadlspun1114@naver.com",
-//     "memberPassword": "woo1234@",
-//     "memberName": "WOOYUP2",
-//     "memberPhoneNumber": "01011111111",
-//     "memberPrivacyAgreement": true
-// }
-
 export interface MembershipInfoForJoinRequest {
     membershipPolicyId: number;
     itemName: string;
     totalAmount: string;
     taxFreeAmount: string;
+}
+
+export interface InfoForSignIn {
+    username: string,
+    password: string,
 }

@@ -37,7 +37,6 @@
       </div>
     </div>
     <div id="contents-signup">
-        <!-- <SignUpAgreement></SignUpAgreement> -->
         <router-view></router-view>
     </div>
   </div>
