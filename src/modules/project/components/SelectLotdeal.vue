@@ -2,26 +2,48 @@
 
 import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
+import GuideComponent from "@/modules/project/components/GuideComponent.vue";
+import LotdealSelectionBox from "@/modules/project/components/buttons/LotdealSelectionBox.vue";
 
 const projectContentTitle = {
   title: "롯딜 선택",
   description: "롯딜 선택으로 더 많은 서포터를 확보하세요.",
+};
+const guideContent = {
+  title: "롯딜 가이드",
+  key: [
+    '파격적인 할인',
+    '한정된 시간'
+  ],
+  value: [
+    '롯딜은 서포터에게 상품 금액의 40%가 할인된 금액으로 제공합니다.',
+    '단, 한 시간 동안 파격적인 할인이 진행됩니다.'
+  ]
+}
+
+const selectLotdeal = {
+  title: "롯딜 펀딩",
+  content: "파격적인 할인으로 \n" +
+      "더 많은 서포터 확보 !",
+};
+const selectDefault = {
+  title: "일반 펀딩",
+  content: "롯딜 없이 펀딩 할게요 !",
 };
 </script>
 
 <template>
   <ProjectContentTitle :title="projectContentTitle"/>
   <div class="select-lotdeal-box">
-    <div class="lotdeal-guide-box">
-      <div class="text">롯딜 가이드</div>
-    </div>
+    <GuideComponent :guide-content="guideContent"/>
     <div class="lotdeal-select-item-box">
-
+      <LotdealSelectionBox :content="selectLotdeal"/>
+      <LotdealSelectionBox :content="selectDefault"/>
     </div>
     <SaveButton/>
   </div>
 </template>
 
 <style scoped>
-
+@import "../../../assets/css/projectregister/SelectLotdeal.css";
 </style>
