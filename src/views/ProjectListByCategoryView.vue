@@ -1,7 +1,7 @@
 <template>
 
   <!-- categoty menu section start -->
-  <div id="cateogory-menu-bar">
+  <div id="category-menu-bar">
   <div id="category-menu">
     <div class="category-logo" v-if="category==='가전'">
        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
@@ -77,121 +77,45 @@
 import { ref, computed, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
-import type { ProjectsByCategoryResponse, ProjectsResponse } from '@/services/types/ProjectResponse';
-import ProjectCardComponent from '@Components/ProjectCardComponent.vue';
+import type { ProjectsByCategory, ProjectsResponse } from '@/services/types/ProjectResponse';
+import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const route = useRoute();
-const category = computed(() => route.query.category);
+const category = computed(() => {
+    return typeof route.query.category === 'string' ? route.query.category : null;
+});
+
 const sort = ref('createdAt,desc');
 
-const projectByCategoryResponseList = ref<Array<ProjectsByCategoryResponse>>([]);
+const projectByCategoryResponseList = ref<Array<ProjectsByCategory>>([]);
 const totalPages = ref(0);
 
 const getProjectsByCategoryRequest = async (categoryName: string, page: number, size: number, sort: string) => {
   try {
-    const response: ProjectsResponse<ProjectsByCategoryResponse> = await getProjectsByCategory(categoryName, page, size, sort);
+    const response:ProjectsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
     projectByCategoryResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
+
   } catch (error) {
-    throw error; 
+    alert("프로젝트 조회에 실패하였습니다.")
   }
 };
 
 onBeforeMount(async () => {
-  await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
+  if (category.value != undefined) {
+      await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
+  }
 })
 
 watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort]) => {
-  await getProjectsByCategoryRequest(newCategory, 0, 20, newSort);
+  if (typeof newCategory === 'string' && typeof newSort === 'string') {
+      await getProjectsByCategoryRequest(newCategory, 0, 20, newSort);
+  }
+
 });
 </script>
 
 <style>
-/* category menu */
-#cateogory-menu-bar {
-  display: flex;
-  /* width: 1440px; */
-  padding-top: 25px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-#category-menu {
-  display: flex;
-  height: 90px;
-  width: 200px;
-  padding: 7px 0px 0px 0px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 19px;
-  background: #F2F4F6;
-}
-
-.category-logo{
-  display: flex;
-  align-items: flex-start;
-}
-
-.category-name{
-  display: flex;
-  width: 200px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-
-
-  color: #000000;
-
-  text-align: center;
-  font-family: Open Sans;
-  font-size: 23px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 0%; /* 0px */
-
-}
-
-/* sort bar */
-#sort-bar {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-left: 197px;
-  margin-right: 289px;
-  margin-top: 50px;
-}
-
-.sort-select-bar {
-  display: flex;
-  width: 190px;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.sort-condition {
-  display: flex;
-  width: 110px;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  color: #000;
-
-  text-align: center;
-  font-family: Open Sans;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 140%; /* 30.8px */
-
-}
+@import '@/assets/css/project-list-by-category.css';
 
 </style>

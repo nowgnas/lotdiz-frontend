@@ -1,6 +1,6 @@
 <template>
 
-  <img alt="camping" class="poster-img" src="../../public/banner-camping.png">
+  <img alt="camping" class="poster-img" src="../../public/banner-img/banner-camping.png">
 
   <!-- sort section start -->
   <div id="sort-bar">
@@ -26,30 +26,30 @@
 <script setup lang="ts">
 import { ref, watch, onBeforeMount } from 'vue'
 import { getSpecialExhibition  } from '@/services/api/ProjectService';
-import type { ProjectsResponse, SpecialExhibitionResponse } from '@/services/types/ProjectResponse';
-import ProjectCardComponent from '@Components/ProjectCardComponent.vue';
+import type { ProjectsResponse, SpecialExhibition } from '@/services/types/ProjectResponse';
+import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const tag = ref('캠핑');
 const sort = ref('createdAt,desc');
 const totalPages = ref(0);
-const specialExhibitionProjectResponseList = ref<Array<SpecialExhibitionResponse>>([]);
+const specialExhibitionProjectResponseList = ref<Array<SpecialExhibition>>([]);
 
-const getSpecailExhibitionProjectsRequest = async (tag: string, page: number, size: number, sort: string) => {
+const getSpecialExhibitionProjectsRequest = async (tag: string, page: number, size: number, sort: string) => {
   try {
-    const response: ProjectsResponse<SpecialExhibitionResponse> = await getSpecialExhibition(tag, page, size, sort);
+    const response: ProjectsResponse<SpecialExhibition> = await getSpecialExhibition(tag, page, size, sort);
     specialExhibitionProjectResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
   } catch (error) {
-    throw error;
+    alert("조회에 실패하였습니다.")
   }
 }
 
 onBeforeMount(async () => {
-  await getSpecailExhibitionProjectsRequest(tag.value, 0, 20, sort.value);
+  await getSpecialExhibitionProjectsRequest(tag.value, 0, 20, sort.value);
 });
 
 watch(sort, async (newSort, oldSort) => {
-  await getSpecailExhibitionProjectsRequest(tag.value, 0, 20, sort.value);
+  await getSpecialExhibitionProjectsRequest(tag.value, 0, 20, sort.value);
 });
 
 </script>

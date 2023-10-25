@@ -3,11 +3,19 @@ export interface ProjectsResponse<T> {
   projects: Array<T>
 }
 
-export interface ProjectsByCategoryResponse {
+export interface BannersResponse {
+  banners: Array<Banner>,
+}
+
+export interface ProjectDetailResponse {
+  projectDetail: ProjectDetail
+}
+
+export interface ProjectsByCategory {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
@@ -16,36 +24,37 @@ export interface ProjectsByCategoryResponse {
   isLike: boolean;
 }
 
-export interface ProjectDetailResponse {
+export interface ProjectDetail {
   projectId: number;
   projectName: string;
   projectDescription: string;
   remainingDays: number;
   makerName: string;
-  catagoryName: string;
+  categoryName: string;
   projectTag: string;
   numberOfBuyers: number;
   numberOfSupporter: number;
+  numberOfLikes: number;
   fundingAchievementRate: number;
-  accumlatedFundingAmount: number;
-  projectStoryImageUrl: Array<projectIamge>
+  accumulatedFundingAmount: number;
+  projectStoryImageUrl: string;
+  projectImages: Array<ProjectImage>
   lotdealDueTime: string;
   projectStatus: string;
-  products: Array<products>
-
+  products: Array<Product>
 }
 
-export interface BannerResponse {
+export interface Banner {
   bannerId: number
   bannerImageUrl: string
   bannerUrl: string
 }
 
-export interface LotdealProjectResponse {
+export interface LotdealProject {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
@@ -54,30 +63,31 @@ export interface LotdealProjectResponse {
   isLike: boolean;
 }
 
-export interface SpecialExhibitionResponse {
+export interface SpecialExhibition {
   projectId: number;
   projectName: string;
   remainingDays: number;
-  projectThumbnailImage: string;
+  projectThumbnailImageUrl: string;
   makerName: string;
-  fundingAchievementRate: string;
+  fundingAchievementRate: number;
   accumulatedFundingAmount: number;
   lotdealDueTime: string;
   projectStatus: string;
   isLike: boolean;
 }
 
-interface projectIamge {
+export interface ProjectImage {
   projectImageId: number;
   projectImageUrl: string;
-  projectImaageThumbnail: boolean;
+  projectThumbnailImageUrl: boolean;
 }
 
-interface products {
-  productId: string;
+export interface Product {
+  productId: number;
   productName: string;
   productDescription: string;
   productPrice: number;
-  productCurrentStockQuantity: number
+  productRegisteredStockQuantity: number;
+  productCurrentStockQuantity: number;
 }
 
