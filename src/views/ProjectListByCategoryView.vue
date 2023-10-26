@@ -77,7 +77,7 @@
 import { ref, computed, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
-import type { ProjectsByCategory, CommonItemsResponse } from '@/services/types/ProjectResponse';
+import type { ProjectsByCategory, CommonProjectsResponse } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const route = useRoute();
@@ -92,9 +92,10 @@ const totalPages = ref(0);
 
 const getProjectsByCategoryRequest = async (categoryName: string, page: number, size: number, sort: string) => {
   try {
-    const response:CommonItemsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
-    projectByCategoryResponseList.value = response['items'];
+    const response:CommonProjectsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
+    projectByCategoryResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
+    console.log(projectByCategoryResponseList);
 
   } catch (error) {
     alert("프로젝트 조회에 실패하였습니다.")

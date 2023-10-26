@@ -82,7 +82,7 @@
 
             <div class="details-support-signature-contents">
               <div class="details-support-signature-logo">
-                <img alt="support-signature" class="details-support-signature-logo-img" src="@/assets/icons/clapping-icon.png" />    
+                <img alt="support-signature" class="details-support-signature-logo-img" src="/common/icons/clapping-icon.png" />
               </div>
               <div class="details-support-signautre-count">
                 {{ projectDetails.numberOfSupporter }} 

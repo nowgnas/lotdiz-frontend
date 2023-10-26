@@ -1,6 +1,6 @@
 <template>
 
-  <img alt="lotdeal" class="poster-img" src="../../public/banner-img/banner-lotdeal.png">
+  <img alt="lotdeal" class="poster-img" src="/banner-img/banner-lotdeal.png">
 
   <!-- sort section start -->
   <div id="sort-bar">
@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { ref, onBeforeMount, watch } from 'vue';
 import { getLotdealProjects } from '@/services/api/ProjectService';
-import type { CommonItemsResponse, LotdealProject } from '@/services/types/ProjectResponse';
+import type { CommonProjectsResponse, LotdealProject } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const sort = ref('createdAt,desc');
@@ -36,8 +36,8 @@ const lotdealProjectResponseList = ref<Array<LotdealProject>>([]);
 
 const getLotdealProjectsRequest = async (page: number, size: number, sort: string) => {
   try {
-    const response: CommonItemsResponse<LotdealProject> = await getLotdealProjects(page, size, sort);
-    lotdealProjectResponseList.value = response['items'];
+    const response: CommonProjectsResponse<LotdealProject> = await getLotdealProjects(page, size, sort);
+    lotdealProjectResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
   } catch (error) {
     alert("프로젝트 조회에 실패하였습니다.");

@@ -3,7 +3,7 @@
   <Carousel v-if="banners" :autoplay="3000" :wrap-around="true">
     <Slide v-for="banner in banners" :key="banner.bannerId">
       <RouterLink :to="banner.bannerUrl"> 
-      <div class="carousel__item"><img :alt="banner.bannerImageUrl" class="banner-img" :src="imageUrlPrefix + banner.bannerImageUrl">
+      <div class="carousel__item"><img :alt="banner.bannerImageUrl" class="banner-img" :src="banner.bannerImageUrl">
       </div>
       </RouterLink>
     </Slide>
@@ -23,7 +23,6 @@ import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css';
 
 const banners = ref<Array<Banner>>([]);
-const imageUrlPrefix = '/../../public/banner-img';
 
 onBeforeMount(async () => {
   try {

@@ -16,8 +16,7 @@
     align-items: flex-start;
 
     border-radius: 10px;
-    background: rgba(124, 124, 124, 0.19);
-}
+    border: 1px solid #CDCDCD;}
 
 .project-image {
     display: flex;

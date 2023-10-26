@@ -1,6 +1,6 @@
 <template>
 
-  <img alt="camping" class="poster-img" src="../../public/banner-img/banner-camping.png">
+  <img alt="camping" class="poster-img" src="/banner-img/banner-camping.png">
 
   <!-- sort section start -->
   <div id="sort-bar">
@@ -15,7 +15,7 @@
   </div>
   <!-- sort section end -->
 
-    <!-- project-list section start -->
+  <!-- project-list section start -->
   <div id="project-list">
     <ProjectCardComponent v-for="project in specialExhibitionProjectResponseList"  :key="project.projectId" :project = "project" />
   </div>
@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { ref, watch, onBeforeMount } from 'vue'
 import { getSpecialExhibition  } from '@/services/api/ProjectService';
-import type { CommonItemsResponse, SpecialExhibition } from '@/services/types/ProjectResponse';
+import type { CommonProjectsResponse, SpecialExhibition } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const tag = ref('캠핑');
@@ -36,8 +36,8 @@ const specialExhibitionProjectResponseList = ref<Array<SpecialExhibition>>([]);
 
 const getSpecialExhibitionProjectsRequest = async (tag: string, page: number, size: number, sort: string) => {
   try {
-    const response: CommonItemsResponse<SpecialExhibition> = await getSpecialExhibition(tag, page, size, sort);
-    specialExhibitionProjectResponseList.value = response['items'];
+    const response: CommonProjectsResponse<SpecialExhibition> = await getSpecialExhibition(tag, page, size, sort);
+    specialExhibitionProjectResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
   } catch (error) {
     alert("조회에 실패하였습니다.")

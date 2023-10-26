@@ -1,6 +1,11 @@
-export interface CommonItemsResponse<T> {
+export interface CommonProjectsResponse<T> {
   totalPages: number,
-  items: Array<T>
+  projects: Array<T>
+}
+
+export interface SupportSignatureResponse<T> {
+  totalPages: number,
+  supportSignatures: Array<T>
 }
 
 export interface BannersResponse {
