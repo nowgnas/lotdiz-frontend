@@ -11,7 +11,6 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
     <header>
       <HeaderBarComponent />
     </header>
-
     <main role='main'>
 
       <div v-if="$route.path.includes('/project-details')">
