@@ -32,7 +32,7 @@
               <option value="google.com">gmail.com</option>
               <option value="daum.com">daum.net</option>
             </select>
-            <div id="btn-double-check"><p>중복확인</p></div>
+            <div id="btn-double-check" @click="checkDuplicated"><p>중복확인</p></div>
           </div>
           <div>
             <span id="error-msg" v-if="!validateUsername">올바르지 않은 이메일 형식입니다.</span>
@@ -108,6 +108,7 @@
 <script setup lang="ts">
 import { useMemberStore } from '../../stores/member'
 import { computed, ref, watch, nextTick } from 'vue'
+import { getIsDulicatedForCheck } from '../../../services/api/MemberService'
 import router from '../../../router/index'
 
 const memberStore = useMemberStore()
@@ -119,6 +120,8 @@ const selectedOption = ref('직접입력')
 const memberPhoneNumber = ref('')
 const password = ref('')
 const passwordCheck = ref('')
+
+const isDuplicated = ref(true);
 
 watch(selectedOption, (newOption) => {
   if (newOption === 'direct') {
@@ -144,6 +147,23 @@ const validateUsername = computed((): boolean => {
   console.log('computed')
   return isUsernameValid(username1.value, username2.value)
 })
+
+const checkDuplicated = () => {
+  const fullUsername = username1.value + '@' + username2.value
+  console.log('fullUsername: ' + fullUsername)
+  getIsDulicatedForCheck(fullUsername)
+    .then((data) => {
+      if (!data) {
+        alert('해당 이메일을 사용할 수 있습니다.')
+        isDuplicated.value = false;
+      } else {
+        alert('해당 이메일을 사용할 수 없습니다.')
+      }
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 
 const isPasswordValid = (password: string): boolean => {
   const expression: RegExp =
@@ -210,6 +230,10 @@ const submitForm = async (event) => {
     validatePassword.value &&
     validatePasswordCheck.value
   ) {
+    if (isDuplicated.value) {
+      alert('이메일 중복확인을 해주세요.')
+      return
+    }
     memberStore.assignMemberName(name.value)
     memberStore.assignUsername(username1.value + '@' + username2.value)
     memberStore.assignMemberPhoneNumber(memberPhoneNumber.value)

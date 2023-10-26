@@ -39,3 +39,13 @@ export const postInfoForSignIn = async(infoForSignIn: InfoForSignIn) => {
         throw new Error('로그인 실패');
     }
 }
+
+export const getIsDulicatedForCheck = async (username: string) => {
+    try {
+        console.log("username:", username);
+        const response = await postData<boolean>(`http://localhost:8000/member-service/api/members/isDuplicated`, username);
+        return response.data.data;
+    } catch (error: unknown) {
+        throw new Error('이메일 중복 조회 실패');
+    }
+}

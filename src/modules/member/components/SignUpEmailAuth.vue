@@ -52,7 +52,6 @@ const isEmailCert = ref(false);
 const loading = ref(false);
 
 const $loading = inject('$loading');
-const fullPage = ref(false);
 
 const sendEmail = () => {
   emailjs.init(VITE_PUBLIC_KEY);
