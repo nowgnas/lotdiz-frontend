@@ -1,15 +1,14 @@
 #app {
   margin: 0;
   padding: 0;
+  font-family: 'GmarketSansMedium';
 }
 
 header {
-
   display: flex;
   align-items: center;
   gap: 50px;
   justify-content: center;
-
 }
 
 a {
@@ -33,4 +32,33 @@ a {
   margin-top: 10px;
   width: 1887px;
   height: 340px;
+}
+
+#project-details-nav-bar {
+  display: flex;
+  /* width: 1430px; */
+  /* height: 50px; */
+  margin-top: 34px;
+  flex-direction: column;
+  align-items: center;
+  /* border-top: 4px solid #EBEBEB; */
+  /* border-bottom: 4px solid #EBEBEB; */
+  margin-bottom: 50px;
+}
+
+#project-details-contents {
+  display: flex;
+  /* width: 1445px;
+  height: 1537px; */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 91px;
+}
+
+#product-funding-info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 41px;
+
 }

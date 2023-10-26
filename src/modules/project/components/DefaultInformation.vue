@@ -98,7 +98,7 @@ const projectContentTitle = {
       <div class="project-due-date-title-box">
         <div class="text">프로젝트 종료일</div>
       </div>
-      <VueDatePicker v-model="dto.projectDueDate" :preview-format="format"/>
+      <VueDatePicker v-model="dto.projectDueDate"/>
     </div>
     <div class="search-tag-box">
       <div class="search-tag-title-box">
