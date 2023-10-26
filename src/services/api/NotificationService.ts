@@ -1,8 +1,6 @@
 import {getDataWithAuth, putDataWithAuth} from "@/services/api/APISpec";
 import type {SuccessResponse} from "@/services/types/APIResponse";
 
-const accessToken: string = "";
-
 export interface GetNotificationPageResponseDto<T> {
     totalPages: number,
     notifications: Array<T>
@@ -27,7 +25,7 @@ export const getNotifications = async (page: number, size: number, sort: string)
         // TODO: Access Token 인자
         const response: SuccessResponse<GetNotificationPageResponseDto<GetNotificationResponseDto>>
             = await getDataWithAuth<GetNotificationPageResponseDto<GetNotificationResponseDto>>(
-            `/api/notifications?page=${page}&size=${size}&sort=${sort}`, accessToken);
+            `/notification-service/api/notifications?page=${page}&size=${size}&sort=${sort}`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -41,7 +39,7 @@ export const setNotificationsIsRead = async (notificationIds: Array<number>): Pr
             notificationIds: notificationIds
         }
         // TODO: Access Token 인자
-        await putDataWithAuth(`/api/notifications/read-status`, setNotificationIsReadRequestDto, accessToken);
+        await putDataWithAuth(`/notification-service/api/notifications/read-status`, setNotificationIsReadRequestDto);
     } catch (error) {
         throw new Error('Failed to set notification is read');
     }

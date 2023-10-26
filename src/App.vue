@@ -23,4 +23,3 @@ import HeaderBarComponent from '@Components/HeaderBarComponent.vue';
 <style scoped>
 
 </style>
-

@@ -18,13 +18,9 @@ export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
   }
 };
 
-export const getDataWithAuth = async <T>(url: string, accessToken: string): Promise<SuccessResponse<T>> => {
+export const getDataWithAuth = async <T>(url: string): Promise<SuccessResponse<T>> => {
   try {
-    const response = await client.get<SuccessResponse<T>>(url, {
-      "headers": {
-        "Authorization": accessToken
-      }
-    });
+    const response = await client.get<SuccessResponse<T>>(url);
     return response.data;
   } catch (error: unknown) {
     console.error((<ErrorResponse>error).detail)
@@ -42,13 +38,9 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
   }
 };
 
-export const putDataWithAuth = async <T>(url: string, data?: any, accessToken: string): Promise<SuccessResponse<T>> => {
+export const putDataWithAuth = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {
   try {
-    const response = await client.put<SuccessResponse<T>>(url, data, {
-      "headers": {
-        "Authorization": accessToken
-      }
-    });
+    const response = await client.put<SuccessResponse<T>>(url, data);
     return response.data;
   } catch (error: unknown) {
     console.error((<ErrorResponse>error).detail)
