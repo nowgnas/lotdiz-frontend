@@ -23,6 +23,15 @@ jobs:
         run: npm install
       - name: Npm Build
         run: npm run build
+      - name: Remove from S3
+        uses: vitorsgomes/s3-rm-action@master
+        with:
+          args: --recursive
+        env:
+          AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-northeast-2
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:

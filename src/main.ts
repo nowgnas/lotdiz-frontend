@@ -11,7 +11,7 @@ import '@/assets/css/fonts.css'
 
 const app = createApp(App)
 
-app.component('VueDatePicker', VueDatePicker);
+app.component('VueDatePicker', VueDatePicker)
 app.use(createPinia())
 app.use(router)
 
