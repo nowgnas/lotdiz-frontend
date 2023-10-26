@@ -2,7 +2,7 @@
   <div class="sec-content">
     <div id="sec-agreement-box">
             <pre>
-<center><B>개인정보 수집 및 이용 동의서</B></center>
+<div style="text-align: center;"><B>개인정보 수집 및 이용 동의서</B></div>
 
 <B>[Lotdiz]</B>
 
@@ -56,17 +56,15 @@
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue';
-
 import { useMemberStore } from '../../stores/member';
 import { nextTick } from 'vue';
 
 const memberStore = useMemberStore()
 
-const validCheck = async (event) => {
+const validCheck = async (event: any) => {
   await nextTick(); // DOM이 준비될 때까지 대기
   let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null;
-  if (!checkbox.checked) {
+  if (!checkbox?.checked) {
     alert('약관에 동의해야 합니다.');
     event.preventDefault();
   } else {

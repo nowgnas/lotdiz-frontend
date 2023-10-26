@@ -36,14 +36,13 @@
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue';
 import { useMemberStore } from '../../stores/member';
 import router from '../../../router/index';
 import { ref, inject } from 'vue';
 import emailjs from '@emailjs/browser';
 const { VITE_PUBLIC_KEY, VITE_SERVER_ID, VITE_TEMPLATE_ID } = import.meta.env;
-import { postMemberInfoForSignUp } from '../../../services/api/MemberService';
-import type { MemberInfoForSignUpRequest } from '../../../services/types/MemberRequest';
+import { postMemberInfoForSignUp } from '@/services/api/MemberService';
+import type { MemberInfoForSignUpRequest } from '@/services/types/MemberRequest';
 import 'vue-loading-overlay/dist/css/index.css';
 
 const memberStore = useMemberStore();
@@ -165,7 +164,7 @@ const decreaseActiveNo = () => {
 #input-cert-email {
   height: 35px;
   width: 350px;
-  border: 2.5px solid var(--main-color);
+  border: 2px solid var(--main-color);
   box-sizing: border-box;
   border-right: none;
 }

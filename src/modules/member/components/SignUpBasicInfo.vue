@@ -1,5 +1,5 @@
 <template>
-  <form action="post" v-on:submit.prevent="submitForm" id="form-basic-info">
+  <form action="" method="post" v-on:submit.prevent="submitForm" id="form-basic-info">
     <div class="sec-content" style="padding-left: 12%">
       <div class="input-wrapper">
         <div class="label-width label-loc-start">
@@ -108,7 +108,7 @@
 <script setup lang="ts">
 import { useMemberStore } from '../../stores/member'
 import { computed, ref, watch, nextTick } from 'vue'
-import { getIsDulicatedForCheck } from '../../../services/api/MemberService'
+import { getIsDulicatedForCheck } from '@/services/api/MemberService'
 import router from '../../../router/index'
 
 const memberStore = useMemberStore()
@@ -132,7 +132,7 @@ watch(selectedOption, (newOption) => {
 })
 
 const validateName = computed((): boolean => {
-  return name.value.length <= 10 ? true : false
+  return name.value.length <= 10
 })
 
 // email 형식 check 함수
@@ -179,14 +179,14 @@ const validatePasswordCheck = computed((): boolean => {
   if (passwordCheck.value === '') {
     return false
   }
-  return password.value === passwordCheck.value ? true : false
+  return password.value === passwordCheck.value
 })
 
 const decreaseActiveNo = () => {
   memberStore.decreaseActiveNo()
 }
 
-const submitForm = async (event) => {
+const submitForm = async (event: any) => {
   event.preventDefault()
   event.stopImmediatePropagation()
   await nextTick()
@@ -200,25 +200,25 @@ const submitForm = async (event) => {
     'input-member-password-check'
   ) as HTMLInputElement | null
 
-  if (memberNameEle.value === '') {
+  if (memberNameEle?.value === '') {
     alert('이름을 입력해주세요.')
     memberNameEle.focus()
     return
   }
 
-  if (username1Ele.value === '' || username2Ele.value === '') {
+  if (username1Ele?.value === '' || username2Ele?.value === '') {
     alert('이메일을 입력해주세요.')
-    username1Ele.focus()
+    username1Ele?.focus()
     return
   }
 
-  if (memberPasswordEle.value === '') {
+  if (memberPasswordEle?.value === '') {
     alert('비밀번호를 입력해주세요.')
     memberPasswordEle.focus()
     return
   }
 
-  if (memberPasswordCheckEle.value === '') {
+  if (memberPasswordCheckEle?.value === '') {
     alert('비밀번호를 한번 더 입력해주세요.')
     memberPasswordCheckEle.focus()
     return
@@ -240,7 +240,7 @@ const submitForm = async (event) => {
     memberStore.assignMemberPassword(password.value)
 
     memberStore.increaseActiveNo()
-    router.push('/member/sign-up/email-auth')
+    await router.push('/member/sign-up/email-auth')
   } else {
     alert('형식에 맞게 입력해주세요.')
     return
@@ -282,7 +282,7 @@ const submitForm = async (event) => {
 #input-username-2 {
   width: 158px;
   height: 25px;
-  border: 2.5px solid var(--main-color);
+  border: 2px solid var(--main-color);
 }
 
 #input-member-name,
@@ -291,7 +291,7 @@ const submitForm = async (event) => {
 #input-member-phone-no {
   width: 350px;
   height: 25px;
-  border: 2.5px solid var(--main-color);
+  border: 2px solid var(--main-color);
 }
 
 .label-width {
@@ -312,7 +312,7 @@ const submitForm = async (event) => {
 }
 
 #input-select {
-  border: 2.5px solid var(--main-color);
+  border: 2px solid var(--main-color);
 }
 
 #normal-msg {

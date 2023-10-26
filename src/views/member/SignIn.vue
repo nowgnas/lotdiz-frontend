@@ -25,10 +25,13 @@
 </template>
 
 <script setup lang="ts">
-import { InfoForSignIn } from '../../services/types/MemberRequest';
+import type { InfoForSignIn } from '@/services/types/MemberRequest';
 import { ref } from 'vue';
-import { postInfoForSignIn } from '../../services/api/MemberService';
+import { postInfoForSignIn } from '@/services/api/MemberService';
 import router from '../../router/index';
+import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
+
+const persistentedStateStore = usePersistentedStateStore();
 
 const username = ref('');
 const password = ref('');
@@ -42,7 +45,8 @@ const submitForm = () => {
     .then(response => {
       alert('로그인 성공했습니다.');
       const authorization = response.headers["authorization"];
-    //   console.log("authorization:", authorization);
+      console.log("authorization:", authorization);
+      persistentedStateStore._customProperties.add(authorization);
       document.cookie = "jwtToken=" + authorization;
       router.push('/');
     })
@@ -96,7 +100,7 @@ a {
   align-items: center;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px 1px gray;
+  box-shadow: 5px 5px 5px 1px var(--middle-gray);
 }
 
 #sign-in-title {
@@ -132,7 +136,7 @@ a {
 }
 
 #a-signup {
-  color: gray;
+  color: var(--middle-gray);
 }
 
 #a-signup:hover {

@@ -86,8 +86,7 @@ button {
     background-color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 5px 20px;
-    padding-bottom: 0;
+    padding: 5px 20px 0;
     cursor: pointer;
 }
 
@@ -95,8 +94,7 @@ button {
     background-color: var(--icon-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 5px 20px;
-    padding-bottom: 0;
+    padding: 5px 20px 0;
     cursor: pointer;
 }
 </style>

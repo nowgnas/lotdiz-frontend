@@ -69,6 +69,11 @@ const router = createRouter({
       name: 'membership-honors',
       component: () => import('../views/member/MembershipPayments.vue')
     },
+    {
+      path: '/member/likes-list',
+      name: 'member-likes-list',
+      component: () => import('../views/member/LikesList.vue')
+    },
   ]
 })
 

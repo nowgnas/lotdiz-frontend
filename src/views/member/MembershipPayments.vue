@@ -71,8 +71,8 @@
 </template>
 
 <script setup lang="ts">
-import type { MembershipInfoForJoinRequest } from '../../services/types/MemberRequest';
-import { postMembershipInfoForJoin } from '../../services/api/MemberService';
+import type { MembershipInfoForJoinRequest } from '@/services/types/MemberRequest';
+import { postMembershipInfoForJoin } from '@/services/api/MemberService';
 
 const readyForPaymentsOfFundingFriends = () => {
     if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
@@ -90,7 +90,7 @@ const readyForPaymentsOfFundingFriends = () => {
             console.log("redirectUrl:", redirectUrl);
             window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
         }).catch(error => {
-            console.error('오류발생: ', error);;
+            console.error('오류발생: ', error);
         });
     } else {
         return;
@@ -221,9 +221,8 @@ a {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--card-border-color);
-    padding: 15px 10px;
     border-radius: 5px;
-    padding-top: 45px;
+    padding: 45px 10px 15px;
 }
 
 #membership-type-desc-box {
@@ -232,9 +231,8 @@ a {
     display: flex;
     justify-content: space-around;
     border: 1px solid var(--card-border-color);
-    padding: 15px 10px;
     border-radius: 5px;
-    padding-top: 45px;
+    padding: 45px 10px 15px;
 }
 
 #price-box-text {
@@ -281,24 +279,5 @@ a {
     padding-top: 10px;
     font-size: 15px;
     text-align: center;
-}
-
-.bg-black {
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    position: fixed;
-    /* padding: 20px; */
-    display: flex;
-    justify-content: center;
-    padding-top: 5%;
-}
-
-.my-modal {
-    width: 40%;
-    height: 60%;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
 }
 </style>

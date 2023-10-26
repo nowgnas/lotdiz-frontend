@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import Vue from 'vue';
 import { useMemberStore } from '../../stores/member';
 
 const memberStore = useMemberStore();
