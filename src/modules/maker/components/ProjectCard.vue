@@ -5,19 +5,26 @@
 <template>
   <div class='project-card'>
     <div class='img-box'>
-      <img src='https://mblogthumb-phinf.pstatic.net/MjAyMDAzMDNfM…%98%EB%8A%94_%EC%9D%B4%EC%9C%A0_(1).jpg?type=w50'
-           alt=''>
+      <div class='project-img'></div>
     </div>
     <div class='project-name'>
-      name
+      <div class='text'>프로젝트 이름</div>
     </div>
     <div class='achievement-rate'>
-      400% 달성
+      <div class='text'>400%달성</div>
     </div>
-    <div class=''>
-
+    <div class='authorized-box'>
+      <div class='text'>인증 완료</div>
     </div>
-
+    <div class='total-amount'>
+      <div class='text'>12,000,000원</div>
+    </div>
+    <div class='remain-date'>
+      <div class='text'>7일 남음</div>
+    </div>
+    <div class='maker-name'>
+      <div class='text'>메이커 이름</div>
+    </div>
   </div>
 </template>
 

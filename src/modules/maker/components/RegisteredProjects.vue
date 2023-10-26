@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 
+import ProjectCard from '@/modules/maker/components/ProjectCard.vue'
 </script>
 
 <template>
@@ -7,7 +8,7 @@
     <div class='text'>펀딩중인 프로젝트</div>
   </div>
   <div class='project-list-box'>
-
+    <ProjectCard />
   </div>
 </template>
 
