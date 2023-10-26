@@ -1,11 +1,11 @@
 import { getData, postData } from "./APISpec";
 import type { MemberInfoForQueryResponse, KakaoPayReadyResponse } from "../types/MemberResponse";
 import type { MemberInfoForSignUpRequest, MembershipInfoForJoinRequest, InfoForSignIn } from "../types/MemberRequest";
-import type { ResultDataResponse } from "../APIResponse"
+import type { SuccessResponse } from "../APIResponse"
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
     try {
-        const response = await postData<ResultDataResponse<object>>(`http://localhost:8000/member-service/api/sign-up`, memberInfoForSignUpRequst);
+        const response = await postData<SuccessResponse<object>>(`http://localhost:8000/member-service/api/sign-up`, memberInfoForSignUpRequst);
         return response;
     } catch (error: unknown) {
         throw new Error('회원 가입 실패');

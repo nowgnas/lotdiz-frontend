@@ -1,4 +1,4 @@
-export interface ResultDataResponse<T> {
+export interface SuccessResponse<T> {
     code: string;
     message: string;
     detail: string;

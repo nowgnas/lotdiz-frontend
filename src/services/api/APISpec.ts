@@ -1,5 +1,5 @@
 import axios, {Axios} from 'axios';
-import type { ErrorResponse, ResultDataResponse } from '../APIResponse';
+import type { ErrorResponse, SuccessResponse } from '../APIResponse';
 
 const client: Axios = axios.create({
     
@@ -10,9 +10,9 @@ const client: Axios = axios.create({
     }
 });
 
-export const getData = async <T>(url: string): Promise<ResultDataResponse<T>> => {
+export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
     try {
-        const response = await client.get<ResultDataResponse<T>>(url);
+        const response = await client.get<SuccessResponse<T>>(url);
         return response.data;
     } catch(error: unknown) {
         console.error((<ErrorResponse> error).detail);
@@ -22,7 +22,7 @@ export const getData = async <T>(url: string): Promise<ResultDataResponse<T>> =>
 
 export const postData = async <T>(url: string, data?: any) => {
     try {
-        const response = await client.post<ResultDataResponse<T>>(url, data);
+        const response = await client.post<SuccessResponse<T>>(url, data);
         // console.log("response: " + response.data);
         return response;
     } catch(error: unknown) {
@@ -41,9 +41,9 @@ export const putData = async <T>(url: string, data?: any): Promise<T> => {
     }
 }
 
-export const deleteData = async <T>(url: string): Promise<ResultDataResponse<T>> => {
+export const deleteData = async <T>(url: string): Promise<SuccessResponse<T>> => {
     try {
-        const response = await client.delete<ResultDataResponse<T>>(url);
+        const response = await client.delete<SuccessResponse<T>>(url);
         return response.data;
     } catch(error: unknown) {
         console.error((<ErrorResponse>error).detail);
