@@ -22,7 +22,8 @@ const storyImage = {
     '프로젝트에 대한 상세 설명을 등록해 주세요.',
     '10MB 이하의 JPG, JPEG, PNG 파일'
   ]
-}
+};
+
 </script>
 
 <template>

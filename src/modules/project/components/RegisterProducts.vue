@@ -1,8 +1,15 @@
 <script setup lang='ts'>
-
+import GuideComponent from '@/modules/project/components/GuideComponent.vue'
 import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
-import GuideComponent from '@/modules/project/components/GuideComponent.vue'
+import { ref } from 'vue'
+import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
+
+
+const showModal = ref(false)
+const openModal = () => {
+  showModal.value = !showModal.value
+}
 
 const projectContentTitle = {
   title: '상품 등록',
@@ -43,8 +50,8 @@ const guideContent = {
         <div>상품을 추가해 주세요.</div>
       </div>
     </div>
-    <input type='file' ref='addProduct' style='display: none'>
   </div>
+  <ProductItem @close='openModal' v-if='showModal' />
   <SaveButton />
 </template>
 
