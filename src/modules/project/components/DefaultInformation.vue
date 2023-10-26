@@ -38,7 +38,6 @@ const thumbnailGuideBox = {
 
 const imageInput = (event: any) => {
   const file = event.target.files[0]
-  base64(file)
   console.log(file.name)
 }
 const addImage = () => {
