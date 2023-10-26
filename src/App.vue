@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HeaderBarComponent from '@Components/HeaderBarComponent.vue';
 
 </script>
 
