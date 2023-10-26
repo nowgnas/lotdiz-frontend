@@ -22,6 +22,10 @@
     background: #F2F4F6;
 }
 
+#category-menu:hover {
+    cursor: pointer;
+}
+
 .category-logo{
     display: flex;
     align-items: flex-start;
@@ -80,4 +84,8 @@
     font-weight: 700;
     line-height: 140%; /* 30.8px */
 
+}
+
+.sort-condition {
+    cursor: pointer;
 }
