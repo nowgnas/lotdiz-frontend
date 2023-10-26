@@ -46,17 +46,17 @@ const router = createRouter({
     },
     {
       path: '/project-details/story',
-      name: 'projectDeatailsStory',
+      name: 'projectDetailsStory',
       component: ProjectInfoComponent
     },
     {
       path: '/project-details/support-signature',
-      name: 'projectDeatailsSupportSignature',
+      name: 'projectDetailsSupportSignature',
       component: SupportSignatureComponent
     },
     {
       path: '/project-details/supporter-with-us',
-      name: 'projectDeatailsSupporterWithUs',
+      name: 'projectDetailsSupporterWithUs',
       component: SupporterWithUsComponent
     },
     {

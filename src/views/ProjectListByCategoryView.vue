@@ -77,7 +77,7 @@
 import { ref, computed, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
-import type { ProjectsByCategory, ProjectsResponse } from '@/services/types/ProjectResponse';
+import type { ProjectsByCategory, CommonItemsResponse } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const route = useRoute();
@@ -92,8 +92,8 @@ const totalPages = ref(0);
 
 const getProjectsByCategoryRequest = async (categoryName: string, page: number, size: number, sort: string) => {
   try {
-    const response:ProjectsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
-    projectByCategoryResponseList.value = response['projects'];
+    const response:CommonItemsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
+    projectByCategoryResponseList.value = response['items'];
     totalPages.value = response['totalPages'];
 
   } catch (error) {

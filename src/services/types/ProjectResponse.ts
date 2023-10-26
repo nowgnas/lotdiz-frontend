@@ -1,6 +1,6 @@
-export interface ProjectsResponse<T> {
+export interface CommonItemsResponse<T> {
   totalPages: number,
-  projects: Array<T>
+  items: Array<T>
 }
 
 export interface BannersResponse {
@@ -74,6 +74,14 @@ export interface SpecialExhibition {
   lotdealDueTime: string;
   projectStatus: string;
   isLike: boolean;
+}
+
+export interface  SupportSignature {
+  supportSignatureId: number;
+  supporterName: string;
+  supporterImageUrl: string;
+  supportSignatureContent: string;
+  createdAt: string;
 }
 
 export interface ProjectImage {

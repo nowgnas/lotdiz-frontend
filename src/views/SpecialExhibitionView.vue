@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { ref, watch, onBeforeMount } from 'vue'
 import { getSpecialExhibition  } from '@/services/api/ProjectService';
-import type { ProjectsResponse, SpecialExhibition } from '@/services/types/ProjectResponse';
+import type { CommonItemsResponse, SpecialExhibition } from '@/services/types/ProjectResponse';
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const tag = ref('캠핑');
@@ -36,8 +36,8 @@ const specialExhibitionProjectResponseList = ref<Array<SpecialExhibition>>([]);
 
 const getSpecialExhibitionProjectsRequest = async (tag: string, page: number, size: number, sort: string) => {
   try {
-    const response: ProjectsResponse<SpecialExhibition> = await getSpecialExhibition(tag, page, size, sort);
-    specialExhibitionProjectResponseList.value = response['projects'];
+    const response: CommonItemsResponse<SpecialExhibition> = await getSpecialExhibition(tag, page, size, sort);
+    specialExhibitionProjectResponseList.value = response['items'];
     totalPages.value = response['totalPages'];
   } catch (error) {
     alert("조회에 실패하였습니다.")

@@ -1,10 +1,18 @@
-import { getData } from '@/services/api/APISpec';
-import type { ProjectsResponse, ProjectDetailResponse, BannersResponse, LotdealProject, SpecialExhibition, ProjectsByCategory } from '@/services/types/ProjectResponse';
+import {getData, postData, putData} from '@/services/api/APISpec';
+import type {
+  CommonItemsResponse,
+  ProjectDetailResponse,
+  BannersResponse,
+  LotdealProject,
+  SpecialExhibition,
+  ProjectsByCategory,
+  SupportSignature
+} from '@/services/types/ProjectResponse';
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse';
 
-export const getProjectsByCategory = async (categoryName: string, page: number, size: number, sort: string): Promise<ProjectsResponse<ProjectsByCategory>> => {
+export const getProjectsByCategory = async (categoryName: string, page: number, size: number, sort: string): Promise<CommonItemsResponse<ProjectsByCategory>> => {
   try {
-    const response: SuccessResponse<ProjectsResponse<ProjectsByCategory>> = await getData<ProjectsResponse<ProjectsByCategory>>(`/project-service/api/projects/category/${categoryName}?page=${page}&sort=${sort}&size=${size}`);
+    const response: SuccessResponse<CommonItemsResponse<ProjectsByCategory>> = await getData<CommonItemsResponse<ProjectsByCategory>>(`/project-service/api/projects/category/${categoryName}?page=${page}&sort=${sort}&size=${size}`);
 
     return response.data;
   } catch (error: unknown) {
@@ -32,9 +40,9 @@ export const getBanners = async (): Promise<BannersResponse> => {
   }
 }
 
-export const getLotdealProjects = async (page: number, size: number, sort: string): Promise<ProjectsResponse<LotdealProject>> => {
+export const getLotdealProjects = async (page: number, size: number, sort: string): Promise<CommonItemsResponse<LotdealProject>> => {
   try {
-    const response: SuccessResponse<ProjectsResponse<LotdealProject>> = await getData<ProjectsResponse<LotdealProject>>(`/project-service/api/projects/lotdeal?page=${page}&sort=${sort}&size=${size}`);
+    const response: SuccessResponse<CommonItemsResponse<LotdealProject>> = await getData<CommonItemsResponse<LotdealProject>>(`/project-service/api/projects/lotdeal?page=${page}&sort=${sort}&size=${size}`);
 
     return response.data;
   } catch (error: unknown) {
@@ -42,11 +50,37 @@ export const getLotdealProjects = async (page: number, size: number, sort: strin
   }
 }
 
-export const getSpecialExhibition = async (tag: string, page: number, size: number, sort: string): Promise<ProjectsResponse<SpecialExhibition>> => {
+export const getSpecialExhibition = async (tag: string, page: number, size: number, sort: string): Promise<CommonItemsResponse<SpecialExhibition>> => {
   try {
-    const response: SuccessResponse<ProjectsResponse<SpecialExhibition>> = await getData<ProjectsResponse<SpecialExhibition>>(`/project-service/api/projects/special-exhibition?tag=${tag}&page=${page}&sort=${sort}&size=${size}`)
+    const response: SuccessResponse<CommonItemsResponse<SpecialExhibition>> = await getData<CommonItemsResponse<SpecialExhibition>>(`/project-service/api/projects/special-exhibition?tag=${tag}&page=${page}&sort=${sort}&size=${size}`);
     return response.data;
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail);
   }
 }
+
+export const getSupportSignature = async  (projectId: number, page: number, size: number, sort: string): Promise<CommonItemsResponse<SupportSignature>> => {
+  try {
+    const response: SuccessResponse<CommonItemsResponse<SupportSignature>> = await getData<CommonItemsResponse<SupportSignature>>(`/project-service/api/projects/${projectId}/support-signature?page=${page}&sort=${sort}&size=${size}`);
+    return response.data;
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail);
+  }
+}
+
+export const createSupportSignature = async (projectId: number)=> {
+  try {
+    await  postData(`/project-service/api/projects/${projectId}/support-signature`);
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail);
+  }
+}
+
+export const modifySupportSignature = async (projectId: number) => {
+  try {
+    await putData(`/project-service/api/projects/${projectId}/support-signature`);
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail);
+  }
+}
+
