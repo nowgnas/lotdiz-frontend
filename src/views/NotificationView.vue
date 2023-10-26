@@ -102,7 +102,7 @@ const changePage = async (page: number) => {
   requestedPage.value = page;
 }
 
-const onScroll = async (event) => {
+const onScroll = async (event: any) => {
   const { scrollHeight, scrollTop, clientHeight } = event.target;
   // 스크롤이 끝에 닿으면 데이터를 추가로 로드
   if(scrollHeight === (scrollTop + clientHeight)) {

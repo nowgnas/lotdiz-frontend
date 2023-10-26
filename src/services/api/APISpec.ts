@@ -38,6 +38,16 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
   }
 };
 
+export const putData = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {
+  try {
+    const response = await client.put<SuccessResponse<T>>(url, data);
+    return response.data;
+  } catch (error: unknown) {
+    console.error((<ErrorResponse>error).detail)
+    throw new Error((<ErrorResponse>error).message)
+  }
+};
+
 export const putDataWithAuth = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {
   try {
     const response = await client.put<SuccessResponse<T>>(url, data);
