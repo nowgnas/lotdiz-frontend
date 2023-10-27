@@ -46,12 +46,13 @@ const submitForm = () => {
       alert('로그인 성공했습니다.');
       const authorization = response.headers["authorization"];
       console.log("authorization:", authorization);
-      persistentedStateStore._customProperties.add(authorization);
+      // persistentedStateStore._customProperties.add(authorization);
+      persistentedStateStore.$state.jwtToken = authorization;
       document.cookie = "jwtToken=" + authorization;
       router.push('/');
     })
     .catch((error: unknown) => {
-      console.log('error:', error);
+      console.error('error:', error);
       router.push('/member/sign-in');
     });
 }

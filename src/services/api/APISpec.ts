@@ -1,12 +1,15 @@
 import axios, {Axios} from 'axios';
 import type { ErrorResponse, SuccessResponse } from '../APIResponse';
+import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
+
+const persistentStateStore = usePersistentedStateStore();
 
 const client: Axios = axios.create({
     
     baseURL: import.meta.env.VITE_SERVICE_API_URL,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJsZWV3b295dXAxIiwiYXV0aCI6IlJPTEVfVVNFUiIsIm1lbWJlcklkIjoiMSIsInVzZXJuYW1lIjoidGVzdDFAbmF2ZXIuY29tIiwiZXhwIjoxNjk4Mzc3NDk5fQ.iywzD86ryy2Q4v4CDCegkCk8-NhEOmfeyvPEYru2ZziYZkhAVmbw6sEb8KswJXU-3jTTwpYnNAc6XkpZOxIs6Q',
+        'Authorization': persistentStateStore.$state.jwtToken,
     }
 });
 
@@ -20,7 +23,7 @@ export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
     }
 }
 
-export const postData = async <T>(url: string, data?: any) => {
+export const postData = async <T>(url: string, data: any) => {
     try {
         const response = await client.post<SuccessResponse<T>>(url, data);
         // console.log("response: " + response.data);

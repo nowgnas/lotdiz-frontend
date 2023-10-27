@@ -76,6 +76,9 @@ const validCheck = async (event: any) => {
 
 <style>
 @import '@/assets/signup.css';
+@import '@/assets/color.css';
+@import '@/assets/font.css';
+
 #sec-agreement-box {
   height: 350px;
   border: 1px solid #d3d3d3;
