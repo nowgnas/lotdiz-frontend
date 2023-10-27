@@ -32,6 +32,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-northeast-2
+          PATH_TO_DELETE: /assets
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
