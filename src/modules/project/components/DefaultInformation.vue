@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'

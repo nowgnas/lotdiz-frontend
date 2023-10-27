@@ -5,17 +5,19 @@ import ProjectDetailsView from '@/views/ProjectDetailsView.vue'
 import LotdealView from '@/views/LotdealView.vue'
 import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue'
 import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
-
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'
-
+import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
+import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
+import FundingView from '@/views/funding/FundingView.vue'
 import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
 import DefaultInformation from '@/modules/project/components/DefaultInformation.vue'
 import MakerRegister from '@/modules/project/components/MakerRegister.vue'
 import ProjectInformation from '@/modules/project/components/ProjectInformation.vue'
 import WriteStory from '@/modules/project/components/WriteStory.vue'
 import RegisterProducts from '@/modules/project/components/RegisterProducts.vue'
+import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
 
 const router = createRouter({
@@ -52,6 +54,7 @@ const router = createRouter({
       component: SpecialExhibitionView
     },
     {
+
       path: '/project-details/:id',
       name: 'projectDetails',
       component: ProjectDetailsView
@@ -102,6 +105,10 @@ const router = createRouter({
           component: RegisterProducts
         }
       ]
+    },
+    {
+      path: '/maker/projects',
+      component: RegisteredProjects
     }
   ]
 })

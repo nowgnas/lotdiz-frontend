@@ -1,0 +1,151 @@
+.project-card {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    background: #F2F2F2;
+    position: relative;
+    width: 55rem;
+    height: 13rem;
+    border-radius: 10px;
+}
+
+.img-box {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: absolute;
+    left: 43px;
+    top: 44px;
+}
+
+.project-name {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 309px;
+    bottom: 90px;
+
+    .text {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 35px */
+    }
+}
+
+.achievement-rate {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 309px;
+    top: 44px;
+
+    .text {
+        color: #4FAFB1;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 28px */
+    }
+}
+
+.project-img {
+    width: 219px;
+    height: 127px;
+    background: url('https://github.com/lotteon2/lotdiz-frontend/assets/55802893/bd999724-662d-4149-babc-edcc7b8a9f51'), lightgray 50% / cover no-repeat;
+    border-radius: 10px;
+}
+
+.authorized-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 41px;
+    top: 34px;
+    border-radius: 15px;
+    background: #58C1C2;
+}
+
+.total-amount {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 428px;
+    top: 47px;
+
+    .text {
+        color: #878787;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 21px */
+    }
+}
+
+.remain-date {
+    display: flex;
+    padding: 3.56px;
+    justify-content: center;
+    align-items: center;
+    gap: 7.12px;
+    position: absolute;
+    right: 277.88px;
+    top: 57px;
+    border-radius: 3.56px;
+    background: #EAF8F9;
+
+    .text {
+        color: #4FAFB1;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 10.68px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 14.952px */
+    }
+}
+
+.maker-name {
+    display: flex;
+    padding: 10.68px 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 7.12px;
+    position: absolute;
+    left: 319px;
+    bottom: 44.64px;
+
+    .text {
+        color: #878787;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 10.68px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 14.952px */
+    }
+}
