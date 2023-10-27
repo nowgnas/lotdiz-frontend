@@ -18,7 +18,7 @@
 
     <div class="lotdeal-info" v-if="stringifiedTimer != '00:00:00'">
       <div class="lotdeal-image">
-        <img alt="lotdeal logo" class="lotdeal-img" src="/common/icons/hot-deal-logo.png">
+        <img alt="lotdeal logo" class="lotdeal-img" src='/common/hot-deal-logo.png'>
       </div>
       <div class="lotdeal-time">{{ stringifiedTimer }}</div>
     </div>

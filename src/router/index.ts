@@ -4,9 +4,10 @@ import ProjectListByCategoryView from '@/views/ProjectListByCategoryView.vue'
 import ProjectDetailsView from '@/views/ProjectDetailsView.vue'
 import LotdealView from '@/views/LotdealView.vue'
 import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue'
-
 import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
-
+import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
+import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
+import FundingView from '@/views/funding/FundingView.vue'
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'

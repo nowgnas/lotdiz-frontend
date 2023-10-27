@@ -116,7 +116,7 @@ watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort]) =
 });
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/css/project-list-by-category.css';
 
 </style>

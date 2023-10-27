@@ -11,7 +11,7 @@
 <script setup lang="ts">
 </script>
 
-<style>
+<style scoped>
 
 #project-details {
   display: flex;
