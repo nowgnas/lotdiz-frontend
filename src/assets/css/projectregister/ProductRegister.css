@@ -1,0 +1,27 @@
+.product-register-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 63px;
+}
+
+
+.product-register-btn {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #7B7B7B;
+    width: 300px;
+    height: 200px;
+
+    .add-product-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+}

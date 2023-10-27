@@ -1,0 +1,23 @@
+.maker-profile-register-btn {
+    display: flex;
+    width: 188px;
+    height: 40px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    left: 64px;
+    bottom: 37px;
+    border-radius: 10px;
+    border: 1px solid #4FAFB1;
+    background: #4FAFB1;
+}
+
+.maker-profile-register-btn > .text {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
