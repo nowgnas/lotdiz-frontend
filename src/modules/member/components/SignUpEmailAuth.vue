@@ -31,7 +31,7 @@
     <div class="btn-next">
       <button @click="finalCheck">다음</button>
     </div>
-    <loading :active="loading" :can-cancel="true"></loading>
+<!--    <loading :active="loading" :can-cancel="true"></loading>-->
   </div>
 </template>
 
@@ -62,17 +62,17 @@ const sendEmail = () => {
     확인을 눌러주세요`
   }
 
-  const loader = $loading.show({ 
-        width: 200,
-        height: 200,
-        backgroundColor: '#ffffff',
-        isFullPage: true,
-        color: '#58C1C2',
-  });
+  // const loader = $loading.show({
+  //       width: 200,
+  //       height: 200,
+  //       backgroundColor: '#ffffff',
+  //       isFullPage: true,
+  //       color: '#58C1C2',
+  // });
   emailjs.send(VITE_SERVER_ID, VITE_TEMPLATE_ID, params).then(
     (result) => {
       isEmailSent.value = true;
-      loader.hide();
+      // loader.hide();
       alert('해당 메일로 인증 메시지가 발송되었습니다.');
       console.log('SUCCESS!', result.text);
     },
@@ -98,13 +98,13 @@ const finalCheck = () => {
     return
   } else {
     if (confirm('회원가입을 완료하시겠습니까?')) {
-      const loader = $loading.show({ 
-        width: 200,
-        height: 200,
-        backgroundColor: '#ffffff',
-        isFullPage: true,
-        color: '#58C1C2',
-      });
+      // const loader = $loading.show({
+      //   width: 200,
+      //   height: 200,
+      //   backgroundColor: '#ffffff',
+      //   isFullPage: true,
+      //   color: '#58C1C2',
+      // });
       const signupRequest: MemberInfoForSignUpRequest = {
         username: memberStore.username,
         memberPassword: memberStore.memberPassword,
@@ -116,7 +116,7 @@ const finalCheck = () => {
       postMemberInfoForSignUp(signupRequest)
         .then(() => {
           memberStore.increaseActiveNo();
-          loader.hide();
+          // loader.hide();
           router.push('/member/sign-up/success');
         })
         .catch((error) => {

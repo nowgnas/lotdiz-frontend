@@ -4,7 +4,7 @@ import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
 
 const persistentStateStore = usePersistentedStateStore();
 
-const client: Axios = axios.create({
+export const client: Axios = axios.create({
     
     baseURL: import.meta.env.VITE_SERVICE_API_URL,
     headers: {
@@ -23,7 +23,7 @@ export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
     }
 }
 
-export const postData = async <T>(url: string, data: any) => {
+export const postMemberData = async <T>(url: string, data: any) => {
     try {
         const response = await client.post<SuccessResponse<T>>(url, data);
         // console.log("response: " + response.data);

@@ -47,7 +47,8 @@ const submitForm = () => {
       const authorization = response.headers["authorization"];
       console.log("authorization:", authorization);
       // persistentedStateStore._customProperties.add(authorization);
-      persistentedStateStore.$state.jwtToken = authorization;
+      // persistentedStateStore.$state.jwtToken = authorization;
+      localStorage.setItem("jwtToken", authorization);
       document.cookie = "jwtToken=" + authorization;
       router.push('/');
     })

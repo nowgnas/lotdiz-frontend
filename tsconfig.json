@@ -14,5 +14,9 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "module": "es2020",
-  }
+  },
+  "include": [
+    "src/**/*",
+    "package.json"
+  ]
 }

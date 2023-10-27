@@ -1,11 +1,11 @@
-import { getData, postData } from "./APISpec";
+import { getData, postMemberData } from "./APISpec";
 import type { MemberInfoForQueryResponse, KakaoPayReadyResponse } from "../types/MemberResponse";
 import type { MemberInfoForSignUpRequest, MembershipInfoForJoinRequest, InfoForSignIn } from "../types/MemberRequest";
 import type { SuccessResponse } from "../APIResponse"
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
     try {
-        const response = await postData<SuccessResponse<object>>(`/member-service/api/sign-up`, memberInfoForSignUpRequst);
+        const response = await postMemberData<SuccessResponse<object>>(`/member-service/api/sign-up`, memberInfoForSignUpRequst);
         return response;
     } catch (error: unknown) {
         throw new Error('회원 가입 실패');
@@ -24,7 +24,7 @@ export const getMemberInfo = async (memberId: number) => {
 
 export const postMembershipInfoForJoin = async (membershipInfoForJoinRequest: MembershipInfoForJoinRequest) => {
     try {
-        const response = await postData<string>(`/member-service/api/members/membership`, membershipInfoForJoinRequest);
+        const response = await postMemberData<string>(`/member-service/api/members/membership`, membershipInfoForJoinRequest);
         return response.data.data;
     } catch (error: unknown) {
         throw new Error('멤버십 결제 준비 실패');
@@ -33,7 +33,7 @@ export const postMembershipInfoForJoin = async (membershipInfoForJoinRequest: Me
 
 export const postInfoForSignIn = async(infoForSignIn: InfoForSignIn) => {
     try {
-        const response = await postData<object>(`/member-service/api/sign-in`, infoForSignIn);
+        const response = await postMemberData<object>(`/member-service/api/sign-in`, infoForSignIn);
         return response;
     } catch (error: unknown) {
         console.error(error);
@@ -44,7 +44,7 @@ export const postInfoForSignIn = async(infoForSignIn: InfoForSignIn) => {
 export const getIsDulicatedForCheck = async (username: string) => {
     try {
         console.log("username:", username);
-        const response = await postData<boolean>(`/member-service/api/members/isDuplicated`, username);
+        const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username);
         return response.data.data;
     } catch (error: unknown) {
         throw new Error('이메일 중복 조회 실패');
