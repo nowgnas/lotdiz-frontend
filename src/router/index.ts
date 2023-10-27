@@ -8,9 +8,6 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'
-import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
-import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
-import FundingView from '@/views/funding/FundingView.vue'
 import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
 import DefaultInformation from '@/modules/project/components/DefaultInformation.vue'
 import MakerRegister from '@/modules/project/components/MakerRegister.vue'
@@ -54,7 +51,6 @@ const router = createRouter({
       component: SpecialExhibitionView
     },
     {
-
       path: '/project-details/:id',
       name: 'projectDetails',
       component: ProjectDetailsView
