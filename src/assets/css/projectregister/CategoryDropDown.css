@@ -1,0 +1,30 @@
+.dropdown {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ccc;
+    display: inline-block;
+    position: absolute;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.dropdown li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+.category-dropdown-btn{
+    display: flex;
+    justify-content: space-between;
+    width: 426px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #BEBEBE;
+    background: #FFF;
+}

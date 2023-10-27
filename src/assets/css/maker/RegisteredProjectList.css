@@ -1,0 +1,28 @@
+.registered-project-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.registered-project-list-title {
+    display: inline-flex;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+
+    .text {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 35px */
+    }
+}
+
+.project-list-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}

@@ -1,7 +1,7 @@
-import { getData, postMemberData } from "./APISpec";
+import { getData, postMemberData, deleteData, postData } from "./APISpec";
 import type { MemberInfoForQueryResponse, KakaoPayReadyResponse } from "../types/MemberResponse";
 import type { MemberInfoForSignUpRequest, MembershipInfoForJoinRequest, InfoForSignIn } from "../types/MemberRequest";
-import type { SuccessResponse } from "../APIResponse"
+import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse'
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
     try {
@@ -49,4 +49,20 @@ export const getIsDulicatedForCheck = async (username: string) => {
     } catch (error: unknown) {
         throw new Error('이메일 중복 조회 실패');
     }
+}
+
+export const createLikes = async (projectId: number) => {
+  try {
+    await postData(`/member-service/api/projects/${projectId}/likes`)
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail)
+  }
+}
+
+export const deleteLikes = async (projectId: number) => {
+  try {
+    await deleteData(`/member-service/api/projects/${projectId}/likes`)
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail)
+  }
 }

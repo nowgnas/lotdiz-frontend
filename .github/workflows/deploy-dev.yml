@@ -1,0 +1,21 @@
+name: Deploy development profile about lotdiz
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'develop'
+jobs:
+  build-deploy:
+    environment: develop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Npm Install
+        run: npm install
+      - name: Npm Build
+        run: npm run build
