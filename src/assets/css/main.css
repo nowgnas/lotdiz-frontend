@@ -34,18 +34,6 @@ a {
   height: 340px;
 }
 
-#project-details-nav-bar {
-  display: flex;
-  /* width: 1430px; */
-  /* height: 50px; */
-  margin-top: 34px;
-  flex-direction: column;
-  align-items: center;
-  /* border-top: 4px solid #EBEBEB; */
-  /* border-bottom: 4px solid #EBEBEB; */
-  margin-bottom: 50px;
-}
-
 #project-details-contents {
   display: flex;
   /* width: 1445px;

@@ -9,6 +9,7 @@ import type {
   SupportSignature, SupportSignatureResponse
 } from '@/services/types/ProjectResponse';
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse';
+import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 
 export const getProjectsByCategory = async (categoryName: string, page: number, size: number, sort: string): Promise<CommonProjectsResponse<ProjectsByCategory>> => {
   try {
@@ -68,17 +69,17 @@ export const getSupportSignature = async  (projectId: number, page: number, size
   }
 }
 
-export const createSupportSignature = async (projectId: number)=> {
+export const createSupportSignature = async (projectId: number, supportSignatureContents: InputSupportSignatureContentsRequest)=> {
   try {
-    await  postData(`/project-service/api/projects/${projectId}/support-signature`);
+    await  postData(`/project-service/api/projects/${projectId}/support-signature`, supportSignatureContents);
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail);
   }
 }
 
-export const modifySupportSignature = async (projectId: number) => {
+export const modifySupportSignature = async (projectId: number, supportSignatureContents: InputSupportSignatureContentsRequest) => {
   try {
-    await putData(`/project-service/api/projects/${projectId}/support-signature`);
+    await putData(`/project-service/api/projects/${projectId}/support-signature`, supportSignatureContents);
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail);
   }

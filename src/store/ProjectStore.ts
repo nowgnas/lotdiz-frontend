@@ -19,6 +19,7 @@ export const useProjectStore = defineStore("project", {
       numberOfBuyers: 0,
       numberOfSupporter: 0,
       numberOfLikes: 0,
+      isLike:false,
       fundingAchievementRate: 0,
       accumulatedFundingAmount: 0,
       projectStoryImageUrl: '',
