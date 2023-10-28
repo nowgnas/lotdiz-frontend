@@ -53,7 +53,6 @@
             </div>
           </div>
         </div>
-
       </RouterLink>
       <RouterLink to='/'>
         <div class='sign-btn'>로그인</div>
@@ -62,14 +61,18 @@
         <div class='sign-btn'>회원가입</div>
       </RouterLink>
     </div>
-
   </div>
 </template>
 
 <script setup lang='ts'>
 import { ref } from 'vue'
+import { getNumberOfNotification } from '@/services/api/NotificationService'
 
+console.log('header loaded')
 const showDropdown = ref(false)
+const numberOfNotification = ref(0)
+// const notificationCnt = await getNumberOfNotification()
+// numberOfNotification.value = notificationCnt['unreadNotificationCount']
 
 const categories = [
   { id: 1, name: '패션' },

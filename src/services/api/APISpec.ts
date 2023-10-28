@@ -4,7 +4,8 @@ import type { ErrorResponse, SuccessResponse } from '@/services/types/APIRespons
 const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'memberId': 1
   }
 })
 

@@ -1,4 +1,4 @@
-import { getDataWithAuth, putDataWithAuth } from '@/services/api/APISpec'
+import { getData, getDataWithAuth, putDataWithAuth } from '@/services/api/APISpec'
 import type { SuccessResponse } from '@/services/types/APIResponse'
 
 export interface GetNotificationPageResponseDto<T> {
@@ -17,6 +17,10 @@ export interface GetNotificationResponseDto {
 
 export interface SetNotificationIsReadRequestDto {
   notificationIds: Array<number>
+}
+
+export interface NumberOfNotification {
+  unreadNotificationCount: number
 }
 
 export const getNotifications = async (page: number, size: number, sort: string)
@@ -45,3 +49,7 @@ export const setNotificationsIsRead = async (notificationIds: Array<number>): Pr
   }
 }
 
+export const getNumberOfNotification = async (): Promise<NumberOfNotification> => {
+  const notificationCnt: SuccessResponse<NumberOfNotification> = await getData('/notification-service/api/notifications/unread-count')
+  return notificationCnt.data
+}
