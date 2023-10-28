@@ -53,9 +53,10 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    margin-left: 197px;
-    margin-right: 289px;
+    /* margin-left: 205px; */
+    /* margin-right: 315px; */
     margin-top: 50px;
+    width: 1549px;
 }
 
 .sort-select-bar {
