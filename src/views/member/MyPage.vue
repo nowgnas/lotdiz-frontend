@@ -1,6 +1,5 @@
 <template>
   <div style="height:100%;display:flex;flex-direction:column;">
-    <div style="height:93px;">Header here</div>
     <div id="sub-header-mypage">
         <button id="tab-supporter"><router-link to="/member/my-page">서포터</router-link></button>
         <button id="tab-maker"><router-link to="/member/my-page/maker">메이커</router-link></button>

@@ -4,7 +4,7 @@ import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
 
 const persistentStateStore = usePersistentedStateStore();
 
-const client: Axios = axios.create({
+export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
   headers: {
     'Content-Type': 'application/json'

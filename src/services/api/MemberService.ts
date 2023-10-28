@@ -1,5 +1,5 @@
 import { getData, postMemberData, deleteData, postData } from "./APISpec";
-import type { MemberInfoForQueryResponse, KakaoPayReadyResponse } from "../types/MemberResponse";
+import type { MemberInfoForQueryResponse, KakaoPayReadyResponse, MembershipInfoForShowResponse } from "../types/MemberResponse";
 import type { MemberInfoForSignUpRequest, MembershipInfoForJoinRequest, InfoForSignIn } from "../types/MemberRequest";
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse'
 
@@ -64,5 +64,23 @@ export const deleteLikes = async (projectId: number) => {
     await deleteData(`/member-service/api/projects/${projectId}/likes`)
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail)
+  }
+}
+
+export const getMemberPointsForShow = async () => {
+  try {
+    const response = await getData<Long>(`/member-service/api/members/points`)
+    return response.data;
+  } catch (error: unknown) {
+    throw new Error('포인트 조회 실패')
+  }
+}
+
+export const getMembershipInfoForShow = async () => {
+  try {
+    const response = await getData<MembershipInfoForShowResponse>('/member-service/api/members/membership')
+    return response.data;
+  } catch (error: unknown) {
+    throw new Error('멤버십 정보 조회 실패')
   }
 }

@@ -1,5 +1,4 @@
 <template>
-  <div>Header</div>  
   <div class="main-content-container">
     <div id="membership-promotion-content">
       <div id="honors-title">롯드 오너스</div>

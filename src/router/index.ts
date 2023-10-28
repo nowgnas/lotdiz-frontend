@@ -16,6 +16,7 @@ import WriteStory from '@/modules/project/components/WriteStory.vue'
 import RegisterProducts from '@/modules/project/components/RegisterProducts.vue'
 import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
+import { client } from "@/services/api/APISpec";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -79,6 +80,12 @@ const router = createRouter({
       path: '/member/membership-honors',
       name: 'membership-honors',
       component: () => import('../views/member/MembershipPayments.vue'),
+      meta: { authRequired: true }
+    },
+    {
+      path: '/member/membership-honors/join/success',
+      name: 'membership-honors-join',
+      component: () => import('../modules/member/components/MembershipPaymentsCompleted.vue'),
       meta: { authRequired: true }
     },
     {
@@ -187,7 +194,11 @@ router.beforeEach(async (to, from, next) => {
       alert('로그인이 필요한 페이지 입니다.');
     } else {
       console.log("in not null token: " + jwtToken);
-      next()
+      client.interceptors.request.use((config) => {
+        config.headers.setAuthorization(jwtToken);
+        return config;
+      }, (error) => Promise.reject(error));
+      next();
     }
   } else {
     next();

@@ -11,7 +11,7 @@
             </svg>
             <p class="card-text">포인트</p>
           </div>
-          <div class="card-value">30000P</div><!--hard coding.-->
+          <div class="card-value">{{ points }}</div><!--hard coding.-->
         </div>
         <div class="card-body" id="grade-card">
           <div class="card-icon-text-wrapper">
@@ -22,7 +22,7 @@
             </svg>
             <p class="card-text">멤버십등급</p><!--hard coding.-->
           </div>
-          <div class="card-value">펀딩파트너</div><!--hard coding.-->
+          <div class="card-value">{{ membershipGrade }}</div><!--hard coding.-->
         </div>
       </div>
       <div class="card-body" id="funding-history-card">
@@ -64,6 +64,27 @@
 </template>
 
 <script setup lang="ts">
+import { getMemberPointsForShow, getMembershipInfoForShow } from '../../../services/api/MemberService';
+import { ref,onMounted } from 'vue'
+
+const points: number = ref(0);
+const membershipGrade = ref('');
+
+onMounted(() => {
+  getMemberPointsForShow()
+    .then(response => {
+      points.value = response
+    }).catch(error => {
+    console.error("포인트 조회 실패:",error)
+  });
+
+  getMembershipInfoForShow()
+    .then(response => {
+      membershipGrade.value = response.membershipPolicyGrade
+    }).catch(error => {
+      console.error("멤버십 정보 조회 실패:", error);
+  })
+});
 
 </script>
 
