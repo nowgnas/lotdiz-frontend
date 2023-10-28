@@ -1,17 +1,33 @@
 <script setup lang='ts'>
+import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
 import HeaderBarComponent from '@/common/HeaderBarComponent.vue'
 import ProjectDetailsNavBarComponent from '@/modules/project/components/ProjectDetailsNavBarComponent.vue'
 import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
+import router from './router/index';
+
+const isNonHeaderPath = (): boolean => {
+  const url: string = window.location.href;
+  console.log("url:", url);
+  // const host = ""
+  if(url === "http://localhost:5173/member/sign-in" || url === "http://localhost:5173/member/sign-up" || url === "http://localhost:5173/member/membership-honors/join/success") {
+    return true;
+  }
+  return false;
+}
+
+// onMounted(() => {
+//   isNonHeaderPath();
+// })
 </script>
 
 <template>
   <div class='container'>
 
     <header>
-      <HeaderBarComponent />
+      <HeaderBarComponent v-if="!isNonHeaderPath()"/>
     </header>
-    <main role='main'>
+    <main role='main' style='height:100%;'>
 
       <div v-if="$route.path.includes('/project-details')">
         <div id='project-details-nav-bar'>
@@ -24,7 +40,7 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
         </div>
       </div>
 
-      <div v-else>
+      <div v-else style='height:100%;'>
         <RouterView />
       </div>
 
@@ -38,5 +54,8 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
 </template>
 
 <style scoped>
+.container {
+  height: 100%;
+}
 
 </style>
