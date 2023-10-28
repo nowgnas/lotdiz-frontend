@@ -4,7 +4,7 @@
       <div id="honors-title">롯드 오너스</div>
       <div id="membership-payments-banner">
         <p id="banner-text">
-          <font-awesome-icon :icon="['fas', 'trophy']" /> 이우엽님 롯드오너스로<br />
+          <font-awesome-icon :icon="['fas', 'trophy']" /> {{ memberName }}님 롯드오너스로<br />
           할인 및 적립 혜택 DEAL하세요!
         </p>
         <div id="btn-membership-join">
@@ -70,8 +70,11 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import type { MembershipInfoForJoinRequest } from '@/services/types/MemberRequest';
-import { postMembershipInfoForJoin } from '@/services/api/MemberService';
+import { postMembershipInfoForJoin, getMemberInfo } from '@/services/api/MemberService';
+
+const memberName = ref('');
 
 const readyForPaymentsOfFundingFriends = () => {
     if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
@@ -87,7 +90,7 @@ const readyForPaymentsOfFundingFriends = () => {
         response.then(data => {
             const redirectUrl = data;
             console.log("redirectUrl:", redirectUrl);
-            window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+            window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=450, status=no, menubar=no, toolbar=no, resizable=no');
         }).catch(error => {
             console.error('오류발생: ', error);
         });
@@ -95,6 +98,15 @@ const readyForPaymentsOfFundingFriends = () => {
         return;
     }
 }
+
+onMounted(() => {
+  getMemberInfo()
+    .then(response => {
+      memberName.value = response.memberName;
+    }).catch(error => {
+      console.error("회원 정보 조회 실패:". error);
+  })
+})
 
 </script>
 

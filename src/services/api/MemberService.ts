@@ -12,9 +12,9 @@ export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberI
     }
 }
 
-export const getMemberInfo = async (memberId: number) => {
+export const getMemberInfo = async () => {
     try {
-        const response = await getData<MemberInfoForQueryResponse>(`/api/members`);
+        const response = await getData<MemberInfoForQueryResponse>(`/member-service/api/members`);
         const memberInfoResponse: MemberInfoForQueryResponse = response.data;
         return memberInfoResponse;
     } catch (error: unknown) {

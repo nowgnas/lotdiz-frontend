@@ -1,10 +1,8 @@
 <script setup lang='ts'>
-import { onMounted } from 'vue';
 import { RouterView } from 'vue-router'
 import HeaderBarComponent from '@/common/HeaderBarComponent.vue'
 import ProjectDetailsNavBarComponent from '@/modules/project/components/ProjectDetailsNavBarComponent.vue'
 import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
-import router from './router/index';
 
 const isNonHeaderPath = (): boolean => {
   const url: string = window.location.href;
@@ -15,10 +13,6 @@ const isNonHeaderPath = (): boolean => {
   }
   return false;
 }
-
-// onMounted(() => {
-//   isNonHeaderPath();
-// })
 </script>
 
 <template>
