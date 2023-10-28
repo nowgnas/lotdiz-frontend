@@ -50,7 +50,8 @@
       <div class="delivery-price">배송비 무료</div>
     </div>
     <div class="funding-big">
-      <div class="funding-click-big" @click="goFunding">펀딩하기</div>
+      <div class="funding-click-big" v-if = "projectStatus == '프로젝트 진행중'" @click="goFunding">펀딩하기</div>
+      <div class="funding-click-big"  v-else-if = "projectStatus == '프로젝트 성공'">펀딩 종료</div>
     </div>
   </div>
   
@@ -66,14 +67,16 @@ import { useRouter } from 'vue-router';
 const projectStore = useProjectStore();
 const router = useRouter();
 
-const projectId = ref<number>(0);
 const products = ref<Array<Product>>([]);
+const projectId = ref<number>(0);
+const projectStatus = ref<string>('');
 const fundingProductsQuantity = ref<Map<number, number>>(new Map());
 
 const setting = () => {
   projectId.value = projectStore.projectDetails.projectId;
+  projectStatus.value = projectStore.projectDetails.projectStatus;
   products.value = projectStore.projectDetails.products;
-  
+
   products.value.forEach(product => {
     fundingProductsQuantity.value?.set(product.productId, 0);
   });

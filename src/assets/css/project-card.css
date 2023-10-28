@@ -90,12 +90,13 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    padding-top: 19px;
 }
 
 #funding-info {
     display: flex;
     align-items: flex-start;
-    gap: 53px;
+    gap: 12px;
 }
 
 #achievement-info {
@@ -111,6 +112,7 @@
     padding-right: 7px;
     align-items: end;
     gap: 10px;
+    padding-top: 12px;
 
     color: #4FAFB1;
     text-align: center;
@@ -122,7 +124,7 @@
 
 .accumulated-funding-amount {
     display: flex;
-    /* width: 96px; */
+    padding-top: 8px;
     height: 36px;
     padding: 0px;
     justify-content: center;
@@ -145,7 +147,7 @@
     gap: 10px;
     border-radius: 5px;
     background: #EAF8F9;
-    width: 80px;
+    width: 95px;
     height: 27px;
 
     color: #4FAFB1;
@@ -176,8 +178,7 @@
 .maker-name {
 
     display: flex;
-    padding-left: 7px;
-    justify-content: center;
+   justify-content: center;
     align-items: center;
     gap: 10px;
 

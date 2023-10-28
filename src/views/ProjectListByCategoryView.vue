@@ -95,7 +95,6 @@ const getProjectsByCategoryRequest = async (categoryName: string, page: number, 
     const response:CommonProjectsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
     projectByCategoryResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
-    console.log(projectByCategoryResponseList);
 
   } catch (error) {
     alert("프로젝트 조회에 실패하였습니다.")

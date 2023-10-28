@@ -40,6 +40,7 @@ export interface ProjectDetail {
   numberOfBuyers: number;
   numberOfSupporter: number;
   numberOfLikes: number;
+  isLike: boolean;
   fundingAchievementRate: number;
   accumulatedFundingAmount: number;
   projectStoryImageUrl: string;
@@ -87,6 +88,7 @@ export interface  SupportSignature {
   supporterImageUrl: string;
   supportSignatureContent: string;
   createdAt: string;
+  isSignatureOfLoggedUser: boolean;
 }
 
 export interface ProjectImage {
