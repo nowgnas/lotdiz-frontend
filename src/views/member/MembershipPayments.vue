@@ -40,7 +40,7 @@
             <div id="price-box-text">1년동안<br>펀딩 프렌즈 6,900원,<br>펀딩 파트너 9,900원</div>
             <div id="price-ticket-wrapper">
                 <div class="price-ticket" @click="readyForPaymentsOfFundingFriends"><font-awesome-icon :icon="['fas', 'won-sign']" /> 6,900</div>
-                <div class="price-ticket"><font-awesome-icon :icon="['fas', 'won-sign']" /> 9,900</div>
+                <div class="price-ticket" @click="readyForPaymentsOfFundingPartner"><font-awesome-icon :icon="['fas', 'won-sign']" /> 9,900</div>
             </div>
         </div>
         <div id="membership-type-desc-box">
@@ -76,27 +76,46 @@ import { postMembershipInfoForJoin, getMemberInfo } from '@/services/api/MemberS
 
 const memberName = ref('');
 
+const sendReadyRequestOfMembershipPayments = (membershipInfoForJoinRequest: MembershipInfoForJoinRequest) => {
+  const response: Promise<string> = postMembershipInfoForJoin(membershipInfoForJoinRequest);
+  console.log("response:", response);
+
+  response.then(data => {
+    const redirectUrl = data;
+    console.log("redirectUrl:", redirectUrl);
+    window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=450, status=no, menubar=no, toolbar=no, resizable=no');
+  }).catch(error => {
+    console.error('오류발생: ', error);
+  });
+}
+
 const readyForPaymentsOfFundingFriends = () => {
-    if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
-        const fundingFriendsJoinRequest: MembershipInfoForJoinRequest = {
-            membershipPolicyId: 1,
-            itemName: '펀딩 프렌즈',
-            totalAmount: '6900',
-            taxFreeAmount: '0',
-        }
-        const response: Promise<string> = postMembershipInfoForJoin(fundingFriendsJoinRequest);
-        console.log("response:", response);
-    
-        response.then(data => {
-            const redirectUrl = data;
-            console.log("redirectUrl:", redirectUrl);
-            window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=450, status=no, menubar=no, toolbar=no, resizable=no');
-        }).catch(error => {
-            console.error('오류발생: ', error);
-        });
-    } else {
-        return;
+  if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
+    const fundingFriendsJoinRequest: MembershipInfoForJoinRequest = {
+        membershipPolicyId: 1,
+        itemName: '펀딩 프렌즈',
+        totalAmount: '6900',
+        taxFreeAmount: '0',
     }
+    sendReadyRequestOfMembershipPayments(fundingFriendsJoinRequest);
+  } else {
+    return;
+  }
+}
+
+const readyForPaymentsOfFundingPartner = () => {
+  if(confirm('멤버십 가입을 위한 결제 코드로 이동하시겠습니까?')) {
+    const fundingPartnerJoinRequest: MembershipInfoForJoinRequest = {
+      membershipPolicyId: 2,
+      itemName: '펀딩 파트너',
+      totalAmount: '9900',
+      taxFreeAmount: '0',
+    }
+
+    sendReadyRequestOfMembershipPayments(fundingPartnerJoinRequest);
+  } else {
+    return;
+  }
 }
 
 onMounted(() => {
