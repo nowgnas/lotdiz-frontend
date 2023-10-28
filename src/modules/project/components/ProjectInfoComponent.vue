@@ -214,5 +214,6 @@ watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
 
 <style scoped>
 @import '@/assets/css/project-info.css';
+@import '@/assets/css/project-get-support-signature.css';
 
 </style>
