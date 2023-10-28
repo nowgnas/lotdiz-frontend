@@ -101,7 +101,6 @@
 .achievement-info {
     display: flex;
     align-items: center;
-    gap: 0px;
 }
 
 .funding-achievement-rate {
@@ -125,7 +124,6 @@
     display: flex;
     padding-top: 8px;
     height: 36px;
-    padding: 0px;
     justify-content: center;
     align-items: end;
     gap: 10px;
