@@ -1,0 +1,48 @@
+.guide-box {
+    display: flex;
+    flex-direction: column;
+    width: 633px;
+    height: 124px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    background: #97D9D9;
+}
+
+.exclamation-mark {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.guide-title {
+    color: #4FAFB1;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 28px */
+}
+
+.guide-content {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.guide-content > .text {
+    color: #7C7C7C;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+}
+
+.guide-title-box {
+    display: flex;
+}
