@@ -68,9 +68,15 @@ const router = createRouter({
           meta: { authRequired: true }
         },
         {
-          path: '/member/my-page/maker',
+          path: 'maker',
           name: 'my-page-maker',
           component: () => import('../modules/member/components/MyPageMaker.vue'),
+          meta: { authRequired: true }
+        },
+        {
+          path: 'change',
+          name: 'my-page-info-change',
+          component: () => import('../modules/member/components/MemberInfoChange.vue'),
           meta: { authRequired: true }
         },
       ],
