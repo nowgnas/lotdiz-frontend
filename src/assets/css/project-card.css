@@ -6,6 +6,10 @@
     gap: 32px;
 }
 
+#project-product-card {
+    cursor: pointer;
+}
+
 #project-image-info {
     position: relative;
     display: flex;

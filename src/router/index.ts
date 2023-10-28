@@ -15,6 +15,7 @@ import MakerRegister from '@/modules/project/components/MakerRegister.vue'
 import ProjectInformation from '@/modules/project/components/ProjectInformation.vue'
 import WriteStory from '@/modules/project/components/WriteStory.vue'
 import RegisterProducts from '@/modules/project/components/RegisterProducts.vue'
+import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
 
@@ -102,6 +103,10 @@ const router = createRouter({
           component: RegisterProducts
         }
       ]
+    },
+    {
+      path: '/maker/projects',
+      component: RegisteredProjects
     }
   ]
 })

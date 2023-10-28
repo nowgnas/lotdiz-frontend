@@ -53,6 +53,10 @@
     background: #97D9D9;
 }
 
+.category-bar-logo:hover {
+    cursor: pointer;
+}
+
 .lotd-plus-btn {
     display: flex;
     width: 68px;

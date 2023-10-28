@@ -17,5 +17,31 @@
 <script setup lang='ts'>
 </script>
 
-<style>
+
+<style scoped>
+
+#project-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 19px;
+  /* border-bottom: 4px solid #EBEBEB;*/
+}
+
+.title {
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 3px solid #65B9BB; 
+
+  color: #000;
+  text-align: center;
+  /*font-family: Open Sans;*/
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; 
+}
+
 </style>

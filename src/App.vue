@@ -1,14 +1,14 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import { RouterView } from 'vue-router'
 import HeaderBarComponent from '@/common/HeaderBarComponent.vue';
 
 </script>
 
 <template>
-  <div class="container">
+  <div class='container'>
 
     <header>
-      <HeaderBarComponent/>
+      <HeaderBarComponent />
     </header>
     
     <main role="main">
@@ -18,7 +18,7 @@ import HeaderBarComponent from '@/common/HeaderBarComponent.vue';
     <footer>
 
     </footer>
-</div>
+  </div>
 </template>
 
 <style scoped>

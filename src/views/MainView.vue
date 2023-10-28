@@ -34,7 +34,7 @@ onBeforeMount(async () => {
 });
 </script>
 
-<style>
+<style scoped>
 .banner-img {
   width: 1887px;
   height: 340px;
