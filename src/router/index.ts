@@ -186,14 +186,12 @@ router.beforeEach(async (to, from, next) => {
 
   if(to.matched.some(record =>  record.meta.authRequired )) {
     if(jwtToken === "") {
-      console.log("in token: " + jwtToken);
       next({
         path: '/member/sign-in',
         query: {redirect:to.fullPath}
       })
       alert('로그인이 필요한 페이지 입니다.');
     } else {
-      console.log("in not null token: " + jwtToken);
       client.interceptors.request.use((config) => {
         config.headers.setAuthorization(jwtToken);
         return config;

@@ -6,7 +6,6 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
 
 const isNonHeaderPath = (): boolean => {
   const url: string = window.location.href;
-  console.log("url:", url);
   // const host = ""
   if(url === "http://localhost:5173/member/sign-in" || url === "http://localhost:5173/member/sign-up" || url === "http://localhost:5173/member/membership-honors/join/success") {
     return true;
