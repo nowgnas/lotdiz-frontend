@@ -1,19 +1,19 @@
-#project-product-card {
+.project-product-card {
     display: flex;
-    width: 398px;
+    /*width: 398px;*/
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
 }
 
-#project-product-card {
+.project-product-card {
     cursor: pointer;
 }
 
-#project-image-info {
+.project-image-info {
     position: relative;
     display: flex;
-    width: 365px;
+    /*width: 365px;*/
     height: 245px;
     padding: 15px 15px 15px 15px;
     justify-content: center;
@@ -24,7 +24,7 @@
 
 .project-image {
     display: flex;
-    width: 363px;
+    /*width: 363px;*/
     height: 245px;
     padding: 3px;
     flex-direction: column;
@@ -35,7 +35,7 @@
 }
 
 .project-img {
-    width: 369px;
+    width: 300px;
     height: 250px;
     flex-shrink: 0;
 }
@@ -85,24 +85,22 @@
     line-height: 140%; /* 25.2px */
 }
 
-#project-info {
+.project-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
     padding-top: 19px;
 }
 
-#funding-info {
+.funding-info {
     display: flex;
     align-items: flex-start;
     gap: 12px;
 }
 
-#achievement-info {
+.achievement-info {
     display: flex;
     align-items: center;
-    gap: 0px;
 }
 
 .funding-achievement-rate {
@@ -126,7 +124,6 @@
     display: flex;
     padding-top: 8px;
     height: 36px;
-    padding: 0px;
     justify-content: center;
     align-items: end;
     gap: 10px;

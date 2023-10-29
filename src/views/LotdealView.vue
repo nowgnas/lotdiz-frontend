@@ -54,6 +54,7 @@ watch(sort, async (newSort, oldSort) => {
 
 </script>
 
-<style>
+<style scoped>
+@import '@/assets/css/project-list.css';
 
 </style>

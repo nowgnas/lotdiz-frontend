@@ -39,14 +39,13 @@ import { ref } from 'vue';
 const showDropdown = ref(false);
 
 const categories = [
-  {id:1, name: '패션'},
-  {id:2, name: '잡화'},
-  {id:3, name: '뷰티'},
-  {id:4, name: '푸드'},
-  {id:5, name: '홈리빙'},
-  {id:6, name: '레저 아웃도어'},
-  {id:7, name: '가전'},
-  {id:8, name: '도서'},
+  {id:1, name: '테크'},
+  {id:2, name: '패션'},
+  {id:3, name: '음식'},
+  {id:4, name: '가전'},
+  {id:5, name: '도서'},
+  {id:6, name: '홈리빙'},
+  {id:7, name: '레저'},
 ];
 
 const selectCategory = (category: any) => {

@@ -82,6 +82,19 @@ export interface SpecialExhibition {
   isLike: boolean;
 }
 
+export interface  BestLotdPlusProject {
+
+  projectId: number;
+  projectName: string;
+  remainingDays: number;
+  projectThumbnailImageUrl: string;
+  makerName: string;
+  fundingAchievementRate: string;
+  accumulatedFundingAmount: number;
+  projectStatus: string;
+  isLike: boolean;
+
+}
 export interface  SupportSignature {
   supportSignatureId: number;
   supporterName: string;
