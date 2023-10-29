@@ -17,7 +17,7 @@
             <div class = 'support-with-us-member-name' v-if='supportInfo.supporterWithUsIsNamePublic'>{{supportInfo.memberName}} 님이 </div>
             <div class = 'support-with-us-member-name' v-else>익명의 서포터가</div>
 
-            <div class='support-with-us-funding-amount' v-if='supportInfo.supporterWithUsIsAmountPublic'>{{supportInfo.fundingTotalAmount + supportInfo.fundingTotalAmount}} 원 펀딩 하셨습니다.</div>
+            <div class='support-with-us-funding-amount' v-if='supportInfo.supporterWithUsIsAmountPublic'>{{ supportInfo.fundingTotalAmount + supportInfo.fundingSupportAmount }} 원 펀딩 하셨습니다.</div>
             <div class='support-with-us-funding-amount' v-else>펀딩에 참여하였습니다.</div>
 
           </div>
