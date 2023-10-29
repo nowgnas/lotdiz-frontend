@@ -20,8 +20,8 @@
           </transition>
         </div>
 
-        <RouterLink to="/"><div class="lotd-plus-btn">롯드+</div></RouterLink> 
-        <RouterLink to="/lotdeal"><div class="lotd-plus-btn">롯딜</div></RouterLink>
+        <RouterLink to="/"><div class='header-btn' :class="{'active' : currentPath === '/' }">롯드+</div></RouterLink>
+        <RouterLink to="/lotdeal"><div class="header-btn" :class="{'active' : currentPath === '/lotdeal'}" >롯딜</div></RouterLink>
       </div>
     </div>
 
@@ -34,9 +34,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { watch, ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router';
 
-const showDropdown = ref(false);
+const route = useRoute();
+const currentPath = ref<string>('');
+
+const showDropdown = ref<boolean>(false);
 
 const categories = [
   {id:1, name: '테크'},
@@ -61,6 +65,22 @@ const hideDropdown = () => {
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
+
+const checkPath = (path: string) => {
+  if (path === '/lotdeal') {
+    currentPath.value = '/lotdeal'
+  } else {
+    currentPath.value = '/'
+  }
+}
+
+onMounted(() => {
+  checkPath(route.path);
+})
+
+watch(() => route.path, (newPath) => {
+  checkPath(newPath);
+})
 
 </script>
 

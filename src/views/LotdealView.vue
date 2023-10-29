@@ -5,10 +5,10 @@
   <!-- sort section start -->
   <div id="sort-bar">
     <div class="sort-select-bar">
-      <div class="sort-condition" @click="sort='createdAt,desc'">
-          최신순
+      <div class="sort" :class="{ 'active': sort === 'createdAt,desc'}"  @click="sort='createdAt,desc'">
+        최신순
       </div>
-      <div class="sort-condition" @click="sort='lotdealDueTime,asc'">
+      <div class="sort" :class="{ 'active': sort === 'lotdealDueTime,asc'}" @click="sort='lotdealDueTime,asc'">
         마감임박순
       </div>
     </div>
