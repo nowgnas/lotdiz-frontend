@@ -1,10 +1,10 @@
 <template>
 
-  <div id='project-product-card'
+  <div class='project-product-card'
        v-if="project && ( $route.path == '/lotdeal' && stringifiedTimer != '00:00:00') || $route.path != '/lotdeal'">
     <div @click='goProjectDetailsPage(projectId)'>
 
-      <div id='project-image-info'>
+      <div class='project-image-info'>
 
         <div class='project-image'>
           <img alt='project logo' class='project-img' :src='projectThumbnailImageUrl' />
@@ -21,7 +21,7 @@
           </svg>
         </div>
 
-        <div class='lotdeal-info' v-if="stringifiedTimer != '00:00:00'">
+        <div class='lotdeal-info' v-if="lotdealDueTime != null && stringifiedTimer != '00:00:00'">
           <div class='lotdeal-image'>
             <img alt='lotdeal logo' class='lotdeal-img' src='/common/hot-deal-logo.png'>
           </div>
@@ -29,9 +29,9 @@
         </div>
       </div>
 
-      <div id='project-info'>
-        <div id='funding-info'>
-          <div id='achievement-info'>
+      <div class='project-info'>
+        <div class='funding-info'>
+          <div class='achievement-info'>
             <div class='funding-achievement-rate'>{{ fundingAchievementRate }}% 달성</div>
             <div class='accumulated-funding-amount'>{{ accumulatedFundingAmount }} 원</div>
           </div>

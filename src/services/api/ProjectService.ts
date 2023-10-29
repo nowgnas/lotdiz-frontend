@@ -6,8 +6,8 @@ import type {
   LotdealProject,
   SpecialExhibition,
   ProjectsByCategory,
-  SupportSignature, SupportSignatureResponse
-} from '@/services/types/ProjectResponse';
+  SupportSignature, SupportSignatureResponse, BestLotdPlusProject
+} from '@/services/types/ProjectResponse'
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse';
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 
@@ -56,6 +56,15 @@ export const getLotdealProjects = async (page: number, size: number, sort: strin
 export const getSpecialExhibition = async (tag: string, page: number, size: number, sort: string): Promise<CommonProjectsResponse<SpecialExhibition>> => {
   try {
     const response: SuccessResponse<CommonProjectsResponse<SpecialExhibition>> = await getData<CommonProjectsResponse<SpecialExhibition>>(`/project-service/api/projects/special-exhibition?tag=${tag}&page=${page}&sort=${sort}&size=${size}`)
+    return response.data
+  } catch (error: unknown) {
+    throw new Error((<ErrorResponse>error).detail)
+  }
+}
+
+export const getBestLotdPlus = async() : Promise<CommonProjectsResponse<BestLotdPlusProject>> => {
+  try {
+    const response: SuccessResponse<CommonProjectsResponse<BestLotdPlusProject>> = await getData<CommonProjectsResponse<BestLotdPlusProject>>(`/project-service/api/projects`);
     return response.data
   } catch (error: unknown) {
     throw new Error((<ErrorResponse>error).detail)
