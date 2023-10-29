@@ -7,8 +7,16 @@ import ContentTextInputField from '@/modules/project/components/register-compone
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 
-const tagPlaceholder = ref('태그를 입력해주세요')
-const projectNamePlaceholder = ref('제목을 입력해 주세요')
+const inputComponentData = ref({
+  projectName: {
+    title: '프로젝트 제목',
+    placeholder: '제목을 입력해 주세요'
+  },
+  projectTag: {
+    title: '검색용 태그 (#)',
+    placeholder: '태그를 입력해주세요'
+  }
+})
 
 const projectNameCnt = ref(40)
 const dto = ref({
@@ -67,15 +75,12 @@ const projectContentTitle = {
 
 <template>
   <ProjectContentTitle :title='projectContentTitle' />
-  <div class='project-content-box'>
-    <div class='title'>
-      <div class='text'>프로젝트 제목</div>
-    </div>
-    <ContentTextInputField @input='projectName' :placeholder='projectNamePlaceholder' />
-    <div class='remain-text'>
-      <div class='text'>{{ projectNameCnt }}자 남음</div>
-    </div>
-  </div>
+  <ContentTextInputField
+    @input='projectName'
+    :placeholder='inputComponentData.projectName.placeholder'
+    :title='inputComponentData.projectName.title'
+    :is-required='true'
+    :text-cnt='40' />
   <div class='thumbnail-image'>
     <div class='thumbnail-image-title-box'>
       <div class='text'>프로젝트 썸네일 이미지</div>
@@ -95,15 +100,11 @@ const projectContentTitle = {
       </div>
       <VueDatePicker v-model='dto.projectDueDate' />
     </div>
-    <div class='search-tag-box'>
-      <div class='search-tag-title-box'>
-        <div class='text'>검색용 태그 (#)</div>
-      </div>
-      <div class='search-tag-description-box'>
-        <div class='text'>프로젝트가 더 잘 검색될 수 있도록 연관성이 높은 태그를 입력해 주세요.</div>
-      </div>
-      <ContentTextInputField @input='getProjectTag' :placeholder='tagPlaceholder' />
-    </div>
+    <ContentTextInputField
+      @input='getProjectTag'
+      :placeholder='inputComponentData.projectTag.placeholder'
+      :title='inputComponentData.projectTag.title'
+      :is-required='true' />
     <SaveButton />
   </div>
 
