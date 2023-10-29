@@ -22,10 +22,10 @@
     <div class='dividing-line'></div>
 
     <div class='main-page-lotdeal-container'>
-      <div class='main-page-lotdeal-title'>롯딜 인기상품</div>
+      <div class='main-page-lotdeal-title'>실시간 롯딜</div>
       <div class='main-page-lotdeal'>
-        <ProjectCardComponent v-for='project in lotdealProjectList' :key='project.projectId'
-                              :project='project' />
+        <MainLotdealProjectCardComponent v-for='(project, idx)  in lotdealProjectList' :key='project.projectId'
+                              :project='project' :idx='idx+1' />
       </div>
     </div>
   </div>
@@ -48,6 +48,7 @@ import { getBanners, getBestLotdPlus, getLotdealProjects } from '@/services/api/
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue'
+import MainLotdealProjectCardComponent from '@/modules/project/components/MainLotdealProjectCardComponent.vue'
 
 const banners = ref<Array<Banner>>([])
 const bestLotdPlusProject = ref<Array<BestLotdPlusProject>>([])
@@ -82,7 +83,7 @@ const getLotdealProjectsRequest = async (page: number, size: number, sort: strin
 onBeforeMount(async () => {
   await getBannersRequest()
   await getBestLotdPlusRequest()
-  await getLotdealProjectsRequest(0, 3, 'lotdealDueTime,asc')
+  await getLotdealProjectsRequest(0, 6, 'lotdealDueTime,asc')
 })
 
 </script>
@@ -176,7 +177,7 @@ onBeforeMount(async () => {
   height: 757.911px;
   flex-direction: column;
   align-items: flex-start;
-  gap: 39px;
+  gap: 46px;
 
 }
 
