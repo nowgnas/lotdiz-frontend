@@ -1,8 +1,8 @@
 <script setup lang='ts'>
 
-import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
+import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
-import GuideComponent from '@/modules/project/components/GuideComponent.vue'
+import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
 import { ref } from 'vue'
 
@@ -58,5 +58,5 @@ const selectDefault = {
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/SelectLotdeal.css";
+@import "../../../../assets/css/projectregister/SelectLotdeal.css";
 </style>

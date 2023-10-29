@@ -3,9 +3,9 @@ import { ref } from 'vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
-import ContentTextInputField from '@/modules/project/components/ContentTextInputField.vue'
-import GuideBox from '@/modules/project/components/GuideBox.vue'
-import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
+import ContentTextInputField from '@/modules/project/components/register-component/ContentTextInputField.vue'
+import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
+import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 
 const tagPlaceholder = ref('태그를 입력해주세요')
 const projectNamePlaceholder = ref('제목을 입력해 주세요')
@@ -110,7 +110,7 @@ const projectContentTitle = {
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/basicInformation.css";
-@import "../../../assets/css/projectregister/projectRegister.css";
-@import "../../../assets/css/projectregister/projectContentItem.css";
+@import "../../../../assets/css/projectregister/basicInformation.css";
+@import "../../../../assets/css/projectregister/projectRegister.css";
+@import "../../../../assets/css/projectregister/projectContentItem.css";
 </style>

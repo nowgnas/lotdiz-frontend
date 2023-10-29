@@ -1,51 +1,57 @@
 <template>
-  <div class="project-register">
-    <div class="project-register-sidebar">
-      <div class="sidebar-top">~ 프로젝트 생성 중</div>
-      <div class="sidebar-nav">
-        <div class="sidebar-nav-item" v-for="(item, idx) in sidebar" :key="idx">
-          <RouterLink :to=item.url class="sidebar-nav-item-text">{{ item.name }}</RouterLink>
+  <div class='project-register'>
+    <div class='project-register-sidebar'>
+      <div class='sidebar-top'>~ 프로젝트 생성 중</div>
+      <div class='sidebar-nav'>
+        <div class='sidebar-nav-item' v-for='(item, idx) in sidebar' :key='idx'>
+          <RouterLink :to=item.url class='sidebar-nav-item-text'>{{ item.name }}</RouterLink>
         </div>
       </div>
     </div>
-    <div class="project-register-content">
-      <RouterView/>
+    <div class='project-register-content'>
+      <RouterView />
     </div>
   </div>
 </template>
 
 
-<script lang="ts" setup>
-import {RouterView, RouterLink} from 'vue-router'
+<script lang='ts' setup>
+import { RouterLink, RouterView } from 'vue-router'
+import { computed } from 'vue'
+import { useMakerStore } from '@/modules/store/projectStore'
 
 const sidebar: any = [
   {
-    name: "메이커 정보",
-    url: "/projects/maker"
+    name: '메이커 정보',
+    url: '/projects/maker'
   },
   {
-    name: "프로젝트 정보",
-    url: "/projects/project-info"
+    name: '프로젝트 정보',
+    url: '/projects/project-info'
   },
   {
-    name: "기본 정보",
-    url: "/projects/basic-information"
+    name: '기본 정보',
+    url: '/projects/basic-information'
   },
   {
-    name: "스토리 작성",
-    url: "/projects/story"
+    name: '스토리 작성',
+    url: '/projects/story'
   },
   {
-    name: "상품 등록",
-    url: "/projects/products"
+    name: '상품 등록',
+    url: '/projects/products'
   },
   {
-    name: "롯딜 선택",
-    url: "/projects/lotdeal"
+    name: '롯딜 선택',
+    url: '/projects/lotdeal'
   }
 ]
+
+const maker = computed(() => useMakerStore().makerData)
+console.log(maker)
+
 </script>
 
-<style lang="css" scoped>
+<style lang='css' scoped>
 @import "../assets/css/projectregister/projectRegister.css";
 </style>

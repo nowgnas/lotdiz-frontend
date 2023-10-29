@@ -1,6 +1,6 @@
 <script setup lang='ts'>
-import GuideComponent from '@/modules/project/components/GuideComponent.vue'
-import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
+import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
+import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
@@ -56,5 +56,5 @@ const guideContent = {
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/ProductRegister.css";
+@import "../../../../assets/css/projectregister/ProductRegister.css";
 </style>
