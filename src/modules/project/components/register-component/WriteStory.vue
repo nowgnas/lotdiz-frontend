@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 
-import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
-import GuideBox from '@/modules/project/components/GuideBox.vue'
+import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
+import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 
 const projectContentTitle = {
@@ -72,6 +72,6 @@ const storyImage = {
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/projectContentItem.css";
-@import "../../../assets/css/projectregister/ProjectStory.css";
+@import "../../../../assets/css/projectregister/projectContentItem.css";
+@import "../../../../assets/css/projectregister/ProjectStory.css";
 </style>

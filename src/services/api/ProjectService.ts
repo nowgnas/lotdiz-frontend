@@ -1,14 +1,15 @@
 import { getData, postData, putData } from '@/services/api/APISpec'
 import type {
-  CommonProjectsResponse,
-  ProjectDetailResponse,
   BannersResponse,
+  CommonProjectsResponse,
   LotdealProject,
-  SpecialExhibition,
+  ProjectDetailResponse,
   ProjectsByCategory,
-  SupportSignature, SupportSignatureResponse
+  SpecialExhibition,
+  SupportSignature,
+  SupportSignatureResponse
 } from '@/services/types/ProjectResponse'
-import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse'
+import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
 
 export const getProjectsByCategory = async (categoryName: string, page: number, size: number, sort: string): Promise<CommonProjectsResponse<ProjectsByCategory>> => {
   try {

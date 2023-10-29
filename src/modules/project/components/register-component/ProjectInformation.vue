@@ -3,7 +3,7 @@
 import {ref} from "vue";
 import CategoryDropDown from "@/modules/project/components/buttons/CategoryDropDown.vue";
 import SaveButton from "@/modules/project/components/buttons/SaveButton.vue";
-import ProjectContentTitle from "@/modules/project/components/ProjectContentTitle.vue";
+import ProjectContentTitle from "@/modules/project/components/register-component/ProjectContentTitle.vue";
 
 const project = ref({
   categoryId: 0,
@@ -49,7 +49,7 @@ const content = {
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/basicInformation.css";
-@import "../../../assets/css/projectregister/projectRegister.css";
-@import "../../../assets/css/projectregister/projectContentItem.css";
+@import "../../../../assets/css/projectregister/basicInformation.css";
+@import "../../../../assets/css/projectregister/projectRegister.css";
+@import "../../../../assets/css/projectregister/projectContentItem.css";
 </style>
