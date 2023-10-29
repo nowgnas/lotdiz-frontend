@@ -38,6 +38,7 @@ export const getBanners = async (): Promise<BannersResponse> => {
 
     return response.data
   } catch (error: unknown) {
+    console.log(error)
     throw new Error((<ErrorResponse>error).detail)
   }
 }
