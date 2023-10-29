@@ -29,12 +29,11 @@ export const useProjectStore = defineStore("project", {
       products: []
     }
   }),
-
   actions: {
     setData(projectDetails: ProjectDetail) {
       this.projectDetails = projectDetails;
     }
   },
-
+  persist: true,
 });
 
