@@ -17,7 +17,7 @@
 
 <script lang='ts' setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import { useMakerStore } from '@/modules/store/projectStore'
 
 const sidebar: any = [
@@ -48,7 +48,22 @@ const sidebar: any = [
 ]
 
 const maker = computed(() => useMakerStore().makerData)
-console.log(maker)
+
+const reloadFlag = ref(false)
+
+window.addEventListener('beforeunload', confirmNavigation)
+reloadFlag.value = true
+
+
+function confirmNavigation(event: any) {
+  if (reloadFlag.value) {
+    event.returnValue = 'If you reload, you may lose your data.'
+  }
+}
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', confirmNavigation)
+})
 
 </script>
 

@@ -12,3 +12,14 @@ export const useMakerStore = defineStore({
     }
   }
 })
+export const useProjectInformationStore = defineStore({
+  id: 'data',
+  state: () => ({
+    projectInformation: {}
+  }),
+  actions: {
+    setProjectInformation(data: object) {
+      this.projectInformation = data
+    }
+  }
+})
