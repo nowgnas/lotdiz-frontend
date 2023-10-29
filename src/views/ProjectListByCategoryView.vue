@@ -49,10 +49,10 @@
   <!-- sort section start -->
   <div id="sort-bar">
     <div class="sort-select-bar">
-      <div class="sort-condition" @click="sort='createdAt,desc'">
+      <div class="sort" :class="{ 'active': sort === 'createdAt,desc'}"  @click="sort='createdAt,desc'">
           최신순
       </div>
-      <div class="sort-condition" @click="sort='projectDueDate,asc'">
+      <div class="sort" :class="{ 'active': sort === 'projectDueDate,asc'}" @click="sort='projectDueDate,asc'">
         마감임박순
       </div>
     </div>

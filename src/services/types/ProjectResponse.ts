@@ -8,6 +8,16 @@ export interface SupportSignatureResponse<T> {
   supportSignatures: Array<T>
 }
 
+export interface SupportWithUsResponse {
+  'supporterWithUsInfo': SupportWithUsInfo
+}
+
+export interface SupportWithUsInfo {
+  count: number,
+  totalPages: number,
+  supporterInfoResponseDtos: Array<SupporterInfo>
+}
+
 export interface BannersResponse {
   banners: Array<Banner>,
 }
@@ -82,7 +92,7 @@ export interface SpecialExhibition {
   isLike: boolean;
 }
 
-export interface  BestLotdPlusProject {
+export interface BestLotdPlusProject {
 
   projectId: number;
   projectName: string;
@@ -95,13 +105,27 @@ export interface  BestLotdPlusProject {
   isLike: boolean;
 
 }
-export interface  SupportSignature {
+
+export interface SupportSignature {
   supportSignatureId: number;
   supporterName: string;
   supporterImageUrl: string;
   supportSignatureContent: string;
   createdAt: string;
   isSignatureOfLoggedUser: boolean;
+}
+
+export interface SupporterInfo {
+
+  supportWithUsId: number;
+  supporterWithUsIsNamePublic: boolean;
+  supporterWithUsIsAmountPublic: boolean
+  memberId: number;
+  memberName: string;
+  memberProfileImageUrl: string;
+  fundingTotalAmount: number;
+  fundingSupportAmount: number;
+  createdAt: string;
 }
 
 export interface ProjectImage {
