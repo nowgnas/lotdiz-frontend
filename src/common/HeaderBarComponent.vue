@@ -26,8 +26,9 @@
     </div>
 
     <div id="member-bar">
-      <RouterLink to="/"><div class="sign-btn">로그인</div></RouterLink>
-      <RouterLink to="/"><div class="sign-btn">회원가입</div></RouterLink>
+        <RouterLink v-if='jwtToken !== null' to='/member/my-page'><div class="sign-btn">마이페이지</div></RouterLink>
+        <RouterLink v-if='jwtToken === null' to="/member/sign-in"><div class="sign-btn">로그인</div></RouterLink>
+        <RouterLink v-if='jwtToken === null' to="/member/sign-up"><div class="sign-btn">회원가입</div></RouterLink>
     </div>
 
   </div>            
@@ -36,6 +37,8 @@
 <script setup lang="ts">
 import { watch, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router';
+
+const jwtToken: string = ref(localStorage.getItem("jwtToken"));
 
 const route = useRoute();
 const currentPath = ref<string>('');
