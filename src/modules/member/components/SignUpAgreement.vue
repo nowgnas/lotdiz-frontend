@@ -49,8 +49,8 @@
       <router-link to="/member/sign-up/basic-info"
         ><button @click="validCheck">
           <span style="color: black; padding-right: 5px">Lotdiz</span> 회원가입하기
-        </button></router-link
-      >
+        </button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -61,7 +61,7 @@ import { nextTick } from 'vue';
 
 const memberStore = useMemberStore()
 
-const validCheck = async (event: any) => {
+const validCheck = async(event: any) => {
   await nextTick(); // DOM이 준비될 때까지 대기
   let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null;
   if (!checkbox?.checked) {
@@ -75,20 +75,9 @@ const validCheck = async (event: any) => {
 </script>
 
 <style>
-@import '@/assets/signup.css';
+@import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 
-#sec-agreement-box {
-  height: 350px;
-  border: 1px solid #d3d3d3;
-  overflow: auto;
-  padding-left: 10px;
-  /* width: 1098px; */
-}
-
-#sec-agreement-check {
-  padding: 20px 0;
-  border-bottom: 2px solid #d3d3d3;
-}
+@import '@/assets/css/member/sign-up-agreement.css';
 </style>

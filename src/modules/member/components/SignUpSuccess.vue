@@ -26,44 +26,7 @@ const memberName = memberStore.memberName;
 </script>
 
 <style>
-  @import '@/assets/signup.css';
-  .sec-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    padding-top: 0;
-    border-bottom: 2px solid var(--icon-color);
-    height: 380px;
-  }
+@import '@/assets/css/member/sign-up-common.css';
 
-  #icon-complete {
-    font-size: 150px;
-    color: var(--main-color);
-  }
-
-  #text-complete {
-    font-size: 35px;
-  }
-
-  #text-detail-complete {
-    padding-top: 3%;
-  }
-
-  #member-name-wrapper {
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  #btn-home {
-    color: var(--icon-color);
-    font-size: 20px;
-    font-weight: bold;
-    padding: 8px 25px;
-    border: 2px solid var(--icon-color);
-  }
-
-  .sec-btn {
-    align-items: center;
-  }
+@import '@/assets/css/member/sign-up-success.css';
 </style>

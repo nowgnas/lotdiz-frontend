@@ -31,7 +31,7 @@
     <div class="btn-next">
       <button @click="finalCheck">다음</button>
     </div>
-<!--    <loading :active="loading" :can-cancel="true"></loading>-->
+
   </div>
 </template>
 
@@ -40,17 +40,16 @@ import { useMemberStore } from '../../stores/member';
 import router from '../../../router/index';
 import { ref, inject } from 'vue';
 import emailjs from '@emailjs/browser';
-const { VITE_PUBLIC_KEY, VITE_SERVER_ID, VITE_TEMPLATE_ID } = import.meta.env;
 import { postMemberInfoForSignUp } from '@/services/api/MemberService';
 import type { MemberInfoForSignUpRequest } from '@/services/types/MemberRequest';
 import 'vue-loading-overlay/dist/css/index.css';
 
+const { VITE_PUBLIC_KEY, VITE_SERVER_ID, VITE_TEMPLATE_ID } = import.meta.env;
+
 const memberStore = useMemberStore();
 const isEmailSent = ref(false);
 const isEmailCert = ref(false);
-const loading = ref(false);
 
-const $loading = inject('$loading');
 
 const sendEmail = () => {
   emailjs.init(VITE_PUBLIC_KEY);
@@ -62,13 +61,6 @@ const sendEmail = () => {
     확인을 눌러주세요`
   }
 
-  // const loader = $loading.show({
-  //       width: 200,
-  //       height: 200,
-  //       backgroundColor: '#ffffff',
-  //       isFullPage: true,
-  //       color: '#58C1C2',
-  // });
   emailjs.send(VITE_SERVER_ID, VITE_TEMPLATE_ID, params).then(
     (result) => {
       isEmailSent.value = true;
@@ -98,13 +90,6 @@ const finalCheck = () => {
     return
   } else {
     if (confirm('회원가입을 완료하시겠습니까?')) {
-      // const loader = $loading.show({
-      //   width: 200,
-      //   height: 200,
-      //   backgroundColor: '#ffffff',
-      //   isFullPage: true,
-      //   color: '#58C1C2',
-      // });
       const signupRequest: MemberInfoForSignUpRequest = {
         username: memberStore.username,
         memberPassword: memberStore.memberPassword,
@@ -116,7 +101,6 @@ const finalCheck = () => {
       postMemberInfoForSignUp(signupRequest)
         .then(() => {
           memberStore.increaseActiveNo();
-          // loader.hide();
           router.push('/member/sign-up/success');
         })
         .catch((error) => {
@@ -134,60 +118,7 @@ const decreaseActiveNo = () => {
 </script>
 
 <style>
-@import '@/assets/signup.css';
-.sec-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  /* justify-content: center; */
-  padding-top: 2%;
-  /* align-items: center; */
-}
+@import '@/assets/css/member/sign-up-common.css';
 
-#icon-email-wrapper {
-  box-sizing: border-box;
-  height: 35px;
-  /* border: 2.5px solid var(--main-color); */
-  border: none;
-  /* padding: 0 5px; */
-  color: var(--icon-color);
-  font-size: 25px;
-  /* padding-top: 5px; */
-}
-
-#input-send-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-#input-cert-email {
-  height: 35px;
-  width: 350px;
-  border: 2px solid var(--main-color);
-  box-sizing: border-box;
-  border-right: none;
-}
-
-#btn-cert-email {
-  color: white;
-  height: 35px;
-  box-sizing: border-box;
-  background-color: var(--deep-color);
-  padding: 2px 15px;
-  cursor: pointer;
-  border: none;
-  font-size: 18px;
-}
-
-#btn-cert-check {
-  color: white;
-  height: 35px;
-  box-sizing: border-box;
-  background-color: var(--deep-color);
-  padding: 2px 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
+@import '@/assets/css/member/sign-up-email-auth.css';
 </style>

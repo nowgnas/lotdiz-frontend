@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { getMembershipInfoForShow } from '../../../services/api/MemberService';
+import { getMembershipInfoForShow } from '@/services/api/MemberService';
 
 const membershipGrade = ref('');
 const membershipJoinFee = ref(0);
@@ -37,44 +37,5 @@ const membershipJoinCompleteClose = () => {
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 
-body, ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  height: 100vh;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-#membership-join-complete-header {
-  width: 100%;
-  background-color: tomato;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#membership-join-complete-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#membership-join-complete-body {
-  padding-top: 20px;
-}
-
-.btn-popup-close {
-  background-color: tomato;
-  padding: 10px 30px;
-  border-radius: 5px;
-  text-align: center;
-  margin-top: 50px;
-  color: white;
-  cursor: pointer;
-}
+@import '@/assets/css/member/membership-payments-complete.css';
 </style>

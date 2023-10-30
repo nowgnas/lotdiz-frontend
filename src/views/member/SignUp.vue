@@ -66,62 +66,9 @@ if (window.location.href === "http://localhost:5173/member/sign-up/success") {
 </script>
 
 <style>
-  @import '@/assets/color.css';
-  @import '@/assets/signup.css';
-  @import '@/assets/font.css';
+@import '@/assets/color.css';
+@import '@/assets/css/member/sign-up-common.css';
+@import '@/assets/font.css';
 
-  body, ul, li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  #header-signup {
-    height: 54px;
-    background-color: var(--main-color);
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  #progress-bar-signup {
-    height: 125px;
-    background-color: #F8F8F8;
-    display: flex;
-    gap: 50px;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 400px;
-  }
-
-  .icon-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    color: var(--icon-color);
-  }
-
-  #contents-signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 80px;
-  }
-
-  .increase-icon-size {
-    font-size: 50px;
-    color: var(--icon-color);
-  }
-
-  .isActive {
-    color: var(--main-color);
-  }
+@import '@/assets/css/member/sign-up.css';
 </style>

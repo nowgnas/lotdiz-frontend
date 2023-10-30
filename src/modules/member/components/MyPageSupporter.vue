@@ -11,7 +11,7 @@
             </svg>
             <p class="card-text">포인트</p>
           </div>
-          <div class="card-value">{{ points }}</div><!--hard coding.-->
+          <div class="card-value">{{ points }}</div>
         </div>
         <div class="card-body" id="grade-card">
           <div class="card-icon-text-wrapper">
@@ -20,9 +20,9 @@
                   d="M41.6951 4.85693H8.54449C6.24467 4.85693 4.40067 6.70094 4.40067 9.00076V31.7918C4.40067 34.0916 6.24467 35.9356 8.54449 35.9356H16.8321V46.2952L25.1198 42.1514L33.4074 46.2952V35.9356H41.6951C43.9949 35.9356 45.8389 34.0916 45.8389 31.7918V9.00076C45.8389 6.70094 43.9949 4.85693 41.6951 4.85693ZM41.6951 31.7918H8.54449V27.648H41.6951V31.7918ZM41.6951 21.4322H8.54449V9.00076H41.6951V21.4322Z"
                   fill="black"/>
             </svg>
-            <p class="card-text">멤버십등급</p><!--hard coding.-->
+            <p class="card-text">멤버십등급</p>
           </div>
-          <div class="card-value">{{ membershipGrade }}</div><!--hard coding.-->
+          <div class="card-value">{{ membershipGrade }}</div>
         </div>
       </div>
       <div class="card-body" id="funding-history-card">
@@ -92,116 +92,5 @@ onMounted(() => {
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 
-.card-container {
-  padding-top: 5%;
-  padding-left: 5%;
-  display: flex;
-  gap: 50px;
-  justify-content: start;
-}
-
-.card-text {
-  font-size: 20px;
-  padding-left: 10px;
-  padding-top: 5px;
-  display: flex;
-  align-items: center;
-}
-
-.card-body {
-  border: 1px solid var(--card-border-color);
-  background-color: var(--card-bg-color);
-  border-radius: 5px;
-  padding: 10px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#point-card {
-  width: 500px;
-  height: 50px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  display: flex;
-  align-items: center;
-}
-
-.card-icon-text-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#grade-card {
-  width: 500px;
-  height: 50px;
-  border-top: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  display: flex;
-  align-items: center;
-}
-
-#funding-history-card {
-  width: 450px;
-}
-
-.card-value {
-  color: var(--main-color);
-  font-weight: bold;
-  font-size: 18px;
-}
-
-#funding-history-value {
-  color: var(--middle-gray);
-  font-weight: bold;
-  font-size: 18px;
-  padding-right: 10px;
-}
-
-#activity-history-container{
-  padding-top: 8%;
-  padding-left: 5%;
-}
-
-#activity-history-title {
-  font-size: 23px;
-}
-
-#activity-type-wrapper {
-  padding-left: 30px;
-  padding-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-#activity-first-row {
-  display: flex;
-  gap: 50px;
-  font-size: 20px;
-}
-
-.activity-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 525px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--middle-gray);
-}
-
-#activity-second-row {
-  display: flex;
-  gap: 50px;
-  font-size: 20px;
-}
-
-.activity-title {
-  width: 300px;
-}
-
-.activity-open {
-  cursor: pointer;
-}
+@import '@/assets/css/member/my-page-supporter.css';
 </style>
