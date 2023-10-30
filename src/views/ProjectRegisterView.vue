@@ -48,8 +48,6 @@ const sidebar: any = [
 ]
 
 const maker = computed(() => useMakerStore().makerData)
-console.log(maker)
-
 </script>
 
 <style lang='css' scoped>
