@@ -3,7 +3,6 @@
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
-import * as events from 'events'
 import { ref } from 'vue'
 import { useProjectStoryStore } from '@/modules/store/projectStore'
 
@@ -32,7 +31,7 @@ const projectStory = ref({
   projectStoryImageUrl: ''
 })
 
-const storyDescription = (value: events) => {
+const storyDescription = (value: any) => {
   projectStory.value.projectDescription = value.target.value
 }
 const emitData = () => {
