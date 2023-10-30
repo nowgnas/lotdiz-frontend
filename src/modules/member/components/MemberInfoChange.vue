@@ -75,7 +75,7 @@ onMounted(() => {
   })
 })
 
-const submitForm = (event) => {
+const submitForm = (event: any) => {
   event.preventDefault()
   const memberInfoForChangeRequest: MemberInfoForChangeRequest = {
     memberName: memberName.value,

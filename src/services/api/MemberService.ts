@@ -78,7 +78,7 @@ export const deleteLikes = async (projectId: number) => {
 
 export const getMemberPointsForShow = async () => {
   try {
-    const response = await getData<Long>(`/member-service/api/members/points`)
+    const response = await getData<number>(`/member-service/api/members/points`)
     return response.data
   } catch (error: unknown) {
     throw new Error('포인트 조회 실패')

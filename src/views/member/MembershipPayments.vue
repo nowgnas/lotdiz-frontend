@@ -123,7 +123,7 @@ onMounted(() => {
     .then(response => {
       memberName.value = response.memberName;
     }).catch(error => {
-      console.error("회원 정보 조회 실패:". error);
+      console.error("회원 정보 조회 실패:", error);
   })
 })
 

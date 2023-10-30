@@ -67,7 +67,7 @@
 import { getMemberPointsForShow, getMembershipInfoForShow } from '../../../services/api/MemberService';
 import { ref,onMounted } from 'vue'
 
-const points: number = ref(0);
+const points = ref(0);
 const membershipGrade = ref('');
 
 onMounted(() => {
