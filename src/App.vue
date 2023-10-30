@@ -1,8 +1,6 @@
 <script setup lang='ts'>
 import { RouterView } from 'vue-router'
-import HeaderBarComponent from '@/common/HeaderBarComponent.vue'
-import ProjectDetailsNavBarComponent from '@/modules/project/components/ProjectDetailsNavBarComponent.vue'
-import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
+import HeaderBarComponent from '@/common/HeaderBarComponent.vue';
 
 const isNonHeaderPath = (): boolean => {
   const url: string = window.location.href;
@@ -12,6 +10,8 @@ const isNonHeaderPath = (): boolean => {
   }
   return false;
 }
+
+
 </script>
 
 <template>
@@ -21,24 +21,8 @@ const isNonHeaderPath = (): boolean => {
       <HeaderBarComponent v-if="!isNonHeaderPath()"/>
     </header>
     <main role='main' style='height:100%;'>
-
-      <div v-if="$route.path.includes('/project-details')">
-        <div id='project-details-nav-bar'>
-          <ProjectDetailsNavBarComponent />
-        </div>
-
-        <div id='project-details-contents'>
-          <RouterView />
-          <ProjectInfoComponent />
-        </div>
-      </div>
-
-      <div v-else style='height:100%;'>
-        <RouterView />
-      </div>
-
+      <RouterView />
     </main>
-
 
     <footer>
 

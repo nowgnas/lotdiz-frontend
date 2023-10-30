@@ -6,6 +6,7 @@ const persistentStateStore = usePersistentedStateStore();
 
 export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -16,6 +17,7 @@ export const getData = async <T>(url: string): Promise<SuccessResponse<T>> => {
     const response = await client.get<SuccessResponse<T>>(url)
     return response.data
   } catch (error: unknown) {
+    console.error(error)
     console.error((<ErrorResponse>error).detail)
     throw new Error((<ErrorResponse>error).message)
   }
@@ -26,6 +28,7 @@ export const getDataWithAuth = async <T>(url: string): Promise<SuccessResponse<T
     const response = await client.get<SuccessResponse<T>>(url)
     return response.data
   } catch (error: unknown) {
+    console.error(error)
     console.error((<ErrorResponse>error).detail)
     throw new Error((<ErrorResponse>error).message)
   }

@@ -9,6 +9,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
+// import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 
 import App from './App.vue'
 import router from './router'
@@ -21,9 +23,11 @@ import '@/assets/css/fonts.css'
 library.add(fas, fab, far);
 
 const app = createApp(App)
+// const pinia = createPinia()
 
 app.use(pinia)
 app.component('VueDatePicker', VueDatePicker)
+pinia.use(piniaPluginPersistedstate)
 app.use(router)
 app.use(LoadingPlugin)
 app.component("font-awesome-icon", FontAwesomeIcon)
