@@ -38,7 +38,7 @@
 import { watch, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router';
 
-const jwtToken: string = ref(localStorage.getItem("jwtToken"));
+const jwtToken = ref(localStorage.getItem("jwtToken"));
 
 const route = useRoute();
 const currentPath = ref<string>('');
