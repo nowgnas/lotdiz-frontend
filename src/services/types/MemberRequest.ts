@@ -22,5 +22,5 @@ export interface MemberInfoForChangeRequest {
   memberName: string,
   originPassword: string,
   newPassword: string,
-  memberPhoneNumber: string,
+  memberPhoneNumber: string
 }

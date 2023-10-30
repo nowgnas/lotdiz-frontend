@@ -27,12 +27,20 @@
           <input type='text' id='input-change-phone-no' class='input-change' v-model='memberPhoneNo' required />
         </div>
       </div>
-      <div id='sec-unchange-n-btn'>
-        <div>
+      <div id='sec-unchanged-n-btn'>
+        <div id='input-unchanged-wrapper'>
           <div>
-            <label for='input-unchange-email'>이메일</label>
+            <div>
+              <label for='input-unchanged-email'>이메일</label>
+            </div>
+            <input type='text' id='input-unchanged-email' v-model='memberEmail' readonly>
           </div>
-          <input type='text' id='input-unchange-email' v-model='memberEmail' readonly>
+          <div id='text-unchanged-createdAt-wrapper'>
+            <div>
+              <label for='text-unchanged-createdAt' id='sub-title-unchanged-createdAt'><p>생성날짜</p></label>
+            </div>
+            <div id='text-unchanged-createdAt'>{{ createdAt }}</div>
+          </div>
         </div>
         <div id='bt-member-info-change-wrapper'>
           <input type='submit' id='btn-member-info-change' value='수정하기'>
@@ -47,39 +55,39 @@ import type { MemberInfoForChangeRequest } from '@/services/types/MemberRequest'
 import { getMemberInfo, putMemberInfoForChange } from '../../../services/api/MemberService'
 import { ref, onMounted } from 'vue'
 
-const memberName = ref('');
-const memberPhoneNo = ref('');
-const memberEmail = ref('');
-const originPassword = ref('');
-const newPassword = ref('');
-// const createdAt = ref('');
+const memberName = ref('')
+const memberPhoneNo = ref('')
+const memberEmail = ref('')
+const originPassword = ref('')
+const newPassword = ref('')
+const createdAt = ref('')
 
 onMounted(() => {
   getMemberInfo()
     .then(response => {
-      memberName.value = response.memberName;
-      memberPhoneNo.value = response.memberPhoneNumber;
-      memberEmail.value = response.memberEmail;
-      // createdAt.value = response.createdAt;
-
+      memberName.value = response.memberName
+      memberPhoneNo.value = response.memberPhoneNumber
+      memberEmail.value = response.memberEmail
+      createdAt.value = response.createdAt
+      createdAt.value = createdAt.value.replace("T", " ")
     }).catch(error => {
-      console.error('멤버 수정전 정보 조회 실패')
+    console.error('멤버 수정전 정보 조회 실패')
   })
 })
 
 const submitForm = async (event) => {
-  event.preventDefault();
+  event.preventDefault()
   const memberInfoForChangeRequest: MemberInfoForChangeRequest = {
     memberName: memberName.value,
     originPassword: 'woo1234@',
     newPassword: 'woo1234@',
-    memberPhoneNumber: memberPhoneNo.value,
+    memberPhoneNumber: memberPhoneNo.value
   }
   putMemberInfoForChange(memberInfoForChangeRequest)
     .then(response => {
       alert('회원 정보 수정 완료되었습니다.')
     }).catch(error => {
-      console.error("회원 정보 수정 실패:", error)
+    console.error('회원 정보 수정 실패:', error)
   })
 
 }
@@ -125,18 +133,41 @@ const submitForm = async (event) => {
   cursor: pointer;
 }
 
-#sec-unchange-n-btn {
+#sec-unchanged-n-btn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-#input-unchange-email {
+#input-unchanged-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#input-unchanged-email {
   background-color: var(--card-bg-color);
   height: 30px;
   width: 450px;
   border: none;
   border: 1px solid var(--card-border-color);
   border-radius: 5px;
+}
+
+#text-unchanged-createdAt-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+#sub-title-unchanged-createdAt {
+  display: flex;
+  align-items: center;
+  color: var(--icon-color);
+}
+
+#text-unchanged-createdAt {
+  color: var(--icon-color);
+  display: flex;
+  align-items: center;
 }
 </style>
