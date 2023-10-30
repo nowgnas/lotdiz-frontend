@@ -18,7 +18,7 @@
 <script lang='ts' setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { computed, onBeforeUnmount, ref } from 'vue'
-import { useMakerStore } from '@/modules/store/projectRegisterStore'
+import { useMakerStore } from '@/store/registerProjectStore'
 
 
 const sidebar: any = [

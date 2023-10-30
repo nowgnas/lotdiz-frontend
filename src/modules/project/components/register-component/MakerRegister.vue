@@ -3,7 +3,7 @@ import ContentTextInputField from '@/modules/project/components/register-compone
 import { ref } from 'vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
-import { useMakerStore } from '@/modules/store/projectRegisterStore'
+import { useMakerStore } from '@/store/registerProjectStore'
 
 const makerInputComponent = ref({
   makerEmail: {

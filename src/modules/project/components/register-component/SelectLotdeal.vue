@@ -5,7 +5,7 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
 import { ref } from 'vue'
-import { useSelectLotdealStore } from '@/modules/store/projectRegisterStore'
+import { useSelectLotdealStore } from '@/store/registerProjectStore'
 
 const projectContentTitle = {
   title: '롯딜 선택',

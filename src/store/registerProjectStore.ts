@@ -51,10 +51,10 @@ export const useSelectLotdealStore = defineStore({
 export const useProjectInformationStore = defineStore({
   id: 'data',
   state: () => ({
-    projectInformation: {}
+    projectInformation: null
   }),
   actions: {
-    setProjectInformation(data: object) {
+    setProjectInformation(data: any) {
       this.projectInformation = data
     }
   }
