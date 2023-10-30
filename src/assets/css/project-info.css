@@ -10,7 +10,7 @@
 
 #details-project-info {
   display: flex;
-  width: 508px;
+  /*width: 508px;*/
   height: 359px;
   flex-direction: column;
   justify-content: center;
@@ -166,7 +166,7 @@
   display: flex;
   /* padding: 0px 5px; */
   align-items: center;
-  gap: 215px;
+  gap: 283px;
   align-self: stretch;
 }
 
