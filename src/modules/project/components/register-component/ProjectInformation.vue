@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import CategoryDropDown from '@/modules/project/components/buttons/CategoryDropDown.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
-import { useProjectInformationStore } from '@/modules/store/projectStore'
+import { useProjectInformationStore } from '@/modules/store/projectRegisterStore'
 
 const project = ref({
   categoryId: 0,

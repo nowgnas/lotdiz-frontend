@@ -5,6 +5,7 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
 import { ref } from 'vue'
+import { useSelectLotdealStore } from '@/modules/store/projectRegisterStore'
 
 const projectContentTitle = {
   title: '롯딜 선택',
@@ -41,6 +42,9 @@ const selectDefault = {
   content: '롯딜 없이 펀딩 할게요 !',
   selectedValue: 'normal'
 }
+const emitData = () => {
+  useSelectLotdealStore().setLotdealData({ isLotdeal: selectedBox })
+}
 </script>
 
 <template>
@@ -53,7 +57,7 @@ const selectDefault = {
       <LotdealSelectionBox :content='selectDefault' @click="selectBox('normal')"
                            :class="{'button-with-shadow': selectedBox === 'normal'}" :selected='selectedBox' />
     </div>
-    <SaveButton />
+    <SaveButton @click='emitData' />
   </div>
 </template>
 

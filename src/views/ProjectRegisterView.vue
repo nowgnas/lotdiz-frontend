@@ -18,7 +18,8 @@
 <script lang='ts' setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { computed, onBeforeUnmount, ref } from 'vue'
-import { useMakerStore } from '@/modules/store/projectStore'
+import { useMakerStore } from '@/modules/store/projectRegisterStore'
+
 
 const sidebar: any = [
   {
@@ -48,6 +49,7 @@ const sidebar: any = [
 ]
 
 const maker = computed(() => useMakerStore().makerData)
+
 
 const reloadFlag = ref(false)
 
