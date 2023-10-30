@@ -175,15 +175,12 @@ const modalControl = () => {
 }
 
 const likes = async () => {
-
   if (isLikes.value) {
     await deleteLikes(projectId.value)
     isLikes.value = false
-    router.go(0)
   } else {
     await createLikes(projectId.value)
     isLikes.value = true
-    router.go(0)
   }
 }
 
@@ -200,6 +197,7 @@ const createSupportSignatureRequest = async () => {
 onBeforeMount(() => {
   projectDetails.value = projectStore.projectDetails
   isLikes.value = projectDetails.value?.isLike
+  projectId.value = projectDetails.value?.projectId
 })
 
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {

@@ -1,0 +1,12 @@
+#sec-agreement-box {
+    height: 350px;
+    border: 1px solid #d3d3d3;
+    overflow: auto;
+    padding-left: 10px;
+    /* width: 1098px; */
+}
+
+#sec-agreement-check {
+    padding: 20px 0;
+    border-bottom: 2px solid #d3d3d3;
+}

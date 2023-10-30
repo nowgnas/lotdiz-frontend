@@ -71,6 +71,10 @@
 
 }
 
+.support-signature-write-box:hover {
+    cursor: pointer;
+}
+
 .support-signature-write-logo {
     display: flex;
     /*padding: 10px;*/
