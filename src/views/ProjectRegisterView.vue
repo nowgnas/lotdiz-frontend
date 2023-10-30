@@ -20,6 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { computed } from 'vue'
 import { useMakerStore } from '@/store/registerProjectStore'
 
+
 const sidebar: any = [
   {
     name: '메이커 정보',
@@ -48,8 +49,6 @@ const sidebar: any = [
 ]
 
 const maker = computed(() => useMakerStore().makerData)
-console.log(maker)
-
 </script>
 
 <style lang='css' scoped>

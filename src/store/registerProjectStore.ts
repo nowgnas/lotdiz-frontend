@@ -12,15 +12,14 @@ export const useMakerStore = defineStore({
     }
   }
 })
-export const useDefaultInformationStore = defineStore({
+export const useProjectStoryStore = defineStore({
   id: 'data',
   state: () => ({
-    defaultInformation: null
+    projectStoryData: null
   }),
   actions: {
-    setDefaultInformation(data: any) {
-      console.log(this.defaultInformation)
-      this.defaultInformation = data
+    setProjectStoryData(data: any) {
+      this.projectStoryData = data
     }
   }
 })
@@ -32,6 +31,31 @@ export const useProductRegisterStore = defineStore({
   actions: {
     setProductsData(data: any) {
       this.productsData = data
+    }
+  }
+})
+export const useSelectLotdealStore = defineStore({
+  id: 'data',
+  state: () => ({
+    isLotdeal: false
+  }),
+  actions: {
+    setLotdealData(data: any) {
+      if (data.isLotdeal.value == 'lotdeal')
+        this.isLotdeal = true
+      else
+        this.isLotdeal = false
+    }
+  }
+})
+export const useDefaultInformationStore = defineStore({
+  id: 'data',
+  state: () => ({
+    defaultInformation: null
+  }),
+  actions: {
+    setDefaultInformation(data: any) {
+      this.defaultInformation = data
     }
   }
 })

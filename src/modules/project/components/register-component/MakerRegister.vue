@@ -1,9 +1,9 @@
 <script setup lang='ts'>
 import ContentTextInputField from '@/modules/project/components/register-component/ContentTextInputField.vue'
-import { ref } from 'vue'
+import {ref} from 'vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
-import { useMakerStore } from '@/store/registerProjectStore'
+import {useMakerStore} from '@/store/registerProjectStore'
 
 const makerInputComponent = ref({
   makerEmail: {
@@ -57,24 +57,24 @@ const addProfile = () => {
   uploadProfile.value.click()
 }
 const emitData = () => {
-  useMakerStore().setMakerData({ maker: maker })
+  useMakerStore().setMakerData({maker: maker})
 }
 
 
 </script>
 
 <template>
-  <ProjectContentTitle :title='contentTitle' />
+  <ProjectContentTitle :title='contentTitle'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerEmail'
-    :placeholder='makerInputComponent.makerEmail.placeholder'
-    :title='makerInputComponent.makerEmail.title'
-    :is-required='true' />
+      v-model:model-value='maker.makerEmail'
+      :placeholder='makerInputComponent.makerEmail.placeholder'
+      :title='makerInputComponent.makerEmail.title'
+      :is-required='true'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerName'
-    :placeholder='makerInputComponent.makerName.placeholder'
-    :title='makerInputComponent.makerName.title'
-    :is-required='true' />
+      v-model:model-value='maker.makerName'
+      :placeholder='makerInputComponent.makerName.placeholder'
+      :title='makerInputComponent.makerName.title'
+      :is-required='true'/>
   <div class='project-content-box'>
     <div class='title'>
       <div class='text'>메이커 프로필 이미지</div>
@@ -85,31 +85,31 @@ const emitData = () => {
     <input type='file' ref='uploadProfile' style='display: none'>
   </div>
   <ContentTextInputField
-    v-model:model-value='maker.contactEmail'
-    :placeholder='makerInputComponent.contactEmail.placeholder'
-    :title='makerInputComponent.contactEmail.title'
-    :is-required='true' />
+      v-model:model-value='maker.contactEmail'
+      :placeholder='makerInputComponent.contactEmail.placeholder'
+      :title='makerInputComponent.contactEmail.title'
+      :is-required='true'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerPhoneNumber'
-    :placeholder='makerInputComponent.makerPhoneNumber.placeholder'
-    :title='makerInputComponent.makerPhoneNumber.title'
-    :is-required='true' />
+      v-model:model-value='maker.makerPhoneNumber'
+      :placeholder='makerInputComponent.makerPhoneNumber.placeholder'
+      :title='makerInputComponent.makerPhoneNumber.title'
+      :is-required='true'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerKakaoUrl'
-    :placeholder='makerInputComponent.makerKakaoUrl.placeholder'
-    :title='makerInputComponent.makerKakaoUrl.title'
-    :is-required='false' />
+      v-model:model-value='maker.makerKakaoUrl'
+      :placeholder='makerInputComponent.makerKakaoUrl.placeholder'
+      :title='makerInputComponent.makerKakaoUrl.title'
+      :is-required='false'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerHomeUrl'
-    :placeholder='makerInputComponent.makerHomeUrl.placeholder'
-    :title='makerInputComponent.makerHomeUrl.title'
-    :is-required='false' />
+      v-model:model-value='maker.makerHomeUrl'
+      :placeholder='makerInputComponent.makerHomeUrl.placeholder'
+      :title='makerInputComponent.makerHomeUrl.title'
+      :is-required='false'/>
   <ContentTextInputField
-    v-model:model-value='maker.makerSnsUrl'
-    :placeholder='makerInputComponent.makerSnsUrl.placeholder'
-    :title='makerInputComponent.makerSnsUrl.title'
-    :is-required='false' />
-  <SaveButton @click='emitData' />
+      v-model:model-value='maker.makerSnsUrl'
+      :placeholder='makerInputComponent.makerSnsUrl.placeholder'
+      :title='makerInputComponent.makerSnsUrl.title'
+      :is-required='false'/>
+  <SaveButton @click='emitData'/>
 </template>
 
 <style scoped>
