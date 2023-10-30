@@ -68,7 +68,7 @@ const props = defineProps({
         accumulatedFundingAmount: 0,
         lotdealDueTime: '',
         projectStatus: '',
-        isLike: false
+        isLikes: false
       }
     }
   }
@@ -83,7 +83,7 @@ const lotdealDueTime = ref<string>(props.project?.lotdealDueTime)
 const projectStatus = ref<string>(props.project?.projectStatus)
 
 const projectId = ref<number>(props.project?.projectId)
-const isLikes = ref<boolean>(props.project?.isLike)
+const isLikes = ref<boolean>(props.project?.isLikes)
 
 const projectThumbnailImageUrl = ref<string>(props.project?.projectThumbnailImageUrl)
 

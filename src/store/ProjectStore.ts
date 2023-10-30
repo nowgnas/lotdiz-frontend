@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import type { ProjectDetail } from '@/services/types/ProjectResponse';
-import { ProjectDetailResponse } from '@/services/types/ProjectResponse'
+import type { ProjectDetailResponse } from '@/services/types/ProjectResponse'
+import { getProjectDetails } from '@/services/api/ProjectService';
 
 interface ProjectState {
   projectDetails: ProjectDetail;
@@ -20,7 +21,7 @@ export const useProjectStore = defineStore("project", {
       numberOfBuyers: 0,
       numberOfSupporter: 0,
       numberOfLikes: 0,
-      isLike:false,
+      isLikes:false,
       fundingAchievementRate: 0,
       accumulatedFundingAmount: 0,
       projectStoryImageUrl: '',

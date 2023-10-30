@@ -56,7 +56,7 @@ const props = defineProps({
         accumulatedFundingAmount: 0,
         lotdealDueTime: '',
         projectStatus: '',
-        isLike: false
+        isLikes: false
       }
     }
   }

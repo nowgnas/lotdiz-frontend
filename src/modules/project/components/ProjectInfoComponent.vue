@@ -178,13 +178,13 @@ const modalControl = () => {
 const likes = async () => {
   if (isLikes.value) {
     await deleteLikes(projectId.value)
-    isLikes.value = false
   } else {
     await createLikes(projectId.value)
-    isLikes.value = true
   }
   await projectStore.setData(projectId.value)
   projectDetails.value = projectStore.projectDetails
+  isLikes.value = projectDetails.value?.isLikes
+
 }
 
 const createSupportSignatureRequest = async () => {
@@ -199,14 +199,15 @@ const createSupportSignatureRequest = async () => {
 
 onBeforeMount(() => {
   projectDetails.value = projectStore.projectDetails
-  isLikes.value = projectDetails.value?.isLike
+  isLikes.value = projectDetails.value?.isLikes
   projectId.value = projectDetails.value?.projectId
+
 })
 
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
   if (newProjectId !== -1) {
     projectDetails.value = projectStore.projectDetails
-    isLikes.value = projectDetails.value?.isLike
+    isLikes.value = projectDetails.value?.isLikes
     projectId.value = projectDetails.value?.projectId
   }
 })
