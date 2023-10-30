@@ -6,7 +6,7 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ContentTextInputField from '@/modules/project/components/register-component/ContentTextInputField.vue'
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
-import { useDefaultInformationStore } from '@/modules/store/projectStore'
+import { useDefaultInformationStore } from '@/modules/store/registerProjectStore'
 import AWS from 'aws-sdk'
 
 const inputComponentData = ref({
