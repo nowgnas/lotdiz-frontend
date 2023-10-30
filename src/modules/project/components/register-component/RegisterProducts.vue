@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
-import { useProductRegisterStore } from '@/modules/store/projectRegisterStore'
+import { useProductRegisterStore } from '@/store/registerProjectStore'
 
 
 const showModal = ref(false)
@@ -64,5 +64,5 @@ const emitData = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/ProductRegister.css";
+@import "@/assets/css/projectregister/ProductRegister.css";
 </style>

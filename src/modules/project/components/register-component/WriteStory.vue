@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
-import { useProjectStoryStore } from '@/modules/store/projectRegisterStore'
+import { useProjectStoryStore } from '@//store/registerProjectStore'
 
 const projectContentTitle = {
   title: '스토리 작성',
@@ -86,6 +86,6 @@ const emitData = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/projectContentItem.css";
-@import "../../../../assets/css/projectregister/ProjectStory.css";
+@import "@/assets/css/projectregister/projectContentItem.css";
+@import "@/assets/css/projectregister/ProjectStory.css";
 </style>

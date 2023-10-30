@@ -48,3 +48,14 @@ export const useSelectLotdealStore = defineStore({
     }
   }
 })
+export const useDefaultInformationStore = defineStore({
+  id: 'data',
+  state: () => ({
+    defaultInformation: null
+  }),
+  actions: {
+    setDefaultInformation(data: any) {
+      this.defaultInformation = data
+    }
+  }
+})
