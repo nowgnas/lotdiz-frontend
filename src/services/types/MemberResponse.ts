@@ -10,8 +10,8 @@ export interface MemberInfoForQueryResponse {
     memberId: number;
     memberName: string;
     memberPhoneNumber: string;
-    memberProfileImageUrl: string;
-    membershipPolicyId: number;
+    memberEmail: string;
+    // createdAt: string;
 }
 
 export interface KakaoPayReadyResponse {
