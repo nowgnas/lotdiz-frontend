@@ -266,6 +266,10 @@
   flex-shrink: 0;
 }
 
+.details-likes-logo:hover {
+  cursor: pointer;
+}
+
 .details-likes-count {
   display: flex;
   align-items: center;

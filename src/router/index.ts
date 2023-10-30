@@ -105,7 +105,8 @@ const router = createRouter({
     {
       path: '/notifications',
       name: 'notifications',
-      component: NotificationView
+      component: NotificationView,
+      meta: { authRequired: true }
     },
     {
       path: '/projects/category',
@@ -150,7 +151,8 @@ const router = createRouter({
     {
       path: '/funding',
       name: 'funding',
-      component: FundingView
+      component: FundingView,
+      meta: { authRequired: true }
     },
     {
       path: '/projects',
@@ -177,11 +179,13 @@ const router = createRouter({
           path: 'products',
           component: RegisterProducts
         }
-      ]
+      ],
+      meta: { authRequired: true }
     },
     {
       path: '/maker/projects',
-      component: RegisteredProjects
+      component: RegisteredProjects,
+      meta: { authRequired: true }
     }
   ]
 });
@@ -191,8 +195,15 @@ router.beforeEach(async (to, from, next) => {
 
   const jwtToken = localStorage.getItem("jwtToken");
 
+  if(to.path.indexOf("/support-signature") !== -1) {
+    client.interceptors.request.use((config) => {
+      config.headers.setAuthorization(jwtToken);
+      return config;
+    }, (error) => Promise.reject(error));
+  }
+
   if(to.matched.some(record =>  record.meta.authRequired )) {
-    if(jwtToken === "") {
+    if(jwtToken === null) {
       next({
         path: '/member/sign-in',
         query: {redirect:to.fullPath}
