@@ -85,3 +85,11 @@ export const modifySupportSignature = async (projectId: number) => {
   }
 }
 
+export const getPresignedUrl = async (imageName: String) => {
+  try {
+    const response = await postData(`/project-service/api/presigned-url`, imageName)
+    return response.data
+  } catch (e) {
+    throw new Error((<ErrorResponse>e).detail)
+  }
+}
