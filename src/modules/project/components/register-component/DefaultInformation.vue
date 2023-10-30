@@ -7,6 +7,7 @@ import ContentTextInputField from '@/modules/project/components/register-compone
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import { useDefaultInformationStore } from '@/modules/store/projectStore'
+import AWS from 'aws-sdk'
 
 const inputComponentData = ref({
   projectName: {
