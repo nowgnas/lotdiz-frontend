@@ -160,8 +160,9 @@ import { createLikes, deleteLikes } from '@/services/api/MemberService'
 import { createSupportSignature } from '@/services/api/ProjectService'
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 import type { ProjectDetail } from '@/services/types/ProjectResponse'
+import { ProjectDetailResponse } from '@/services/types/ProjectResponse'
 
-const router = useRouter()
+// const router = useRouter()
 const projectStore = useProjectStore()
 const projectDetails = ref<ProjectDetail>()
 
@@ -182,6 +183,8 @@ const likes = async () => {
     await createLikes(projectId.value)
     isLikes.value = true
   }
+  await projectStore.setData(projectId.value)
+  projectDetails.value = projectStore.projectDetails
 }
 
 const createSupportSignatureRequest = async () => {
@@ -201,9 +204,10 @@ onBeforeMount(() => {
 })
 
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
-  if (newProjectId !== 0) {
+  if (newProjectId !== -1) {
     projectDetails.value = projectStore.projectDetails
     isLikes.value = projectDetails.value?.isLike
+    projectId.value = projectDetails.value?.projectId
   }
 })
 

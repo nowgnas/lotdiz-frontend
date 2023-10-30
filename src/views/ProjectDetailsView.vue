@@ -63,17 +63,19 @@ const checkPath = (path: string) => {
 }
 
 onBeforeMount(async () => {
-  if (!isNaN(projectId)) {
-    try {
-      const response: ProjectDetailResponse = await getProjectDetails(projectId)
-      projectDetailResponse.value = response.projectDetail
-      if (projectDetailResponse.value !== undefined) {
-        projectStore.setData(projectDetailResponse.value)
-      }
-    } catch (error) {
-      alert('프로젝트 조회 실패')
-    }
-  }
+  // if (!isNaN(projectId)) {
+  //   try {
+  //     const response: ProjectDetailResponse = await getProjectDetails(projectId)
+  //     projectDetailResponse.value = response.projectDetail
+  //     if (projectDetailResponse.value !== undefined) {
+  //       projectStore.setData(projectDetailResponse.value)
+  //     }
+  //   } catch (error) {
+  //     alert('프로젝트 조회 실패')
+  //   }
+  // }
+  await projectStore.setData(projectId)
+  projectDetailResponse.value = projectStore.projectDetails
 })
 
 onMounted(() => {
