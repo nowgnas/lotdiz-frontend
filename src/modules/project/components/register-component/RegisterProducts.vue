@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
-import { useProductRegisterStore } from '@/modules/store/projectStore'
+import { useProductRegisterStore } from '@/modules/store/projectRegisterStore'
 
 
 const showModal = ref(false)
