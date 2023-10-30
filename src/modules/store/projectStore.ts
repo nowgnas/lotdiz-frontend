@@ -12,3 +12,14 @@ export const useMakerStore = defineStore({
     }
   }
 })
+export const useProductRegisterStore = defineStore({
+  id: 'data',
+  state: () => ({
+    productsData: null
+  }),
+  actions: {
+    setProductsData(data: any) {
+      this.productsData = data
+    }
+  }
+})
