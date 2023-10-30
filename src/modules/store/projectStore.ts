@@ -12,3 +12,15 @@ export const useMakerStore = defineStore({
     }
   }
 })
+export const useDefaultInformationStore = defineStore({
+  id: 'data',
+  state: () => ({
+    defaultInformation: null
+  }),
+  actions: {
+    setDefaultInformation(data: any) {
+      console.log(this.defaultInformation)
+      this.defaultInformation = data
+    }
+  }
+})

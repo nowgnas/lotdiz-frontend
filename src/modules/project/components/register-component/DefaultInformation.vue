@@ -6,6 +6,7 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ContentTextInputField from '@/modules/project/components/register-component/ContentTextInputField.vue'
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
+import { useDefaultInformationStore } from '@/modules/store/projectStore'
 
 const inputComponentData = ref({
   projectName: {
@@ -19,7 +20,7 @@ const inputComponentData = ref({
 })
 
 const projectNameCnt = ref(40)
-const dto = ref({
+const projectDefaultInfo = ref({
   projectName: '',
   projectTag: '',
   projectThumbnailImageUrl: '',
@@ -33,7 +34,7 @@ const format = (date: Date) => {
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-  dto.value.projectDueDate = `${year}-${month}-${day}T${hour}:${minute}:${second}`
+  projectDefaultInfo.value.projectDueDate = `${year}-${month}-${day}T${hour}:${minute}:${second}`
 }
 const inputFile = ref()
 const thumbnailGuideBox = {
@@ -55,15 +56,15 @@ const addImage = () => {
 
 
 const countProjectTitle = () => {
-  projectNameCnt.value = 40 - dto.value.projectName.length
+  projectNameCnt.value = 40 - projectDefaultInfo.value.projectName.length
 }
 
 const projectName = (event: any) => {
-  dto.value.projectName = event.target.value
+  projectDefaultInfo.value.projectName = event.target.value
   countProjectTitle()
 }
 const getProjectTag = (e: any) => {
-  dto.value.projectTag = e.target.value
+  projectDefaultInfo.value.projectTag = e.target.value
 }
 
 const projectContentTitle = {
@@ -71,16 +72,19 @@ const projectContentTitle = {
   description: '프로젝트를 대표하는 중요한 정보들을 입력해 주세요.'
 }
 
+const emitData = () => {
+  useDefaultInformationStore().setDefaultInformation({ defaultInformation: projectDefaultInfo })
+}
+
 </script>
 
 <template>
   <ProjectContentTitle :title='projectContentTitle' />
   <ContentTextInputField
-    @input='projectName'
+    v-model:model-value='projectDefaultInfo.projectName'
     :placeholder='inputComponentData.projectName.placeholder'
     :title='inputComponentData.projectName.title'
-    :is-required='true'
-    :text-cnt='40' />
+    :is-required='true' />
   <div class='thumbnail-image'>
     <div class='thumbnail-image-title-box'>
       <div class='text'>프로젝트 썸네일 이미지</div>
@@ -98,14 +102,14 @@ const projectContentTitle = {
       <div class='project-due-date-title-box'>
         <div class='text'>프로젝트 종료일</div>
       </div>
-      <VueDatePicker v-model='dto.projectDueDate' />
+      <VueDatePicker v-model='projectDefaultInfo.projectDueDate' @input='format' />
     </div>
     <ContentTextInputField
-      @input='getProjectTag'
+      v-model:model-value='projectDefaultInfo.projectTag'
       :placeholder='inputComponentData.projectTag.placeholder'
       :title='inputComponentData.projectTag.title'
       :is-required='true' />
-    <SaveButton />
+    <SaveButton @click='emitData' />
   </div>
 
 </template>
