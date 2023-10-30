@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 
 export const useMakerStore = defineStore({
-  id: 'data',
+  id: 'maker',
   state: () => ({
     makerData: null
   }),
@@ -13,7 +13,7 @@ export const useMakerStore = defineStore({
   }
 })
 export const useProjectStoryStore = defineStore({
-  id: 'data',
+  id: 'story',
   state: () => ({
     projectStoryData: null
   }),
@@ -24,7 +24,7 @@ export const useProjectStoryStore = defineStore({
   }
 })
 export const useProductRegisterStore = defineStore({
-  id: 'data',
+  id: 'products',
   state: () => ({
     productsData: null
   }),
@@ -35,21 +35,29 @@ export const useProductRegisterStore = defineStore({
   }
 })
 export const useSelectLotdealStore = defineStore({
-  id: 'data',
+  id: 'lotdeal',
   state: () => ({
     isLotdeal: false
   }),
   actions: {
     setLotdealData(data: any) {
-      if (data.isLotdeal.value == 'lotdeal')
-        this.isLotdeal = true
-      else
-        this.isLotdeal = false
+      this.isLotdeal = data.isLotdeal.value == 'lotdeal'
+    }
+  }
+})
+export const useProjectInformationStore = defineStore({
+  id: 'information',
+  state: () => ({
+    projectInformation: null
+  }),
+  actions: {
+    setProjectInformation(data: any) {
+      this.projectInformation = data
     }
   }
 })
 export const useDefaultInformationStore = defineStore({
-  id: 'data',
+  id: 'defaultInformation',
   state: () => ({
     defaultInformation: null
   }),

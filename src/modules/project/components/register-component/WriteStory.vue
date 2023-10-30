@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
-import { useProjectStoryStore } from '@//store/registerProjectStore'
+import { useProjectStoryStore } from '@/store/registerProjectStore'
 
 const projectContentTitle = {
   title: '스토리 작성',
