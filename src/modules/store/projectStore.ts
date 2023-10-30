@@ -23,3 +23,17 @@ export const useProductRegisterStore = defineStore({
     }
   }
 })
+export const useSelectLotdealStore = defineStore({
+  id: 'data',
+  state: () => ({
+    isLotdeal: false
+  }),
+  actions: {
+    setLotdealData(data: any) {
+      if (data.isLotdeal.value == 'lotdeal')
+        this.isLotdeal = true
+      else
+        this.isLotdeal = false
+    }
+  }
+})
