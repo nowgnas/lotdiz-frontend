@@ -8,6 +8,16 @@ export interface SupportSignatureResponse<T> {
   supportSignatures: Array<T>
 }
 
+export interface SupportWithUsResponse {
+  'supporterWithUsInfo': SupportWithUsInfo
+}
+
+export interface SupportWithUsInfo {
+  count: number,
+  totalPages: number,
+  supporterInfoResponseDtos: Array<SupporterInfo>
+}
+
 export interface BannersResponse {
   banners: Array<Banner>,
 }
@@ -40,6 +50,7 @@ export interface ProjectDetail {
   numberOfBuyers: number;
   numberOfSupporter: number;
   numberOfLikes: number;
+  isLike: boolean;
   fundingAchievementRate: number;
   accumulatedFundingAmount: number;
   projectStoryImageUrl: string;
@@ -81,11 +92,39 @@ export interface SpecialExhibition {
   isLike: boolean;
 }
 
-export interface  SupportSignature {
+export interface BestLotdPlusProject {
+
+  projectId: number;
+  projectName: string;
+  remainingDays: number;
+  projectThumbnailImageUrl: string;
+  makerName: string;
+  fundingAchievementRate: string;
+  accumulatedFundingAmount: number;
+  projectStatus: string;
+  isLike: boolean;
+
+}
+
+export interface SupportSignature {
   supportSignatureId: number;
   supporterName: string;
   supporterImageUrl: string;
   supportSignatureContent: string;
+  createdAt: string;
+  isSignatureOfLoggedUser: boolean;
+}
+
+export interface SupporterInfo {
+
+  supportWithUsId: number;
+  supporterWithUsIsNamePublic: boolean;
+  supporterWithUsIsAmountPublic: boolean
+  memberId: number;
+  memberName: string;
+  memberProfileImageUrl: string;
+  fundingTotalAmount: number;
+  fundingSupportAmount: number;
   createdAt: string;
 }
 
