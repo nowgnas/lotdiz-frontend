@@ -12,6 +12,18 @@ export const useMakerStore = defineStore({
     }
   }
 })
+export const useProjectStoryStore = defineStore({
+  id: 'data',
+  state: () => ({
+    projectStoryData: null
+  }),
+  actions: {
+    setProjectStoryData(data: any) {
+      console.log(data)
+      this.projectStoryData = data
+    }
+  }
+})
 export const useProductRegisterStore = defineStore({
   id: 'data',
   state: () => ({
