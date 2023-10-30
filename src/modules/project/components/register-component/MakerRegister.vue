@@ -113,9 +113,9 @@ const emitData = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/basicInformation.css";
-@import "../../../../assets/css/projectregister/projectRegister.css";
-@import "../../../../assets/css/projectregister/projectContentItem.css";
-@import "../../../../assets/css/projectregister/MakerRegister.css";
+@import "@/assets/css/projectregister/basicInformation.css";
+@import "@/assets/css/projectregister/projectRegister.css";
+@import "@/assets/css/projectregister/projectContentItem.css";
+@import "@/assets/css/projectregister/MakerRegister.css";
 
 </style>

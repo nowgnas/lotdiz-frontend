@@ -16,6 +16,7 @@ import WriteStory from '@/modules/project/components/register-component/WriteSto
 import RegisterProducts from '@/modules/project/components/register-component/RegisterProducts.vue'
 import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
+import SelectLotdeal from '@/modules/project/components/register-component/SelectLotdeal.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,6 +100,10 @@ const router = createRouter({
         {
           path: 'products',
           component: RegisterProducts
+        },
+        {
+          path: 'lotdeal',
+          component: SelectLotdeal
         }
       ]
     },

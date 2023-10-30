@@ -58,5 +58,5 @@ const selectDefault = {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/SelectLotdeal.css";
+@import "@/assets/css/projectregister/SelectLotdeal.css";
 </style>

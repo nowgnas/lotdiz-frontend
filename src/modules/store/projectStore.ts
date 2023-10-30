@@ -24,3 +24,14 @@ export const useDefaultInformationStore = defineStore({
     }
   }
 })
+export const useProductRegisterStore = defineStore({
+  id: 'data',
+  state: () => ({
+    productsData: null
+  }),
+  actions: {
+    setProductsData(data: any) {
+      this.productsData = data
+    }
+  }
+})
