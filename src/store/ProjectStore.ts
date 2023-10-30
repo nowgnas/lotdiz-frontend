@@ -32,7 +32,7 @@ export const useProjectStore = defineStore("project", {
     }
   }),
   actions: {
-    async setData (projectId: string)  {
+    async setData (projectId: number)  {
       try {
         const response: ProjectDetailResponse = await getProjectDetails(projectId)
         if (response.projectDetail !== undefined) {

@@ -154,15 +154,12 @@
 <script setup lang='ts'>
 import { ref, watch, onBeforeMount } from 'vue'
 import { useProjectStore } from '@/store/ProjectStore'
-import { useRouter } from 'vue-router'
 import ProductComponent from '@/modules/project/components/ProductComponent.vue'
 import { createLikes, deleteLikes } from '@/services/api/MemberService'
 import { createSupportSignature } from '@/services/api/ProjectService'
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 import type { ProjectDetail } from '@/services/types/ProjectResponse'
-import { ProjectDetailResponse } from '@/services/types/ProjectResponse'
 
-// const router = useRouter()
 const projectStore = useProjectStore()
 const projectDetails = ref<ProjectDetail>()
 
@@ -184,7 +181,6 @@ const likes = async () => {
   await projectStore.setData(projectId.value)
   projectDetails.value = projectStore.projectDetails
   isLikes.value = projectDetails.value?.isLikes
-
 }
 
 const createSupportSignatureRequest = async () => {
@@ -201,7 +197,6 @@ onBeforeMount(() => {
   projectDetails.value = projectStore.projectDetails
   isLikes.value = projectDetails.value?.isLikes
   projectId.value = projectDetails.value?.projectId
-
 })
 
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
