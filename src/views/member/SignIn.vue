@@ -29,7 +29,9 @@ import type { InfoForSignIn } from '@/services/types/MemberRequest';
 import { ref } from 'vue';
 import { postInfoForSignIn } from '@/services/api/MemberService';
 import router from '../../router/index';
+import { useHeaderStore } from '@/stores/headerStore';
 
+const headerStore = useHeaderStore();
 const username = ref('');
 const password = ref('');
 
@@ -43,10 +45,9 @@ const submitForm = () => {
       alert('로그인 성공했습니다.');
       const authorization = response.headers["authorization"];
       console.log("authorization:", authorization);
-      // persistentedStateStore._customProperties.add(authorization);
-      // persistentedStateStore.$state.jwtToken = authorization;
       localStorage.setItem("jwtToken", authorization);
       document.cookie = "jwtToken=" + authorization;
+      headerStore.assignIsNoHeaderPath(false)
       router.push('/');
     })
     .catch((error: unknown) => {

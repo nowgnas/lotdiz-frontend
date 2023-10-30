@@ -1,8 +1,5 @@
 import axios, {Axios} from 'axios';
 import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
-import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
-
-const persistentStateStore = usePersistentedStateStore();
 
 export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
