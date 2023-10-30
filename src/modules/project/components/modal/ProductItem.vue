@@ -83,6 +83,6 @@ const emitProductItem = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/ProductItemModal.styl";
-@import "../../../../assets/css/projectregister/ProductItemModal.css";
+@import "@/assets/css/projectregister/ProductItemModal.styl";
+@import "@/assets/css/projectregister/ProductItemModal.css";
 </style>

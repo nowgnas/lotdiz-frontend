@@ -86,6 +86,6 @@ const emitData = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/projectContentItem.css";
-@import "../../../../assets/css/projectregister/ProjectStory.css";
+@import "@/assets/css/projectregister/projectContentItem.css";
+@import "@/assets/css/projectregister/ProjectStory.css";
 </style>

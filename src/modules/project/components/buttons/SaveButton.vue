@@ -11,5 +11,5 @@
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/SaveButton.css";
+@import "@/assets/css/projectregister/SaveButton.css";
 </style>

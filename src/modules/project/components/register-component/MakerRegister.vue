@@ -60,7 +60,6 @@ const emitData = () => {
   useMakerStore().setMakerData({ maker: maker })
 }
 
-
 </script>
 
 <template>
@@ -75,15 +74,6 @@ const emitData = () => {
     :placeholder='makerInputComponent.makerName.placeholder'
     :title='makerInputComponent.makerName.title'
     :is-required='true' />
-  <div class='project-content-box'>
-    <div class='title'>
-      <div class='text'>메이커 프로필 이미지</div>
-    </div>
-    <div class='maker-profile-register-btn' @click='addProfile'>
-      <div class='text'>사진 등록하기</div>
-    </div>
-    <input type='file' ref='uploadProfile' style='display: none'>
-  </div>
   <ContentTextInputField
     v-model:model-value='maker.contactEmail'
     :placeholder='makerInputComponent.contactEmail.placeholder'
@@ -113,9 +103,9 @@ const emitData = () => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/basicInformation.css";
-@import "../../../../assets/css/projectregister/projectRegister.css";
-@import "../../../../assets/css/projectregister/projectContentItem.css";
-@import "../../../../assets/css/projectregister/MakerRegister.css";
+@import "@/assets/css/projectregister/basicInformation.css";
+@import "@/assets/css/projectregister/projectRegister.css";
+@import "@/assets/css/projectregister/projectContentItem.css";
+@import "@/assets/css/projectregister/MakerRegister.css";
 
 </style>
