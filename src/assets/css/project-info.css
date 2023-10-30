@@ -244,6 +244,10 @@
   gap: 15px;
 }
 
+.details-likes-clap:hover {
+  cursor: pointer;
+}
+
 .details-likes {
   display: flex;
   gap: 1px;

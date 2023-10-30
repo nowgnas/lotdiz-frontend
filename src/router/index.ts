@@ -191,11 +191,9 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  console.log("router beforeEach here");
 
   const jwtToken = localStorage.getItem("jwtToken");
-
-  if(to.path.indexOf("/support-signature") !== -1) {
+  if(jwtToken !== null) {
     client.interceptors.request.use((config) => {
       config.headers.setAuthorization(jwtToken);
       return config;
@@ -204,17 +202,11 @@ router.beforeEach(async (to, from, next) => {
 
   if(to.matched.some(record =>  record.meta.authRequired )) {
     if(jwtToken === null) {
+      alert('로그인이 필요한 페이지 입니다.');
       next({
         path: '/member/sign-in',
         query: {redirect:to.fullPath}
       })
-      alert('로그인이 필요한 페이지 입니다.');
-    } else {
-      client.interceptors.request.use((config) => {
-        config.headers.setAuthorization(jwtToken);
-        return config;
-      }, (error) => Promise.reject(error));
-      next();
     }
   } else {
     next();

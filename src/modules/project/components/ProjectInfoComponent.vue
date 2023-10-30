@@ -166,6 +166,7 @@ const projectDetails = ref<ProjectDetail>()
 const modalCheck = ref<boolean>(false)
 const projectId = ref<number>(-1)
 const isLikes = ref<boolean>(false)
+const numberOfSupporter = ref<number>(0)
 const inputSupportSignatureContents = ref<string>('')
 
 const modalControl = () => {
@@ -187,6 +188,7 @@ const createSupportSignatureRequest = async () => {
   const inputSupportSignatureContentsRequest: InputSupportSignatureContentsRequest = { supportSignatureContents: inputSupportSignatureContents.value }
   try {
     await createSupportSignature(projectId.value, inputSupportSignatureContentsRequest)
+
     inputSupportSignatureContents.value = ''
   } catch (error) {
     alert(error)
@@ -199,6 +201,7 @@ onBeforeMount(() => {
   projectId.value = projectDetails.value?.projectId
 })
 
+
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
   if (newProjectId !== -1) {
     projectDetails.value = projectStore.projectDetails
@@ -207,6 +210,12 @@ watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
   }
 })
 
+watch(() => projectStore.projectDetails.numberOfSupporter, (newNumberOfSupporter) => {
+  if(newNumberOfSupporter !== projectDetails.value?.numberOfSupporter) {
+    projectDetails.value = projectStore.projectDetails
+    numberOfSupporter.value = projectDetails.value?.numberOfSupporter
+  }
+})
 
 </script>
 

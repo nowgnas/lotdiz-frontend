@@ -121,11 +121,13 @@ const likes = async (e: any) => {
   e.stopPropagation()
   if (isLikes.value) {
     await deleteLikes(projectId.value)
-    isLikes.value = false
+    isLikes.value = false;
   } else {
     await createLikes(projectId.value)
-    isLikes.value = true
+    isLikes.value = true;
   }
+
+
 }
 </script>
 
