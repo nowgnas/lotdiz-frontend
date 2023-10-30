@@ -3,6 +3,9 @@
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
+import * as events from 'events'
+import { ref } from 'vue'
+import { useProjectStoryStore } from '@/modules/store/projectStore'
 
 const projectContentTitle = {
   title: '스토리 작성',
@@ -22,8 +25,19 @@ const storyImage = {
     '프로젝트에 대한 상세 설명을 등록해 주세요.',
     '10MB 이하의 JPG, JPEG, PNG 파일'
   ]
-};
+}
+const projectStory = ref({
+  projectThumbnailImageUrl: '',
+  projectDescription: '',
+  projectStoryImageUrl: ''
+})
 
+const storyDescription = (value: events) => {
+  projectStory.value.projectDescription = value.target.value
+}
+const emitData = () => {
+  useProjectStoryStore().setProjectStoryData({ projectStoryData: projectStory })
+}
 </script>
 
 <template>
@@ -52,6 +66,7 @@ const storyImage = {
       <div class='text'>프로젝트 상세 설명</div>
     </div>
     <textarea class='project-detail' name='description' id='projectDetail' cols='30' rows='10'
+              @input='storyDescription'
               placeholder='내용을 입력해 주세요.'></textarea>
   </div>
   <div class='project-content-box'>
@@ -68,7 +83,7 @@ const storyImage = {
     </div>
     <input type='file' ref='storyImageInput' style='display: none'>
   </div>
-  <SaveButton />
+  <SaveButton @click='emitData' />
 </template>
 
 <style scoped>
