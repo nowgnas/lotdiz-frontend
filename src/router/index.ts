@@ -193,6 +193,7 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
 
   const jwtToken = localStorage.getItem("jwtToken");
+
   if(jwtToken !== null) {
     client.interceptors.request.use((config) => {
       config.headers.setAuthorization(jwtToken);
@@ -207,10 +208,11 @@ router.beforeEach(async (to, from, next) => {
         path: '/member/sign-in',
         query: {redirect:to.fullPath}
       })
+
+      alert('로그인이 필요한 페이지 입니다.');
     }
-  } else {
-    next();
   }
+  next();
 });
 
 export default router;
