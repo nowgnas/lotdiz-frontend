@@ -21,8 +21,7 @@ import { ref, onBeforeMount, watch, onMounted } from 'vue'
 import { useProjectStore } from '@/store/ProjectStore'
 import { RouterView, useRoute } from 'vue-router'
 
-import { getProjectDetails } from '@/services/api/ProjectService'
-import type { ProjectDetailResponse, ProjectDetail } from '@/services/types/ProjectResponse'
+import type { ProjectDetail } from '@/services/types/ProjectResponse'
 
 import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
 
@@ -31,7 +30,7 @@ const projectDetailResponse = ref<ProjectDetail>()
 
 const route = useRoute()
 const projectId = Number(route.params.id)
-const currentPath = ref<string>('');
+const currentPath = ref<string>('')
 
 const projectDetailsNavBar: any = ref([
     {
@@ -63,17 +62,8 @@ const checkPath = (path: string) => {
 }
 
 onBeforeMount(async () => {
-  if (!isNaN(projectId)) {
-    try {
-      const response: ProjectDetailResponse = await getProjectDetails(projectId)
-      projectDetailResponse.value = response.projectDetail
-      if (projectDetailResponse.value !== undefined) {
-        projectStore.setData(projectDetailResponse.value)
-      }
-    } catch (error) {
-      alert('프로젝트 조회 실패')
-    }
-  }
+  await projectStore.setData(projectId)
+  projectDetailResponse.value = projectStore.projectDetails
 })
 
 onMounted(() => {

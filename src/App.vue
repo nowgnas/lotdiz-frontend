@@ -22,7 +22,14 @@ onMounted(() => {
     headerStore.assignIsNoHeaderPath(false)
   }
 })
-
+const isNonHeaderPath = (): boolean => {
+  const url: string = window.location.href
+  // const host = ""
+  if (url === 'http://localhost:5173/member/sign-in' || url === 'http://localhost:5173/member/sign-up' || url === 'http://localhost:5173/member/membership-honors/join/success') {
+    return true
+  }
+  return false
+}
 
 </script>
 
