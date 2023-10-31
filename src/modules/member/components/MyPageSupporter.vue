@@ -47,7 +47,11 @@
           </div>
           <div class="activity-wrapper">
             <div class="activity-title">찜내역</div>
-            <div class="activity-open"><font-awesome-icon :icon="['fas', 'chevron-right']" /></div>
+            <div class="activity-open">
+              <a href='/member/likes-list'>
+                <font-awesome-icon :icon="['fas', 'chevron-right']" />
+              </a>
+            </div>
           </div>
         </div>
         <div id="activity-second-row">
