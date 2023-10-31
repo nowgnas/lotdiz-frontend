@@ -1,0 +1,90 @@
+#form-basic-info {
+    min-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 50px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+#input-username-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#input-username-sub-wrapper {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+#input-username-1,
+#input-username-2 {
+    width: 158px;
+    height: 25px;
+    border: 2px solid var(--main-color);
+}
+
+#input-member-name,
+#input-member-password,
+#input-member-password-check,
+#input-member-phone-no {
+    width: 350px;
+    height: 25px;
+    border: 2px solid var(--main-color);
+}
+
+.label-width {
+    width: 150px;
+    text-align: right;
+}
+
+.label-loc-start {
+    padding-bottom: 34px;
+}
+
+.label-email-loc-start {
+    padding-bottom: 23px;
+}
+
+.astar-color {
+    color: var(--error-color);
+}
+
+#input-select {
+    border: 2px solid var(--main-color);
+}
+
+#normal-msg {
+    font-size: small;
+    color: var(--icon-color);
+}
+
+#error-msg {
+    font-size: small;
+    color: var(--error-color);
+}
+
+#right-msg {
+    font-size: small;
+    color: var(--success-color);
+}
+
+#btn-double-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 31px;
+    padding: 0 10px;
+    background-color: var(--deep-color);
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+}

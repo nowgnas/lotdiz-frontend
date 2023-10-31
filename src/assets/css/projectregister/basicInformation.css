@@ -1,0 +1,168 @@
+.project-title-box {
+    display: flex;
+    width: 1553px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.project-title-box > .title {
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 35px */
+}
+
+.remain-text {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.remain-text > .text {
+    color: #878787;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 23.8px */
+}
+
+.thumbnail-image {
+    display: flex;
+    width: 1553px;
+    height: 355px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.thumbnail-image-title-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.thumbnail-image-title-box > .text {
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 35px */
+}
+
+
+.camera-image-box {
+    display: flex;
+    width: 156px;
+    height: 94px;
+    padding: 8px 6px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #878787;
+}
+
+
+.project-due-date-box {
+    display: flex;
+    width: 1553px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.project-due-date-title-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-due-date-title-box > .text {
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 35px */
+}
+
+.due-date-box {
+    display: flex;
+    justify-content: space-between;
+    width: 1011px;
+    height: 91px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 35px */
+}
+
+.due-date-box > .calendar-img {
+    justify-content: flex-end;
+}
+
+.search-tag-box {
+    display: flex;
+    width: 1553px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.search-tag-title-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-tag-title-box > .text {
+    color: #000;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 35px */
+}
+
+.search-tag-description-box {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-tag-description-box > .text {
+    color: #878787;
+    text-align: center;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 28px */
+}

@@ -1,0 +1,132 @@
+.content-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 800px;
+
+    gap: 1.125rem;
+
+    margin-top: 50px;
+}
+
+.notification-header {
+    display: flex;
+    flex-direction: column;
+
+    width: 52rem;
+    height: 7.0625rem;
+}
+
+.notification-header-header-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 0.625rem;
+
+    padding: 20px;
+}
+
+.notification-header-header-title-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.notification-header-content-text {
+    padding: 10px;
+    padding-left: 20px;
+    font-weight: 500;
+}
+
+.notification-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 20px;
+}
+
+.notification-title-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.notification-title-text {
+    font-weight: 700;
+}
+
+.notification-title-date-text {
+    font-weight: 700;
+}
+
+.notification-box {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.notification-body {
+    width: 52rem;
+    height: 12.375rem;
+}
+
+.notification-body-content {
+    display: flex;
+    padding: 20px;
+
+    font-weight: 600;
+}
+
+.notification-header, .notification-body {
+    background: rgba(241, 241, 241, 0.51);
+    border-radius: 0.625rem;
+}
+
+.notification-number-box {
+    display: flex;
+    width: 4.375rem;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.noti-number {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    position: absolute;
+    right: 0.21875rem;
+    top: 0.03125rem;
+
+    .number {
+        display: flex;
+        padding: 0.625rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.625rem;
+        position: absolute;
+        left: 0.375rem;
+        top: 0.3125rem;
+
+        .text {
+            color: #FFF;
+            font-family: Inter;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}
+
+.number-box {
+    display: flex;
+    padding: 0.625rem;
+    align-items: flex-start;
+    gap: 0.625rem;
+}

@@ -1,47 +1,28 @@
 <template>
 
   <!-- categoty menu section start -->
-  <div id="cateogory-menu-bar">
+  <div id="category-menu-bar">
   <div id="category-menu">
     <div class="category-logo" v-if="category==='가전'">
-       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
-          <path d="M36.3636 0.5H3.63636C1.63636 0.5 0 2.5 0 4.94444V31.6111C0 34.0556 1.63636 36.0556 3.63636 36.0556H12.7273V40.5H27.2727V36.0556H36.3636C38.3636 36.0556 39.9818 34.0556 39.9818 31.6111L40 4.94444C40 2.5 38.3636 0.5 36.3636 0.5ZM36.3636 31.6111H3.63636V4.94444H36.3636V31.6111Z" fill="#0787FD"/>
-        </svg>
+      <img alt='food.svg' src='/common/home-appliances-icon.svg'>
     </div>
-        <div class="category-logo" v-if="category==='패션'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" fill="none">
-        <path d="M35 15.5V35.5M35 35.5V42.5H9V35.5M35 35.5H42V15.5C42 12.5 40 9 37 6.5C34 4 28 2.5 28 2.5H16C16 2.5 10 4 7 6.5C4 9 2 12.5 2 15.5V35.5H9M9 35.5V15.5" stroke="#185988" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <div class="category-logo" v-else-if="category==='패션'">
+      <img alt='food.svg' src='/common/fashion-icon.svg'>
     </div>
-    <div class="category-logo" v-if="category==='레저 아웃도어'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
-        <path d="M0 40.5V31.2L17.5 7.6L14 2.9L17.2 0.5L20 4.25L22.8 0.5L26 2.9L22.5 7.6L40 31.2V40.5H0ZM20 10.95L4 32.5V36.5H10L20 22.5L30 36.5H36V32.5L20 10.95ZM14.9 36.5H25.1L20 29.4L14.9 36.5Z" fill="#2A7529"/>
-        </svg>
+    <div class="category-logo" v-else-if="category==='테크'">
+      <img alt='food.svg' src='/common/tech-icon.svg'>
     </div>
-    <div class="category-logo" v-if="category==='잡화'">
-        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="40" viewBox="0 0 42 40" fill="none">
-        <path d="M38.1875 10H30.375C30.375 7.5136 29.3873 5.12903 27.6291 3.37087C25.871 1.61272 23.4864 0.625 21 0.625C18.5136 0.625 16.129 1.61272 14.3709 3.37087C12.6127 5.12903 11.625 7.5136 11.625 10H3.8125C2.9837 10 2.18884 10.3292 1.60279 10.9153C1.01674 11.5013 0.6875 12.2962 0.6875 13.125V36.5625C0.6875 37.3913 1.01674 38.1862 1.60279 38.7722C2.18884 39.3583 2.9837 39.6875 3.8125 39.6875H38.1875C39.0163 39.6875 39.8112 39.3583 40.3972 38.7722C40.9833 38.1862 41.3125 37.3913 41.3125 36.5625V13.125C41.3125 12.2962 40.9833 11.5013 40.3972 10.9153C39.8112 10.3292 39.0163 10 38.1875 10ZM21 3.75C22.6576 3.75 24.2473 4.40848 25.4194 5.58058C26.5915 6.75268 27.25 8.3424 27.25 10H14.75C14.75 8.3424 15.4085 6.75268 16.5806 5.58058C17.7527 4.40848 19.3424 3.75 21 3.75ZM38.1875 36.5625H3.8125V13.125H11.625V16.25C11.625 16.6644 11.7896 17.0618 12.0826 17.3549C12.3757 17.6479 12.7731 17.8125 13.1875 17.8125C13.6019 17.8125 13.9993 17.6479 14.2924 17.3549C14.5854 17.0618 14.75 16.6644 14.75 16.25V13.125H27.25V16.25C27.25 16.6644 27.4146 17.0618 27.7076 17.3549C28.0007 17.6479 28.3981 17.8125 28.8125 17.8125C29.2269 17.8125 29.6243 17.6479 29.9174 17.3549C30.2104 17.0618 30.375 16.6644 30.375 16.25V13.125H38.1875V36.5625Z" fill="#66C5B4"/>
-        </svg>
+    <div class="category-logo" v-else-if="category==='도서'">
+      <img alt='food.svg' src='/common/book-icon.svg'>
     </div>
-    <div class="category-logo" v-if="category==='도서'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="39" viewBox="0 0 30 39" fill="none">
-      <path d="M26.25 0.75H3.75C1.6875 0.75 0 2.4375 0 4.5V34.5C0 36.5625 1.6875 38.25 3.75 38.25H26.25C28.3125 38.25 30 36.5625 30 34.5V4.5C30 2.4375 28.3125 0.75 26.25 0.75ZM9.375 4.5H13.125V13.875L11.25 12.4688L9.375 13.875V4.5ZM26.25 34.5H3.75V4.5H5.625V21.375L11.25 17.1562L16.875 21.375V4.5H26.25V34.5Z" fill="#FF9F2F"/>
-      </svg>
+    <div class="category-logo" v-else-if="category==='홈리빙'">
+      <img alt='food.svg' src='/common/home-living-icon.svg'>
     </div>
-    <div class="category-logo" v-if="category==='홈리빙'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="40" viewBox="0 0 38 40" fill="none">
-      <path d="M19 0.246094L37.75 15.8723V39.2498H0.25V15.8723L19 0.246094ZM15.25 35.4998H22.75V26.1248H15.25V35.4998ZM26.5 35.4998H34V17.6273L19 5.12859L4 17.6273V35.4998H11.5V22.3748H26.5V35.4998Z" fill="#BEA54B"/>
-      </svg>
+    <div class="category-logo" v-else-if="category==='음식'">
+      <img alt='food.svg' src='/common/food-icon.svg'>
     </div>
-    <div class="category-logo" v-if="category==='뷰티'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="31" height="45" viewBox="0 0 31 45" fill="none">
-      <path d="M26.8029 5.99799H20.547C19.4166 6.00159 19.4589 7.68639 20.547 7.67649H26.8029V8.53779H20.547C19.4229 8.52789 19.4643 10.2118 20.547 10.2163H26.8029V11.0965H20.547C19.4229 11.0965 19.4643 12.7795 20.547 12.775H26.8029V13.6138H20.547C19.4463 13.6219 19.4643 15.3067 20.547 15.3121H26.8029V16.1527H20.547C19.4463 16.1491 19.4418 17.8312 20.547 17.8312H26.8029V18.67H20.547C19.4463 18.6736 19.4418 20.3575 20.547 20.3494H26.8029V21.2089H20.547C19.4463 21.199 19.4418 22.8811 20.547 22.8874H26.8029V23.7244H20.547C19.4463 23.7235 19.4643 25.4092 20.547 25.4038H26.8029V41.7469C26.8065 44.2372 30.5892 44.1922 30.6 41.7469V3.50139C30.5892 2.36379 29.655 0.925591 28.1178 0.921091H20.547C19.4166 0.921991 19.4589 2.60679 20.547 2.59959L26.8029 2.62029V3.45729H20.547C19.4184 3.45189 19.4607 5.13579 20.547 5.13669H26.8029V5.99799ZM20.1168 34.9726C20.1132 32.0656 17.1 28.939 13.5 30.964V19.8454L11.1717 1.50789C11.1231 1.02279 10.7118 0.908491 10.4355 0.900391C10.1502 0.908491 9.57871 1.02279 9.51661 1.50789L7.20001 19.8454V30.964C3.60001 28.939 0.684005 32.0854 0.683105 34.9501C0.684005 37.4989 2.64601 39.5923 5.30101 39.586C7.97581 39.5923 9.90001 37.246 9.90001 34.9501V23.4004H10.8V34.9501C10.8 37.5205 12.7908 39.4231 15.003 39.5437C14.9661 40.9531 15.426 42.9637 16.2918 43.7611C17.307 44.6971 18.5157 43.5001 18.0198 42.5254C17.541 41.6182 17.0712 41.0809 17.4528 39.1C19.0476 38.362 20.1132 36.8086 20.1168 34.9726ZM5.40361 37.2595C4.79672 37.2595 4.2147 37.0184 3.78557 36.5893C3.35644 36.1601 3.11536 35.5781 3.11536 34.9712C3.11536 34.3644 3.35644 33.7823 3.78557 33.3532C4.2147 32.9241 4.79672 32.683 5.40361 32.683C6.65101 32.6902 7.66711 33.7135 7.67611 34.9726C7.67354 35.5758 7.43374 36.1539 7.00853 36.5818C6.58332 37.0097 6.00682 37.2531 5.40361 37.2595ZM13.1175 34.9726C13.1196 34.3688 13.3593 33.7901 13.7847 33.3616C14.2101 32.9332 14.7871 32.6894 15.3909 32.683C15.9949 32.6884 16.5723 32.932 16.9978 33.3606C17.4233 33.7893 17.6625 34.3686 17.6634 34.9726C17.6625 35.5763 17.4232 36.1553 16.9976 36.5836C16.5721 37.0118 15.9946 37.2547 15.3909 37.2595C14.7873 37.254 14.2102 37.0109 13.7846 36.5828C13.3591 36.1548 13.1194 35.5762 13.1175 34.9726Z" fill="#C61895"/>
-      </svg>
-    </div>
-    <div class="category-logo" v-if="category==='푸드'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
-      <path d="M2.22222 0.5C2.81159 0.5 3.37682 0.65051 3.79357 0.918419C4.21032 1.18633 4.44444 1.54969 4.44444 1.92857V10.5C4.44372 11.3866 4.87079 12.2516 5.66679 12.9757C6.46279 13.6998 7.58854 14.2473 8.88889 14.5429V1.92857C8.88889 1.54969 9.12302 1.18633 9.53976 0.918419C9.95651 0.65051 10.5217 0.5 11.1111 0.5C11.7005 0.5 12.2657 0.65051 12.6825 0.918419C13.0992 1.18633 13.3333 1.54969 13.3333 1.92857V14.5429C14.6337 14.2473 15.7594 13.6998 16.5554 12.9757C17.3514 12.2516 17.7785 11.3866 17.7778 10.5V1.92857C17.7778 1.54969 18.0119 1.18633 18.4287 0.918419C18.8454 0.65051 19.4106 0.5 20 0.5C20.5894 0.5 21.1546 0.65051 21.5713 0.918419C21.9881 1.18633 22.2222 1.54969 22.2222 1.92857V10.5C22.2227 12.1466 21.3383 13.7428 19.7185 15.0184C18.0987 16.294 15.843 17.1707 13.3333 17.5V39.0714C13.3333 39.4503 13.0992 39.8137 12.6825 40.0816C12.2657 40.3495 11.7005 40.5 11.1111 40.5C10.5217 40.5 9.95651 40.3495 9.53976 40.0816C9.12302 39.8137 8.88889 39.4503 8.88889 39.0714V17.5C6.37919 17.1707 4.12357 16.294 2.50376 15.0184C0.883963 13.7428 -0.000522557 12.1466 2.31619e-07 10.5V1.92857C2.31619e-07 1.54969 0.234127 1.18633 0.650874 0.918419C1.06762 0.65051 1.63285 0.5 2.22222 0.5ZM33.24 4.72571C33.9467 4.26857 34.7422 3.91714 35.5556 3.68571V17.6429H31.1111V7.64286C31.1111 6.68 31.8844 5.59429 33.24 4.72571ZM35.5556 20.5V39.0714C35.5556 39.4503 35.7897 39.8137 36.2064 40.0816C36.6232 40.3495 37.1884 40.5 37.7778 40.5C38.3671 40.5 38.9324 40.3495 39.3491 40.0816C39.7659 39.8137 40 39.4503 40 39.0714V1.92857C40 1.54969 39.7659 1.18633 39.3491 0.918419C38.9324 0.65051 38.3671 0.5 37.7778 0.5C34.8311 0.5 32.0756 1.43143 30.0933 2.70286C28.1156 3.97714 26.6667 5.74857 26.6667 7.64286V19.0714C26.6667 19.4503 26.9008 19.8137 27.3175 20.0816C27.7343 20.3495 28.2995 20.5 28.8889 20.5H35.5556Z" fill="#FF82A0"/>
-      </svg>
+    <div class="category-logo" v-else-if="category==='레저'">
+      <img alt='food.svg' src='/common/leisure-icon.svg'>
     </div>
     
     <div class="category-name">
@@ -54,10 +35,10 @@
   <!-- sort section start -->
   <div id="sort-bar">
     <div class="sort-select-bar">
-      <div class="sort-condition" @click="sort='createdAt,desc'">
+      <div class="sort" :class="{ 'active': sort === 'createdAt,desc'}"  @click="sort='createdAt,desc'">
           최신순
       </div>
-      <div class="sort-condition" @click="sort='projectDueDate,asc'">
+      <div class="sort" :class="{ 'active': sort === 'projectDueDate,asc'}" @click="sort='projectDueDate,asc'">
         마감임박순
       </div>
     </div>
@@ -70,128 +51,87 @@
   </div>
   <!-- project list section end -->
 
-  
+  <!-- pagination section start -->
+  <div class="pages">
+    <a href="#" v-if="page !== 0" @click="page -= 1">
+      <div class="back-page-btn-container">
+        <img class="back-page-btn" src="/common/back-page-btn.svg">
+      </div>
+    </a>
+    <a href="#" v-else>
+      <div class="back-page-btn-container">
+        <img class="back-page-btn" src="/common/back-page-btn.svg">
+      </div>
+    </a>
+    <li v-for="pageNumber in totalPages" :key="pageNumber">
+      <a href="#" @click="page = pageNumber - 1">
+        <div class="page-btn" :class="{'selected': (page + 1) === pageNumber }">
+          {{ pageNumber }}
+        </div>
+      </a>
+    </li>
+    <a href="#" v-if="(page !== (totalPages - 1)) && (totalPages !== 1)"
+       @click="page += 1">
+      <div class="front-page-btn-container">
+        <img class="front-page-btn" src="/common/front-page-btn.svg">
+      </div>
+    </a>
+    <a href="#" v-else>
+      <div class="front-page-btn-container">
+        <img class="front-page-btn" src="/common/front-page-btn.svg">
+      </div>
+    </a>
+  </div>
+  <!-- pagination section end -->
+
 </template>
 
 <script setup lang = "ts">
 import { ref, computed, watch, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import { getProjectsByCategory } from '@/services/api/ProjectService';
-import type { ProjectsByCategoryResponse, ProjectsResponse } from '@/services/types/ProjectResponse';
-import ProjectCardComponent from '@Components/ProjectCardComponent.vue';
+import type { ProjectsByCategory, CommonProjectsResponse } from '@/services/types/ProjectResponse';
+import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue';
 
 const route = useRoute();
-const category = computed(() => route.query.category);
-const sort = ref('createdAt,desc');
+const category = computed(() => {
+    return typeof route.query.category === 'string' ? route.query.category : null;
+});
 
-const projectByCategoryResponseList = ref<Array<ProjectsByCategoryResponse>>([]);
-const totalPages = ref(0);
+const size:number = 12;
+const sort = ref<string>('createdAt,desc');
+const page = ref<number>(0);
+
+const projectByCategoryResponseList = ref<Array<ProjectsByCategory>>([]);
+const totalPages = ref<number>(0);
 
 const getProjectsByCategoryRequest = async (categoryName: string, page: number, size: number, sort: string) => {
   try {
-    const response: ProjectsResponse<ProjectsByCategoryResponse> = await getProjectsByCategory(categoryName, page, size, sort);
+    const response:CommonProjectsResponse<ProjectsByCategory> = await getProjectsByCategory(categoryName, page, size, sort);
     projectByCategoryResponseList.value = response['projects'];
     totalPages.value = response['totalPages'];
+
   } catch (error) {
-    throw error; 
+    alert("프로젝트 조회에 실패하였습니다.")
   }
 };
 
 onBeforeMount(async () => {
-  await getProjectsByCategoryRequest(category.value, 0, 20, sort.value);
+  if (category.value != undefined) {
+      await getProjectsByCategoryRequest(category.value, page.value,  size, sort.value);
+  }
 })
 
-watch([category, sort], async ([newCategory, newSort], [oldCategory, oldSort]) => {
-  await getProjectsByCategoryRequest(newCategory, 0, 20, newSort);
+watch([category, page, sort], async ([newCategory, newPage,  newSort], [oldCategory, oldPage, oldSort]) => {
+  if (typeof newCategory === 'string' && typeof newSort === 'string'
+    && typeof newPage === 'number' ) {
+      await getProjectsByCategoryRequest(newCategory, newPage, size, newSort);
+  }
 });
+
 </script>
 
-<style>
-/* category menu */
-#cateogory-menu-bar {
-  display: flex;
-  /* width: 1440px; */
-  padding-top: 25px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-#category-menu {
-  display: flex;
-  height: 90px;
-  width: 200px;
-  padding: 7px 0px 0px 0px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 19px;
-  background: #F2F4F6;
-}
-
-.category-logo{
-  display: flex;
-  align-items: flex-start;
-}
-
-.category-name{
-  display: flex;
-  width: 200px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-
-
-  color: #000000;
-
-  text-align: center;
-  font-family: Open Sans;
-  font-size: 23px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: 0%; /* 0px */
-
-}
-
-/* sort bar */
-#sort-bar {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-left: 197px;
-  margin-right: 289px;
-  margin-top: 50px;
-}
-
-.sort-select-bar {
-  display: flex;
-  width: 190px;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.sort-condition {
-  display: flex;
-  width: 110px;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  color: #000;
-
-  text-align: center;
-  font-family: Open Sans;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 140%; /* 30.8px */
-
-}
-
+<style scoped>
+@import '@/assets/css/project-list.css';
+@import '@/assets/css/pagenavbar.css';
 </style>

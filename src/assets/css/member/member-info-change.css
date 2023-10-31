@@ -1,0 +1,73 @@
+#member-info-change-container {
+    display: flex;
+    padding-top: 5%;
+    padding-left: 5%;
+    gap: 80px;
+}
+
+#sec-input-change {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.input-change {
+    border: none;
+    border-bottom: 1px solid var(--icon-color);
+    height: 30px;
+    width: 450px;
+}
+
+#bt-member-info-change-wrapper {
+    display: flex;
+    justify-content: end;
+}
+
+#btn-member-info-change {
+    border: none;
+    padding: 10px 30px;
+    background-color: var(--main-color);
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#sec-unchanged-n-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#input-unchanged-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#input-unchanged-email {
+    background-color: var(--card-bg-color);
+    height: 30px;
+    width: 450px;
+    border: none;
+    border: 1px solid var(--card-border-color);
+    border-radius: 5px;
+}
+
+#text-unchanged-createdAt-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sub-title-unchanged-createdAt {
+    display: flex;
+    align-items: center;
+    color: var(--icon-color);
+}
+
+#text-unchanged-createdAt {
+    color: var(--icon-color);
+    display: flex;
+    align-items: center;
+}
