@@ -102,17 +102,17 @@ export const uploadImage2S3 = async (presignedUrl: string, file: File) => {
     throw new Error((<ErrorResponse>error).detail)
   }
 }
-export const getImageUrlWithUploadData = async (file: File) => {
+export const getPresignedUrlByImageName = async (file: File) => {
   try {
     return getPresignedUrl(file.name).then((data) => {
-      const presignedUrl = data
-      const fileType = file.type.split('/')[1]
-      uploadImage2S3(presignedUrl, file)
-      const splitUrl = presignedUrl.split('.com')[1]
-      const dbUrl = `${splitUrl.split(fileType)[0]}${fileType}`
-      return dbUrl
+      return data
     })
   } catch (e) {
     throw new Error((<ErrorResponse>e).detail)
   }
+}
+export const makeUrlPresigned2DBUrl = async (url: String, file: File) => {
+  const splitUrl = url.split('.com')[1]
+  const fileType = file.type.split('/')[1]
+  return `${splitUrl.split(fileType)[0]}${fileType}`
 }

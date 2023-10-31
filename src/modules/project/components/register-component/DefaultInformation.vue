@@ -7,7 +7,7 @@ import ContentTextInputField from '@/modules/project/components/register-compone
 import GuideBox from '@/modules/project/components/register-component/GuideBox.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import { useDefaultInformationStore } from '@/store/registerProjectStore'
-import { getImageUrlWithUploadData } from '@/services/api/ProjectService'
+import { getPresignedUrlByImageName } from '@/services/api/ProjectService'
 
 const inputComponentData = ref({
   projectName: {
@@ -48,7 +48,7 @@ const thumbnailGuideBox = {
 
 const imageInput = async (event: any) => {
   const file = event.target.files[0]
-  projectDefaultInfo.value.projectThumbnailImageUrl = await getImageUrlWithUploadData(file)
+  projectDefaultInfo.value.projectThumbnailImageUrl = await getPresignedUrlByImageName(file)
 }
 const addImage = () => {
   // 콜백으로 image ref를 동작 시키면 - 파일 선택 창이 뜬다
