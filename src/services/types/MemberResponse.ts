@@ -19,3 +19,13 @@ export interface MembershipInfoForShowResponse {
     membershipSubscriptionCreatedAt: string,
     membershipSubscriptionExpiredAt: string
 }
+
+export interface LikesDetailResponse {
+    projectId: number,
+    remainingDays: number,
+    projectName: string,
+    projectThumbnailImageUrl: string,
+    makerName: string,
+    fundingAchievementRate: number,
+    accumulatedFundingAmount: number
+}
