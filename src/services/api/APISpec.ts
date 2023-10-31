@@ -1,8 +1,5 @@
 import axios, {Axios} from 'axios';
 import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
-import { usePersistentedStateStore } from '@/stores/persistentedStateStore';
-
-const persistentStateStore = usePersistentedStateStore();
 
 export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
@@ -44,7 +41,7 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
   }
 }
 
-export const postMemberData = async <T>(url: string, data: any) => {
+export const postMemberData = async <T>(url: string, data?: any) => {
     try {
         const response = await client.post<SuccessResponse<T>>(url, data);
         // console.log("response: " + response.data);
