@@ -50,6 +50,7 @@ const submitForm = () => {
       router.push('/');
     })
     .catch((error: unknown) => {
+      alert('로그인에 실패했습니다.');
       console.error('error:', error);
       router.push('/member/sign-in');
     });
