@@ -42,7 +42,6 @@ const submitForm = () => {
     .then(response => {
       alert('로그인 성공했습니다.');
       const authorization = response.headers["authorization"];
-      console.log("authorization:", authorization);
       // persistentedStateStore._customProperties.add(authorization);
       // persistentedStateStore.$state.jwtToken = authorization;
       localStorage.setItem("jwtToken", authorization);

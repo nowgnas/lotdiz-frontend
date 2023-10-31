@@ -78,11 +78,9 @@ const memberName = ref('');
 
 const sendReadyRequestOfMembershipPayments = (membershipInfoForJoinRequest: MembershipInfoForJoinRequest) => {
   const response: Promise<string> = postMembershipInfoForJoin(membershipInfoForJoinRequest);
-  console.log("response:", response);
 
   response.then(data => {
     const redirectUrl = data;
-    console.log("redirectUrl:", redirectUrl);
     window.open(redirectUrl, '멤버십 결제 QR 코드', 'top=10, left=10, width=500, height=450, status=no, menubar=no, toolbar=no, resizable=no');
   }).catch(error => {
     console.error('오류발생: ', error);
