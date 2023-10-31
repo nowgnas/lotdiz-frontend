@@ -47,7 +47,7 @@ const confirmLogout = () => {
 }
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 

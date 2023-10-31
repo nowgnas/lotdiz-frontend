@@ -20,7 +20,7 @@
 import LikesCard from '../../modules/member/components/LikesCard.vue';
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 

@@ -65,7 +65,7 @@ if (window.location.href === "http://localhost:5173/member/sign-up/success") {
 
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/font.css';
