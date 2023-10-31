@@ -9,7 +9,8 @@
       <div class="product-description">{{ product.productDescription }}</div>
       <div class="product-price-info">
         <div class="product-price-title">상품 가격</div>
-        <div class="product-price-data">{{ product.productPrice }} 원</div>
+        <div class="product-price-data" v-if='lotdealDueTime == null' >{{ product.productPrice }} 원</div>
+        <div class="product-price-data" v-else>{{ product.productPrice * 0.6 }} 원</div>
       </div>
       <div class="product-current-stock-quantity-info">
         <div class="product-current-stock-quantity-title">남은 수량</div>
@@ -71,11 +72,13 @@ const products = ref<Array<Product>>([]);
 const projectId = ref<number>(0);
 const projectStatus = ref<string>('');
 const fundingProductsQuantity = ref<Map<number, number>>(new Map());
+const lotdealDueTime = ref<string>('');
 
 const setting = () => {
   projectId.value = projectStore.projectDetails.projectId;
   projectStatus.value = projectStore.projectDetails.projectStatus;
   products.value = projectStore.projectDetails.products;
+  lotdealDueTime.value = projectStore.projectDetails.lotdealDueTime;
 
   products.value.forEach(product => {
     fundingProductsQuantity.value?.set(product.productId, 0);
