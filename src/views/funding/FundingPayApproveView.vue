@@ -18,21 +18,14 @@ const fundingPaymentsRequest: FundingPaymentsApproveInfo = {
   pgToken: '',
   partnerOrderId: '',
   partnerUserId: '',
-  projectId: 1,
+  projectId: 3,
   products: [
     {
-      productId: 1,
-      productFundingPrice: 100,
-      productFundingQuantity: 10,
+      productId: 6,
+      productFundingPrice: 22000,
+      productFundingQuantity: 1,
       productName: 'Product 1',
       productDescription: 'Description 1'
-    },
-    {
-      productId: 2,
-      productFundingPrice: 200,
-      productFundingQuantity: 5,
-      productName: 'Product 2',
-      productDescription: 'Description 2'
     }
   ],
   itemName: '무화과 1kg',
@@ -67,7 +60,7 @@ onMounted(
       // TODO: projectID 받아서 넣기
       console.log('data approval 값 보기 ')
       const response = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1)
-      alert(response.data)
+      alert(response.detail)
       window.opener.postMessage('complete', '*')
       window.close()
     } catch (error) {
