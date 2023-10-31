@@ -58,27 +58,21 @@ const fundingPaymentsRequest: FundingPaymentsApproveInfo = {
 
 onMounted(
   async () => {
-    // try {
-    // index.ts에 url mapping 정의됨.
-    fundingPaymentsRequest.partnerOrderId = route.params.order as string
-    fundingPaymentsRequest.partnerUserId = route.params.user as string
-    fundingPaymentsRequest.pgToken = route.query.pg_token as string
+    try {
+      // index.ts에 url mapping 정의됨.
+      fundingPaymentsRequest.partnerOrderId = route.params.order as string
+      fundingPaymentsRequest.partnerUserId = route.params.user as string
+      fundingPaymentsRequest.pgToken = route.query.pg_token as string
 
-    // TODO: projectID 받아서 넣기
-    console.log('data approval 값 보기 ')
-    const response = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1)
-
-    response.then(data => {
-      alert(data.detail)
+      // TODO: projectID 받아서 넣기
+      console.log('data approval 값 보기 ')
+      const response = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1)
+      alert(response.data)
       window.opener.postMessage('complete', '*')
       window.close()
-    }).catch(error => {
-      console.error('카카오 결제 실패')
-    })
-
-    // } catch (error) {
-    //   console.log('An error occurred:' + error)
-    // }
+    } catch (error) {
+      console.log('An error occurred:' + error)
+    }
   })
 
 </script>
