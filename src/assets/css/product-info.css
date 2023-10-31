@@ -237,6 +237,14 @@
   gap: 10px;
 }
 
+.funding-quantity-plus:hover {
+  cursor: pointer;
+}
+
+.funding-quantity-minus:hover {
+  cursor: pointer;
+}
+
 .funding-big {
   display: flex;
   padding: 10px;
@@ -262,6 +270,10 @@
   font-weight: 700;
   line-height: 140%;
   /* 33.6px */
+}
+
+.funding-click-big:hover {
+  cursor: pointer;
 }
 
 #product-delivery-funding {

@@ -176,6 +176,10 @@
     align-items: center;
 }
 
+.support-signature-modify:hover {
+    cursor: pointer;
+}
+
 .support-signature-created-at-data {
     display: flex;
     /* height: 57px; */
