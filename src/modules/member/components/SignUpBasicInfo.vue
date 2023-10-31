@@ -245,7 +245,7 @@ const submitForm = async (event: any) => {
 }
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/css/member/sign-up-common.css';
 
 @import '@/assets/css/member/sign-up-basic-info.css';

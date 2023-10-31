@@ -61,7 +61,7 @@ const removeLikes = (event: any) => {
 }
 </script>
 
-<style>
+<style scoped>
 .likes-card-wrapper {
   width: 832px;
   height: 250px;

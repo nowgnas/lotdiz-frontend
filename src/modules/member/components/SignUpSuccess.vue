@@ -25,7 +25,7 @@ const memberName = memberStore.memberName;
 
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/css/member/sign-up-common.css';
 
 @import '@/assets/css/member/sign-up-success.css';
