@@ -19,6 +19,7 @@ export const useProjectStoryStore = defineStore({
   }),
   actions: {
     setProjectStoryData(data: any) {
+      console.log(data)
       this.projectStoryData = data
     }
   }
