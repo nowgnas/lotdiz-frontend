@@ -12,7 +12,7 @@
       <div class='sec-project-title'>
         <div>
           <div class='text-achivement-rate'>{{ item.fundingAchievementRate }}% 달성</div>
-          <div class='text-title'>{{ item.projectName }}</div>
+          <div class='text-title' @click='goProjectDetail'>{{ item.projectName }}</div>
         </div>
         <div class='text-remain-days' v-if='item.remainingDays <= 0'>프로젝트 종료</div>
         <div class='text-remain-days' v-else>{{ item.remainingDays }}일</div>
@@ -28,12 +28,20 @@
 import { PropType } from 'vue'
 import { LikesDetailResponse } from '@/services/types/MemberResponse'
 import { deleteLikes } from '@/services/api/MemberService'
+import router from '@/router'
 const props = defineProps({
   item: {
     type: Object as PropType<LikesDetailResponse>,
     required: true
   }
 })
+
+const goProjectDetail = () => {
+  const curEle = event.target
+  const cloestAncestor = curEle.closest('.likes-card-wrapper')
+  const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
+  router.push('/project-details/' + ancestorId)
+}
 
 const removeLikes = (event) => {
   const curEle = event.target
@@ -105,6 +113,7 @@ const removeLikes = (event) => {
 
 .text-title {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .text-remain-days {
