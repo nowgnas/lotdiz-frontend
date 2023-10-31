@@ -101,3 +101,12 @@ export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberI
     throw new Error('회원 정보 수정 실패')
   }
 }
+
+export const postSignOut = async () => {
+  try {
+    const response = await postMemberData('/member-service/api/sign-out')
+    return response.data;
+  } catch (error: unknown) {
+    throw new Error('로그아웃 실패')
+  }
+}
