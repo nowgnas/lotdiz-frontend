@@ -67,3 +67,17 @@ export const deleteData = async <T>(url: string): Promise<SuccessResponse<T>> =>
     throw new Error((<ErrorResponse>error).message)
   }
 }
+export const putBinaryType = async <T>(url: string, data?: any): Promise<void> => {
+  try {
+    await axios.put<SuccessResponse<T>>(url, data, {
+      headers: {
+        timeout: 0,
+        processData: false,
+        'Content-Type': data.type
+      }
+    })
+  } catch (error: unknown) {
+    console.error((<ErrorResponse>error).detail)
+    throw new Error((<ErrorResponse>error).message)
+  }
+}
