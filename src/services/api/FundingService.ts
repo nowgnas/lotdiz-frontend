@@ -5,11 +5,11 @@ import type { FundingPaymentsApproveInfo } from '@/services/types/FundingPayment
 
 export const postFundingInfoForPayReady = async (fundingPaymentsInfo: FundingPaymentsReadyInfo) => {
   try {
-    const response = await postData<FundingPaymentReadyResponse>(`http://localhost:8000/payment-service/api/funding/payments/ready`, fundingPaymentsInfo)
-    return response.data
+    const response = await postData<FundingPaymentReadyResponse>(`/payment-service/api/funding/payments/ready`, fundingPaymentsInfo)
+    return response
   } catch (error: unknown) {
-    throw new Error('펀딩 결제 준비 실패')
   }
+  throw new Error('펀딩 결제 준비 실패')
 }
 
 export const postFundingInfoForPayApproval = async (fundingPaymentsApproveInfo: FundingPaymentsApproveInfo, projectId: number) => {

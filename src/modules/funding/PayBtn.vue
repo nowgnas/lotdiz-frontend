@@ -21,6 +21,7 @@ import { onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import type { FundingPaymentReadyResponse, FundingPaymentsReadyInfo } from '../../services/types/FundingRequest'
 import { postFundingInfoForPayReady } from '@/services/api/FundingService'
+import type { SuccessResponse } from '@/services/APIResponse'
 
 const router = useRouter()
 
@@ -31,7 +32,7 @@ const readyForFundingPayments = () => {
     totalAmount: '22000',
     taxFreeAmount: '0'
   }
-  const response: Promise<FundingPaymentReadyResponse> = postFundingInfoForPayReady(fundingPaymentsRequest)
+  const response: Promise<SuccessResponse<FundingPaymentReadyResponse>> = postFundingInfoForPayReady(fundingPaymentsRequest)
 
   response
     .then((data) => {
