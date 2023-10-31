@@ -1,14 +1,14 @@
 <script setup lang='ts'>
 import { RouterView } from 'vue-router'
-import HeaderBarComponent from '@/common/HeaderBarComponent.vue';
+import HeaderBarComponent from '@/common/HeaderBarComponent.vue'
 
 const isNonHeaderPath = (): boolean => {
-  const url: string = window.location.href;
+  const url: string = window.location.href
   // const host = ""
-  if(url === "http://localhost:5173/member/sign-in" || url === "http://localhost:5173/member/sign-up" || url === "http://localhost:5173/member/membership-honors/join/success") {
-    return true;
+  if (url === 'http://localhost:5173/member/sign-in' || url === 'http://localhost:5173/member/sign-up' || url === 'http://localhost:5173/member/membership-honors/join/success') {
+    return true
   }
-  return false;
+  return false
 }
 
 
@@ -18,7 +18,7 @@ const isNonHeaderPath = (): boolean => {
   <div class='container'>
 
     <header>
-      <HeaderBarComponent v-if="!isNonHeaderPath()"/>
+      <HeaderBarComponent v-if='!isNonHeaderPath()' />
     </header>
     <main role='main' style='height:100%;'>
       <RouterView />
