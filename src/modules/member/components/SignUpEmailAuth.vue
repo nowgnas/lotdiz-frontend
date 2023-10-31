@@ -66,9 +66,7 @@ const sendEmail = () => {
   emailjs.send(VITE_SERVER_ID, VITE_TEMPLATE_ID, params).then(
     (result) => {
       isEmailSent.value = true;
-      // loader.hide();
       alert('해당 메일로 인증 메시지가 발송되었습니다.');
-      console.log('SUCCESS!', result.text);
     },
     (error) => {
       console.error('FAILED...', error.text);

@@ -52,7 +52,6 @@ export const postInfoForSignIn = async (infoForSignIn: InfoForSignIn) => {
 
 export const getIsDulicatedForCheck = async (username: string) => {
   try {
-    console.log('username:', username)
     const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
     return response.data.data
   } catch (error: unknown) {

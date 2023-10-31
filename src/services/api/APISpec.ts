@@ -44,7 +44,6 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
 export const postMemberData = async <T>(url: string, data?: any) => {
     try {
         const response = await client.post<SuccessResponse<T>>(url, data);
-        // console.log("response: " + response.data);
         return response;
     } catch(error: unknown) {
         console.error((<ErrorResponse>error).detail);

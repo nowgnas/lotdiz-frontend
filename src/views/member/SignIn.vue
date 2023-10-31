@@ -44,7 +44,6 @@ const submitForm = () => {
     .then(response => {
       alert('로그인 성공했습니다.');
       const authorization = response.headers["authorization"];
-      console.log("authorization:", authorization);
       localStorage.setItem("jwtToken", authorization);
       document.cookie = "jwtToken=" + authorization;
       headerStore.assignIsNoHeaderPath(false)

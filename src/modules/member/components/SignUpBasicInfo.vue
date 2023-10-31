@@ -138,19 +138,16 @@ const validateName = computed((): boolean => {
 // email 형식 check 함수
 const isUsernameValid = (username1: string, username2: string): boolean => {
   const totalEmail = username1 + '@' + username2
-  console.log('totalEmail: ' + totalEmail)
   const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
   return expression.test(totalEmail)
 }
 
 const validateUsername = computed((): boolean => {
-  console.log('computed')
   return isUsernameValid(username1.value, username2.value)
 })
 
 const checkDuplicated = () => {
   const fullUsername = username1.value + '@' + username2.value
-  console.log('fullUsername: ' + fullUsername)
   getIsDulicatedForCheck(fullUsername)
     .then((data) => {
       if (!data) {
