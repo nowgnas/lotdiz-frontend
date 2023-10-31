@@ -27,15 +27,15 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    text: String,
-    color: String,
-    backgroundColor: String,
-    border: String
-  }
-}
+<script lang='ts' setup>
+type Props = {
+  text: string,
+  color: string,
+  backgroundColor: string,
+  border: string
+};
+
+const { text, color, backgroundColor, border } = defineProps<Props>()
 </script>
 
 <style>

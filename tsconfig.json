@@ -17,6 +17,7 @@
   },
   "include": [
     "src/**/*",
+    "src/services/types/Window.d.ts",
     "package.json"
   ]
 }

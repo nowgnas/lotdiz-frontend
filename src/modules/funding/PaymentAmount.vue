@@ -1,60 +1,52 @@
 <template>
-  <div class="payments-container">
-    <div class="payments-info-header">
-      <div class="payments-info-header-font">결제 금액</div>
+  <div class='payments-container'>
+    <div class='payments-info-header'>
+      <div class='payments-info-header-font'>결제 금액</div>
     </div>
-    <div class="payments-info-content">
-      <div class="payments-info-item">
-        <div class="payments-info-item-left">상품 금액</div>
-        <div class="payments-info-item-right">79,500원</div>
+    <div class='payments-info-content'>
+      <div class='payments-info-item'>
+        <div class='payments-info-item-left'>상품 금액</div>
+        <div class='payments-info-item-right'>79,500원</div>
       </div>
-      <div class="payments-info-item">
-        <div class="payments-info-item-left">포인트 할인</div>
-        <div class="payments-info-item-right" style="color: red">-{{ usedPoint ? usedPoint + '원' : '0원' }}</div>
+      <div class='payments-info-item'>
+        <div class='payments-info-item-left'>포인트 할인</div>
+        <div class='payments-info-item-right' style='color: red'>-{{ usedPoint ? usedPoint + '원' : '0원' }}</div>
       </div>
-      <div class="payments-info-item">
-        <div class="payments-info-item-left">멤버십 등급 할인(3%)</div>
-        <div class="payments-info-item-right" style="color: red">-2,238원</div>
+      <div class='payments-info-item'>
+        <div class='payments-info-item-left'>멤버십 등급 할인(3%)</div>
+        <div class='payments-info-item-right' style='color: red'>-2,238원</div>
       </div>
-      <div class="payments-info-item">
-        <div class="payments-info-item-left">후원금</div>
-        <div class="payments-info-item-right">{{ supportAmount ? supportAmount + '원' : '0원' }}</div>
+      <div class='payments-info-item'>
+        <div class='payments-info-item-left'>후원금</div>
+        <div class='payments-info-item-right'>{{ supportAmount ? supportAmount + '원' : '0원' }}</div>
       </div>
-      <div class="payments-info-item">
-        <div class="payments-info-item-left">배송비</div>
-        <div class="payments-info-item-right">0원</div>
+      <div class='payments-info-item'>
+        <div class='payments-info-item-left'>배송비</div>
+        <div class='payments-info-item-right'>0원</div>
       </div>
-      <div class="payments-info-item-total">
-        <div class="payments-info-item-total-left">총 결제 금액</div>
-        <div class="payments-info-item-total-right">77,005원</div>
+      <div class='payments-info-item-total'>
+        <div class='payments-info-item-total-left'>총 결제 금액</div>
+        <div class='payments-info-item-total-right'>77,005원</div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import {computed} from 'vue';
-import {useFundingStore} from '@/store/FundingStore';
+<script lang='ts' setup>
+import { computed } from 'vue'
+import { useFundingStore } from '@/store/FundingStore'
 
-export default {
-  setup() {
-    const fundingStore = useFundingStore();
+const fundingStore = useFundingStore()
 
-    const supportAmount = computed(() => {
-      return fundingStore.fundingDetails.fundingSupportAmount;
-    });
+const supportAmount = computed(() => {
+  return fundingStore.fundingDetails.fundingSupportAmount
+})
 
-    const usedPoint = computed(() => {
-      return fundingStore.fundingDetails.fundingUsedPoint;
-    });
-
-    return {
-      supportAmount,
-      usedPoint
-    };
-  },
-}
+const usedPoint = computed(() => {
+  return fundingStore.fundingDetails.fundingUsedPoint
+})
 </script>
+
 
 <style>
 .payments-container {

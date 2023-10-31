@@ -1,21 +1,20 @@
 <template>
-  <div style="display:flex; flex-direction: column; gap:10px; width: fit-content">
+  <div style='display:flex; flex-direction: column; gap:10px; width: fit-content'>
     <div> 결제가 진행중입니다. 잠시만 기다려주세요</div>
-    <img alt="loading" src="	https://blog.kakaocdn.net/dn/bL4W42/btrbmyGyR6g/Kk66Y0dk5x4H5kHaWDBfNK/img.gif
-">
+    <img alt='loading' src='@/assets/loading.gif'>
   </div>
 </template>
 
-<script lang="ts" setup>
-import {onMounted} from 'vue';
-import {useRoute} from 'vue-router';
-import {postFundingInfoForPayApproval} from "@/services/api/FundingService";
-import type {FundingPaymentsApproveInfo} from "@/services/types/FundingPaymentsApproveInfo";
+<script lang='ts' setup>
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { postFundingInfoForPayApproval } from '@/services/api/FundingService'
+import type { FundingPaymentsApproveInfo } from '@/services/types/FundingPaymentsApproveInfo'
 
-const route = useRoute();
+const route = useRoute()
 
 const fundingPaymentsRequest: FundingPaymentsApproveInfo = {
-  tid: window.localStorage.getItem("tid"),
+  tid: window.localStorage.getItem('tid'),
   pgToken: '',
   partnerOrderId: '',
   partnerUserId: '',
@@ -26,19 +25,19 @@ const fundingPaymentsRequest: FundingPaymentsApproveInfo = {
       productFundingPrice: 100,
       productFundingQuantity: 10,
       productName: 'Product 1',
-      productDescription: 'Description 1',
+      productDescription: 'Description 1'
     },
     {
       productId: 2,
       productFundingPrice: 200,
       productFundingQuantity: 5,
       productName: 'Product 2',
-      productDescription: 'Description 2',
+      productDescription: 'Description 2'
     }
   ],
   itemName: '무화과 1kg',
   fundingSupporterEmail: 'abc@gmail.com',
-  fundingTotalAmount: '22000',
+  fundingTotalAmount: 22000,
   fundingIsRefundable: false,
   fundingSupportAmount: 0,
   fundingLotdealDiscountAmount: 0,
@@ -58,26 +57,20 @@ const fundingPaymentsRequest: FundingPaymentsApproveInfo = {
 }
 
 onMounted(
-    async () => {
-      try {
-        // index.ts에 url mapping 정의됨.
-        fundingPaymentsRequest.partnerOrderId = route.params.order;
-        fundingPaymentsRequest.partnerUserId = route.params.user;
-        fundingPaymentsRequest.pgToken = route.query.pg_token;
-        console.log("orderId:" + route.params.order);
-        console.log("userId:" + route.params.user);
-        console.log("pgToken:" + fundingPaymentsRequest.pgToken);
-        console.log("tid:" + localStorage.getItem("tid"));
+  async () => {
+    try {
+      // index.ts에 url mapping 정의됨.
+      fundingPaymentsRequest.partnerOrderId = route.params.order as string
+      fundingPaymentsRequest.partnerUserId = route.params.user as string
+      fundingPaymentsRequest.pgToken = route.query.pg_token as string
 
-        const response: string = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1);
-        // 이후 response를 처리하는 코드를 작성하면 됩니다.
-        console.log(response.message);
-        alert(response.data);
-        window.opener.postMessage('complete', '*');
-        window.close();
-      } catch (error) {
-        console.error('An error occurred:', error);
-      }
-    });
+      const response = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1)
+      alert(response.data)
+      window.opener.postMessage('complete', '*')
+      window.close()
+    } catch (error) {
+      alert('An error occurred:'+ error)
+    }
+  })
 
 </script>

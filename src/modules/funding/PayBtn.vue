@@ -32,14 +32,14 @@ const readyForFundingPayments = () => {
     taxFreeAmount: '0'
   }
   const response: Promise<string> = postFundingInfoForPayReady(fundingPaymentsRequest)
-  console.log('response:', response)
 
   response
       .then((data) => {
-        console.log(data);
-        const redirectUrl = data.next_redirect_pc_url;
-        window.localStorage.setItem("tid", data.tid);
-        console.log('redirectUrl:', redirectUrl)
+        const parsedData = JSON.parse(data);
+        const redirectUrl = parsedData.next_redirect_pc_url;
+        const tid = parsedData.tid;
+
+        window.localStorage.setItem("tid", tid);
         window.open(
             redirectUrl,
             '펀딩 결제 QR 코드',
@@ -47,11 +47,11 @@ const readyForFundingPayments = () => {
         )
       })
       .catch((error) => {
-        console.error('오류발생: ', error)
+        alert('오류발생: '+ error);
       })
 }
 
-const messageHandler = (event) => {
+const messageHandler = (event: MessageEvent ) => {
   if (event.data === 'complete') {
     // 자식 페이지 작업 완료 후 route
     router.push('/funding/details');

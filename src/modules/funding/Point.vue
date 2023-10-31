@@ -1,54 +1,46 @@
 <template>
-  <div class="point-section">
-    <div class="point-header">
-      <div class="point-font">포인트</div>
+  <div class='point-section'>
+    <div class='point-header'>
+      <div class='point-font'>포인트</div>
     </div>
-    <div class="point-contents">
-      <div class="point-inner-contents-left">
-        <div class="point-inner-contents-left-header">멤버십 적립 예정 포인트(1%)</div>
+    <div class='point-contents'>
+      <div class='point-inner-contents-left'>
+        <div class='point-inner-contents-left-header'>멤버십 적립 예정 포인트(1%)</div>
       </div>
-      <div class="point-inner-contents-right">
-        <div class="point-inner-contents-line"></div>
-        <div class="point-inner-contents-right-header">
+      <div class='point-inner-contents-right'>
+        <div class='point-inner-contents-line'></div>
+        <div class='point-inner-contents-right-header'>
           <span> 795P </span>
         </div>
       </div>
     </div>
-    <div class="point-contents">
-      <div class="point-inner-contents-left">
-        <div class="point-inner-contents-left-header">포인트 사용</div>
+    <div class='point-contents'>
+      <div class='point-inner-contents-left'>
+        <div class='point-inner-contents-left-header'>포인트 사용</div>
       </div>
-      <div class="point-inner-contents-right">
-        <div class="point-inner-contents-line"></div>
-        <div class="point-inner-contents-right-header">
+      <div class='point-inner-contents-right'>
+        <div class='point-inner-contents-line'></div>
+        <div class='point-inner-contents-right-header'>
           <div>보유포인트 (110P)</div>
-          <input v-model="usedPoint" name="pointInput" type="number"/>
+          <input v-model='usedPoint' name='pointInput' type='number' />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import {useFundingStore} from "@/store/FundingStore";
-import {ref, watch} from "vue";
+<script lang='ts' setup>
+import { useFundingStore } from '@/store/FundingStore'
+import { ref, watch } from 'vue'
 
-export default {
-  setup() {
-    const fundingStore = useFundingStore();
+const fundingStore = useFundingStore()
 
-    const usedPoint = ref(fundingStore.fundingDetails.fundingUsedPoint);
+const usedPoint = ref(fundingStore.fundingDetails.fundingUsedPoint)
 
-    watch(usedPoint, (newVal) => {
-      fundingStore.updateData({fundingUsedPoint: newVal});
-    });
+watch(usedPoint, (newVal) => {
+  fundingStore.updateData({ fundingUsedPoint: newVal })
+})
 
-    return {
-      usedPoint
-    }
-  }
-
-}
 </script>
 
 <style>

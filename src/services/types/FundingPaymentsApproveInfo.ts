@@ -1,7 +1,7 @@
 import type {FundingProductsRequest} from "@/services/types/FundingRequest";
 
 export interface FundingPaymentsApproveInfo {
-    tid: string;
+    tid: string | null;
     pgToken: string;
     partnerOrderId: string;
     partnerUserId: string;
@@ -22,7 +22,6 @@ export interface FundingPaymentsApproveInfo {
     fundingPaymentsActualAmount: number;
     deliveryAddressRecipientName: string;
     deliveryAddressRecipientPhoneNumber: string;
-    deliveryAddressRecipientEmail: string;
     deliveryAddressRequest: string;
     deliveryAddressRoadName: string;
     deliveryAddressDetail: string;

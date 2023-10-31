@@ -1,10 +1,12 @@
 <template>
   <div>
-    <input class="btn-style" type="button" value="배송지 선택" @click="openModal"/>
+    <input class="btn-style" type="button" value="배송지 선택" @click="openModal" />
 
+    <!-- 컴포넌트 MyModal -->
     <MyModal v-if="modal" @close="closeModal">
+      <!-- default 슬롯 콘텐츠 -->
       <p style="text-align: center">배송지 선택</p>
-      <hr/>
+      <hr />
       <div>
         <div v-for="(address, index) in addressList" :key="index" class="address-card">
           <div class="address-card-name">{{ address.name }}</div>
@@ -33,56 +35,71 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
+import { ref } from 'vue'
 import MyModal from './MyModal.vue'
 
-export default {
-  components: {MyModal},
-  data() {
-    return {
-      modal: false,
-      message: '',
-      addressList: [
-        {
-          name: '이름1',
-          isDefault: true,
-          address: '경상북도 구미시 인동22길 22',
-          details: '305호',
-          phone: '010-1234-5678',
-          request: '문 앞'
-        },
-        {
-          name: '이름2',
-          isDefault: false,
-          address: '서울특별시 강동구 올림픽로22길 23',
-          details: '1101호',
-          phone: '010-5678-1234',
-          request: '경비실'
-        }
-      ]
-    }
+interface Address {
+  name: string
+  isDefault: boolean
+  address: string
+  details: string
+  phone: string
+  request: string
+}
+
+const modal = ref(false)
+const message = ref('')
+const addressList = ref<Address[]>([
+  {
+    name: '이름1',
+    isDefault: true,
+    address: '경상북도 구미시 인동22길 22',
+    details: '305호',
+    phone: '010-1234-5678',
+    request: '문 앞'
   },
-  methods: {
-    openModal() {
-      this.modal = true
-    },
-    closeModal() {
-      this.modal = false
-    },
-    doSend() {
-      if (this.message.length > 0) {
-        alert(this.message)
-        this.message = ''
-        this.closeModal()
-      } else {
-        alert('메시지를 입력해주세요.')
-      }
-    },
-    addAddress() {
-      this.modal = false
-      this.$emit('addAddress', true)
-    }
+  {
+    name: '이름2',
+    isDefault: false,
+    address: '서울특별시 강동구 올림픽로22길 23',
+    details: '1101호',
+    phone: '010-5678-1234',
+    request: '경비실'
   }
+])
+
+const emit = defineEmits(['addAddress'])
+
+const openModal = () => {
+  modal.value = true
+}
+
+const closeModal = () => {
+  modal.value = false
+}
+
+const doSend = () => {
+  if (message.value.length > 0) {
+    alert(message.value)
+    message.value = ''
+    closeModal()
+  } else {
+    alert('메시지를 입력해주세요.')
+  }
+}
+
+const addAddress = () => {
+  modal.value = false
+  emit('addAddress', true)
+}
+
+const editAddress = (index: number) => {
+  // TODO 주소 수정
+}
+
+const selectAddress = (index: number) => {
+  // TODO 주소 선택
 }
 </script>
 
