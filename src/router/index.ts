@@ -78,6 +78,10 @@ const router = createRouter({
     },
     {
       path: '/projects',
+      redirect: '/projects/maker'
+    },
+    {
+      path: '/projects',
       name: 'projectRegister',
       component: ProjectRegisterView,
       children: [

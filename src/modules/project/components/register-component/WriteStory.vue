@@ -6,6 +6,8 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { computed, ref } from 'vue'
 import { useProjectStoryStore } from '@/store/registerProjectStore'
 import { getPresignedUrlByImageName } from '@/services/api/ProjectService'
+import { useRouter } from 'vue-router'
+import type { ProjectImagesType } from '@/services/types/ProjectRegisterType'
 
 const projectContentTitle = {
   title: '스토리 작성',
@@ -27,7 +29,7 @@ const storyImage = {
   ]
 }
 const projectStory = ref({
-  projectImages: [] as Array<string>,
+  projectImages: [] as ProjectImagesType[],
   projectDescription: '',
   projectStoryImageUrl: ''
 })
@@ -38,14 +40,20 @@ const addImage = () => {
 const imageInput = async (event: any) => {
   const file = event.target.files[0]
   const url = await getPresignedUrlByImageName(file)
-  projectStory.value.projectImages.push(url)
+  const projectImages: ProjectImagesType = {
+    projectImageFile: file,
+    projectImageUrl: url
+  }
+  projectStory.value.projectImages.push(projectImages)
 }
 
 const storyDescription = (value: any) => {
   projectStory.value.projectDescription = value.target.value
 }
+const router = useRouter()
 const emitData = () => {
   useProjectStoryStore().setProjectStoryData({ projectStoryData: projectStory })
+  router.push('/projects/products')
 }
 const makeDisable = computed(() => {
   if (projectStory.value.projectImages.length == 4)

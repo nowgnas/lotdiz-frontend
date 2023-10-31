@@ -20,6 +20,7 @@
     gap: 10px;
     border-radius: 10px;
     background: #58C1C2;
+    cursor: pointer;
 }
 
 .save-btn > .text {

@@ -8,6 +8,7 @@ import GuideBox from '@/modules/project/components/register-component/GuideBox.v
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import { useDefaultInformationStore } from '@/store/registerProjectStore'
 import { getPresignedUrlByImageName } from '@/services/api/ProjectService'
+import { useRouter } from 'vue-router'
 
 const inputComponentData = ref({
   projectName: {
@@ -25,6 +26,7 @@ const projectDefaultInfo = ref({
   projectName: '',
   projectTag: '',
   projectThumbnailImageUrl: '',
+  projectThumbnailFile: null,
   projectDueDate: ''
 })
 
@@ -48,6 +50,7 @@ const thumbnailGuideBox = {
 
 const imageInput = async (event: any) => {
   const file = event.target.files[0]
+  projectDefaultInfo.value.projectThumbnailFile = file
   projectDefaultInfo.value.projectThumbnailImageUrl = await getPresignedUrlByImageName(file)
 }
 const addImage = () => {
@@ -72,9 +75,10 @@ const projectContentTitle = {
   title: '기본 정보 등록',
   description: '프로젝트를 대표하는 중요한 정보들을 입력해 주세요.'
 }
-
+const router = useRouter()
 const emitData = () => {
   useDefaultInformationStore().setDefaultInformation({ defaultInformation: projectDefaultInfo })
+  router.push('/projects/story')
 }
 
 </script>
