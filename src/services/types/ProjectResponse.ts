@@ -36,7 +36,7 @@ export interface ProjectsByCategory {
   accumulatedFundingAmount: number;
   lotdealDueTime: string;
   projectStatus: string;
-  isLike: boolean;
+  isLikes: boolean;
 }
 
 export interface ProjectDetail {
@@ -50,7 +50,7 @@ export interface ProjectDetail {
   numberOfBuyers: number;
   numberOfSupporter: number;
   numberOfLikes: number;
-  isLike: boolean;
+  isLikes: boolean;
   fundingAchievementRate: number;
   accumulatedFundingAmount: number;
   projectStoryImageUrl: string;
@@ -76,7 +76,7 @@ export interface LotdealProject {
   accumulatedFundingAmount: number;
   lotdealDueTime: string;
   projectStatus: string;
-  isLike: boolean;
+  isLikes: boolean;
 }
 
 export interface SpecialExhibition {
@@ -89,7 +89,7 @@ export interface SpecialExhibition {
   accumulatedFundingAmount: number;
   lotdealDueTime: string;
   projectStatus: string;
-  isLike: boolean;
+  isLikes: boolean;
 }
 
 export interface BestLotdPlusProject {
@@ -102,7 +102,7 @@ export interface BestLotdPlusProject {
   fundingAchievementRate: string;
   accumulatedFundingAmount: number;
   projectStatus: string;
-  isLike: boolean;
+  isLikes: boolean;
 
 }
 

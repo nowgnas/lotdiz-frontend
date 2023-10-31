@@ -154,20 +154,19 @@
 <script setup lang='ts'>
 import { ref, watch, onBeforeMount } from 'vue'
 import { useProjectStore } from '@/store/ProjectStore'
-import { useRouter } from 'vue-router'
 import ProductComponent from '@/modules/project/components/ProductComponent.vue'
 import { createLikes, deleteLikes } from '@/services/api/MemberService'
 import { createSupportSignature } from '@/services/api/ProjectService'
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 import type { ProjectDetail } from '@/services/types/ProjectResponse'
 
-const router = useRouter()
 const projectStore = useProjectStore()
 const projectDetails = ref<ProjectDetail>()
 
 const modalCheck = ref<boolean>(false)
 const projectId = ref<number>(-1)
 const isLikes = ref<boolean>(false)
+const numberOfSupporter = ref<number>(0)
 const inputSupportSignatureContents = ref<string>('')
 
 const modalControl = () => {
@@ -177,17 +176,19 @@ const modalControl = () => {
 const likes = async () => {
   if (isLikes.value) {
     await deleteLikes(projectId.value)
-    isLikes.value = false
   } else {
     await createLikes(projectId.value)
-    isLikes.value = true
   }
+  await projectStore.setData(projectId.value)
+  projectDetails.value = projectStore.projectDetails
+  isLikes.value = projectDetails.value?.isLikes
 }
 
 const createSupportSignatureRequest = async () => {
   const inputSupportSignatureContentsRequest: InputSupportSignatureContentsRequest = { supportSignatureContents: inputSupportSignatureContents.value }
   try {
     await createSupportSignature(projectId.value, inputSupportSignatureContentsRequest)
+
     inputSupportSignatureContents.value = ''
   } catch (error) {
     alert(error)
@@ -196,17 +197,25 @@ const createSupportSignatureRequest = async () => {
 
 onBeforeMount(() => {
   projectDetails.value = projectStore.projectDetails
-  isLikes.value = projectDetails.value?.isLike
+  isLikes.value = projectDetails.value?.isLikes
   projectId.value = projectDetails.value?.projectId
 })
 
+
 watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
-  if (newProjectId !== 0) {
+  if (newProjectId !== -1) {
     projectDetails.value = projectStore.projectDetails
-    isLikes.value = projectDetails.value?.isLike
+    isLikes.value = projectDetails.value?.isLikes
+    projectId.value = projectDetails.value?.projectId
   }
 })
 
+watch(() => projectStore.projectDetails.numberOfSupporter, (newNumberOfSupporter) => {
+  if(newNumberOfSupporter !== projectDetails.value?.numberOfSupporter) {
+    projectDetails.value = projectStore.projectDetails
+    numberOfSupporter.value = projectDetails.value?.numberOfSupporter
+  }
+})
 
 </script>
 

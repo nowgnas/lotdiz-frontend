@@ -74,6 +74,7 @@ import { onBeforeMount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getNumberOfNotification } from '@/services/api/NotificationService'
 
+
 const jwtToken = ref(localStorage.getItem('jwtToken'))
 
 const route = useRoute()
