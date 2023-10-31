@@ -9,7 +9,7 @@
         만 모았어요
       </p>
     </div>
-    <div v-for='item in likesList' :key='likesList' :item='item'>
+    <div v-for='item in likesList' :item='item'>
       <likes-card :item='item' />
     </div>
   </div>
@@ -19,8 +19,9 @@
 import LikesCard from '../../modules/member/components/LikesCard.vue'
 import { ref, onMounted } from 'vue'
 import { getLikesList } from '@/services/api/MemberService'
+import type { LikesDetailResponse } from '@/services/types/MemberResponse'
 
-const likesList = ref([])
+const likesList = ref<Array<LikesDetailResponse>>([])
 
 onMounted(() => {
   getLikesList()

@@ -25,8 +25,9 @@
 
 <script setup lang='ts'>
 
-import { PropType } from 'vue'
-import { LikesDetailResponse } from '@/services/types/MemberResponse'
+import { defineProps } from 'vue'
+import type { PropType } from 'vue'
+import type { LikesDetailResponse } from '@/services/types/MemberResponse'
 import { deleteLikes } from '@/services/api/MemberService'
 import router from '@/router'
 const props = defineProps({
@@ -36,14 +37,14 @@ const props = defineProps({
   }
 })
 
-const goProjectDetail = () => {
+const goProjectDetail = (event: any) => {
   const curEle = event.target
   const cloestAncestor = curEle.closest('.likes-card-wrapper')
   const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
   router.push('/project-details/' + ancestorId)
 }
 
-const removeLikes = (event) => {
+const removeLikes = (event: any) => {
   const curEle = event.target
   const cloestAncestor = curEle.closest('.likes-card-wrapper')
   const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
