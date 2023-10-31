@@ -60,7 +60,7 @@ import Agreement from '@/modules/funding/Agreement.vue'
 import PayBtn from '@/modules/funding/PayBtn.vue'
 </script>
 
-<style>
+<style scoped>
 .container {
   margin: 0 auto;
   width: 1430px;
