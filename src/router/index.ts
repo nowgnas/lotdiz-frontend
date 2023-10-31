@@ -8,6 +8,8 @@ import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue'
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'
+import FundingPayApproveView from "@/views/funding/FundingPayApproveView.vue";
+import FundingDetailsView from "@/views/funding/FundingDetailsView.vue";
 
 import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
 import DefaultInformation from '@/modules/project/components/DefaultInformation.vue'
@@ -152,6 +154,18 @@ const router = createRouter({
       path: '/funding',
       name: 'funding',
       component: FundingView,
+      meta: { authRequired: true }
+    },
+    {
+      path: '/payments/approve/:order/:user',
+      name: 'payments',
+      component: FundingPayApproveView,
+      meta: { authRequired: true }
+    },
+    {
+      path: '/funding/details',
+      name: 'fundingDetails',
+      component: FundingDetailsView,
       meta: { authRequired: true }
     },
     {

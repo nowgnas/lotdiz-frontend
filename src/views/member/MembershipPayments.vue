@@ -127,7 +127,7 @@ onMounted(() => {
 
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 @import '@/assets/css/member/membership-payments.css';
