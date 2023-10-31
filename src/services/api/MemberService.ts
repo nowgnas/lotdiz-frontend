@@ -2,7 +2,8 @@ import { getData, postMemberData, deleteData, postData, putData } from './APISpe
 import type {
   MemberInfoForQueryResponse,
   KakaoPayReadyResponse,
-  MembershipInfoForShowResponse
+  MembershipInfoForShowResponse,
+  LikesDetailResponse
 } from '../types/MemberResponse'
 import type {
   MemberInfoForSignUpRequest,
@@ -105,8 +106,17 @@ export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberI
 export const postSignOut = async () => {
   try {
     const response = await postMemberData('/member-service/api/sign-out')
-    return response.data;
+    return response.data
   } catch (error: unknown) {
     throw new Error('로그아웃 실패')
+  }
+}
+
+export const getLikesList = async () => {
+  try {
+    const response = await getData<LikesDetailResponse[]>('/member-service/api/members/likes')
+    return response.data
+  } catch (error: unknown) {
+    throw new Error('찜목록 조회 실패')
   }
 }

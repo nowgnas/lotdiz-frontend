@@ -1,26 +1,55 @@
 <template>
-  <div class="likes-card-wrapper">
-    <div class="likes-card-content-wrapper">
-        <div class="sec-project-img">
-          <div>
-            <img src="https://picsum.photos/200" alt="" class="img-likes" />
-          </div>
-          <div class="icon-heart-wrapper"><font-awesome-icon :icon="['fas', 'heart']" /></div>
+  <div class='likes-card-wrapper' :id="'project-' + item.projectId">
+    <div class='likes-card-content-wrapper'>
+      <div class='sec-project-img'>
+        <div>
+          <img :src='item.projectThumbnailImageUrl' alt='' class='img-likes' />
         </div>
-        <div class="sec-project-title">
-          <div>
-              <div class="text-achivement-rate">1200% 달성</div>
-              <div class="text-title">[제주한라봉] 달달합니다~.</div>
-          </div>
-          <div class="text-remain-days">7일</div>
-          <div class="text-maker">(주)한라봉</div>
+        <div class='icon-heart-wrapper' @click='removeLikes'>
+          <font-awesome-icon :icon="['fas', 'heart']" />
         </div>
-          </div>
+      </div>
+      <div class='sec-project-title'>
+        <div>
+          <div class='text-achivement-rate'>{{ item.fundingAchievementRate }}% 달성</div>
+          <div class='text-title'>{{ item.projectName }}</div>
+        </div>
+        <div class='text-remain-days' v-if='item.remainingDays <= 0'>프로젝트 종료</div>
+        <div class='text-remain-days' v-else>{{ item.remainingDays }}일</div>
+
+        <div class='text-maker'>{{ item.makerName }}</div>
+      </div>
     </div>
+  </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang='ts'>
 
+import { PropType } from 'vue'
+import { LikesDetailResponse } from '@/services/types/MemberResponse'
+import { deleteLikes } from '@/services/api/MemberService'
+const props = defineProps({
+  item: {
+    type: Object as PropType<LikesDetailResponse>,
+    required: true
+  }
+})
+
+const removeLikes = (event) => {
+  const curEle = event.target
+  const cloestAncestor = curEle.closest('.likes-card-wrapper')
+  const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
+  console.log("ancestorId:", ancestorId)
+  if(confirm('해당 프로젝트를 찜목록에서 삭제하시겠습니까?')) {
+    deleteLikes(ancestorId)
+      .then(() => {
+        alert('성공적으로 삭제하였습니다.')
+        location.reload()
+      }).catch(error => {
+        alert('해당 프로젝트를 삭제하는데 실패했습니다.')
+    })
+  }
+}
 </script>
 
 <style>
@@ -36,9 +65,9 @@
 }
 
 .likes-card-content-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
 }
 
 .img-likes {
@@ -54,12 +83,12 @@
 }
 
 .icon-heart-wrapper {
-    position: absolute;
-    color: var(--heart-color);
-    top: 15px;
-    right: 15px;
-    font-size: 25px;
-    cursor: pointer;
+  position: absolute;
+  color: var(--heart-color);
+  top: 15px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .sec-project-title {
@@ -75,17 +104,17 @@
 }
 
 .text-title {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .text-remain-days {
-    color: var(--main-color);
-    font-size: 15px;
-    font-weight: bold;
+  color: var(--main-color);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .text-maker {
-    color: var(--middle-gray);
-    font-size: 14px;
+  color: var(--middle-gray);
+  font-size: 14px;
 }
 </style>

@@ -1,23 +1,37 @@
 <template>
-  <div style="height: 93px">Header here.</div>
-  <div id="likes-view-container">
-    <div id="likes-title">
+  <div id='likes-view-container'>
+    <div id='likes-title'>
       <p>
         찜
-        <span class="icon-wrapper">
+        <span class='icon-wrapper'>
           <font-awesome-icon :icon="['fas', 'heart']" />
         </span>
         만 모았어요
       </p>
     </div>
-    <div>
-        <likes-card></likes-card>
+    <div v-for='item in likesList' :key='likesList' :item='item'>
+      <likes-card :item='item' />
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import LikesCard from '../../modules/member/components/LikesCard.vue';
+<script setup lang='ts'>
+import LikesCard from '../../modules/member/components/LikesCard.vue'
+import { ref, onMounted } from 'vue'
+import { getLikesList } from '@/services/api/MemberService'
+
+const likesList = ref([])
+
+onMounted(() => {
+  getLikesList()
+    .then(response => {
+      console.log('response:', response)
+      likesList.value = response
+      console.log('likesList:', likesList)
+    }).catch(error => {
+      console.error("찜 목록 조회 실패")
+  })
+})
 </script>
 
 <style>
@@ -43,6 +57,7 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 50px;
+  padding-bottom: 100px;
 }
 
 #likes-title {
@@ -58,6 +73,6 @@ a {
 }
 
 .icon-wrapper {
-    color: var(--heart-color);
+  color: var(--heart-color);
 }
 </style>
