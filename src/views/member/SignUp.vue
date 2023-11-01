@@ -51,21 +51,21 @@ const getActiveNo = () => {
   return memberStore.getActiveNo();
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/basic-info") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/basic-info") {
+  window.location.pathname = "/member/sign-up";
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/email-auth") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/email-auth") {
+  window.location.pathname = "/member/sign-up";
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/success") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/success") {
+  window.location.pathname = "/member/sign-up";
 }
 
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/font.css';

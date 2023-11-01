@@ -9,7 +9,6 @@ const headerStore = useHeaderStore();
 
 onMounted(() => {
   const url: string = window.location.pathname
-  console.log('url:', url)
   if (
     url === '/member/sign-in' ||
     url === '/member/sign-up' ||

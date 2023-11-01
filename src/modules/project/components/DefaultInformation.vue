@@ -38,7 +38,6 @@ const thumbnailGuideBox = {
 
 const imageInput = (event: any) => {
   const file = event.target.files[0]
-  console.log(file.name)
 }
 const addImage = () => {
   // 콜백으로 image ref를 동작 시키면 - 파일 선택 창이 뜬다

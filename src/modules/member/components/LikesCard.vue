@@ -48,7 +48,6 @@ const removeLikes = (event: any) => {
   const curEle = event.target
   const cloestAncestor = curEle.closest('.likes-card-wrapper')
   const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
-  console.log("ancestorId:", ancestorId)
   if(confirm('해당 프로젝트를 찜목록에서 삭제하시겠습니까?')) {
     deleteLikes(ancestorId)
       .then(() => {
