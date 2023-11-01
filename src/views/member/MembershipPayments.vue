@@ -2,8 +2,8 @@
   <div class="main-content-container">
     <div id="membership-promotion-content">
       <div id="honors-title">롯드 오너스</div>
-      <div id="membership-payments-banner">
-        <p id="banner-text">
+      <div id="membership-payments-banner" @click='scrollToPriceTicket'>
+        <p id="banner-membership-text">
           <font-awesome-icon :icon="['fas', 'trophy']" /> {{ memberName }}님 롯드오너스로<br />
           할인 및 적립 혜택 DEAL하세요!
         </p>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div id="sec-intro">
-        <div id="intro-title">롯데 오너스란?</div>
+        <div id="intro-title">롯드 오너스란?</div>
         <div id="intro-sub-title-container">
             <div class="intro-sub-title-wrapper">
                 <div class="intro-sub-icon"><p><font-awesome-icon :icon="['fas', 'turn-up']" /></p></div>
@@ -39,8 +39,8 @@
         <div id="price-box">
             <div id="price-box-text">1년동안<br>펀딩 프렌즈 6,900원,<br>펀딩 파트너 9,900원</div>
             <div id="price-ticket-wrapper">
-                <div class="price-ticket" @click="readyForPaymentsOfFundingFriends"><font-awesome-icon :icon="['fas', 'won-sign']" /> 6,900</div>
-                <div class="price-ticket" @click="readyForPaymentsOfFundingPartner"><font-awesome-icon :icon="['fas', 'won-sign']" /> 9,900</div>
+                <div class="price-ticket" @click="readyForPaymentsOfFundingFriends"><font-awesome-icon :icon="['fas', 'comment']" size="xl" /> 6,900원</div>
+                <div class="price-ticket" @click="readyForPaymentsOfFundingPartner"><font-awesome-icon :icon="['fas', 'comment']" size="xl" /> 9,900원</div>
             </div>
         </div>
         <div id="membership-type-desc-box">
@@ -124,6 +124,10 @@ onMounted(() => {
       console.error("회원 정보 조회 실패:", error);
   })
 })
+
+const scrollToPriceTicket = () => {
+  window.scrollTo({ top: 1200, behavior: 'smooth' });
+}
 
 </script>
 

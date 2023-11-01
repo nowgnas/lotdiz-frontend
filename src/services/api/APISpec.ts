@@ -46,7 +46,7 @@ export const postMemberData = async <T>(url: string, data?: any) => {
         const response = await client.post<SuccessResponse<T>>(url, data);
         return response;
     } catch(error: unknown) {
-        console.error((<ErrorResponse>error).detail);
+      console.error((<ErrorResponse>error).detail)
         throw new Error((<ErrorResponse>error).message);
     }
 }
