@@ -35,7 +35,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 
