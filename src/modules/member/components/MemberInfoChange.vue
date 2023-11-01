@@ -4,15 +4,18 @@
       <div id='sec-input-change'>
         <div class='input-change-info-wrapper'>
           <div>
-            <label for='input-change-name'>이름</label>
+            <label for='input-change-name'>이름 <span class='sign-necessary'>*</span></label>
           </div>
           <input type='text' id='input-change-name' class='input-change' v-model='memberName' required />
         </div>
         <div class='input-change-info-wrapper'>
           <div>
-            <label for='input-change-origin-password'>기존 비밀번호</label>
+            <label for='input-change-origin-password'>기존 비밀번호 <span class='sign-necessary'>*</span></label>
           </div>
-          <input type='password' id='input-change-origin-password' class='input-change' v-model='originPassword' />
+          <div>
+            <input type='password' id='input-change-origin-password' class='input-change' v-model='originPassword' required />
+            <div class='msg-necessary'>회원 정보 수정을 위해, 기존 비밀번호를 입력해주세요.</div>
+          </div>
         </div>
         <div class='input-change-info-wrapper'>
           <div>
@@ -22,7 +25,7 @@
         </div>
         <div class='input-change-info-wrapper'>
           <div>
-            <label for='input-change-phone-no'>전화번호</label>
+            <label for='input-change-phone-no'>전화번호 <span class='sign-necessary'>*</span></label>
           </div>
           <input type='text' id='input-change-phone-no' class='input-change' v-model='memberPhoneNo' required />
         </div>
@@ -52,7 +55,7 @@
 
 <script setup lang='ts'>
 import type { MemberInfoForChangeRequest } from '@/services/types/MemberRequest'
-import { getMemberInfo, putMemberInfoForChange } from '@/services/api/MemberService'
+import { checkOriginPasswordForChange, getMemberInfo, putMemberInfoForChange } from '@/services/api/MemberService'
 import { ref, onMounted } from 'vue'
 
 const memberName = ref('')
@@ -79,17 +82,27 @@ const submitForm = (event: any) => {
   event.preventDefault()
   const memberInfoForChangeRequest: MemberInfoForChangeRequest = {
     memberName: memberName.value,
-    originPassword: 'woo1234@',
-    newPassword: 'woo1234@',
+    originPassword: originPassword.value,
+    newPassword: newPassword.value,
     memberPhoneNumber: memberPhoneNo.value
   }
-  putMemberInfoForChange(memberInfoForChangeRequest)
-    .then(response => {
-      alert('회원 정보 수정 완료되었습니다.')
-    }).catch(error => {
-    console.error('회원 정보 수정 실패:', error)
-  })
 
+  checkOriginPasswordForChange(originPassword.value)
+    .then(response => {
+      if(response) {
+        putMemberInfoForChange(memberInfoForChangeRequest)
+          .then(response => {
+            alert('회원 정보 수정 완료되었습니다.')
+          }).catch(error => {
+          console.error('회원 정보 수정 실패:', error)
+        })
+      } else {
+        alert('기존 비밀번호가 일치하지 않습니다.')
+        return
+      }
+    }).catch(error => {
+      console.error("회원정보 수정 실패:", error)
+  })
 }
 </script>
 

@@ -58,6 +58,7 @@
 #text-unchanged-createdAt-wrapper {
     display: flex;
     justify-content: space-between;
+    font-weight: normal;
 }
 
 #sub-title-unchanged-createdAt {
@@ -70,4 +71,13 @@
     color: var(--icon-color);
     display: flex;
     align-items: center;
+}
+
+.msg-necessary {
+    color: var(--error-color);
+    font-size: 14px;
+}
+
+.sign-necessary {
+    color: var(--error-color);
 }
