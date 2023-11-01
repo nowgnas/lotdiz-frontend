@@ -71,6 +71,10 @@
 
 }
 
+.support-signature-write-box:hover {
+    cursor: pointer;
+}
+
 .support-signature-write-logo {
     display: flex;
     /*padding: 10px;*/
@@ -117,8 +121,7 @@
     align-items: center;
     /* gap: 16px; */
     justify-content: center;
-    width: 666px;
-    padding-right: 61px;
+    width: 812px;
 
 }
 
@@ -171,6 +174,10 @@
     justify-content: end;
     /*height: 57px;*/
     align-items: center;
+}
+
+.support-signature-modify:hover {
+    cursor: pointer;
 }
 
 .support-signature-created-at-data {
@@ -237,7 +244,11 @@
     justify-content: flex-end;
     align-items: center;
     flex-shrink: 0;
-    align-self: stretch;
+    align-self: flex-end;
+}
+
+.support-signature-modal-close:hover {
+    cursor: pointer;
 }
 
 .support-signature-modal-title-box {
@@ -376,6 +387,10 @@
     border-radius: 8px;
     background: #4FAFB1;
     height: 48px;
+}
+
+.support-signature-modal-write-button:hover {
+    cursor: pointer;
 }
 
 .support-signature-modal-write-button-logo {

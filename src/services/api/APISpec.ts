@@ -1,7 +1,7 @@
-import axios, { Axios } from 'axios'
+import axios, {Axios} from 'axios';
 import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
 
-const client: Axios = axios.create({
+export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
   withCredentials: true,
   headers: {
@@ -39,6 +39,16 @@ export const postData = async <T>(url: string, data?: any): Promise<SuccessRespo
     console.error((<ErrorResponse>error).detail)
     throw new Error((<ErrorResponse>error).message)
   }
+}
+
+export const postMemberData = async <T>(url: string, data?: any) => {
+    try {
+        const response = await client.post<SuccessResponse<T>>(url, data);
+        return response;
+    } catch(error: unknown) {
+        console.error((<ErrorResponse>error).detail);
+        throw new Error((<ErrorResponse>error).message);
+    }
 }
 
 export const putData = async <T>(url: string, data?: any): Promise<SuccessResponse<T>> => {

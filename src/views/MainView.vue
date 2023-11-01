@@ -102,6 +102,10 @@ onBeforeMount(async () => {
   align-items: center;
 }
 
+.carousel__slide {
+  justify-content: stretch;
+}
+
 .main-page-container {
   display: inline-flex;
   align-items: flex-start;

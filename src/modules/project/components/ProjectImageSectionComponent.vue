@@ -12,7 +12,7 @@
                 </Slide>
 
                 <template #addons>
-                <Navigation />
+                <Navigation v-if="false" />
                 <Pagination />
                 </template>
             </Carousel>

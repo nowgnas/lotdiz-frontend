@@ -1,13 +1,13 @@
 <template>
 
   <div class='project-product-card'
-       v-if="project && ( $route.path == '/lotdeal' && stringifiedTimer != '00:00:00') || $route.path != '/lotdeal'">
+       v-if="project && ( $route.path == '/lotdeal') || $route.path != '/lotdeal'">
     <div @click='goProjectDetailsPage(projectId)'>
 
       <div class='project-image-info'>
 
         <div class='project-image'>
-          <img alt='project logo' class='project-img' :src='projectThumbnailImageUrl' />
+          <img alt=' ' class='project-img' :src='projectThumbnailImageUrl' />
         </div>
 
         <div class='likes' @click='likes'>
@@ -21,9 +21,9 @@
           </svg>
         </div>
 
-        <div class='lotdeal-info' v-if="lotdealDueTime != null && stringifiedTimer != '00:00:00'">
+        <div class='lotdeal-info' v-if="lotdealDueTime != null">
           <div class='lotdeal-image'>
-            <img alt='lotdeal logo' class='lotdeal-img' src='/common/hot-deal-logo.png'>
+            <img alt=' ' class='lotdeal-img' src='/common/hot-deal-logo.png'>
           </div>
           <div class='lotdeal-time'>{{ stringifiedTimer }}</div>
         </div>
@@ -68,7 +68,7 @@ const props = defineProps({
         accumulatedFundingAmount: 0,
         lotdealDueTime: '',
         projectStatus: '',
-        isLike: false
+        isLikes: false
       }
     }
   }
@@ -83,16 +83,13 @@ const lotdealDueTime = ref<string>(props.project?.lotdealDueTime)
 const projectStatus = ref<string>(props.project?.projectStatus)
 
 const projectId = ref<number>(props.project?.projectId)
-const isLikes = ref<boolean>(props.project?.isLike)
+const isLikes = ref<boolean>(props.project?.isLikes)
 
 const projectThumbnailImageUrl = ref<string>(props.project?.projectThumbnailImageUrl)
 
 const timer = ref<number>(0)
-const hour = computed(() => Math.floor(timer.value / (60 * 60)))
-const minute = computed(() => Math.floor((timer.value - hour.value * (60 * 60)) / 60))
-const second = computed(() => Math.floor(timer.value % 60))
 
-const stringifiedTimer = computed(() => `${String(hour.value).padStart(2, '0')}:${String(minute.value).padStart(2, '0')}:${String(second.value).padStart(2, '0')}`)
+const stringifiedTimer = ref<string>('00:00:00')
 
 const startTimer = () => {
   const targetTime = new Date(lotdealDueTime.value).getTime() / 1000
@@ -100,12 +97,38 @@ const startTimer = () => {
   setInterval(() => {
     const now = new Date().getTime() / 1000
     timer.value = Math.max(0, Math.floor(targetTime - now))
+
+    const hour = Math.floor(timer.value / 3600)
+    const minute = Math.floor((timer.value % 3600) / 60)
+    const second = timer.value % 60
+
+    stringifiedTimer.value = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`
   }, 1000)
 }
 
 onBeforeMount(() => {
   startTimer()
 })
+
+// const stringifiedTimer = ref<string>('00:00:00')
+//
+// const startTimer = () => {
+//   const targetTime = new Date(lotdealDueTime.value).getTime() / 1000
+//
+//   setInterval(() => {
+//     const now = new Date().getTime() / 1000
+//     timer.value = Math.max(0, Math.floor(targetTime - now))
+//   }, 1000)
+// }
+//
+// onBeforeMount(() => {
+//   const hour = computed(() => Math.floor(timer.value / (60 * 60)))
+//   const minute = computed(() => Math.floor((timer.value - hour.value * (60 * 60)) / 60))
+//   const second = computed(() => Math.floor(timer.value % 60))
+//
+//   stringifiedTimer.value = computed(() => `${String(hour.value).padStart(2, '0')}:${String(minute.value).padStart(2, '0')}:${String(second.value).padStart(2, '0')}`)
+//   startTimer()
+// })
 
 const goProjectDetailsPage = (projectId: number) => {
   router.push({
@@ -121,11 +144,13 @@ const likes = async (e: any) => {
   e.stopPropagation()
   if (isLikes.value) {
     await deleteLikes(projectId.value)
-    isLikes.value = false
+    isLikes.value = false;
   } else {
     await createLikes(projectId.value)
-    isLikes.value = true
+    isLikes.value = true;
   }
+
+
 }
 </script>
 

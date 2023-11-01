@@ -10,7 +10,7 @@
 
 #details-project-info {
   display: flex;
-  width: 508px;
+  /*width: 508px;*/
   height: 359px;
   flex-direction: column;
   justify-content: center;
@@ -166,7 +166,7 @@
   display: flex;
   /* padding: 0px 5px; */
   align-items: center;
-  gap: 276px;
+  gap: 283px;
   align-self: stretch;
 }
 
@@ -244,6 +244,10 @@
   gap: 15px;
 }
 
+.details-likes-clap:hover {
+  cursor: pointer;
+}
+
 .details-likes {
   display: flex;
   gap: 1px;
@@ -264,6 +268,10 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+}
+
+.details-likes-logo:hover {
+  cursor: pointer;
 }
 
 .details-likes-count {

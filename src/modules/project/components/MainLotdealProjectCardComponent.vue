@@ -1,7 +1,7 @@
 <template>
 
   <div class='lotdeal-project-product-card'
-       v-if="project && ( $route.path == '/lotdeal' && stringifiedTimer != '00:00:00') || $route.path != '/lotdeal'"
+       v-if="project && ( $route.path == '/lotdeal') || $route.path != '/lotdeal'"
        @click='goProjectDetailsPage(projectId)'>
 
     <div class='ranking'>{{ idx }}</div>
@@ -13,7 +13,7 @@
 
     <div class='project-info'>
 
-      <div class='lotdeal-info' v-if="lotdealDueTime != null && stringifiedTimer != '00:00:00'">
+      <div class='lotdeal-info' v-if="lotdealDueTime != null">
         <div class='lotdeal-image'>
           <img alt='lotdeal logo' class='lotdeal-img' src='/common/hot-deal-logo.png'>
         </div>
@@ -56,7 +56,7 @@ const props = defineProps({
         accumulatedFundingAmount: 0,
         lotdealDueTime: '',
         projectStatus: '',
-        isLike: false
+        isLikes: false
       }
     }
   }
@@ -72,11 +72,8 @@ const projectId = ref<number>(props.project?.projectId)
 const projectThumbnailImageUrl = ref<string>(props.project?.projectThumbnailImageUrl)
 
 const timer = ref<number>(0)
-const hour = computed(() => Math.floor(timer.value / (60 * 60)))
-const minute = computed(() => Math.floor((timer.value - hour.value * (60 * 60)) / 60))
-const second = computed(() => Math.floor(timer.value % 60))
 
-const stringifiedTimer = computed(() => `${String(hour.value).padStart(2, '0')}:${String(minute.value).padStart(2, '0')}:${String(second.value).padStart(2, '0')}`)
+const stringifiedTimer = ref<string>('00:00:00')
 
 const startTimer = () => {
   const targetTime = new Date(lotdealDueTime.value).getTime() / 1000
@@ -84,6 +81,12 @@ const startTimer = () => {
   setInterval(() => {
     const now = new Date().getTime() / 1000
     timer.value = Math.max(0, Math.floor(targetTime - now))
+
+    const hour = Math.floor(timer.value / 3600)
+    const minute = Math.floor((timer.value % 3600) / 60)
+    const second = timer.value % 60
+
+    stringifiedTimer.value = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')}`
   }, 1000)
 }
 

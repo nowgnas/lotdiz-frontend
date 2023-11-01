@@ -57,7 +57,7 @@
     cursor: pointer;
 }
 
-.lotd-plus-btn {
+.header-btn {
     display: flex;
     width: 68px;
     height: 50px;
@@ -72,6 +72,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 42px */
+}
+
+.header-btn.active {
+    color: #4FAFB1;
 }
 
 #member-bar {

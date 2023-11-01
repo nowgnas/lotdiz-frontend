@@ -7,11 +7,11 @@
         </div>
         <div class='support-signature-title'>지지서명</div>
       </div>
-      <div class='support-signature-write-box'>
+      <div class='support-signature-write-box' @click='clickCreateRequest'>
         <div class='support-signature-write-logo'>
           <img alt='support-signature-write-logo' src='/common/pencil-icon.png'>
         </div>
-        <div class='support-signature-write-title' @click='clickCreateRequest'>글 쓰기</div>
+        <div class='support-signature-write-title'>글 쓰기</div>
       </div>
     </div>
 
@@ -105,7 +105,7 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, watch } from 'vue';
 import { getSupportSignature, createSupportSignature, modifySupportSignature } from '@/services/api/ProjectService';
 import type { SupportSignatureResponse, SupportSignature } from '@/services/types/ProjectResponse';
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest';
@@ -151,6 +151,9 @@ const createSupportSignatureRequest = async () => {
   const inputSupportSignatureContentsRequest: InputSupportSignatureContentsRequest = { supportSignatureContents: inputSupportSignatureContents.value };
   try {
     await createSupportSignature(projectId.value, inputSupportSignatureContentsRequest);
+
+    await projectStore.setData(projectId.value)
+
     inputSupportSignatureContents.value = '';
     await getSupportSignatureRequest(projectId.value, 0, 6, 'createdAt,desc');
   } catch (error) {
