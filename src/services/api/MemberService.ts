@@ -48,7 +48,7 @@ export const postInfoForSignIn = async (infoForSignIn: InfoForSignIn) => {
     return response
   } catch (error: unknown) {
     console.error(error)
-    throw new Error('로그인 실패')
+    throw new Error('로그인 실패.')
   }
 }
 
@@ -108,6 +108,7 @@ export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberI
     const response = await putData<MemberInfoForChangeRequest>('/member-service/api/members', memberInfoForChangeRequest)
     return response.data
   } catch (error: unknown) {
+    console.error(error)
     throw new Error('회원 정보 수정 실패')
   }
 }

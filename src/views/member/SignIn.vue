@@ -30,6 +30,8 @@ import { ref } from 'vue'
 import { postInfoForSignIn } from '@/services/api/MemberService'
 import router from '../../router/index'
 import { useHeaderStore } from '@/stores/headerStore'
+import { toast, ToastOptions} from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const headerStore = useHeaderStore()
 const username = ref('')
@@ -40,6 +42,18 @@ const goMain = () => {
   router.push('/')
 }
 
+const options = {
+  transition: toast.TRANSITIONS.BOUNCE,
+  position: toast.POSITION.TOP_RIGHT,
+  pauseOnHover: true,
+  progress: undefined,
+  autoClose: 3000,
+  toastStyle: {
+    fontWeight: 'bold'
+  }
+} as ToastOptions
+
+
 const submitForm = () => {
   const signInInfoRequest: InfoForSignIn = {
     username: username.value,
@@ -48,14 +62,14 @@ const submitForm = () => {
   postInfoForSignIn(signInInfoRequest)
     .then(response => {
       headerStore.assignIsNoHeaderPath(false)
-      alert('로그인 성공했습니다.')
+      alert('성공적으로 로그인했습니다.')
       const authorization = response.headers['authorization']
       localStorage.setItem('jwtToken', authorization)
       document.cookie = 'jwtToken=' + authorization
       router.push('/')
     })
     .catch((error: unknown) => {
-      alert('로그인에 실패했습니다.')
+      toast.error(error.toString(), options as ToastOptions)
       console.error('error:', error)
       router.push('/member/sign-in')
     })

@@ -112,7 +112,6 @@ import { useMemberStore } from '../../stores/member'
 import { computed, ref, watch, nextTick } from 'vue'
 import { getIsDulicatedForCheck } from '@/services/api/MemberService'
 import router from '../../../router/index'
-// import toastr from 'toastr';
 import { toast, ToastOptions } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
@@ -161,7 +160,6 @@ const options = {
   toastStyle: {
     fontWeight: 'bold'
   }
-  // and so on ...
 } as ToastOptions;
 
 const checkDuplicated = () => {
