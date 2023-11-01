@@ -1,6 +1,11 @@
 <script setup lang='ts'>
 
 import ProjectCard from '@/modules/maker/components/ProjectCard.vue'
+import { onBeforeMount, onMounted } from 'vue'
+import { getRegisteredProjectList } from '@/services/api/MakerMyPageService'
+onMounted(async ()=>{
+  const registeredProjectList = await getRegisteredProjectList(0, 10, 'createdAt' )
+})
 </script>
 
 <template>

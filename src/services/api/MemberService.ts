@@ -1,17 +1,16 @@
-import { getData, postMemberData, deleteData, postData, putData } from './APISpec'
+import { deleteData, getData, postData, postMemberData, putData } from './APISpec'
 import type {
+  LikesDetailResponse,
   MemberInfoForQueryResponse,
-  KakaoPayReadyResponse,
-  MembershipInfoForShowResponse,
-  LikesDetailResponse
+  MembershipInfoForShowResponse
 } from '../types/MemberResponse'
 import type {
-  MemberInfoForSignUpRequest,
-  MembershipInfoForJoinRequest,
   InfoForSignIn,
-  MemberInfoForChangeRequest
+  MemberInfoForChangeRequest,
+  MemberInfoForSignUpRequest,
+  MembershipInfoForJoinRequest
 } from '../types/MemberRequest'
-import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse'
+import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
   try {
@@ -106,7 +105,7 @@ export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberI
 export const postSignOut = async () => {
   try {
     const response = await postMemberData('/member-service/api/sign-out')
-    return response.data;
+    return response.data
   } catch (error: unknown) {
     throw new Error('로그아웃 실패')
   }
@@ -115,7 +114,7 @@ export const postSignOut = async () => {
 export const getLikesList = async () => {
   try {
     const response = await getData<LikesDetailResponse[]>('/member-service/api/members/likes')
-    return response.data;
+    return response.data
   } catch (error: unknown) {
     throw new Error('찜목록 조회 실패')
   }
