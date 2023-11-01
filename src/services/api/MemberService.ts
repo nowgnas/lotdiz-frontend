@@ -12,6 +12,7 @@ import type {
   MemberInfoForChangeRequest
 } from '../types/MemberRequest'
 import type { SuccessResponse, ErrorResponse } from '@/services/types/APIResponse'
+import { HttpStatusCode } from 'axios'
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
   try {
@@ -52,12 +53,11 @@ export const postInfoForSignIn = async (infoForSignIn: InfoForSignIn) => {
 }
 
 export const getIsDulicatedForCheck = async (username: string) => {
-  try {
     const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
+    if(response.data.data === undefined) {
+      throw new Error(response.data.message)
+    }
     return response.data.data
-  } catch (error: unknown) {
-    throw new Error('이메일 중복 조회 실패')
-  }
 }
 
 export const createLikes = async (projectId: number) => {
