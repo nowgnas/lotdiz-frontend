@@ -30,7 +30,7 @@ import { ref } from 'vue'
 import { postInfoForSignIn } from '@/services/api/MemberService'
 import router from '../../router/index'
 import { useHeaderStore } from '@/stores/headerStore'
-import { toast, ToastOptions} from 'vue3-toastify'
+import { toast, type ToastOptions} from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
 const headerStore = useHeaderStore()
@@ -69,7 +69,7 @@ const submitForm = () => {
       router.push('/')
     })
     .catch((error: unknown) => {
-      toast.error(error.toString(), options as ToastOptions)
+      toast.error(error as string, options as ToastOptions)
       console.error('error:', error)
       router.push('/member/sign-in')
     })

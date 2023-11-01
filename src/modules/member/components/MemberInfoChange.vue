@@ -57,7 +57,7 @@
 import type { MemberInfoForChangeRequest } from '@/services/types/MemberRequest'
 import { checkOriginPasswordForChange, getMemberInfo, putMemberInfoForChange } from '@/services/api/MemberService'
 import { ref, onMounted } from 'vue'
-import { toast, ToastOptions} from 'vue3-toastify'
+import { toast, type ToastOptions} from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 import router from '@/router'
 

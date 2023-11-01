@@ -112,7 +112,7 @@ import { useMemberStore } from '../../stores/member'
 import { computed, ref, watch, nextTick } from 'vue'
 import { getIsDulicatedForCheck } from '@/services/api/MemberService'
 import router from '../../../router/index'
-import { toast, ToastOptions } from 'vue3-toastify';
+import { toast, type ToastOptions } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 const memberStore = useMemberStore()
@@ -166,8 +166,8 @@ const checkDuplicated = () => {
   const fullUsername = username1.value + '@' + username2.value
   getIsDulicatedForCheck(fullUsername)
     .then(response => {
-      if (response.data.data === undefined) {
-        throw new Error(response.data.message)
+      if (response === undefined) {
+        throw new Error("NOT FOUND")
       }
       if (response === false) {
         alert('해당 이메일을 사용할 수 있습니다.')
