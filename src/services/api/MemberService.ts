@@ -129,3 +129,12 @@ export const getLikesList = async () => {
     throw new Error('찜목록 조회 실패')
   }
 }
+
+export const getLikesCnts = async () => {
+  try {
+    const response = await getData<Integer>('/member-service/api/members/likes/cnts')
+    return response.data
+  } catch (error: unknown) {
+    throw new Error('현재 회원의 찜 개수 조회 실패')
+  }
+}
