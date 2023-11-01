@@ -20,7 +20,7 @@ export interface InfoForSignIn {
 
 export interface MemberInfoForChangeRequest {
   memberName: string,
-  originPassword?: string,
+  originPassword: string,
   newPassword?: string,
   memberPhoneNumber: string
 }

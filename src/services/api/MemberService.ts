@@ -94,6 +94,15 @@ export const getMembershipInfoForShow = async () => {
   }
 }
 
+export const checkOriginPasswordForChange = async (originPassword: string) => {
+  try {
+    const response = await postData<boolean>('/member-service/api/origin-password/isSame', originPassword)
+    return response.data
+  } catch (error: unknown) {
+    throw new Error('기존 비밀번호 조회 실패')
+  }
+}
+
 export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberInfoForChangeRequest) => {
   try {
     const response = await putData<MemberInfoForChangeRequest>('/member-service/api/members', memberInfoForChangeRequest)
