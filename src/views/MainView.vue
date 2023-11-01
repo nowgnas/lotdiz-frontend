@@ -49,10 +49,12 @@ import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import ProjectCardComponent from '@/modules/project/components/ProjectCardComponent.vue'
 import MainLotdealProjectCardComponent from '@/modules/project/components/MainLotdealProjectCardComponent.vue'
+import { useHeaderStore } from '@/stores/headerStore'
 
 const banners = ref<Array<Banner>>([])
 const bestLotdPlusProject = ref<Array<BestLotdPlusProject>>([])
 const lotdealProjectList = ref<Array<LotdealProject>>([])
+
 
 const getBannersRequest = async () => {
   try {
@@ -81,6 +83,8 @@ const getLotdealProjectsRequest = async (page: number, size: number, sort: strin
 }
 
 onBeforeMount(async () => {
+  const headerStore = useHeaderStore();
+  await headerStore.assignIsNoHeaderPath(false)
   await getBannersRequest()
   await getBestLotdPlusRequest()
   await getLotdealProjectsRequest(0, 6, 'lotdealDueTime,asc')

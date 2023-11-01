@@ -21,6 +21,7 @@ import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vu
 import NotificationView from '@/views/NotificationView.vue'
 import { client } from "@/services/api/APISpec";
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
+import { useHeaderStore } from '@/stores/headerStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -205,6 +206,11 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+
+  if(window.location.pathname == "/member/sign-in" || window.location.pathname == "/member/sign-up") {
+    const headerStore = useHeaderStore();
+    headerStore.assignIsNoHeaderPath(true)
+  }
 
   const jwtToken = localStorage.getItem("jwtToken");
 
