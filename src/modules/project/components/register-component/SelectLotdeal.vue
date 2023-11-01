@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
-import { ref, toRaw } from 'vue'
+import { ref } from 'vue'
 import {
   useDefaultInformationStore,
   useMakerStore,
@@ -67,23 +67,21 @@ const emitData = () => {
   const { defaultInformation } = storeToRefs(defaultInfo)
   const { projectStoryData } = storeToRefs(storyData)
   const { productsData } = storeToRefs(productsDataStore)
-  console.log('project information')
-  console.log(toRaw(toRaw(defaultInformation.value)))
-  console.log(toRaw(toRaw(projectStoryData.value)))
+  console.log(Object.assign(projectStoryData.value).projectStoryData.projectImages)
 
   const projectData: ProjectRequestData = {
-    projectName: JSON.parse(JSON.stringify(defaultInformation.value)).defaultInformation.projectName,
-    projectDescription: JSON.parse(JSON.stringify(projectStoryData.value)).projectStoryData.projectDescription,
-    projectTag: JSON.parse(JSON.stringify(defaultInformation.value)).defaultInformation.projectTag,
-    projectTargetAmount: JSON.parse(JSON.stringify(projectInformation.value)).projectInformation.projectTargetAmount,
-    projectStoryImageUrl: JSON.parse(JSON.stringify(projectStoryData.value)).projectStoryData.projectStoryImageUrl,
-    projectDueDate: JSON.parse(JSON.stringify(defaultInformation.value)).defaultInformation.projectDueDate.split('.')[0],
-    projectThumbnailImageUrl: JSON.parse(JSON.stringify(defaultInformation.value)).defaultInformation.projectThumbnailImageUrl,
-    projectImages: JSON.parse(JSON.stringify(projectStoryData.value)).projectStoryData.projectImages,
-    categoryId: JSON.parse(JSON.stringify(projectInformation.value)).projectInformation.categoryId,
+    projectName: Object.assign((defaultInformation.value)).defaultInformation.projectName,
+    projectDescription: Object.assign((projectStoryData.value)).projectStoryData.projectDescription,
+    projectTag: Object.assign((defaultInformation.value)).defaultInformation.projectTag,
+    projectTargetAmount: Object.assign((projectInformation.value)).projectInformation.projectTargetAmount,
+    projectStoryImageUrl: Object.assign((projectStoryData.value)).projectStoryData.projectStoryImageUrl,
+    projectDueDate: Object.assign((defaultInformation.value)).defaultInformation.projectDueDate.split('.')[0],
+    projectThumbnailImageUrl: Object.assign((defaultInformation.value)).defaultInformation.projectThumbnailImageUrl,
+    projectImages: Object.assign((projectStoryData.value)).projectStoryData.projectImages,
+    categoryId: Object.assign((projectInformation.value)).projectInformation.categoryId,
     isLotdeal: (selectedBox.value == 'lotdeal'),
-    products: JSON.parse(JSON.stringify(productsData.value)).productsData,
-    maker: makerData.value
+    products: Object.assign((productsData.value)).productsData,
+    maker: Object.assign(makerData.value).maker
   }
   console.log(projectData)
 }

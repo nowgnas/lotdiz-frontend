@@ -7,7 +7,7 @@ import { computed, ref } from 'vue'
 import { useProjectStoryStore } from '@/store/registerProjectStore'
 import { getPresignedUrlByImageName } from '@/services/api/ProjectService'
 import { useRouter } from 'vue-router'
-import type { ProjectImagesType } from '@/services/types/ProjectRegisterType'
+import type { ProjectImagesType, Story } from '@/services/types/ProjectRegisterType'
 
 const projectContentTitle = {
   title: '스토리 작성',
@@ -28,8 +28,13 @@ const storyImage = {
     '10MB 이하의 JPG, JPEG, PNG 파일'
   ]
 }
-const projectStory = ref({
-  projectImages: [] as ProjectImagesType[],
+// const projectStory = ref({
+//   projectImages: Array<ProjectImagesType>,
+//   projectDescription: '',
+//   projectStoryImageUrl: ''
+// })
+const projectStory = ref<Story>({
+  projectImages: [],
   projectDescription: '',
   projectStoryImageUrl: ''
 })
@@ -45,6 +50,7 @@ const imageInput = async (event: any) => {
     projectImageUrl: url
   }
   projectStory.value.projectImages.push(projectImages)
+  // projectStory.value.projectImages.push(projectImages)
 }
 
 const storyDescription = (value: any) => {
@@ -90,7 +96,6 @@ const storyImgInput = async (event: any) => {
         </div>
       </div>
     </div>
-    <img v-for='item in projectStory.projectImages' :src='item'>
     <input ref='inputFile' style='display: none' type='file' @change='imageInput'
            v-if='projectStory.projectImages.length < 4' :style='makeDisable'>
   </div>

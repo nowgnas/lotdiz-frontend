@@ -8,6 +8,10 @@ export interface Maker {
   makerSnsUrl: string
 }
 
+export interface MakerData {
+  makerData: Maker
+}
+
 export interface Product {
   productName: string,
   productPrice: number,
@@ -32,9 +36,13 @@ export interface ProjectRequestData {
 }
 
 export interface Story {
-  projectImages: Array<string>,
+  projectImages: Array<ProjectImagesType>,
   projectDescription: string,
   projectStoryImageUrl: string
+}
+
+export interface ProjectStoryData {
+  projectStoryData: Story
 }
 
 export interface Products {
@@ -50,11 +58,20 @@ export interface ProjectInformation {
   projectTargetAmount: number
 }
 
+export interface ProjectInformationData {
+  projectInformation: ProjectInformation
+}
+
 export interface DefaultInformation {
   projectName: string,
   projectTag: string,
   projectThumbnailImageUrl: string,
+  projectThumbnailFile: any,
   projectDueDate: string
+}
+
+export interface DefaultInformationData {
+  defaultInformation: DefaultInformation
 }
 
 export interface ProjectImagesType {

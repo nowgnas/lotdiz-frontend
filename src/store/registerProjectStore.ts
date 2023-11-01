@@ -1,10 +1,19 @@
 // dataStore.ts
 import { defineStore } from 'pinia'
-import type { Product, ProjectImagesType } from '@/services/types/ProjectRegisterType'
+import type {
+  DefaultInformationData,
+  IsLotdeal,
+  MakerData,
+  Product,
+  Products,
+  ProjectImagesType,
+  ProjectInformationData,
+  ProjectStoryData
+} from '@/services/types/ProjectRegisterType'
 
 export const useMakerStore = defineStore({
   id: 'maker',
-  state: () => ({
+  state: (): MakerData => ({
     makerData: {
       makerEmail: '',
       makerName: '',
@@ -24,9 +33,9 @@ export const useMakerStore = defineStore({
 })
 export const useProjectStoryStore = defineStore({
   id: 'story',
-  state: () => ({
+  state: (): ProjectStoryData => ({
     projectStoryData: {
-      projectImages: [] as ProjectImagesType[],
+      projectImages: new Array<ProjectImagesType>(),
       projectDescription: '',
       projectStoryImageUrl: ''
     }
@@ -40,8 +49,8 @@ export const useProjectStoryStore = defineStore({
 })
 export const useProductRegisterStore = defineStore({
   id: 'products',
-  state: () => ({
-    productsData: [] as Product[]
+  state: (): Products => ({
+    productsData: new Array<Product>()
   }),
   actions: {
     setProductsData(data: any) {
@@ -51,7 +60,7 @@ export const useProductRegisterStore = defineStore({
 })
 export const useSelectLotdealStore = defineStore({
   id: 'lotdeal',
-  state: () => ({
+  state: (): IsLotdeal => ({
     isLotdeal: false
   }),
   actions: {
@@ -63,7 +72,7 @@ export const useSelectLotdealStore = defineStore({
 })
 export const useProjectInformationStore = defineStore({
   id: 'information',
-  state: () => ({
+  state: (): ProjectInformationData => ({
     projectInformation: {
       categoryId: 0,
       projectTargetAmount: 0
@@ -78,7 +87,7 @@ export const useProjectInformationStore = defineStore({
 })
 export const useDefaultInformationStore = defineStore({
   id: 'defaultInformation',
-  state: () => ({
+  state: (): DefaultInformationData => ({
     defaultInformation: {
       projectName: '',
       projectTag: '',
