@@ -12,9 +12,7 @@ a {
 }
 
 #sign-in-container {
-    /* background-color: var(--main-color); */
-    background: rgb(34, 193, 195);
-    background: var(--main-color);
+    background-color: var(--main-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,13 +32,6 @@ a {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 1px var(--middle-gray);
-}
-
-#sign-in-title {
-    font-size: 30px;
-    font-weight: bold;
-    padding-top: 50px;
-    padding-bottom: 40px;
 }
 
 .icon-wrapper {
@@ -108,4 +99,6 @@ a {
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 63px */
+    padding-top: 50px;
+    padding-bottom: 40px;
 }
