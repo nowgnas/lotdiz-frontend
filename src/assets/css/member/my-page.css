@@ -54,11 +54,20 @@ button {
     margin-top: 0;
 }
 
+.btn-logout {
+    border: 1px solid var(--icon-color);
+    padding: 10px 50px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
 #tab-supporter {
     background-color: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 5px 20px 0;
+    padding: 5px 25px;
     cursor: pointer;
 }
 
@@ -66,15 +75,6 @@ button {
     background-color: var(--icon-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    padding: 5px 20px 0;
-    cursor: pointer;
-}
-
-.btn-logout {
-    border: 1px solid var(--icon-color);
-    padding: 10px 50px;
-    text-align: center;
-    font-size: 15px;
-    border-radius: 30px;
+    padding: 5px 25px;
     cursor: pointer;
 }

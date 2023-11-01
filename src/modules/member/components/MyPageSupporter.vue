@@ -22,7 +22,12 @@
             </svg>
             <p class="card-text">멤버십등급</p>
           </div>
-          <div class="card-value">{{ membershipGrade }}</div>
+          <div class="card-value" v-if='membershipGrade === ""'>
+            <div id='a-membership-join-wrapper'>
+              <a href='/member/membership-honors'>멤버십가입</a>
+            </div>
+          </div>
+          <div class="card-value" v-else>{{ membershipGrade }}</div>
         </div>
       </div>
       <div class="card-body" id="funding-history-card">
