@@ -47,9 +47,10 @@ const confirmLogout = () => {
 }
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/color.css';
 @import '@/assets/font.css';
 
+@import '@/assets/css/member/my-page-supporter.css';
 @import '@/assets/css/member/my-page.css';
 </style>
