@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import type { ProjectDetail } from '@/services/types/ProjectResponse';
+import type { ProjectDetailResponse } from '@/services/types/ProjectResponse'
+import { getProjectDetails } from '@/services/api/ProjectService';
 
 interface ProjectState {
   projectDetails: ProjectDetail;
@@ -19,6 +21,7 @@ export const useProjectStore = defineStore("project", {
       numberOfBuyers: 0,
       numberOfSupporter: 0,
       numberOfLikes: 0,
+      isLikes:false,
       fundingAchievementRate: 0,
       accumulatedFundingAmount: 0,
       projectStoryImageUrl: '',
@@ -28,12 +31,18 @@ export const useProjectStore = defineStore("project", {
       products: []
     }
   }),
-
   actions: {
-    setData(projectDetails: ProjectDetail) {
-      this.projectDetails = projectDetails;
+    async setData (projectId: number)  {
+      try {
+        const response: ProjectDetailResponse = await getProjectDetails(projectId)
+        if (response.projectDetail !== undefined) {
+          this.projectDetails = response.projectDetail;
+        }
+      } catch (error) {
+        alert('프로젝트 조회 실패')
+      }
     }
   },
-
+  persist: true,
 });
 

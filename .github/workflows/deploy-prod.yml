@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      # Setting environment file
+      - name: Setting env files
+        run: echo "${{ secrets.ENV }}" > .env
+        shell: bash
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
