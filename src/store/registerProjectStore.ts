@@ -37,7 +37,8 @@ export const useProjectStoryStore = defineStore({
     projectStoryData: {
       projectImages: new Array<ProjectImagesType>(),
       projectDescription: '',
-      projectStoryImageUrl: ''
+      projectStoryImageUrl: '',
+      projectStoryImageFile: null
     }
   }),
   actions: {

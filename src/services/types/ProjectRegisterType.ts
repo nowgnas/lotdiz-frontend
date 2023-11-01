@@ -26,9 +26,11 @@ export interface ProjectRequestData {
   projectTag: string,
   projectTargetAmount: number,
   projectStoryImageUrl: string,
+  projectStoryImageFile: unknown,
   projectDueDate: string,
   projectThumbnailImageUrl: string,
-  projectImages: Array<string>,
+  projectThumbnailImageFile: unknown,
+  projectImages: Array<ProjectImagesType>,
   categoryId: number,
   isLotdeal: boolean,
   products: Array<Product>,
@@ -39,6 +41,7 @@ export interface Story {
   projectImages: Array<ProjectImagesType>,
   projectDescription: string,
   projectStoryImageUrl: string
+  projectStoryImageFile: unknown
 }
 
 export interface ProjectStoryData {
@@ -77,4 +80,19 @@ export interface DefaultInformationData {
 export interface ProjectImagesType {
   projectImageUrl: string,
   projectImageFile: File
+}
+
+export interface RegisterProject {
+  projectName: string,
+  projectDescription: string,
+  projectTag: string,
+  projectTargetAmount: number,
+  projectStoryImageUrl: string,
+  projectDueDate: string,
+  projectThumbnailImageUrl: string,
+  projectImages: Array<String>,
+  categoryId: number,
+  isLotdeal: boolean,
+  maker: Maker,
+  products: Array<Product>
 }

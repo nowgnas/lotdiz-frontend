@@ -36,7 +36,8 @@ const storyImage = {
 const projectStory = ref<Story>({
   projectImages: [],
   projectDescription: '',
-  projectStoryImageUrl: ''
+  projectStoryImageUrl: '',
+  projectStoryImageFile: null
 })
 const inputFile = ref()
 const addImage = () => {
@@ -71,6 +72,7 @@ const addStoryImg = () => {
 }
 const storyImgInput = async (event: any) => {
   const file = event.target.files[0]
+  projectStory.value.projectStoryImageFile = file
   projectStory.value.projectStoryImageUrl = await getPresignedUrlByImageName(file)
 }
 </script>
