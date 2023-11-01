@@ -48,18 +48,26 @@ onMounted(() => {
   })
 })
 
-const activeSupporter = (event) => {
-  const activeEle = document.getElementById('tab-supporter')
-  activeEle.style.backgroundColor = 'white'
-  const unactiveEle = document.getElementById('tab-maker')
-  unactiveEle.style.backgroundColor = '#C4C4C4'
+const activeSupporter = (event: any) => {
+  const activeEle = document.getElementById('tab-supporter') as HTMLInputElement | null
+  if (activeEle !== null) {
+    activeEle.style.backgroundColor = 'white';
+  }
+  const unactiveEle = document.getElementById('tab-maker') as HTMLInputElement | null
+  if (unactiveEle !== null) {
+    unactiveEle.style.backgroundColor = '#C4C4C4';
+  }
 }
 
-const activeMaker = (event) => {
-  const activeEle = document.getElementById('tab-maker')
-  activeEle.style.backgroundColor = 'white'
-  const unactiveEle = document.getElementById('tab-supporter')
-  unactiveEle.style.backgroundColor = '#C4C4C4'
+const activeMaker = (event: any) => {
+  const activeEle = document.getElementById('tab-maker') as HTMLInputElement | null
+  if (activeEle !== null) {
+    activeEle.style.backgroundColor = 'white';
+  }
+  const unactiveEle = document.getElementById('tab-supporter') as HTMLInputElement | null
+  if (unactiveEle !== null) {
+    unactiveEle.style.backgroundColor = '#C4C4C4';
+  }
 }
 
 const confirmLogout = () => {
