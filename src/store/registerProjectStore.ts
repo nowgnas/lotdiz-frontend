@@ -5,7 +5,7 @@ import type {
   IsLotdeal,
   MakerData,
   Product,
-  Products,
+  ProductsData,
   ProjectImagesType,
   ProjectInformationData,
   ProjectStoryData
@@ -27,7 +27,6 @@ export const useMakerStore = defineStore({
   actions: {
     setMakerData(data: any) {
       this.makerData = data
-      console.log(this.makerData)
     }
   }
 })
@@ -43,19 +42,18 @@ export const useProjectStoryStore = defineStore({
   }),
   actions: {
     setProjectStoryData(data: any) {
-      console.log(data)
       this.projectStoryData = data
     }
   }
 })
 export const useProductRegisterStore = defineStore({
   id: 'products',
-  state: (): Products => ({
-    productsData: new Array<Product>()
+  state: (): ProductsData => ({
+    products: new Array<Product>()
   }),
   actions: {
     setProductsData(data: any) {
-      this.productsData = data
+      this.products = data
     }
   }
 })
@@ -66,7 +64,6 @@ export const useSelectLotdealStore = defineStore({
   }),
   actions: {
     setLotdealData(data: any) {
-      console.log(data)
       this.isLotdeal = data.isLotdeal.value == 'lotdeal'
     }
   }
@@ -82,7 +79,6 @@ export const useProjectInformationStore = defineStore({
   actions: {
     setProjectInformation(data: any) {
       this.projectInformation = data
-      console.log(this.projectInformation)
     }
   }
 })
@@ -100,7 +96,6 @@ export const useDefaultInformationStore = defineStore({
   actions: {
     setDefaultInformation(data: any) {
       this.defaultInformation = data
-      console.log(this.defaultInformation)
     }
   }
 })

@@ -5,7 +5,7 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
 import { useProductRegisterStore } from '@/store/registerProjectStore'
-import type { Product, Products } from '@/services/types/ProjectRegisterType'
+import type { Product, ProductsData } from '@/services/types/ProjectRegisterType'
 import { useRouter } from 'vue-router'
 
 
@@ -28,8 +28,8 @@ const guideContent = {
     '각 상품에 대한 상세 설명을 작성할 수 있어요.'
   ]
 }
-const productsList = ref<Products>({
-  productsData: []
+const productsList = ref<ProductsData>({
+  products: []
 })
 let isOpened = false
 const openModal = (value: any) => {
@@ -41,7 +41,7 @@ const openModal = (value: any) => {
       productCurrentStockQuantity: value.productRegisteredStockQuantity,
       productPrice: value.productPrice
     }
-    productsList.value.productsData.push(product)
+    productsList.value.products.push(product)
     isOpened = false
   } else {
     isOpened = true
@@ -51,7 +51,7 @@ const openModal = (value: any) => {
 const router = useRouter()
 
 const emitData = () => {
-  useProductRegisterStore().setProductsData({ productsData: productsList })
+  useProductRegisterStore().setProductsData({ products: productsList })
   router.push('/projects/lotdeal')
 }
 </script>

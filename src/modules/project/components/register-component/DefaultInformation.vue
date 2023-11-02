@@ -31,13 +31,7 @@ const projectDefaultInfo = ref({
 })
 
 const format = (date: Date) => {
-  const day = date.getDate()
-  const month = date.getMonth() + 1
-  const year = date.getFullYear()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-  projectDefaultInfo.value.projectDueDate = `${year}-${month}-${day}T${hour}:${minute}:${second}`
+  projectDefaultInfo.value.projectDueDate = date
 }
 const inputFile = ref()
 const thumbnailGuideBox = {
@@ -66,9 +60,6 @@ const countProjectTitle = () => {
 const projectName = (event: any) => {
   projectDefaultInfo.value.projectName = event.target.value
   countProjectTitle()
-}
-const getProjectTag = (e: any) => {
-  projectDefaultInfo.value.projectTag = e.target.value
 }
 
 const projectContentTitle = {
@@ -109,7 +100,7 @@ const emitData = () => {
       <div class='project-due-date-title-box'>
         <div class='text'>프로젝트 종료일</div>
       </div>
-      <VueDatePicker v-model='projectDefaultInfo.projectDueDate' @input='format' />
+      <VueDatePicker v-model='projectDefaultInfo.projectDueDate' @change='format' />
     </div>
     <ContentTextInputField
       v-model:model-value='projectDefaultInfo.projectTag'

@@ -48,8 +48,8 @@ export interface ProjectStoryData {
   projectStoryData: Story
 }
 
-export interface Products {
-  productsData: Array<Product>
+export interface ProductsData {
+  products: Array<Product>
 }
 
 export interface IsLotdeal {
@@ -94,5 +94,5 @@ export interface RegisterProject {
   categoryId: number,
   isLotdeal: boolean,
   maker: Maker,
-  products: Array<Product>
+  products: []
 }

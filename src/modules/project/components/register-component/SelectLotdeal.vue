@@ -4,7 +4,7 @@ import ProjectContentTitle from '@/modules/project/components/register-component
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
-import { ref, toRaw } from 'vue'
+import { ref } from 'vue'
 import {
   useDefaultInformationStore,
   useMakerStore,
@@ -16,6 +16,7 @@ import {
 import { storeToRefs } from 'pinia'
 import type { ProjectRequestData } from '@/services/types/ProjectRegisterType'
 import { registerProject } from '@/services/api/ProjectService'
+import router from '@/router'
 
 const projectContentTitle = {
   title: '롯딜 선택',
@@ -62,13 +63,14 @@ const emitData = () => {
   const storyData = useProjectStoryStore()
   const productsDataStore = useProductRegisterStore()
 
-
   const { projectInformation } = storeToRefs(information)
   const { makerData } = storeToRefs(maker)
   const { defaultInformation } = storeToRefs(defaultInfo)
   const { projectStoryData } = storeToRefs(storyData)
-  const { productsData } = storeToRefs(productsDataStore)
-  console.log(Object.assign(toRaw(productsData.value)).productsData)
+
+  const { products } = storeToRefs(productsDataStore)
+
+  const date = Object.assign((defaultInformation.value)).defaultInformation.projectDueDate
 
   const projectData: ProjectRequestData = {
     projectName: Object.assign((defaultInformation.value)).defaultInformation.projectName,
@@ -77,17 +79,17 @@ const emitData = () => {
     projectTargetAmount: Object.assign((projectInformation.value)).projectInformation.projectTargetAmount,
     projectStoryImageUrl: Object.assign((projectStoryData.value)).projectStoryData.projectStoryImageUrl,
     projectStoryImageFile: Object.assign((projectStoryData.value)).projectStoryData.projectStoryImageFile,
-    projectDueDate: Object.assign((defaultInformation.value)).defaultInformation.projectDueDate.split('.')[0],
+    projectDueDate: date,
     projectThumbnailImageUrl: Object.assign((defaultInformation.value)).defaultInformation.projectThumbnailImageUrl,
     projectThumbnailImageFile: Object.assign((defaultInformation.value)).defaultInformation.projectThumbnailFile,
     projectImages: Object.assign((projectStoryData.value)).projectStoryData.projectImages,
     categoryId: Object.assign((projectInformation.value)).projectInformation.categoryId,
     isLotdeal: (selectedBox.value == 'lotdeal'),
-    products: Object.assign(toRaw(productsData.value)).productsData,
+    products: Object.assign(products.value).products.products,
     maker: Object.assign(makerData.value).maker
   }
-  console.log(projectData)
-  registerProject(projectData)
+
+  registerProject(projectData).then(data => alert(data)).then(router.push('/member/my-page/maker'))
 }
 </script>
 
