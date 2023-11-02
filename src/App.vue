@@ -14,10 +14,8 @@ onMounted(() => {
     url === '/member/sign-up' ||
     url === '/member/membership-honors/join/success'
   ) {
-    console.log('no header here')
     headerStore.assignIsNoHeaderPath(true)
   } else {
-    console.log('header here')
     headerStore.assignIsNoHeaderPath(false)
   }
 })

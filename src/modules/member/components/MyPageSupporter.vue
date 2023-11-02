@@ -73,7 +73,7 @@
 </template>
 
 <script setup lang='ts'>
-import { getMemberPointsForShow, getMembershipInfoForShow, getLikesCnts } from '../../../services/api/MemberService'
+import { getMemberPointsForShow, getMembershipInfoForShow, getLikesCnts } from '@/services/api/MemberService'
 import { ref, onMounted } from 'vue'
 
 const points = ref(0)

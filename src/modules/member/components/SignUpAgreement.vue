@@ -1,8 +1,8 @@
 <template>
-  <div class="sec-content">
-    <div id="sec-agreement-box">
-            <pre>
-<div style="text-align: center;"><B>개인정보 수집 및 이용 동의서</B></div>
+  <div class='sec-content'>
+    <div id='sec-agreement-box'>
+        <pre>
+<div style='text-align: center;'><B>개인정보 수집 및 이용 동의서</B></div>
 
 <B>[Lotdiz]</B>
 
@@ -37,39 +37,40 @@
 <B>6. 권리 행사와 개인정보 관련 문의</B>
 귀하의 개인정보에 관한 접근, 수정, 삭제 및 처리 중지 요청을 하고자 할 경우, 010-1111-1111에 문의하실 수 있습니다.
 본 개인정보 수집 및 이용 동의서에 동의함으로써 귀하는 서비스 이용에 필요한 개인정보 수집 및 이용에 동의하는 것으로 간주됩니다.
-            </pre>
+        </pre>
     </div>
-    <div id="sec-agreement-check">
-      <input type="checkbox" name="agreement-check" id="input-agreement-check" />
-      <label for="input-agreement-check"> 개인정보 수집 및 이용에 동의합니다</label>
+    <div id='sec-agreement-check'>
+      <input type='checkbox' name='agreement-check' id='input-agreement-check' />
+      <label for='input-agreement-check'> 개인정보 수집 및 이용에 동의합니다</label>
     </div>
   </div>
-  <div class="sec-btn">
-    <div class="btn-next">
-      <router-link to="/member/sign-up/basic-info"
-        ><button @click="validCheck">
-          <span style="color: black; padding-right: 5px">Lotdiz</span> 회원가입하기
+  <div class='sec-btn'>
+    <div class='btn-next'>
+      <router-link to='/member/sign-up/basic-info'
+      >
+        <button @click='validCheck'>
+          <span style='color: black; padding-right: 5px'>Lotdiz</span> 회원가입하기
         </button>
       </router-link>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { useMemberStore } from '../../stores/member';
-import { nextTick } from 'vue';
+<script setup lang='ts'>
+import { useMemberStore } from '../../stores/member'
+import { nextTick } from 'vue'
 
 const memberStore = useMemberStore()
 
-const validCheck = async(event: any) => {
-  await nextTick(); // DOM이 준비될 때까지 대기
-  let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null;
+const validCheck = async (event: any) => {
+  await nextTick() // DOM이 준비될 때까지 대기
+  let checkbox = document.getElementById('input-agreement-check') as HTMLInputElement | null
   if (!checkbox?.checked) {
-    alert('약관에 동의해야 합니다.');
-    event.preventDefault();
+    alert('약관에 동의해야 합니다.')
+    event.preventDefault()
   } else {
-    memberStore.assignMemberPrivacyAgreement(true);
-    memberStore.increaseActiveNo();
+    memberStore.assignMemberPrivacyAgreement(true)
+    memberStore.increaseActiveNo()
   }
 }
 </script>

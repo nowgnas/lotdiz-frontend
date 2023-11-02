@@ -24,12 +24,12 @@
 </template>
 
 <script setup lang='ts'>
-
 import { defineProps } from 'vue'
 import type { PropType } from 'vue'
 import type { LikesDetailResponse } from '@/services/types/MemberResponse'
 import { deleteLikes } from '@/services/api/MemberService'
 import router from '@/router'
+
 const props = defineProps({
   item: {
     type: Object as PropType<LikesDetailResponse>,
