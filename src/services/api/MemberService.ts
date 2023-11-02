@@ -1,15 +1,14 @@
-import { getData, postMemberData, deleteData, postData, putData } from './APISpec'
+import { deleteData, getData, postData, postMemberData, putData } from './APISpec'
 import type {
+  LikesDetailResponse,
   MemberInfoForQueryResponse,
-  KakaoPayReadyResponse,
-  MembershipInfoForShowResponse,
-  LikesDetailResponse
+  MembershipInfoForShowResponse
 } from '../types/MemberResponse'
 import type {
-  MemberInfoForSignUpRequest,
-  MembershipInfoForJoinRequest,
   InfoForSignIn,
-  MemberInfoForChangeRequest
+  MemberInfoForChangeRequest,
+  MemberInfoForSignUpRequest,
+  MembershipInfoForJoinRequest
 } from '../types/MemberRequest'
 import type { SuccessResponse } from '@/services/types/APIResponse'
 
@@ -52,11 +51,11 @@ export const postInfoForSignIn = async (infoForSignIn: InfoForSignIn) => {
 }
 
 export const getIsDulicatedForCheck = async (username: string) => {
-    const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
-    if(response.data.data === undefined) {
-      throw new Error(response.data.message)
-    }
-    return response.data.data
+  const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
+  if (response.data.data === undefined) {
+    throw new Error(response.data.message)
+  }
+  return response.data.data
 }
 
 export const createLikes = async (projectId: number) => {
@@ -115,7 +114,7 @@ export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberI
 export const postSignOut = async () => {
   try {
     const response = await postMemberData('/member-service/api/sign-out')
-    return response.data;
+    return response.data
   } catch (error: unknown) {
     throw new Error('로그아웃 실패')
   }
@@ -124,7 +123,7 @@ export const postSignOut = async () => {
 export const getLikesList = async () => {
   try {
     const response = await getData<LikesDetailResponse[]>('/member-service/api/members/likes')
-    return response.data;
+    return response.data
   } catch (error: unknown) {
     throw new Error('찜목록 조회 실패')
   }

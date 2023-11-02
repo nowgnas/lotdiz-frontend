@@ -4,7 +4,7 @@ import ProjectListByCategoryView from '@/views/ProjectListByCategoryView.vue'
 import ProjectDetailsView from '@/views/ProjectDetailsView.vue'
 import LotdealView from '@/views/LotdealView.vue'
 import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue'
-// import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
+
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'
@@ -19,6 +19,7 @@ import WriteStory from '@/modules/project/components/register-component/WriteSto
 import RegisterProducts from '@/modules/project/components/register-component/RegisterProducts.vue'
 import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
+import DetailOfProject from '@/modules/maker/components/DetailOfProject.vue'
 import SelectLotdeal from '@/modules/project/components/register-component/SelectLotdeal.vue'
 import { client } from '@/services/api/APISpec'
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
@@ -77,7 +78,7 @@ const router = createRouter({
         {
           path: 'maker',
           name: 'my-page-maker',
-          component: () => import('../modules/member/components/MyPageMaker.vue'),
+          component: RegisteredProjects,
           meta: { authRequired: true }
         },
         {
@@ -85,6 +86,11 @@ const router = createRouter({
           name: 'my-page-info-change',
           component: () => import('../modules/member/components/MemberInfoChange.vue'),
           meta: { authRequired: true }
+        },
+        {
+          path: 'projects/detail/:id',
+          name: 'project-detail',
+          component: DetailOfProject
         }
       ],
       meta: { authRequired: true }
@@ -206,15 +212,9 @@ const router = createRouter({
         }
       ],
       meta: { authRequired: true }
-    },
-    {
-      path: '/maker/projects',
-      component: RegisteredProjects,
-      meta: { authRequired: true }
     }
   ]
 })
-
 router.beforeEach(async (to, from, next) => {
 
   if (window.location.pathname == '/member/sign-in' || window.location.pathname == '/member/sign-up') {

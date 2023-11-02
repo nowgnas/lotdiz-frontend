@@ -1,0 +1,152 @@
+.project-detail-box {
+    display: inline-flex;
+    padding: 0.625rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: #ffffff;
+    position: relative;
+    width: 60rem;
+    height: 30rem;
+}
+
+.project-name {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    left: 3.25rem;
+    top: 2.9375rem;
+
+    .text {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 2.625rem */
+    }
+}
+
+.achievement-amount {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    left: 3.875rem;
+    top: 8.5625rem;
+
+    .typography {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 2.1875rem */
+    }
+
+    .value {
+        color: #4FAFB1;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+    }
+}
+
+.project-due-date {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    left: 16.9375rem;
+    top: 4rem;
+
+    .text {
+        color: #878787;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 1.575rem */
+    }
+}
+
+.number-of-supporter {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    right: 10rem;
+    top: 4rem;
+
+    .typography {
+        color: #000;
+        font-family: Open Sans;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+    }
+
+    .value {
+        color: #4FAFB1;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 1.575rem */
+    }
+}
+
+.achievement-rate {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    right: 18.8125rem;
+    top: 8.5625rem;
+
+    .typography {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 2.1875rem */
+    }
+
+    .value {
+        color: #4FAFB1;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%;
+    }
+}
+
+.product-item-list-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: absolute;
+    bottom: 2rem;
+    left: 10rem;
+}
