@@ -1,14 +1,14 @@
 <template>
   <div style='height:100%;display:flex;flex-direction:column;'>
     <div id='sub-header-mypage'>
-      <div id='tab-supporter'>
-        <div @click='activeSupporter'>
-          <router-link to='/member/my-page'>서포터</router-link>
+      <div class='tab-supporter' :class="{'active-tab': activeTab === true}">
+        <div>
+          <router-link to='/member/my-page' @click='activeSupporter'>서포터</router-link>
         </div>
       </div>
-      <div id='tab-maker'>
-        <div @click='activeMaker'>
-          <router-link to='/member/my-page/maker'>메이커</router-link>
+      <div class='tab-maker' :class="{'active-tab': activeTab === false}">
+        <div>
+          <router-link to='/member/my-page/maker' @click='activeMaker'>메이커</router-link>
         </div>
       </div>
     </div>
@@ -38,6 +38,7 @@ import { ref, onMounted } from 'vue'
 
 const headerStore = useHeaderStore();
 const memberName = ref('');
+const activeTab = ref(true);
 
 onMounted(() => {
   getMemberInfo()
@@ -48,26 +49,16 @@ onMounted(() => {
   })
 })
 
+if(window.location.pathname === '/member/my-page/maker') {
+  window.location.pathname = '/member/my-page'
+}
+
 const activeSupporter = (event: any) => {
-  const activeEle = document.getElementById('tab-supporter') as HTMLInputElement | null
-  if (activeEle !== null) {
-    activeEle.style.backgroundColor = 'white';
-  }
-  const unactiveEle = document.getElementById('tab-maker') as HTMLInputElement | null
-  if (unactiveEle !== null) {
-    unactiveEle.style.backgroundColor = '#C4C4C4';
-  }
+  activeTab.value = true;
 }
 
 const activeMaker = (event: any) => {
-  const activeEle = document.getElementById('tab-maker') as HTMLInputElement | null
-  if (activeEle !== null) {
-    activeEle.style.backgroundColor = 'white';
-  }
-  const unactiveEle = document.getElementById('tab-supporter') as HTMLInputElement | null
-  if (unactiveEle !== null) {
-    unactiveEle.style.backgroundColor = '#C4C4C4';
-  }
+  activeTab.value = false;
 }
 
 const confirmLogout = () => {

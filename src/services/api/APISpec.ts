@@ -5,7 +5,7 @@ export const client: Axios = axios.create({
   baseURL: import.meta.env.VITE_SERVICE_API_URL,
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   }
 })
 
@@ -46,7 +46,6 @@ export const postMemberData = async <T>(url: string, data?: any) => {
     const response = await client.post<SuccessResponse<T>>(url, data)
     return response
   } catch (error: unknown) {
-    console.error(error)
     console.error((<ErrorResponse>error).detail)
     throw new Error((<ErrorResponse>error).message)
   }

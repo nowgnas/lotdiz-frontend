@@ -88,11 +88,11 @@ export interface RegisterProject {
   projectTag: string,
   projectTargetAmount: number,
   projectStoryImageUrl: string,
-  projectDueDate: string,
+  projectDueDate: Date,
   projectThumbnailImageUrl: string,
   projectImages: Array<String>,
   categoryId: number,
   isLotdeal: boolean,
   maker: Maker,
-  products: []
+  products: Product[]
 }

@@ -30,7 +30,7 @@ const projectDefaultInfo = ref({
   projectDueDate: ''
 })
 
-const format = (date: Date) => {
+const format = (date: string) => {
   projectDefaultInfo.value.projectDueDate = date
 }
 const inputFile = ref()

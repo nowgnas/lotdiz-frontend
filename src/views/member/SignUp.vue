@@ -42,7 +42,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { useMemberStore } from '@/modules/stores/member';
 import { useHeaderStore } from '@/stores/headerStore'
@@ -69,13 +68,12 @@ if (window.location.pathname === "/member/sign-up/email-auth") {
 if (window.location.pathname === "/member/sign-up/success") {
   window.location.pathname = "/member/sign-up";
 }
-
 </script>
 
 <style scoped>
 @import '@/assets/color.css';
-@import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/font.css';
 
+@import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/css/member/sign-up.css';
 </style>

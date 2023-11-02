@@ -110,7 +110,7 @@ export const getPresignedUrl = async (imageName: String) => {
     throw new Error((<ErrorResponse>e).detail)
   }
 }
-export const uploadImage2S3 = async (presignedUrl: '', file: File) => {
+export const uploadImage2S3 = async (presignedUrl: string, file: File) => {
   try {
     await putBinaryType(presignedUrl, file)
   } catch (error) {
@@ -186,7 +186,7 @@ export const registerProject = async (projectRequestDto: ProjectRequestData) => 
       return response.detail
     }
   } catch (e) {
-    return e.detail
+    return e
   }
 }
 

@@ -32,7 +32,6 @@
     <div class="btn-next">
       <button @click="finalCheck">다음</button>
     </div>
-
   </div>
 </template>
 

@@ -89,7 +89,7 @@ const emitData = () => {
     maker: Object.assign(makerData.value).maker
   }
 
-  registerProject(projectData).then(data => alert(data)).then(router.push('/member/my-page/maker'))
+  registerProject(projectData).then(data => alert(data)).then(() => router.push('/member/my-page/maker'))
 }
 </script>
 

@@ -23,6 +23,7 @@ import SelectLotdeal from '@/modules/project/components/register-component/Selec
 import { client } from '@/services/api/APISpec'
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
 import { useHeaderStore } from '@/stores/headerStore'
+import type { AxiosError } from 'axios'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -233,15 +234,26 @@ router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.authRequired)) {
     if (jwtToken === null) {
       alert('로그인이 필요한 페이지 입니다.')
-      next({
+      return next({
         path: '/member/sign-in',
         query: { redirect: to.fullPath }
       })
-
-      alert('로그인이 필요한 페이지 입니다.')
+    } else {
+      client.interceptors.response.use((response) => {
+        return response
+      }, (error) => {
+        if (error.isAxiosError) {
+          const axiosError: AxiosError = error as AxiosError
+          if (axiosError.response?.status === 401 || axiosError.response?.status === 403) {
+            localStorage.removeItem('jwtToken')
+            location.reload()
+          }
+        }
+      })
     }
   }
   next()
 })
+
 
 export default router
