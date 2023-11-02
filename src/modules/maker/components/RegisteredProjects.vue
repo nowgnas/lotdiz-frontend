@@ -7,8 +7,7 @@ import { getRegisteredProjectList } from '@/services/api/MakerMyPageService'
 const project = ref()
 
 onMounted(async () => {
-  const registeredProjectList = await getRegisteredProjectList(0, 10, 'createdAt')
-  console.log(typeof registeredProjectList)
+  const registeredProjectList: any = await getRegisteredProjectList(0, 10, 'createdAt')
   project.value = registeredProjectList.projects
 
 })
