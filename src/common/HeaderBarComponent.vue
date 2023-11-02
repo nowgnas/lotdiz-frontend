@@ -134,5 +134,5 @@ watch(() => route.path, (newPath) => {
 
 <style scoped>
 @import '@/assets/css/header.css';
-@import "../assets/css/notification.css";
+@import "@/assets/css/notification.css";
 </style>

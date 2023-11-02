@@ -70,5 +70,5 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang='css' scoped>
-@import "../assets/css/projectregister/projectRegister.css";
+@import "@/assets/css/projectregister/projectRegister.css";
 </style>

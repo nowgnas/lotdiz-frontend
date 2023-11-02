@@ -29,5 +29,5 @@
 </template>
 
 <style scoped>
-@import "../../../assets/css/maker/ProjectCard.css";
+@import "@/assets/css/maker/ProjectCard.css";
 </style>

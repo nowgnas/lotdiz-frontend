@@ -15,5 +15,5 @@ import ProjectCard from '@/modules/maker/components/ProjectCard.vue'
 </template>
 
 <style scoped>
-@import "../../../assets/css/maker/RegisteredProjectList.css";
+@import "@/assets/css/maker/RegisteredProjectList.css";
 </style>
