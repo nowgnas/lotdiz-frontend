@@ -6,7 +6,7 @@
           <label for='input-member-name'>이름 <span class='astar-color'>*</span> </label>
         </div>
         <div>
-          <input type='text' id='input-member-name' v-model='name' />
+          <input type='text' id='input-member-name' v-model='name' required />
           <div style='padding-top: 8px'>
             <span id='normal-msg' v-if='validateName'>1 ~ 10자 이내로 입력해주세요.</span>
           </div>
@@ -22,9 +22,9 @@
         <div>
           <div id='input-username-wrapper'>
             <div id='input-username-sub-wrapper'>
-              <input type='text' id='input-username-1' v-model='username1' />
+              <input type='text' id='input-username-1' v-model='username1' required />
               <p>@</p>
-              <input type='text' id='input-username-2' v-model='username2' />
+              <input type='text' id='input-username-2' v-model='username2' required />
             </div>
             <select id='input-select' v-model='selectedOption'>
               <option value='direct'>직접입력</option>
@@ -51,7 +51,7 @@
             v-model='memberPhoneNumber'
             maxlength='11'
             pattern='[0-9]+'
-          />
+            required />
           <div style='padding-top: 8px'>
             <span id='normal-msg'>'-' 빼고 숫자만 입력</span>
           </div>
@@ -62,27 +62,25 @@
           <label for='input-member-password'>비밀번호 <span class='astar-color'>*</span> </label>
         </div>
         <div>
-          <input type='password' id='input-member-password' v-model='password' />
+          <input type='password' id='input-member-password' v-model='password' required />
           <div style='padding-top: 8px'>
             <span id='error-msg' v-if='!validatePassword'
             >영문자, 숫자, 특수문자 모두 포함하여 8 ~ 16자 이내로 작성해주세요.</span
             >
           </div>
           <div style='padding-top: 8px'>
-            <span id='right-msg' v-if='validatePassword'
-            ><font-awesome-icon :icon="['fas', 'key']" /> 안전한 비밀번호입니다.</span
-            >
+            <span id='right-msg' v-if='validatePassword'>
+              <font-awesome-icon :icon="['fas', 'key']" /> 안전한 비밀번호입니다.
+            </span>
           </div>
         </div>
       </div>
       <div class='input-wrapper'>
         <div class='label-width label-loc-start'>
-          <label for='input-member-password-check'
-          >비밀번호 확인 <span class='astar-color'>*</span>
-          </label>
+          <label for='input-member-password-check'>비밀번호 확인 <span class='astar-color'>*</span></label>
         </div>
         <div>
-          <input type='password' id='input-member-password-check' v-model='passwordCheck' />
+          <input type='password' id='input-member-password-check' v-model='passwordCheck' required/>
           <div style='padding-top: 8px'>
             <span id='error-msg' v-if='!validatePasswordCheck'>비밀번호가 일치하지 않습니다.</span>
           </div>
@@ -112,8 +110,8 @@ import { useMemberStore } from '../../stores/member'
 import { computed, ref, watch, nextTick } from 'vue'
 import { getIsDulicatedForCheck } from '@/services/api/MemberService'
 import router from '../../../router/index'
-import { toast, type ToastOptions } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
+import { toast, type ToastOptions } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const memberStore = useMemberStore()
 
@@ -160,22 +158,22 @@ const options = {
   toastStyle: {
     fontWeight: 'bold'
   }
-} as ToastOptions;
+} as ToastOptions
 
 const checkDuplicated = () => {
   const fullUsername = username1.value + '@' + username2.value
   getIsDulicatedForCheck(fullUsername)
     .then(response => {
       if (response === undefined) {
-        throw new Error("NOT FOUND")
+        throw new Error('NOT FOUND')
       }
       if (response === false) {
         alert('해당 이메일을 사용할 수 있습니다.')
         isDuplicated.value = false
       }
     }).catch(error => {
-        console.error(error)
-        toast.error(error.toString(), options as ToastOptions);
+    console.error(error)
+    toast.error(error.toString(), options as ToastOptions)
   })
 }
 
@@ -202,42 +200,6 @@ const decreaseActiveNo = () => {
 
 const submitForm = async (event: any) => {
   event.preventDefault()
-  event.stopImmediatePropagation()
-  await nextTick()
-  const memberNameEle = document.getElementById('input-member-name') as HTMLInputElement | null
-  const username1Ele = document.getElementById('input-username-1') as HTMLInputElement | null
-  const username2Ele = document.getElementById('input-username-2') as HTMLInputElement | null
-  const memberPasswordEle = document.getElementById(
-    'input-member-password'
-  ) as HTMLInputElement | null
-  const memberPasswordCheckEle = document.getElementById(
-    'input-member-password-check'
-  ) as HTMLInputElement | null
-
-  if (memberNameEle?.value === '') {
-    alert('이름을 입력해주세요.')
-    memberNameEle.focus()
-    return
-  }
-
-  if (username1Ele?.value === '' || username2Ele?.value === '') {
-    alert('이메일을 입력해주세요.')
-    username1Ele?.focus()
-    return
-  }
-
-  if (memberPasswordEle?.value === '') {
-    alert('비밀번호를 입력해주세요.')
-    memberPasswordEle.focus()
-    return
-  }
-
-  if (memberPasswordCheckEle?.value === '') {
-    alert('비밀번호를 한번 더 입력해주세요.')
-    memberPasswordCheckEle.focus()
-    return
-  }
-
   if (
     validateName.value &&
     validateUsername.value &&

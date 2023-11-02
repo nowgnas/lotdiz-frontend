@@ -53,7 +53,6 @@ const options = {
   }
 } as ToastOptions
 
-
 const submitForm = () => {
   const signInInfoRequest: InfoForSignIn = {
     username: username.value,

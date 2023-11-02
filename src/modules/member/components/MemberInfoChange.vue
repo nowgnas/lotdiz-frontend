@@ -59,7 +59,6 @@ import { checkOriginPasswordForChange, getMemberInfo, putMemberInfoForChange } f
 import { ref, onMounted } from 'vue'
 import { toast, type ToastOptions} from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
-import router from '@/router'
 
 const options = {
   onClose: () => console.log('closed'),
@@ -89,7 +88,7 @@ onMounted(() => {
       createdAt.value = response.createdAt
       createdAt.value = createdAt.value.replace("T", " ")
     }).catch(error => {
-    console.error('멤버 수정전 정보 조회 실패')
+    console.error('멤버 수정전 정보 조회 실패:', error)
   })
 })
 

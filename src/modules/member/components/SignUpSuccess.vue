@@ -22,7 +22,6 @@ import { useMemberStore } from '../../stores/member';
 
 const memberStore = useMemberStore();
 const memberName = memberStore.memberName;
-
 </script>
 
 <style scoped>

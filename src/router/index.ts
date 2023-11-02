@@ -228,8 +228,6 @@ router.beforeEach(async (to, from, next) => {
         path: '/member/sign-in',
         query: {redirect:to.fullPath}
       })
-
-      alert('로그인이 필요한 페이지 입니다.');
     }
   }
   next();
