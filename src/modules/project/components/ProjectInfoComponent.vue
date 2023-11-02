@@ -159,6 +159,9 @@ import { createLikes, deleteLikes } from '@/services/api/MemberService'
 import { createSupportSignature } from '@/services/api/ProjectService'
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest'
 import type { ProjectDetail } from '@/services/types/ProjectResponse'
+import router from '@/router'
+
+const accessToken = localStorage.getItem('jwtToken')
 
 const projectStore = useProjectStore()
 const projectDetails = ref<ProjectDetail>()
@@ -169,8 +172,13 @@ const isLikes = ref<boolean>(false)
 const numberOfSupporter = ref<number>(0)
 const inputSupportSignatureContents = ref<string>('')
 
-const modalControl = () => {
-  modalCheck.value = !modalCheck.value
+const modalControl = async () => {
+  if(accessToken === null) {
+    alert("로그인이 필요합니다")
+    await router.push("/member/sign-in")
+  } else {
+    modalCheck.value = !modalCheck.value
+  }
 }
 
 const likes = async () => {
@@ -211,7 +219,7 @@ watch(() => projectStore.projectDetails.projectId, (newProjectId) => {
 })
 
 watch(() => projectStore.projectDetails.numberOfSupporter, (newNumberOfSupporter) => {
-  if(newNumberOfSupporter !== projectDetails.value?.numberOfSupporter) {
+  if (newNumberOfSupporter !== projectDetails.value?.numberOfSupporter) {
     projectDetails.value = projectStore.projectDetails
     numberOfSupporter.value = projectDetails.value?.numberOfSupporter
   }

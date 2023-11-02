@@ -8,18 +8,19 @@ import SpecialExhibitionView from '@/views/SpecialExhibitionView.vue'
 import SupporterWithUsComponent from '@/modules/project/components/SupporterWithUsComponent.vue'
 import SupportSignatureComponent from '@/modules/project/components/SupportSignatureComponent.vue'
 import FundingView from '@/views/funding/FundingView.vue'
-import FundingPayApproveView from "@/views/funding/FundingPayApproveView.vue";
-import FundingDetailsView from "@/views/funding/FundingDetailsView.vue";
+import FundingPayApproveView from '@/views/funding/FundingPayApproveView.vue'
+import FundingDetailsView from '@/views/funding/FundingDetailsView.vue'
 
 import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
-import DefaultInformation from '@/modules/project/components/DefaultInformation.vue'
-import MakerRegister from '@/modules/project/components/MakerRegister.vue'
-import ProjectInformation from '@/modules/project/components/ProjectInformation.vue'
-import WriteStory from '@/modules/project/components/WriteStory.vue'
-import RegisterProducts from '@/modules/project/components/RegisterProducts.vue'
+import DefaultInformation from '@/modules/project/components/register-component/DefaultInformation.vue'
+import MakerRegister from '@/modules/project/components/register-component/MakerRegister.vue'
+import ProjectInformation from '@/modules/project/components/register-component/ProjectInformation.vue'
+import WriteStory from '@/modules/project/components/register-component/WriteStory.vue'
+import RegisterProducts from '@/modules/project/components/register-component/RegisterProducts.vue'
 import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
-import { client } from "@/services/api/APISpec";
+import SelectLotdeal from '@/modules/project/components/register-component/SelectLotdeal.vue'
+import { client } from '@/services/api/APISpec'
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
 import { useHeaderStore } from '@/stores/headerStore'
 import type { AxiosError } from 'axios'
@@ -60,7 +61,7 @@ const router = createRouter({
           path: 'success',
           name: 'member-sign-up-success',
           component: () => import('../modules/member/components/SignUpSuccess.vue')
-        },
+        }
       ]
     },
     {
@@ -84,7 +85,7 @@ const router = createRouter({
           name: 'my-page-info-change',
           component: () => import('../modules/member/components/MemberInfoChange.vue'),
           meta: { authRequired: true }
-        },
+        }
       ],
       meta: { authRequired: true }
     },
@@ -172,6 +173,10 @@ const router = createRouter({
     },
     {
       path: '/projects',
+      redirect: '/projects/maker'
+    },
+    {
+      path: '/projects',
       name: 'projectRegister',
       component: ProjectRegisterView,
       children: [
@@ -194,6 +199,10 @@ const router = createRouter({
         {
           path: 'products',
           component: RegisterProducts
+        },
+        {
+          path: 'lotdeal',
+          component: SelectLotdeal
         }
       ],
       meta: { authRequired: true }
@@ -204,46 +213,46 @@ const router = createRouter({
       meta: { authRequired: true }
     }
   ]
-});
+})
 
 router.beforeEach(async (to, from, next) => {
 
-  if(window.location.pathname == "/member/sign-in" || window.location.pathname == "/member/sign-up") {
-    const headerStore = useHeaderStore();
+  if (window.location.pathname == '/member/sign-in' || window.location.pathname == '/member/sign-up') {
+    const headerStore = useHeaderStore()
     headerStore.assignIsNoHeaderPath(true)
   }
 
-  const jwtToken = localStorage.getItem("jwtToken");
+  const jwtToken = localStorage.getItem('jwtToken')
 
-  if(jwtToken !== null) {
+  if (jwtToken !== null) {
     client.interceptors.request.use((config) => {
-      config.headers.setAuthorization(jwtToken);
-      return config;
-    }, (error) => Promise.reject(error));
+      config.headers.setAuthorization(jwtToken)
+      return config
+    }, (error) => Promise.reject(error))
   }
 
-  if(to.matched.some(record =>  record.meta.authRequired )) {
-    if(jwtToken === null) {
-      alert('로그인이 필요한 페이지 입니다.');
+  if (to.matched.some(record => record.meta.authRequired)) {
+    if (jwtToken === null) {
+      alert('로그인이 필요한 페이지 입니다.')
       return next({
         path: '/member/sign-in',
-        query: {redirect:to.fullPath}
+        query: { redirect: to.fullPath }
       })
     } else {
       client.interceptors.response.use((response) => {
-        return response;
+        return response
       }, (error) => {
-        if(error.isAxiosError) {
+        if (error.isAxiosError) {
           const axiosError: AxiosError = error as AxiosError
-          if(axiosError.response?.status === 401 || axiosError.response?.status === 403) {
-            localStorage.removeItem("jwtToken")
+          if (axiosError.response?.status === 401 || axiosError.response?.status === 403) {
+            localStorage.removeItem('jwtToken')
             location.reload()
           }
         }
       })
     }
   }
-  next();
-});
+  next()
+})
 
-export default router;
+export default router

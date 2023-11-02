@@ -6,6 +6,10 @@
     gap: 10px;
 }
 
+.project-register-save-box:hover, .project-register-save-box:focus, .project-register-save-box:active, .project-register-save-box:checked {
+
+}
+
 .save-btn {
     display: flex;
     width: 544px;
@@ -16,6 +20,7 @@
     gap: 10px;
     border-radius: 10px;
     background: #58C1C2;
+    cursor: pointer;
 }
 
 .save-btn > .text {
