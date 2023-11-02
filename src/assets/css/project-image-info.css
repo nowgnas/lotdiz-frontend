@@ -42,6 +42,7 @@
     height: 753px;
     flex-direction: column;
     align-items: flex-start;
+    gap: 27px;
 }
 
 .project-story-title {
@@ -49,7 +50,6 @@
     padding: 1px 10px;
     align-items: center;
     gap: 10px;
-    flex: 1 0 0;
     align-self: stretch;
 
     color: #000;
@@ -78,4 +78,7 @@
     height: 901px; */
 }
 
+.carousel {
+    width: 600px;
+}
 

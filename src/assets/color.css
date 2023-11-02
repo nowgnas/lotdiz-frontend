@@ -1,0 +1,16 @@
+:root {
+    --main-color: #58C1C2;
+    --deep-color: #0E8C8D;
+    --success-color: #5CB74C;
+    --error-color: #FF0000;
+    --card-bg-color: #F8F8F8;
+    --card-border-color: #D9D9D9;
+    --sidebar-bg-color: white;
+    --icon-color: #C4C4C4;
+    --banner-bg-color: #9747FF;
+    --circle-bg-color: rgba(214,187,255, 0.25);
+    --honors-main-color: #7940BF;
+    --hover-color: #196DFF;
+    --heart-color: #FA6588;
+    --middle-gray: #808080;
+}

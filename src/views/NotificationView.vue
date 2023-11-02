@@ -3,7 +3,7 @@
     <div class="notification-header">
       <div class="notification-header-header">
         <div class="notification-header-header-title">
-          <img class="notification-header-header-title-img" src="/notification-logo.svg" alt=" "/>
+          <img class="notification-header-header-title-img" src='/common/notification-logo.svg' alt=" "/>
           <div class="notification-header-header-title-text">알림</div>
         </div>
       </div>
@@ -16,7 +16,7 @@
         <div class="notification-body-header">
           <div class="notification-title">
             <div class="notification-title-left">
-              <img class="notification-title-img" src="/notification-title-img.svg" alt=" "/>
+              <img class="notification-title-img" src='/common/notification-title-img.svg' alt=" "/>
               <div class="notification-title-text">
                 {{ notification.notificationTitle }}
               </div>

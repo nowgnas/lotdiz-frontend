@@ -10,5 +10,14 @@
     {
       "path": "./tsconfig.vitest.json"
     }
+  ],
+  "compilerOptions": {
+    "types": ["vite/client"],
+    "module": "es2020",
+  },
+  "include": [
+    "src/**/*",
+    "src/services/types/Window.d.ts",
+    "package.json"
   ]
 }
