@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-
+const props = defineProps(['project'])
 </script>
 
 <template>
@@ -8,7 +8,7 @@
       <div class='project-img'></div>
     </div>
     <div class='project-name'>
-      <div class='text'>프로젝트 이름</div>
+      <div class='text'>{{ props.project.projectName }}</div>
     </div>
     <div class='achievement-rate'>
       <div class='text'>400%달성</div>

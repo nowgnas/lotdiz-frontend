@@ -1,10 +1,15 @@
 <script setup lang='ts'>
 
 import ProjectCard from '@/modules/maker/components/ProjectCard.vue'
-import { onBeforeMount, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { getRegisteredProjectList } from '@/services/api/MakerMyPageService'
-onMounted(async ()=>{
-  const registeredProjectList = await getRegisteredProjectList(0, 10, 'createdAt' )
+
+const project = ref()
+
+onMounted(async () => {
+  const registeredProjectList = await getRegisteredProjectList(0, 10, 'createdAt')
+  console.log(registeredProjectList)
+  project.value = registeredProjectList
 })
 </script>
 
@@ -14,7 +19,7 @@ onMounted(async ()=>{
       <div class='text'>펀딩중인 프로젝트</div>
     </div>
     <div class='project-list-box'>
-      <ProjectCard />
+      <ProjectCard v-for='item in project' :project='item' />
     </div>
   </div>
 </template>
