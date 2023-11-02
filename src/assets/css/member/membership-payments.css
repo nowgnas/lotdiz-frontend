@@ -40,9 +40,16 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
-#banner-text {
+#membership-payments-banner:hover {
+    background-color: var(--banner-hover-color);
+    z-index: 1;
+    cursor: pointer;
+}
+
+#banner-membership-text {
     text-align: center;
     font-size: 35px;
     font-weight: bold;
@@ -144,7 +151,8 @@ a {
 }
 
 .price-ticket {
-    background-color: var(--main-color);
+    background-color: var(--kakao-main-color);
+    color: var(--kakao-sub-color);
     font-weight: bold;
     font-size: 22px;
     padding: 10px 40px;
@@ -153,7 +161,7 @@ a {
 }
 
 .price-ticket:hover {
-    background-color: var(--deep-color);
+    background-color: var(--kakao-hover-color);
 }
 
 .honors-type {

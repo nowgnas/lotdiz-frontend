@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="header-signup"><p>롯디즈</p></div>
+    <div id="header-signup" @click='preworkBeforeGo'><p><a href='/'>롯디즈</a></p></div>
     <div id="progress-bar-signup">
       <div class="icon-wrapper">
         <font-awesome-icon :icon="['far', 'square-check']" class="increase-icon-size" :class="{ 'isActive': getActiveNo() === 1 }" />
@@ -42,33 +42,38 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { useMemberStore } from '@/modules/stores/member';
+import { useHeaderStore } from '@/stores/headerStore'
 
 const memberStore = useMemberStore();
+const headerStore = useHeaderStore();
+
+const preworkBeforeGo = () => {
+  headerStore.assignIsNoHeaderPath(false)
+}
+
 const getActiveNo = () => {
   return memberStore.getActiveNo();
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/basic-info") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/basic-info") {
+  window.location.pathname = "/member/sign-up";
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/email-auth") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/email-auth") {
+  window.location.pathname = "/member/sign-up";
 }
 
-if (window.location.href === "http://localhost:5173/member/sign-up/success") {
-  window.location.href = "http://localhost:5173/member/sign-up";
+if (window.location.pathname === "/member/sign-up/success") {
+  window.location.pathname = "/member/sign-up";
 }
-
 </script>
 
 <style scoped>
 @import '@/assets/color.css';
-@import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/font.css';
 
+@import '@/assets/css/member/sign-up-common.css';
 @import '@/assets/css/member/sign-up.css';
 </style>

@@ -32,7 +32,6 @@
     <div class="btn-next">
       <button @click="finalCheck">다음</button>
     </div>
-
   </div>
 </template>
 
@@ -117,7 +116,7 @@ const decreaseActiveNo = () => {
 }
 </script>
 
-<style>
+<style scoped>
 @import '@/assets/css/member/sign-up-common.css';
 
 @import '@/assets/css/member/sign-up-email-auth.css';

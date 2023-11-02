@@ -58,13 +58,12 @@ onMounted(
       fundingPaymentsRequest.pgToken = route.query.pg_token as string
 
       // TODO: projectID 받아서 넣기
-      console.log('data approval 값 보기 ')
       const response = await postFundingInfoForPayApproval(fundingPaymentsRequest, 1)
       alert(response.detail)
       window.opener.postMessage('complete', '*')
       window.close()
     } catch (error) {
-      console.log('An error occurred:' + error)
+      console.error('An error occurred:' + error)
     }
   })
 

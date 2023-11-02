@@ -26,9 +26,7 @@ const likesList = ref<Array<LikesDetailResponse>>([])
 onMounted(() => {
   getLikesList()
     .then(response => {
-      console.log('response:', response)
       likesList.value = response
-      console.log('likesList:', likesList)
     }).catch(error => {
       console.error("찜 목록 조회 실패")
   })

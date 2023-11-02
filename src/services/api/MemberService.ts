@@ -46,17 +46,16 @@ export const postInfoForSignIn = async (infoForSignIn: InfoForSignIn) => {
     return response
   } catch (error: unknown) {
     console.error(error)
-    throw new Error('로그인 실패')
+    throw new Error('로그인 실패.')
   }
 }
 
 export const getIsDulicatedForCheck = async (username: string) => {
-  try {
-    const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
-    return response.data.data
-  } catch (error: unknown) {
-    throw new Error('이메일 중복 조회 실패')
+  const response = await postMemberData<boolean>(`/member-service/api/members/isDuplicated`, username)
+  if (response.data.data === undefined) {
+    throw new Error(response.data.message)
   }
+  return response.data.data
 }
 
 export const createLikes = async (projectId: number) => {
@@ -93,11 +92,21 @@ export const getMembershipInfoForShow = async () => {
   }
 }
 
+export const checkOriginPasswordForChange = async (originPassword: string) => {
+  try {
+    const response = await postData<boolean>('/member-service/api/origin-password/isSame', originPassword)
+    return response.data
+  } catch (error: unknown) {
+    throw new Error('기존 비밀번호 조회 실패')
+  }
+}
+
 export const putMemberInfoForChange = async (memberInfoForChangeRequest: MemberInfoForChangeRequest) => {
   try {
     const response = await putData<MemberInfoForChangeRequest>('/member-service/api/members', memberInfoForChangeRequest)
     return response.data
   } catch (error: unknown) {
+    console.error(error)
     throw new Error('회원 정보 수정 실패')
   }
 }
@@ -117,5 +126,14 @@ export const getLikesList = async () => {
     return response.data
   } catch (error: unknown) {
     throw new Error('찜목록 조회 실패')
+  }
+}
+
+export const getLikesCnts = async () => {
+  try {
+    const response = await getData<number>('/member-service/api/members/likes/cnts')
+    return response.data
+  } catch (error: unknown) {
+    throw new Error('현재 회원의 찜 개수 조회 실패')
   }
 }

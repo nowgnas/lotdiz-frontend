@@ -24,12 +24,12 @@
 </template>
 
 <script setup lang='ts'>
-
 import { defineProps } from 'vue'
 import type { PropType } from 'vue'
 import type { LikesDetailResponse } from '@/services/types/MemberResponse'
 import { deleteLikes } from '@/services/api/MemberService'
 import router from '@/router'
+
 const props = defineProps({
   item: {
     type: Object as PropType<LikesDetailResponse>,
@@ -48,7 +48,6 @@ const removeLikes = (event: any) => {
   const curEle = event.target
   const cloestAncestor = curEle.closest('.likes-card-wrapper')
   const ancestorId = parseInt(cloestAncestor.getAttribute('id').replace("project-", ""))
-  console.log("ancestorId:", ancestorId)
   if(confirm('해당 프로젝트를 찜목록에서 삭제하시겠습니까?')) {
     deleteLikes(ancestorId)
       .then(() => {
@@ -61,7 +60,7 @@ const removeLikes = (event: any) => {
 }
 </script>
 
-<style>
+<style scoped>
 .likes-card-wrapper {
   width: 832px;
   height: 250px;

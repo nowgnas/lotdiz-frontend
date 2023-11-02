@@ -12,7 +12,7 @@ onMounted(async () => {
   project.value = registeredProjectList.projects
 })
 const router = useRouter()
-const showDetail = (projectId) => {
+const showDetail = (projectId: number) => {
 
   console.log(projectId)
   router.push({

@@ -19,8 +19,8 @@ onBeforeMount(async () => {
   let defaultStatus = await getRegisteredProjectDetailStatus(projectId.value)
   detailStatus.value = defaultStatus
 // get project funding list
-  let detailFundingList = await getRegisteredProjectFundingList(projectId.value)
-  detailFunding.value = detailFundingList.registeredProjectFundingDtos
+  let detailFundingList: any = await getRegisteredProjectFundingList(projectId.value)
+  detailFunding.value = detailFundingList['registeredProjectFundingDtos']
   console.log(detailFunding.value)
 })
 
