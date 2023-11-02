@@ -26,7 +26,7 @@
 
 <script setup lang='ts'>
 import type { InfoForSignIn } from '@/services/types/MemberRequest'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { postInfoForSignIn } from '@/services/api/MemberService'
 import router from '../../router/index'
 import { useHeaderStore } from '@/stores/headerStore'
@@ -36,6 +36,10 @@ import 'vue3-toastify/dist/index.css'
 const headerStore = useHeaderStore()
 const username = ref('')
 const password = ref('')
+
+onMounted(() => {
+  headerStore.assignIsNoHeaderPath(true)
+})
 
 const goMain = () => {
   headerStore.assignIsNoHeaderPath(false)

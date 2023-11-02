@@ -149,7 +149,6 @@ const validateUsername = computed((): boolean => {
 })
 
 const options = {
-  onClose: () => console.log('closed'),
   transition: toast.TRANSITIONS.BOUNCE,
   position: toast.POSITION.TOP_RIGHT,
   pauseOnHover: true,

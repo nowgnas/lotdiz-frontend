@@ -61,7 +61,6 @@ import { toast, type ToastOptions} from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
 
 const options = {
-  onClose: () => console.log('closed'),
   transition: toast.TRANSITIONS.BOUNCE,
   position: toast.POSITION.TOP_RIGHT,
   pauseOnHover: true,
