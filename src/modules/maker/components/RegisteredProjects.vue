@@ -8,8 +8,9 @@ const project = ref()
 
 onMounted(async () => {
   const registeredProjectList = await getRegisteredProjectList(0, 10, 'createdAt')
-  console.log(registeredProjectList)
-  project.value = registeredProjectList
+  console.log(typeof registeredProjectList)
+  project.value = registeredProjectList.projects
+
 })
 </script>
 
