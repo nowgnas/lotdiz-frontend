@@ -55,5 +55,5 @@ const selectOption = (item: any) => {
 </template>
 
 <style scoped>
-@import "../../../../assets/css/projectregister/CategoryDropDown.css";
+@import "@/assets/css/projectregister/CategoryDropDown.css";
 </style>

@@ -1,15 +1,16 @@
 <script setup lang='ts'>
-import GuideComponent from '@/modules/project/components/GuideComponent.vue'
-import ProjectContentTitle from '@/modules/project/components/ProjectContentTitle.vue'
+import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
+import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
+import { useProductRegisterStore } from '@/store/registerProjectStore'
+import type { Product, ProductsData } from '@/services/types/ProjectRegisterType'
+import { useRouter } from 'vue-router'
 
 
 const showModal = ref(false)
-const openModal = () => {
-  showModal.value = !showModal.value
-}
+
 
 const projectContentTitle = {
   title: '상품 등록',
@@ -27,13 +28,39 @@ const guideContent = {
     '각 상품에 대한 상세 설명을 작성할 수 있어요.'
   ]
 }
+const productsList = ref<ProductsData>({
+  products: []
+})
+let isOpened = false
+const openModal = (value: any) => {
+  if (isOpened) {
+    const product: Product = {
+      productName: value.productName,
+      productDescription: value.productDescription,
+      productRegisteredStockQuantity: value.productRegisteredStockQuantity,
+      productCurrentStockQuantity: value.productRegisteredStockQuantity,
+      productPrice: value.productPrice
+    }
+    productsList.value.products.push(product)
+    isOpened = false
+  } else {
+    isOpened = true
+  }
+  showModal.value = !showModal.value
+}
+const router = useRouter()
+
+const emitData = () => {
+  useProductRegisterStore().setProductsData({ products: productsList })
+  router.push('/projects/lotdeal')
+}
 </script>
 
 <template>
   <ProjectContentTitle :title='projectContentTitle' />
   <div class='product-register-box'>
     <GuideComponent :guide-content='guideContent' />
-    <div class='product-register-btn'>
+    <div class='product-register-btn' @click='openModal'>
       <div class='add-product-btn'>
         <svg xmlns='http://www.w3.org/2000/svg' width='64' height='63' viewBox='0 0 64 63' fill='none'>
           <g clip-path='url(#clip0_227_40)'>
@@ -52,9 +79,9 @@ const guideContent = {
     </div>
   </div>
   <ProductItem @close='openModal' v-if='showModal' />
-  <SaveButton />
+  <SaveButton @click='emitData' />
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/ProductRegister.css";
+@import "@/assets/css/projectregister/ProductRegister.css";
 </style>

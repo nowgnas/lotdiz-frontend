@@ -12,5 +12,5 @@ const props = defineProps(['title']);
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/ProjectContentTitle.css";
+@import "@/assets/css/projectregister/ProjectContentTitle.css";
 </style>
