@@ -23,5 +23,5 @@ const props = defineProps(['guideContent']);
 </template>
 
 <style scoped>
-@import "../../../assets/css/projectregister/GuideBox.css";
+@import "@/assets/css/projectregister/GuideBox.css";
 </style>
