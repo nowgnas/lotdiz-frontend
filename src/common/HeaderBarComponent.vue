@@ -35,14 +35,8 @@
       </div>
     </div>
     <div id='member-bar'>
-      <div class='sign-btn' @click='preworkBeforeGo'>
-        <RouterLink v-if='jwtToken === null' to='/member/sign-in'>로그인</RouterLink>
-      </div>
-
-      <div class='sign-btn' @click='preworkBeforeGo'>
-        <RouterLink v-if='jwtToken === null' to='/member/sign-up'>회원가입</RouterLink>
-      </div>
-
+      <RouterLink v-if='jwtToken === null' to='/member/sign-in'><span class='sign-btn' @click='preworkBeforeGo'>로그인</span></RouterLink>
+      <RouterLink v-if='jwtToken === null' to='/member/sign-up'><span class='sign-btn' @click='preworkBeforeGo'>회원가입</span></RouterLink>
       <RouterLink v-if='jwtToken !== null' to='/notifications'>
         <div class='notification-number-box'>
           <svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 35 35' fill='none'>
@@ -140,5 +134,5 @@ watch(() => route.path, (newPath) => {
 
 <style scoped>
 @import '@/assets/css/header.css';
-@import "../assets/css/notification.css";
+@import "@/assets/css/notification.css";
 </style>

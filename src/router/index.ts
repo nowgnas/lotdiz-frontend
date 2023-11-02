@@ -12,14 +12,15 @@ import FundingPayApproveView from '@/views/funding/FundingPayApproveView.vue'
 import FundingDetailsView from '@/views/funding/FundingDetailsView.vue'
 
 import ProjectRegisterView from '@/views/ProjectRegisterView.vue'
-import DefaultInformation from '@/modules/project/components/DefaultInformation.vue'
-import MakerRegister from '@/modules/project/components/MakerRegister.vue'
-import ProjectInformation from '@/modules/project/components/ProjectInformation.vue'
-import WriteStory from '@/modules/project/components/WriteStory.vue'
-import RegisterProducts from '@/modules/project/components/RegisterProducts.vue'
+import DefaultInformation from '@/modules/project/components/register-component/DefaultInformation.vue'
+import MakerRegister from '@/modules/project/components/register-component/MakerRegister.vue'
+import ProjectInformation from '@/modules/project/components/register-component/ProjectInformation.vue'
+import WriteStory from '@/modules/project/components/register-component/WriteStory.vue'
+import RegisterProducts from '@/modules/project/components/register-component/RegisterProducts.vue'
 import RegisteredProjects from '@/modules/maker/components/RegisteredProjects.vue'
 import NotificationView from '@/views/NotificationView.vue'
 import DetailOfProject from '@/modules/maker/components/DetailOfProject.vue'
+import SelectLotdeal from '@/modules/project/components/register-component/SelectLotdeal.vue'
 import { client } from '@/services/api/APISpec'
 import ProjectImageSectionComponent from '@/modules/project/components/ProjectImageSectionComponent.vue'
 import { useHeaderStore } from '@/stores/headerStore'
@@ -178,6 +179,10 @@ const router = createRouter({
     },
     {
       path: '/projects',
+      redirect: '/projects/maker'
+    },
+    {
+      path: '/projects',
       name: 'projectRegister',
       component: ProjectRegisterView,
       children: [
@@ -200,6 +205,10 @@ const router = createRouter({
         {
           path: 'products',
           component: RegisterProducts
+        },
+        {
+          path: 'lotdeal',
+          component: SelectLotdeal
         }
       ],
       meta: { authRequired: true }

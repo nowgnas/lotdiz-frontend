@@ -110,6 +110,9 @@ import { getSupportSignature, createSupportSignature, modifySupportSignature } f
 import type { SupportSignatureResponse, SupportSignature } from '@/services/types/ProjectResponse';
 import type { InputSupportSignatureContentsRequest } from '@/services/types/ProjectRequest';
 import { useProjectStore } from '@/store/ProjectStore';
+import router from '@/router'
+
+const accessToken = localStorage.getItem("jwtToken")
 
 const projectStore = useProjectStore();
 
@@ -136,9 +139,14 @@ const clickRequest = () => {
   }
 }
 
-const clickCreateRequest = () =>  {
-  creationStatus.value = 'create';
-  modalControl();
+const clickCreateRequest = async () =>  {
+  if(accessToken === null) {
+    alert("로그인이 필요합니다")
+    await router.push("/member/sign-in")
+  } else {
+    creationStatus.value = 'create';
+    modalControl();
+  }
 }
 
 const clickModifyRequest = (originalContents: string) =>  {

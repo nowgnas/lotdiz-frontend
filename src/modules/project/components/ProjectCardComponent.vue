@@ -51,6 +51,7 @@
 import { ref, onBeforeMount, computed } from 'vue'
 import { createLikes, deleteLikes } from '@/services/api/MemberService'
 import { useRouter } from 'vue-router'
+import { AxiosError } from 'axios'
 
 const router = useRouter()
 
@@ -142,14 +143,21 @@ const goProjectDetailsPage = (projectId: number) => {
 const likes = async (e: any) => {
 
   e.stopPropagation()
-  if (isLikes.value) {
-    await deleteLikes(projectId.value)
-    isLikes.value = false;
-  } else {
-    await createLikes(projectId.value)
-    isLikes.value = true;
+  try {
+    if (isLikes.value) {
+      await deleteLikes(projectId.value)
+      isLikes.value = false;
+    } else {
+      await createLikes(projectId.value)
+      isLikes.value = true;
+    }
+  } catch(error: unknown) {
+    const axiosError: AxiosError = error as AxiosError
+    if(axiosError.response?.status === 401 || axiosError.response?.status === 403) {
+      alert("로그인이 필요합니다.")
+      await router.push("/member/sign-in")
+    }
   }
-
 
 }
 </script>

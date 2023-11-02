@@ -10,7 +10,7 @@ import type {
   MemberInfoForSignUpRequest,
   MembershipInfoForJoinRequest
 } from '../types/MemberRequest'
-import type { ErrorResponse, SuccessResponse } from '@/services/types/APIResponse'
+import type { SuccessResponse } from '@/services/types/APIResponse'
 
 export const postMemberInfoForSignUp = async (memberInfoForSignUpRequst: MemberInfoForSignUpRequest) => {
   try {
@@ -61,8 +61,8 @@ export const getIsDulicatedForCheck = async (username: string) => {
 export const createLikes = async (projectId: number) => {
   try {
     await postData(`/member-service/api/projects/${projectId}/likes`)
-  } catch (error: unknown) {
-    throw new Error((<ErrorResponse>error).detail)
+  } catch (error) {
+    throw error
   }
 }
 
@@ -70,7 +70,7 @@ export const deleteLikes = async (projectId: number) => {
   try {
     await deleteData(`/member-service/api/projects/${projectId}/likes`)
   } catch (error: unknown) {
-    throw new Error((<ErrorResponse>error).detail)
+    throw error
   }
 }
 

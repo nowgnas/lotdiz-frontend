@@ -16,23 +16,6 @@
     line-height: 140%; /* 35px */
 }
 
-.remain-text {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.remain-text > .text {
-    color: #878787;
-    text-align: center;
-    font-family: Open Sans;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%; /* 23.8px */
-}
 
 .thumbnail-image {
     display: flex;
