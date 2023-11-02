@@ -5,7 +5,18 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import GuideComponent from '@/modules/project/components/register-component/GuideComponent.vue'
 import LotdealSelectionBox from '@/modules/project/components/buttons/LotdealSelectionBox.vue'
 import { ref } from 'vue'
-import { useSelectLotdealStore } from '@/store/registerProjectStore'
+import {
+  useDefaultInformationStore,
+  useMakerStore,
+  useProductRegisterStore,
+  useProjectInformationStore,
+  useProjectStoryStore,
+  useSelectLotdealStore
+} from '@/store/registerProjectStore'
+import { storeToRefs } from 'pinia'
+import type { ProjectRequestData } from '@/services/types/ProjectRegisterType'
+import { registerProject } from '@/services/api/ProjectService'
+import router from '@/router'
 
 const projectContentTitle = {
   title: '롯딜 선택',
@@ -25,7 +36,7 @@ const guideContent = {
 
 
 const selectedBox = ref()
-const selectBox = (box: String) => {
+const selectBox = (box: any) => {
   selectedBox.value = box
 }
 
@@ -42,8 +53,43 @@ const selectDefault = {
   content: '롯딜 없이 펀딩 할게요 !',
   selectedValue: 'normal'
 }
+
 const emitData = () => {
   useSelectLotdealStore().setLotdealData({ isLotdeal: selectedBox })
+
+  const maker = useMakerStore()
+  const information = useProjectInformationStore()
+  const defaultInfo = useDefaultInformationStore()
+  const storyData = useProjectStoryStore()
+  const productsDataStore = useProductRegisterStore()
+
+  const { projectInformation } = storeToRefs(information)
+  const { makerData } = storeToRefs(maker)
+  const { defaultInformation } = storeToRefs(defaultInfo)
+  const { projectStoryData } = storeToRefs(storyData)
+
+  const { products } = storeToRefs(productsDataStore)
+
+  const date = Object.assign((defaultInformation.value)).defaultInformation.projectDueDate
+
+  const projectData: ProjectRequestData = {
+    projectName: Object.assign((defaultInformation.value)).defaultInformation.projectName,
+    projectDescription: Object.assign((projectStoryData.value)).projectStoryData.projectDescription,
+    projectTag: Object.assign((defaultInformation.value)).defaultInformation.projectTag,
+    projectTargetAmount: Object.assign((projectInformation.value)).projectInformation.projectTargetAmount,
+    projectStoryImageUrl: Object.assign((projectStoryData.value)).projectStoryData.projectStoryImageUrl,
+    projectStoryImageFile: Object.assign((projectStoryData.value)).projectStoryData.projectStoryImageFile,
+    projectDueDate: date,
+    projectThumbnailImageUrl: Object.assign((defaultInformation.value)).defaultInformation.projectThumbnailImageUrl,
+    projectThumbnailImageFile: Object.assign((defaultInformation.value)).defaultInformation.projectThumbnailFile,
+    projectImages: Object.assign((projectStoryData.value)).projectStoryData.projectImages,
+    categoryId: Object.assign((projectInformation.value)).projectInformation.categoryId,
+    isLotdeal: (selectedBox.value == 'lotdeal'),
+    products: Object.assign(products.value).products.products,
+    maker: Object.assign(makerData.value).maker
+  }
+
+  registerProject(projectData).then(data => alert(data)).then(router.push('/member/my-page/maker'))
 }
 </script>
 
@@ -57,7 +103,7 @@ const emitData = () => {
       <LotdealSelectionBox :content='selectDefault' @click="selectBox('normal')"
                            :class="{'button-with-shadow': selectedBox === 'normal'}" :selected='selectedBox' />
     </div>
-    <SaveButton @click='emitData' />
+    <SaveButton @click='emitData' :register='true' />
   </div>
 </template>
 

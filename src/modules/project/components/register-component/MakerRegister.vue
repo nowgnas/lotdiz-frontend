@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import { useMakerStore } from '@/store/registerProjectStore'
+import { useRouter } from 'vue-router'
 
 const makerInputComponent = ref({
   makerEmail: {
@@ -56,8 +57,10 @@ const uploadProfile = ref()
 const addProfile = () => {
   uploadProfile.value.click()
 }
+const router = useRouter()
 const emitData = () => {
-  useMakerStore().setMakerData({ maker: maker })
+  useMakerStore().setMakerData({ maker: maker.value })
+  router.push('/projects/project-info')
 }
 
 </script>

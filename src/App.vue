@@ -1,35 +1,38 @@
 <script setup lang='ts'>
 import { RouterView } from 'vue-router'
 import HeaderBarComponent from '@/common/HeaderBarComponent.vue'
-import ProjectDetailsNavBarComponent from '@/modules/project/components/ProjectDetailsNavBarComponent.vue'
-import ProjectInfoComponent from '@/modules/project/components/ProjectInfoComponent.vue'
+
+import { onMounted } from 'vue'
+import { useHeaderStore } from '@/stores/headerStore';
+
+const headerStore = useHeaderStore();
+
+onMounted(() => {
+  const url: string = window.location.pathname
+  if (
+    url === '/member/sign-in' ||
+    url === '/member/sign-up' ||
+    url === '/member/membership-honors/join/success'
+  ) {
+    console.log('no header here')
+    headerStore.assignIsNoHeaderPath(true)
+  } else {
+    console.log('header here')
+    headerStore.assignIsNoHeaderPath(false)
+  }
+})
+
 </script>
 
 <template>
   <div class='container'>
 
     <header>
-      <HeaderBarComponent />
+      <HeaderBarComponent v-if='!headerStore.getIsNoHeaderPath()' />
     </header>
-    <main role='main'>
-
-      <div v-if="$route.path.includes('/project-details')">
-        <div id='project-details-nav-bar'>
-          <ProjectDetailsNavBarComponent />
-        </div>
-
-        <div id='project-details-contents'>
-          <RouterView />
-          <ProjectInfoComponent />
-        </div>
-      </div>
-
-      <div v-else>
-        <RouterView />
-      </div>
-
+    <main role='main' style='height:100%;'>
+      <RouterView />
     </main>
-
 
     <footer>
 
@@ -38,5 +41,8 @@ import ProjectInfoComponent from '@/modules/project/components/ProjectInfoCompon
 </template>
 
 <style scoped>
+.container {
+  height: 100%;
+}
 
 </style>

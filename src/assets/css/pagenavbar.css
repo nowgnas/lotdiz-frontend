@@ -1,0 +1,95 @@
+.pages {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.875rem;
+    justify-content: center;
+    margin-top: 41px;
+
+}
+
+.back-page-btn-container {
+    display: flex;
+    width: 1.0rem;
+    height: 1.0rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+
+    border-radius: 11.25rem;
+    border: 1px solid #E4E4E4;
+    background: #FFF;
+}
+
+.back-page-btn {
+    width: 0.65663rem;
+    height: 1.25075rem;
+    flex-shrink: 0;
+
+    fill: #868686;
+}
+
+.front-page-btn-container {
+    display: flex;
+    width: 1.0rem;
+    height: 1.0rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+
+    border-radius: 11.25rem;
+    border: 1px solid #E4E4E4;
+    background: #FFF;
+}
+
+.front-page-btn {
+    width: 0.65663rem;
+    height: 1.25075rem;
+    flex-shrink: 0;
+
+    fill: #868686;
+}
+
+.page-btn {
+    display: flex;
+    width: 1.0rem;
+    height: 1.0rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+
+    border-radius: 11.25rem;
+
+    color: #868686;
+    text-align: center;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+.page-btn.selected{
+    display: flex;
+    width: 1.0rem;
+    height: 1.0rem;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+
+    border-radius: 11.25rem;
+    background: #000;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+li {
+    list-style-type: none;
+}

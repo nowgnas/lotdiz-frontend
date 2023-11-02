@@ -5,6 +5,8 @@ import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import { ref } from 'vue'
 import ProductItem from '@/modules/project/components/modal/ProductItem.vue'
 import { useProductRegisterStore } from '@/store/registerProjectStore'
+import type { Product, ProductsData } from '@/services/types/ProjectRegisterType'
+import { useRouter } from 'vue-router'
 
 
 const showModal = ref(false)
@@ -26,14 +28,31 @@ const guideContent = {
     '각 상품에 대한 상세 설명을 작성할 수 있어요.'
   ]
 }
-const products = ref()
-const openModal = (value: object) => {
-  products.value = value
+const productsList = ref<ProductsData>({
+  products: []
+})
+let isOpened = false
+const openModal = (value: any) => {
+  if (isOpened) {
+    const product: Product = {
+      productName: value.productName,
+      productDescription: value.productDescription,
+      productRegisteredStockQuantity: value.productRegisteredStockQuantity,
+      productCurrentStockQuantity: value.productRegisteredStockQuantity,
+      productPrice: value.productPrice
+    }
+    productsList.value.products.push(product)
+    isOpened = false
+  } else {
+    isOpened = true
+  }
   showModal.value = !showModal.value
 }
+const router = useRouter()
 
 const emitData = () => {
-  useProductRegisterStore().setProductsData({ productsData: products })
+  useProductRegisterStore().setProductsData({ products: productsList })
+  router.push('/projects/lotdeal')
 }
 </script>
 
@@ -59,7 +78,7 @@ const emitData = () => {
       </div>
     </div>
   </div>
-  <ProductItem @close='openModal' v-if='showModal' v-model='products' />
+  <ProductItem @close='openModal' v-if='showModal' />
   <SaveButton @click='emitData' />
 </template>
 

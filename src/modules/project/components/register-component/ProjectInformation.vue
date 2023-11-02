@@ -5,6 +5,8 @@ import CategoryDropDown from '@/modules/project/components/buttons/CategoryDropD
 import SaveButton from '@/modules/project/components/buttons/SaveButton.vue'
 import ProjectContentTitle from '@/modules/project/components/register-component/ProjectContentTitle.vue'
 import { useProjectInformationStore } from '@/store/registerProjectStore'
+import { useRouter } from 'vue-router'
+
 
 const project = ref({
   categoryId: 0,
@@ -12,6 +14,7 @@ const project = ref({
 })
 
 const getCategoryId = (value: number) => {
+  console.log(value)
   project.value.categoryId = value
 }
 const updateAmount = (value: any) => {
@@ -22,9 +25,10 @@ const content = {
   title: '프로젝트 정보 등록',
   description: '프로젝트 정보를 등록해주세요'
 }
-
+const router = useRouter()
 const emitData = () => {
-  useProjectInformationStore().setProjectInformation({ projectInformation: project })
+  useProjectInformationStore().setProjectInformation({ projectInformation: project.value })
+  router.push('/projects/basic-information')
 }
 
 </script>

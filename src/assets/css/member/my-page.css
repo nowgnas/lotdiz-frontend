@@ -1,0 +1,80 @@
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+}
+
+#sub-header-mypage {
+    height: 95px;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-right: 2%;
+    gap: 2px;
+}
+
+.contents-wrapper {
+    display: flex;
+    gap: 0;
+    flex-grow: 1;
+}
+
+#sec-profile {
+    width: 25%;
+    border-right: 1px solid var(--icon-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3%;
+    gap: 40px;
+}
+
+#contents-mypage {
+    width: 75%;
+}
+
+#profile-icon-wrapper {
+    font-size: 150px;
+}
+
+#profile-name-wrapper {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.btn-logout {
+    border: 1px solid var(--icon-color);
+    padding: 10px 50px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#tab-supporter {
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 25px;
+    cursor: pointer;
+}
+
+#tab-maker {
+    background-color: var(--icon-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 25px;
+    cursor: pointer;
+}
