@@ -63,18 +63,25 @@ button {
     cursor: pointer;
 }
 
-#tab-supporter {
-    background-color: white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding: 5px 25px;
-    cursor: pointer;
-}
 
-#tab-maker {
+
+.tab-supporter {
     background-color: var(--icon-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 5px 25px;
     cursor: pointer;
 }
+
+.tab-maker {
+    background-color: var(--icon-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 25px;
+    cursor: pointer;
+}
+
+.active-tab {
+    background-color: white;
+}
+

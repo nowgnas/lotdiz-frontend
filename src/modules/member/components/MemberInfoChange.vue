@@ -57,6 +57,19 @@
 import type { MemberInfoForChangeRequest } from '@/services/types/MemberRequest'
 import { checkOriginPasswordForChange, getMemberInfo, putMemberInfoForChange } from '@/services/api/MemberService'
 import { ref, onMounted } from 'vue'
+import { toast, type ToastOptions} from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
+
+const options = {
+  transition: toast.TRANSITIONS.BOUNCE,
+  position: toast.POSITION.TOP_RIGHT,
+  pauseOnHover: true,
+  progress: undefined,
+  autoClose: 3000,
+  toastStyle: {
+    fontWeight: 'bold'
+  }
+} as ToastOptions;
 
 const memberName = ref('')
 const memberPhoneNo = ref('')
@@ -74,7 +87,7 @@ onMounted(() => {
       createdAt.value = response.createdAt
       createdAt.value = createdAt.value.replace("T", " ")
     }).catch(error => {
-    console.error('멤버 수정전 정보 조회 실패')
+    console.error('멤버 수정전 정보 조회 실패:', error)
   })
 })
 
@@ -92,16 +105,17 @@ const submitForm = (event: any) => {
       if(response) {
         putMemberInfoForChange(memberInfoForChangeRequest)
           .then(response => {
-            alert('회원 정보 수정 완료되었습니다.')
+            alert('회원정보가 성공적으로 수정되었습니다.')
+            location.reload()
           }).catch(error => {
-          console.error('회원 정보 수정 실패:', error)
+          toast.error(error.toString(), options as ToastOptions);
         })
       } else {
-        alert('기존 비밀번호가 일치하지 않습니다.')
+        toast.error('기존 비밀번호가 맞지 않습니다.', options as ToastOptions);
         return
       }
     }).catch(error => {
-      console.error("회원정보 수정 실패:", error)
+    toast.error(error.toString(), options as ToastOptions);
   })
 }
 </script>
