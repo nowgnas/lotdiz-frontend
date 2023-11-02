@@ -201,16 +201,6 @@ const router = createRouter({
         }
       ],
       meta: { authRequired: true }
-    },
-    {
-      path: '/maker/project/detail/:projectId',
-      name: 'projectDetail',
-      component: DetailOfProject
-    },
-    {
-      path: '/maker/projects',
-      component: RegisteredProjects
-      // meta: { authRequired: true }
     }
   ]
 })
