@@ -45,7 +45,8 @@
           <div class='activity-wrapper'>
             <div class='activity-title'>펀딩내역</div>
             <div class='activity-open'>
-              <a href='/funding/details'><font-awesome-icon :icon="['fas', 'chevron-right']" /></a>
+<!--              <a href='/funding/details'><font-awesome-icon :icon="['fas', 'chevron-right']" /></a>-->
+              <a href=' '><font-awesome-icon :icon="['fas', 'chevron-right']" /></a>
             </div>
           </div>
           <div class='activity-wrapper'>

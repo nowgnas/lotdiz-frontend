@@ -5,7 +5,7 @@ export const getRegisteredProjectList = async (page: number, size: number, sort 
     const response = await getData(`/project-service/api/makers/projects?page=${page}&sort=${sort}&size=${size}`)
     return response.data
   } catch (e) {
-    console.log(e)
+    console.error(e)
   }
 
 }

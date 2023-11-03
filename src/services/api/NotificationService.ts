@@ -29,7 +29,7 @@ export const getNotifications = async (page: number, size: number, sort: string)
       `/notification-service/api/notifications?page=${page}&size=${size}&sort=${sort}`)
     return response.data
   } catch (error) {
-    console.log(error)
+    console.error(error)
     throw new Error('Failed to get notification')
   }
 }

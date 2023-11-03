@@ -14,7 +14,6 @@ onMounted(async () => {
 const router = useRouter()
 const showDetail = (projectId: number) => {
 
-  console.log(projectId)
   router.push({
     name: 'project-detail',
     params: {
