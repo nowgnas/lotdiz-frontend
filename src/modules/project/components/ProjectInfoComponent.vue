@@ -182,14 +182,19 @@ const modalControl = async () => {
 }
 
 const likes = async () => {
-  if (isLikes.value) {
-    await deleteLikes(projectId.value)
+  if(accessToken === null) {
+    alert("로그인이 필요합니다")
+    await router.push("/member/sign-in")
   } else {
-    await createLikes(projectId.value)
+    if (isLikes.value) {
+      await deleteLikes(projectId.value)
+    } else {
+      await createLikes(projectId.value)
+    }
+    await projectStore.setData(projectId.value)
+    projectDetails.value = projectStore.projectDetails
+    isLikes.value = projectDetails.value?.isLikes
   }
-  await projectStore.setData(projectId.value)
-  projectDetails.value = projectStore.projectDetails
-  isLikes.value = projectDetails.value?.isLikes
 }
 
 const createSupportSignatureRequest = async () => {

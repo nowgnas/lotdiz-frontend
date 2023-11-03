@@ -1,0 +1,105 @@
+.funding-history {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.125rem;
+}
+
+.funding-item {
+    display: flex;
+    padding: 0.625rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    background: #f8f8f8;
+    position: relative;
+    width: 60rem;
+    height: 9rem;
+}
+
+.funding-date {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    right: 3.0625rem;
+    bottom: 2rem;
+
+    .text {
+        color: #878787;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 1.75rem */
+    }
+}
+
+.supporter-name {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    left: 2.1875rem;
+    bottom: 3.875rem;
+
+    .text {
+        color: #000;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 2.1875rem */
+    }
+}
+
+.funding-amount {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    left: 18.4375rem;
+    bottom: 3.875rem;
+
+    .text {
+        color: #4FAFB1;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.5625rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 2.1875rem */
+    }
+}
+
+.delivery-status {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    position: absolute;
+    right: 4.4375rem;
+    top: 2rem;
+    border-radius: 0.625rem;
+    background: #4FAFB1;
+
+    .text {
+        color: #FFF;
+        text-align: center;
+        font-family: Open Sans;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 1.75rem */
+    }
+}
