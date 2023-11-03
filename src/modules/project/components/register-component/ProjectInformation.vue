@@ -14,7 +14,6 @@ const project = ref({
 })
 
 const getCategoryId = (value: number) => {
-  console.log(value)
   project.value.categoryId = value
 }
 const updateAmount = (value: any) => {

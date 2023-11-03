@@ -60,7 +60,7 @@ const getSupportWithUsRequest = async (projectId: number, page: number, size: nu
       isContents.value = true;
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 

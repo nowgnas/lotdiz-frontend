@@ -159,24 +159,24 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/funding',
-      name: 'funding',
-      component: FundingView,
-      meta: { authRequired: true }
-    },
-    {
-      path: '/payments/approve/:order/:user',
-      name: 'payments',
-      component: FundingPayApproveView,
-      meta: { authRequired: true }
-    },
-    {
-      path: '/funding/details',
-      name: 'fundingDetails',
-      component: FundingDetailsView,
-      meta: { authRequired: true }
-    },
+    // {
+    //   path: '/funding',
+    //   name: 'funding',
+    //   component: FundingView,
+    //   meta: { authRequired: true }
+    // },
+    // {
+    //   path: '/payments/approve/:order/:user',
+    //   name: 'payments',
+    //   component: FundingPayApproveView,
+    //   meta: { authRequired: true }
+    // },
+    // {
+    //   path: '/funding/details',
+    //   name: 'fundingDetails',
+    //   component: FundingDetailsView,
+    //   meta: { authRequired: true }
+    // },
     {
       path: '/projects',
       redirect: '/projects/maker'

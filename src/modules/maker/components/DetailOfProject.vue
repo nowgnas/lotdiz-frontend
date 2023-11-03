@@ -21,7 +21,6 @@ onBeforeMount(async () => {
 // get project funding list
   let detailFundingList: any = await getRegisteredProjectFundingList(projectId.value)
   detailFunding.value = detailFundingList['registeredProjectFundingDtos']
-  console.log(detailFunding.value)
 })
 
 </script>

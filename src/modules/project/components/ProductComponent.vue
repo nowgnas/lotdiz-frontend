@@ -101,14 +101,14 @@ const plusQuantity = (productId: number, productCurrentStockQuantity: number) =>
 }
 
 const goFundingPage = (projectId:number, fundingProducts: Array<FundingProductsRequest>) => {
-
-  router.push({
-    name: 'funding',
-    state: {
-      projectId: projectId,
-      products: JSON.stringify(fundingProducts)
-    },
-  })
+  alert("준비중인 서비스 입니다. 고객센터에 문의하세요.")
+  // router.push({
+  //   name: 'funding',
+  //   state: {
+  //     projectId: projectId,
+  //     products: JSON.stringify(fundingProducts)
+  //   },
+  // })
 }
 
 const goFunding = () => {

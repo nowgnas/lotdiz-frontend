@@ -43,7 +43,7 @@ export const getBanners = async (): Promise<BannersResponse> => {
 
     return response.data
   } catch (error: unknown) {
-    console.log(error)
+    console.error(error)
     throw new Error((<ErrorResponse>error).detail)
   }
 }
@@ -114,7 +114,7 @@ export const uploadImage2S3 = async (presignedUrl: string, file: File) => {
   try {
     await putBinaryType(presignedUrl, file)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     throw new Error((<ErrorResponse>error).detail)
   }
 }
