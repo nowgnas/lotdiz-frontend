@@ -52,15 +52,13 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    /* margin-left: 205px; */
-    /* margin-right: 315px; */
-    margin-top: 50px;
-    width: 1549px;
+    width: 80%;
+
+    padding: 50px 300px 0px 50px;
 }
 
 .sort-select-bar {
     display: flex;
-    width: 190px;
     height: 35px;
     justify-content: center;
     align-items: center;

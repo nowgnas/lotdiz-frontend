@@ -41,6 +41,7 @@ onMounted(() => {
 <style scoped>
 .container {
   height: 100%;
+  overflow-x: hidden;
 }
 
 </style>
