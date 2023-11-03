@@ -19,10 +19,10 @@ a {
   display: flex;
   align-items: center;
   align-content: center;
-  margin-left: 268px;
-  margin-right: 300px;
-  margin-top: 30px;
-  gap: 70px;
+  justify-content: flex-start;
+
+  padding: 30px 300px 30px 250px;
+  gap: 80px;
   flex-wrap: wrap;
 }
 

@@ -111,15 +111,17 @@ onBeforeMount(async () => {
 }
 
 .main-page-container {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
-  gap: 57px;
-  margin-left: 168px;
-  margin-top: 35px;
+  width: 100%;
+  height: 100%;
+
+  padding: 35px;
+
 }
 
 .main-page-lotd-plus-container {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 35px;
@@ -152,13 +154,13 @@ onBeforeMount(async () => {
   align-items: flex-start;
   gap: 10px;
   width: 3px;
-  height: 1433px;
+  height: 100%;
   background: rgba(0, 0, 0, 0.13);
 }
 
 .main-page-lotdeal-container {
   display: flex;
-  height: 757.911px;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 25px;
@@ -182,7 +184,7 @@ onBeforeMount(async () => {
 
 .main-page-lotdeal {
   display: flex;
-  height: 757.911px;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 46px;
